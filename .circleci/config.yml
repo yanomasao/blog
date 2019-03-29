@@ -26,9 +26,9 @@ jobs:
       #         git config --global user.name "ymraintree"
       #         git config --global user.email "ymraintree@gmail.com"
 
-      - run:
-        name: Hugo Version Check
-        command: hugo version
+      # - run:
+      #   name: Hugo Version Check
+      #   command: hugo version
     
       - run: 
         name: hugo
