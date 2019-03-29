@@ -28,10 +28,10 @@ jobs:
       - run:
           name: hugo
           command: |
-              - ls -l content/post
-              - ls -l docs/post
-              - hugo
-              - ls -l docs/post
+              ls -l content/post
+              ls -l docs/post
+              hugo
+              ls -l docs/post
 
       - run:
           name: push to master
