@@ -32,7 +32,7 @@ jobs:
               # cd blog
               ls -l
               hugo
-              git add .
+              git add --all
               # git commit -m "[ci skip] publish"
               git commit -m "CircleCI publish"
               git push origin master
