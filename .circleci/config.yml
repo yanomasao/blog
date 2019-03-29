@@ -39,7 +39,7 @@ jobs:
 
       - run:
         name: push to master
-        command: |
+        command: 
           ls -l content/post
           hugo
           ls -l docs/post
