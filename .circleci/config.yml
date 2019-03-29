@@ -27,11 +27,13 @@ jobs:
       - run:
           name: push to master
           command: |
-              git clone https://github.com/ymraintree/blog.git
+              # git clone https://github.com/ymraintree/blog.git
               ls -l content/post
-              cd blog
-              ls -l
+              ls -l docs/post
+              # cd blog
+              # ls -l
               hugo
+              ls -l docs/post
               git add --all
               # git commit -m "[ci skip] publish"
               git commit -m "CircleCI publish"
