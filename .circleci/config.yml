@@ -27,30 +27,22 @@ jobs:
       #         git config --global user.email "ymraintree@gmail.com"
 
       - run:
-          name: Hugo Version Check
-          command: hugo version
+        name: Hugo Version Check
+        command: hugo version
     
       - run: 
-          name: hugo
-          command: |
-              rm -rf docs
-              ls -l content/post
-              # ls -l docs/post
-              # cd /go/src/github.com/ymraintree/blog; 
-              hugo
-              # ls -l .circleci
-              ls -l docs/post
+        name: hugo
+        command: |
+          ls -l content/post
+          hugo
+          ls -l docs/post
 
       - run:
-          name: push to master
-          command: |
-              git config --global user.name "ymraintree"
-              git config --global user.email "ymraintree@gmail.com"
-              # git clone https://github.com/ymraintree/blog.git
-              # cd blog
-              # ls -l
-              # hugo
-              git add .
-              # git commit -m "[ci skip] publish"
-              git commit -m "CircleCI publish"
-              git push origin master
+        name: push to master
+        command: |
+          git config --global user.name "ymraintree"
+          git config --global user.email "ymraintree@gmail.com"
+          git add .
+          # git commit -m "[ci skip] publish"
+          git commit -m "CircleCI publish"
+          git push origin master
