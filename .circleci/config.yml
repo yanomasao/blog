@@ -30,16 +30,19 @@ jobs:
       #   name: Hugo Version Check
       #   command: hugo version
     
-      - run: 
-        name: hugo
-        command: |
-          ls -l content/post
-          hugo
-          ls -l docs/post
+      # - run: 
+      #   name: hugo
+      #   command: |
+      #     ls -l content/post
+      #     hugo
+      #     ls -l docs/post
 
       - run:
         name: push to master
         command: |
+          ls -l content/post
+          hugo
+          ls -l docs/post
           git config --global user.name "ymraintree"
           git config --global user.email "ymraintree@gmail.com"
           git add .
