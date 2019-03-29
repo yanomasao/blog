@@ -34,7 +34,7 @@ jobs:
           command: |
               rm -rf docs
               ls -l content/post
-              ls -l docs/post
+              # ls -l docs/post
               hugo
               ls -l docs/post
 
