@@ -37,7 +37,7 @@ jobs:
               ls -l content/post
               # ls -l docs/post
               # cd /go/src/github.com/ymraintree/blog; 
-              hugo
+              cd ~/repo; hugo
               ls -l docs/post
 
       - run:
