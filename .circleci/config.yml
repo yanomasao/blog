@@ -33,5 +33,6 @@ jobs:
               ls -l
               hugo
               git add .
-              git commit -m "[ci skip] publish"
+              # git commit -m "[ci skip] publish"
+              git commit -m "CircleCI publish"
               git push origin master
