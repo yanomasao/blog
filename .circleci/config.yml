@@ -26,8 +26,13 @@ jobs:
       #         git config --global user.email "ymraintree@gmail.com"
 
       - run:
+          name: Hugo Version Check
+          command: hugo version
+    
+      - run: 
           name: hugo
           command: |
+              rm -rf docs
               ls -l content/post
               ls -l docs/post
               hugo
