@@ -74,25 +74,7 @@
     </div>
   </header>
   <div>
-    前回は公開用とコンテンツ作成用でリポジトリをふたつに分けたが、やっぱりリポジトリはひとつのほうがシンプルでいいので、その方式で再作成。githubのリポジトリはblogとする。
-$ hugo new site blog
-$ cd blog
-$ git init
-$ git add &ndash;all
-$ git commit -m &ldquo;initial commit&rdquo;
-$ git remote add origin https://github.com/ymraintree/blog.git
-$ git push -u origin master
-今回はgithub pagesの仕様にのっとって、masterブランチのdocsディレクトリを公開コンテンツとするので、config.tomlに
-publishDir = &quot;docs&quot;  を追加。
-$ hugo
-docsディレクトリができた。
-$ git add &ndash;all
-$ git commit -m &ldquo;add docs&rdquo;
-$ git push -u origin master
-githubのページでSettings中のGitHub PagesのSourceにmaster branch/docs folterを選択。
-これで、https://ymraintree.github.io/blog/ で公開となった。
-あとは
-$ hugo new post/xxxxx.
+    <p>前回は公開用とコンテンツ作成用でリポジトリをふたつに分けたが、やっぱりリポジトリはひとつのほうがシンプルでいいので、その方式で再作成。githubのリポジトリはblogとする。</p>
   </div>
   
   <footer>
@@ -120,20 +102,30 @@ $ hugo new post/xxxxx.
     </div>
   </header>
   <div>
-    github.comにリポジトリを作成しておく。
-   　      ymraintree.github.io 公開コンテンツ用   ymraintree.github.io.hugo&nbsp;&nbsp;&nbsp; hugoでのコンテンツ作成用    
-$ brew install hugo
-$ hugo new site blog
-$ cd blog
-$ git init
-$ git add &ndash;all
-$ git commit -m &ldquo;initial commit&rdquo;
-$ git remote add origin https://github.com/ymraintree/ymraintree.github.io.hugo.git
-$ git push -u origin master
-$ hugo
-publicディレクトリができた。
-$ cd public $ git init
-$ git add &ndash;all
+    <p>github.comにリポジトリを作成しておく。</p>
+
+<table>
+<thead>
+<tr>
+<th>　　　</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ymraintree.github.io</td>
+<td>公開コンテンツ用</td>
+</tr>
+
+<tr>
+<td>ymraintree.github.io.hugo&nbsp;&nbsp;&nbsp;</td>
+<td>hugoでのコンテンツ作成用</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
   </div>
   
   <footer>
