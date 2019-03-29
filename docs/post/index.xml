@@ -17,12 +17,7 @@
       <pubDate>Fri, 29 Mar 2019 23:57:35 +0900</pubDate>
       
       <guid>https://ymraintree.github.io/blog/post/20190329-3/</guid>
-      <description>ついでなので、CircleCIでビルド＆公開の設定。どうやら、.circleci/config.ymlにgithubに変化があったときに何をするかを定義していくらしい。
- dockerコンテナを起動 hugoをインストール hugoコマンドを実行して公開コンテンツを生成 git pushして公開  ということをすればいいみたい。dockerコンテナには、起動時に自動的に当該リポジトリがcloneされているようなので、config.yml中でgit cloneはする必要がない模様。
-dockerコンテナは
-- image: circleci/golang:1.9  としていたが、
-../../gohugoio/hugo/parser/metadecoders/decoder.go:45:9: undefined: strings.Builder  というエラーが出るので、1.12にあげてクリア。しかし今度は
-ERROR: The key you are authenticating with has been marked as read only. fatal: Could not read from remote repository. Please make sure you have the correct access rights and the repository exists.  こちらのページを参考にして、sshキーを追加したら、上記エラーをクリア。はじめてCircleCIのSUCCESSが見られてうれしい。うれしいので焼酎お湯割りを飲むことにする。</description>
+      <description>&lt;p&gt;ついでなので、CircleCIでビルド＆公開の設定。どうやら、.circleci/config.ymlにgithubに変化があったときに何をするかを定義していくらしい。&lt;/p&gt;</description>
     </item>
     
     <item>
