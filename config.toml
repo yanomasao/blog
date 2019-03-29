@@ -2,4 +2,10 @@ baseURL = "https://ymraintree.github.io/"
 languageCode = "ja"
 title = "コードの波にゆ～らゆら"
 
+theme = "vienna"
+
 publishDir = "docs"
+canonifyurls = true
+
+# hasCJKLanguage = true
+# enableEmoji = true
