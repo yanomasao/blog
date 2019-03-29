@@ -6,10 +6,37 @@
     <description>Recent content on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 29 Mar 2019 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 29 Mar 2019 10:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://ymraintree.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>github pages&#43;hugoでblog その２</title>
+      <link>https://ymraintree.github.io/blog/post/20190329-2/</link>
+      <pubDate>Fri, 29 Mar 2019 10:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20190329-2/</guid>
+      <description>前回は公開用とコンテンツ作成用でリポジトリをふたつに分けたが、やっぱりリポジトリはひとつのほうがシンプルでいいので、その方式で再作成。githubのリポジトリはblogとする。
+$ hugo new site blog
+$ cd blog
+$ git init
+$ git add &amp;ndash;all
+$ git commit -m &amp;ldquo;initial commit&amp;rdquo;
+$ git remote add origin https://github.com/ymraintree/blog.git
+$ git push -u origin master
+今回はgithub pagesの仕様にのっとって、masterブランチのdocsディレクトリを公開コンテンツとするので、config.tomlに
+publishDir = &amp;quot;docs&amp;quot;  を追加。
+$ hugo
+docsディレクトリができた。
+$ git add &amp;ndash;all
+$ git commit -m &amp;ldquo;add docs&amp;rdquo;
+$ git push -u origin master
+githubのページでSettings中のGitHub PagesのSourceにmaster branch/docs folterを選択。
+これで、https://ymraintree.github.io/blog/ で公開となった。
+あとは
+$ hugo new post/xxxxx.</description>
+    </item>
     
     <item>
       <title>github pages&#43;hugoでblog</title>
@@ -18,8 +45,7 @@
       
       <guid>https://ymraintree.github.io/blog/post/20190329/</guid>
       <description>github.comにリポジトリを作成しておく。
-ymraintree.github.io
-ymraintree.github.io.hugo
+   　      ymraintree.github.io 公開コンテンツ用   ymraintree.github.io.hugo&amp;nbsp;&amp;nbsp;&amp;nbsp; hugoでのコンテンツ作成用    
 $ brew install hugo
 $ hugo new site blog
 $ cd blog
@@ -31,10 +57,7 @@ $ git push -u origin master
 $ hugo
 publicディレクトリができた。
 $ cd public $ git init
-$ git add &amp;ndash;all
-$ git commit -m &amp;ldquo;initial commit&amp;rdquo;
-$ git remote add origin https://github.com/ymraintree/ymraintree.github.io.git
-$ git push -u origin master</description>
+$ git add &amp;ndash;all</description>
     </item>
     
     <item>
