@@ -1,5 +1,5 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+baseURL = "https://ymraintree.github.io/"
+languageCode = "ja"
+title = "コードの波にゆ～らゆら"
 
 publishDir = "docs"
