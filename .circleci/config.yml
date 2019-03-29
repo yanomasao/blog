@@ -38,7 +38,7 @@ jobs:
               # ls -l docs/post
               # cd /go/src/github.com/ymraintree/blog; 
               hugo
-              ls -l .circleci
+              # ls -l .circleci
               ls -l docs/post
 
       - run:
