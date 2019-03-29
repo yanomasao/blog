@@ -28,7 +28,7 @@ jobs:
           name: push to master
           command: |
               # git clone https://github.com/ymraintree/blog.git
-              # ls -l
+              ls -l content/post
               # cd blog
               ls -l
               hugo
