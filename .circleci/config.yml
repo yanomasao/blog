@@ -35,6 +35,7 @@ jobs:
               rm -rf docs
               ls -l content/post
               # ls -l docs/post
+              cd /go/src/github.com/ymraintree/blog; 
               hugo
               ls -l docs/post
 
