@@ -37,9 +37,9 @@ jobs:
               ls -l content/post
               # ls -l docs/post
               # cd /go/src/github.com/ymraintree/blog; 
-              cd ~/repo; hugo
+              hugo
+              ls -l .circleci
               ls -l docs/post
-              ls -l public/post
 
       - run:
           name: push to master
