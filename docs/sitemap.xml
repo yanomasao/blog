@@ -3,17 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://ymraintree.github.io/post/20190329/</loc>
+    <lastmod>2019-03-29T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/post/20190328/</loc>
+    <lastmod>2019-03-28T13:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://ymraintree.github.io/post/</loc>
+    <lastmod>2019-03-29T09:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://ymraintree.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/</loc>
+    <lastmod>2019-03-29T09:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
