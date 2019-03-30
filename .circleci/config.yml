@@ -30,6 +30,7 @@ jobs:
           name: "Build & Push"
           command: |
             # rm -rf docs
+            hugo version
             hugo
             # cd docs
             # ls -l post
