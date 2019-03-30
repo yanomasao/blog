@@ -33,4 +33,4 @@ jobs:
             # cd public
             git add --all
             git commit -m "rebuilding site `date '+%Y-%m-%d'`"
-            git push origin master
+            # git push origin master
