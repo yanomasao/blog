@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>20190330</title>
+      <title>CircleCI</title>
       <link>https://ymraintree.github.io/blog/post/20190330/</link>
       <pubDate>Sat, 30 Mar 2019 09:48:11 +0900</pubDate>
       
       <guid>https://ymraintree.github.io/blog/post/20190330/</guid>
-      <description>テスト11</description>
+      <description>このブログをCircleCIで自動化。</description>
     </item>
     
     <item>
