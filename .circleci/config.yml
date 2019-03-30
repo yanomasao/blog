@@ -31,6 +31,6 @@ jobs:
           command: |
             hugo
             # cd public
-            git add .
+            git add --all
             git commit -m "rebuilding site `date '+%Y-%m-%d'`"
             git push origin master
