@@ -32,5 +32,5 @@ jobs:
             hugo
             # cd public
             git add --all
-            git commit -m "rebuilding site `date '+%Y-%m-%d'`"
-            # git push origin master
+            git commit -m "[ci skip] rebuilding site `date '+%Y-%m-%d'`"
+            git push origin master
