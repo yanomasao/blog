@@ -31,8 +31,8 @@ jobs:
           command: |
             rm -rf docs
             hugo
-            cd docs
+            # cd docs
             ls -l post
-            git add .
+            git add --all
             git commit -m "[ci skip] rebuilding site `date '+%Y-%m-%d'`"
             git push origin master
