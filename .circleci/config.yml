@@ -23,7 +23,7 @@ jobs:
             name: push to master
             command: |
                 ls -l content/post
-                hugo
+                hugo --ignoreCache
                 ls -l docs/post
                 git config --global user.name "ymraintree"
                 git config --global user.email "ymraintree@gmail.com"
