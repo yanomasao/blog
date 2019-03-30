@@ -17,7 +17,7 @@
       <pubDate>Sat, 30 Mar 2019 09:48:11 +0900</pubDate>
       
       <guid>https://ymraintree.github.io/blog/post/20190330/</guid>
-      <description>このブログをCircleCIで自動化。しかし、config.ymlを変更したりしてもCircleCIが走ってしまうのはどうすればいいのか。commit -m &#39;[ci skip]&#39;しても走ってしまう。</description>
+      <description>このブログをCircleCIで自動化。しかし、config.ymlを変更したりしてもCircleCIが走ってしまうのはどうすればいいのか。commit -m &#39;[ci skip]&#39;しても走ってしまう。ちょっと気持ち悪い。</description>
     </item>
     
     <item>
