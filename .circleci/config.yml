@@ -3,8 +3,8 @@ jobs:
   build:
     docker:
       # specify the version
-      - image: circleci/golang:1.12
-      # - image: cibuilds/hugo:latest
+      # - image: circleci/golang:1.12
+      - image: cibuilds/hugo:latest
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -19,21 +19,23 @@ jobs:
     working_directory: ~/repo
     steps:
         - checkout
-        - run:
-            name: hugo install
-            command: |
-                go get -v github.com/spf13/hugo
-                git config --global user.name "ymraintree"
-                git config --global user.email "ymraintree@gmail.com"
+        # - run:
+        #     name: hugo install
+        #     command: |
+        #         go get -v github.com/spf13/hugo
+        #         git config --global user.name "ymraintree"
+        #         git config --global user.email "ymraintree@gmail.com"
         - run:
             name: push to master
             command: |
                 ls -l content/post
-                hugo
+                hugo version
                 ls -l docs/post
-                git config --global user.name "ymraintree"
-                git config --global user.email "ymraintree@gmail.com"
-                git add .
-                # git commit -m "[ci skip] publish"
-                git commit -m "CircleCI publish"
-                git push origin master
+                rm -rf docs
+                hugo
+                # git config --global user.name "ymraintree"
+                # git config --global user.email "ymraintree@gmail.com"
+                # git add .
+                # # git commit -m "[ci skip] publish"
+                # git commit -m "CircleCI publish"
+                # git push origin master
