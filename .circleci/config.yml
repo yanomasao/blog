@@ -29,6 +29,7 @@ jobs:
       - run:
           name: "Build & Push"
           command: |
+            rm -rf docs
             hugo
             # cd public
             git add --all
