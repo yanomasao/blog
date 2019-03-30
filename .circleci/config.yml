@@ -34,5 +34,6 @@ jobs:
             # cd docs
             # ls -l post
             git add --all
+            ### ここで[ci skip]を入れないと、このpushでまたCircleCIが走ってしまう
             git commit -m "[ci skip] rebuilding site `date '+%Y-%m-%d %H:%m'`"
             git push origin master
