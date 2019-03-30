@@ -1,33 +1,14 @@
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version
-      # - image: circleci/golang:1.12
-      - image: cibuilds/hugo:latest
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    #### TEMPLATE_NOTE: go expects specific checkout path representing url
-    #### expecting it in the form of
-    ####   /go/src/github.com/circleci/go-tool
-    ####   /go/src/bitbucket.org/circleci/go-tool
-    # working_directory: /go/src/github.com/ymraintree/blog
     working_directory: ~/repo
+    machine: true
     steps:
-        - checkout
-        - run:
-            name: push to master
-            command: |
-                ls -l content/post
-                hugo
-                ls -l docs/post
-                git config --global user.name "ymraintree"
-                git config --global user.email "ymraintree@gmail.com"
-                git add .
-                # git commit -m "[ci skip] publish"
-                git commit -m "CircleCI publish"
-                git push origin master
+      - checkout
+      - run:
+          name: install hugo
+          command: go get -v github.com/gohugoio/hugo 
+      - run:
+          name: build hugo
+          # pwd: blog/
+          command: hugo
