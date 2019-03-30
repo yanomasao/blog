@@ -7,8 +7,12 @@ jobs:
       - checkout
       - run:
           name: install hugo
-          command: go get -v github.com/gohugoio/hugo 
+          command: go get -v https://github.com/gohugoio/hugo.git
+          
       - run:
           name: build hugo
           # pwd: blog/
           command: hugo
+      - run:
+          name: check
+          command: ls -l docs/post
