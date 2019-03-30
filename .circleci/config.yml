@@ -33,6 +33,7 @@ jobs:
                 ls -l docs/post
                 rm -rf docs
                 hugo
+                ls -l docs/post
                 # git config --global user.name "ymraintree"
                 # git config --global user.email "ymraintree@gmail.com"
                 # git add .
