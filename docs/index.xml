@@ -6,10 +6,19 @@
     <description>Recent content on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Mar 2019 17:09:13 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 00:14:13 +0900</lastBuildDate>
     
 	<atom:link href="https://ymraintree.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>テスト</title>
+      <link>https://ymraintree.github.io/blog/post/20190331/</link>
+      <pubDate>Sun, 31 Mar 2019 00:14:13 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20190331/</guid>
+      <description>githubで直接書いてもいいのね。プレビューもできるし。</description>
+    </item>
     
     <item>
       <title>BOSE SoundSport Free購入</title>
