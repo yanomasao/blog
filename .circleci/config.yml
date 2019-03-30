@@ -4,8 +4,7 @@ jobs:
     docker:
       # specify the version
       # - image: circleci/golang:1.12
-      # - image: cibuilds/hugo:latest
-      - image: circleci/hugo:latest
+      - image: cibuilds/hugo:latest
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
