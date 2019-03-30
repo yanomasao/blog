@@ -1,5 +1,5 @@
 baseURL = "https://ymraintree.github.io/blog/"
-languageCode = "ja"
+languageCode = "en-us"
 title = "コードの波にゆ～らゆら"
 
 theme = "vienna"
