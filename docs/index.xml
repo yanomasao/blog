@@ -125,5 +125,34 @@
       <description>古いブログ(http://d.hatena.ne.jp/ymraintree/)から引っ越しました。</description>
     </item>
     
+    <item>
+      <title>Mac keyhacでキーバインドの変更</title>
+      <link>https://ymraintree.github.io/blog/post/20190111/</link>
+      <pubDate>Fri, 11 Jan 2019 17:09:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20190111/</guid>
+      <description>MacBookProを使っているが、つくづく、コントロールキーとコマンドキーが統合されていればいいのにと思う。Ctrl-aとCmd-aを使い分けるシーンなんてないし。
+しばらく前からKeyHacを使って、アプリケーションごとにコントロールキーとコマンドキーの入れ替えをしているが、ちょっとスマートに書けるようになった。
+changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.google.Chrome&amp;quot;)) changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.apple.Preview&amp;quot;)) def changeKey(keymap): keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;quot; keymap[&amp;quot;Ctrl-c&amp;quot;] = &amp;quot;Cmd-c&amp;quot; keymap[&amp;quot;Ctrl-d&amp;quot;] = &amp;quot;Cmd-d&amp;quot;  </description>
+    </item>
+    
+    <item>
+      <title>Emacsのansi-term</title>
+      <link>https://ymraintree.github.io/blog/post/20180917/</link>
+      <pubDate>Mon, 17 Sep 2018 17:09:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20180917/</guid>
+      <description>いままで、/etc/passwdなどを編集するときはmacのターミナルを起動してそこでviしていたが、普段使っているemacsでM-x ansi-termすると、この中でviを使うことができる。これでターミナル不要になった。ありがたい。</description>
+    </item>
+    
+    <item>
+      <title>起業</title>
+      <link>https://ymraintree.github.io/blog/post/20180816/</link>
+      <pubDate>Thu, 16 Aug 2018 17:09:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20180816/</guid>
+      <description>7月末に無事、起業。時間はあったのに、あまり準備をせず、そろそろしなきゃとなったら結果、開業freeeのいうがまま。それでもさっくり起業できた。これから銀行の法人口座を作る。楽天銀行かジャパンネットバンクかという感じだけど、楽天のほうが必要書類が少なくてよさそう。</description>
+    </item>
+    
   </channel>
 </rss>
