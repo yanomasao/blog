@@ -621,6 +621,72 @@ ServerAliveInterval 60  を設定する
 </article>
 
   
+  <hr/>
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20160204/">EntityManager#createNativeQueryで一部のデータを取り出すとき</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2016-02-04T09:00:00&#43;09:00">
+          Feb 4, 2016
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    EJBのEntityManagerでテーブルをselectしてそのテーブルのエンティティを返すのは普通にやることだが、group byしてキーだけ取り出したい、などのときは以下のようにObjectの配列のリストとして扱う。
+ val keys = em.createNativeQuery(&quot;select t1.key1, t1.key2, t1.key3 &quot; + &quot;from T1 t1 &quot; + &quot;group by t1.key1, t1.key2, t1.key3 &quot; + .getResultList().asInstanceOf[java.util.List[Array[Object] var result = List[fooPK]() keys.foreach(k =&gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt))  
+  </div>
+  
+</article>
+
+  
+  <hr/>
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20151019/">pythonで正規表現を使った結果の判定</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-10-19T09:00:00&#43;09:00">
+          Oct 19, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    pythonで文字列に数字が含まれているかどうかを判定したいとき、
+import re def hantei(v): return re.search(\d, v)  とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
+ return re.search(\d, v) is not None  とするとすっきり。
+  </div>
+  
+</article>
+
+  
+  <hr/>
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20150709/">オブジェクトの値をコピーする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-07-09T09:00:00&#43;09:00">
+          Jul 9, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    case class Foo(key:Int, key2:String, key3:Int)  のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
+val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300)  とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
+case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2はコピーされない。
+となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。
+  </div>
+  
+</article>
+
+  
 </section>
   </main>
   <footer class="container global-footer">
