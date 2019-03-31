@@ -231,6 +231,78 @@ case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2は�
 </article>
 
   
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20150521/">scalaでxmlのCDATAを扱う</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-05-21T09:00:00&#43;09:00">
+          May 21, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    普通に
+val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;  みたいなことを書くと、
+x &lt; y  に変換されてしまう。これをしないように、CDATAを使うには
+&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;  とすればよい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20150122/">KarabinerでEclipseのキーバインドを変更</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-01-22T09:00:00&#43;09:00">
+          Jan 22, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は
+ &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt;  を定義して、
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  を
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  とするとキーバインドを変更できる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20150122-2/">Yosemite</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-01-22T09:00:00&#43;09:00">
+          Jan 22, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    OSを10.10.1Yosemiteにアップグレードしたところ、eclipse-4.2-junoが起動しなくなった。古いjavaが削除されたらしい。JavaForOSX2014-001.dmgをダウンロードしてインストールしたら起動。しかし、ビルドパスに問題があって、QTJava.zipがないとのこと。こちらはとりあえず、TimeMachineから取り出してクリア。
+  </div>
+  
+</article>
+
+  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -239,7 +311,9 @@ case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2は�
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/2/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 3 of 3</span>
+  <span class="page-number">Page 3 of 6</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/4/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 
 </nav>
 

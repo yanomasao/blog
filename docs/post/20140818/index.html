@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" オブジェクトの値をコピーする &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" スナップショット作成でエラーになったとき &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20150709/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20140818/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2015-07-09T09:00:00&#43;09:00" />
+  <meta property="og:article:published_time" content="2014-08-18T09:00:00&#43;09:00" />
   
   
 
   <title>
-     オブジェクトの値をコピーする &middot;  コードの波にゆ～らゆら
+     スナップショット作成でエラーになったとき &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">オブジェクトの値をコピーする</h1>
+    <h1 class="text-primary">スナップショット作成でエラーになったとき</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2015-07-09T09:00:00&#43;09:00">
-          Jul 9, 2015
+        <time datetime="2014-08-18T09:00:00&#43;09:00">
+          Aug 18, 2014
         </time>
       </div>
     
@@ -78,27 +78,19 @@
     </div>
   </header>
   <section>
-    <pre><code>case class Foo(key:Int, key2:String, key3:Int)
+    <p>kvmのqcow2からvmwareのvmdkへコンバートした仮想マシンをvmwareで起動して、とりあえずスナップショットを取ろう、と実行すると、「&hellip;..vmsn」を保存中にエラーが発生しました。」というエラーでパワーオフまでいってしまう。ディレクトリをみると、xxxVM-00001-s999.vmdkのようなファイルが多数あっておかしな状態に。パワーオンしても、「xxxVM-000001.vmdk」、またはディスク「xxxVM-000001.vmdk」が依存しているスナップショット ディスクの 1 つを開くことができません。 」というエラーで起動できない。</p>
+
+<p>どうもスナップショットを作り損なったのに設定的にはスナップショットができているという状態のようなので、xxxVM.vmxをみると、</p>
+
+<pre><code>ide1:1.fileName = &quot;xxxVM-000001.vmdk&quot;
 </code></pre>
 
-<p>のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。</p>
+<p>という行があるので、これを</p>
 
-<pre><code>val foo = Foo(100, &quot;test&quot;, 200)
-
-val zoo = foo.copy(key = 300)
+<pre><code>ide1:1.fileName = &quot;xxxVM.vmdk&quot;
 </code></pre>
 
-<p>とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。</p>
-
-<pre><code>case class Foo(key:Int) {
-  var v1:String =_
-  var v2:Int = _
-}
-</code></pre>
-
-<p>だと、v1, v2はコピーされない。</p>
-
-<p>となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。</p>
+<p>に変更しパワーオンしたらできた。そこで、パワーオフしてxxxVM-000001*を削除し、再度パワーオンしたら正常起動。これで復旧できたようにみえる。</p>
 
   </section>
   <footer>
@@ -117,10 +109,10 @@ val zoo = foo.copy(key = 300)
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20150521/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20140813/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20151019/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20141106/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

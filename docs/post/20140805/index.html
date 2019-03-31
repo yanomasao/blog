@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" オブジェクトの値をコピーする &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" qcow2からvmdkへ変換するとき &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20150709/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20140805/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2015-07-09T09:00:00&#43;09:00" />
+  <meta property="og:article:published_time" content="2014-08-05T09:00:00&#43;09:00" />
   
   
 
   <title>
-     オブジェクトの値をコピーする &middot;  コードの波にゆ～らゆら
+     qcow2からvmdkへ変換するとき &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">オブジェクトの値をコピーする</h1>
+    <h1 class="text-primary">qcow2からvmdkへ変換するとき</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2015-07-09T09:00:00&#43;09:00">
-          Jul 9, 2015
+        <time datetime="2014-08-05T09:00:00&#43;09:00">
+          Aug 5, 2014
         </time>
       </div>
     
@@ -78,27 +78,34 @@
     </div>
   </header>
   <section>
-    <pre><code>case class Foo(key:Int, key2:String, key3:Int)
+    <pre><code>-rw-r--r-- 1 root         root      28G  8月  5 17:37 zabbixVM.img
 </code></pre>
 
-<p>のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。</p>
+<p>のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。</p>
 
-<pre><code>val foo = Foo(100, &quot;test&quot;, 200)
+<pre><code>$ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img
 
-val zoo = foo.copy(key = 300)
+real	19m57.342s
+user	18m2.423s
+sys	0m24.398s
+
+$ ls -lh
+ -rw-r--r-- 1 root         root     7.4G  8月  5 18:22 zabbixVM.compact.img
+ -rw-r--r-- 1 root         root      28G  8月  5 17:37 zabbixVM.img
+
+$ time sudo qemu-img convert -p -f qcow2 -O vmdk zabbixVM.compact.img zabbixVM.vmdk
+
+real	78m36.654s
+user	5m4.354s
+sys	2m59.439s
+
+$ ls -lh
+ -rw-r--r-- 1 root         root     7.4G  8月  5 18:22 zabbixVM.compact.img
+ -rw-r--r-- 1 root         root      28G  8月  5 17:37 zabbixVM.img
+ -rw-r--r-- 1 root         root      31G  8月  5 19:42 zabbixVM.vmdk
 </code></pre>
 
-<p>とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。</p>
-
-<pre><code>case class Foo(key:Int) {
-  var v1:String =_
-  var v2:Int = _
-}
-</code></pre>
-
-<p>だと、v1, v2はコピーされない。</p>
-
-<p>となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。</p>
+<p>結果、qcow2を圧縮するのは意味がないように見える。</p>
 
   </section>
   <footer>
@@ -117,10 +124,10 @@ val zoo = foo.copy(key = 300)
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20150521/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20140804/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20151019/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20140813/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

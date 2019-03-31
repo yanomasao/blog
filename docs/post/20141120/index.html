@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" オブジェクトの値をコピーする &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" イメージファイルの圧縮 &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20150709/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20141120/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2015-07-09T09:00:00&#43;09:00" />
+  <meta property="og:article:published_time" content="2014-11-20T09:00:00&#43;09:00" />
   
   
 
   <title>
-     オブジェクトの値をコピーする &middot;  コードの波にゆ～らゆら
+     イメージファイルの圧縮 &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">オブジェクトの値をコピーする</h1>
+    <h1 class="text-primary">イメージファイルの圧縮</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2015-07-09T09:00:00&#43;09:00">
-          Jul 9, 2015
+        <time datetime="2014-11-20T09:00:00&#43;09:00">
+          Nov 20, 2014
         </time>
       </div>
     
@@ -78,27 +78,15 @@
     </div>
   </header>
   <section>
-    <pre><code>case class Foo(key:Int, key2:String, key3:Int)
-</code></pre>
+    <p>kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。</p>
 
-<p>のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。</p>
-
-<pre><code>val foo = Foo(100, &quot;test&quot;, 200)
-
-val zoo = foo.copy(key = 300)
-</code></pre>
-
-<p>とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。</p>
-
-<pre><code>case class Foo(key:Int) {
-  var v1:String =_
-  var v2:Int = _
-}
-</code></pre>
-
-<p>だと、v1, v2はコピーされない。</p>
-
-<p>となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。</p>
+<ol>
+<li>ゲストOSの停止</li>
+<li>スナップショット作成</li>
+<li>スナップショットで起動</li>
+<li>イメージファイル（本体）の圧縮</li>
+<li>スナップショットの統合</li>
+</ol>
 
   </section>
   <footer>
@@ -117,10 +105,10 @@ val zoo = foo.copy(key = 300)
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20150521/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20141107/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20151019/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20150120/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

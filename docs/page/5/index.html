@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+
+  <title>
+     コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+  <link href="https://ymraintree.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="コードの波にゆ～らゆら" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      
+      <a href="https://ymraintree.github.io/blog/index.xml" class="btn-header btn-subscribe hidden-xs">
+        <i class="fa fa-rss" aria-hidden="true"></i>
+        &nbsp;Subscribe
+      </a>
+      
+    </section>
+  </header>
+  <main class="container">
+
+<div class="article-list">
+  
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20140630/">Playframework 2.2で非同期メール送信</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-06-30T09:00:00&#43;09:00">
+          Jun 30, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Playで作っているアプリケーションでメール送信が必要になり、普通に書いてみたらメール送信が遅いので画面に制御が帰ってくるまで時間がかかってしまった。手っ取り早く非同期でメールを送信するように改良してみた。
+プロジェクト直下のbuild.sbt
+libraryDependenciesに
+&quot;play.modules.mailer&quot; %% &quot;play-mailer&quot; % &quot;2.1.3&quot;  を追加。
+resolvers ++= Seq( &quot;Rhinofly Internal Release Repository&quot; at &quot;http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local&quot; )  を追加。
+conf/application.confに
+mail.failTo=&quot;(sender address)&quot; mail.host=smtp.gmail.com mail.port=465 mail.username=&quot;foo@coo.bar.com&quot; mail.password=xxxxxxxx  を追加。
+Application.scalaで送信。エラー処理などはまたこんど。
+import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.Implicits.global // 添付ファイルの用意 val bis = new BufferedInputStream(new FileInputStream(pdf)) val bArray = Stream.continually(bis.read).takeWhile(-1 !=).map(_.toByte).toArray val email = Email( subject = &quot;サブジェクト&quot;, from = EmailAddress(&quot;送付者名&quot;, &quot;donotreply@coo.bar.com&quot;), text = body, htmlText = body) .to(&quot;受信者名&quot;, &quot;xxxxx@zoo.co.jp&quot;) .
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20140630/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20140423/">automountが刺さったら</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-04-23T09:00:00&#43;09:00">
+          Apr 23, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ホームディレクトリをNASに置いて、linuxマシンからはautomountでアクセスするようにしているが、先日NASが異常終了して起動できなくなってしまった。緊急対応として、バックアップのNASサーバを本番のサーバとして使うようにDNSで切り替えた。こんなとき、マシンによってはautomountが以前のサーバにアクセスしようとしてlsコマンドやdfコマンドが刺さってしまう。当該マシンを再起動すればいいことだが、本番運用しているマシンなどは再起動できない。こういうときは
+# umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx  の順で実行する。-lだとたいていはumountできるもよう。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20140122/">ubuntu 起動が遅い場合</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-01-22T09:00:00&#43;09:00">
+          Jan 22, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    kvmのゲストOSにubuntu12.04を使っているが、ネットワークの設定を変更してひとつのNICに複数のIPアドレスを振るようにしたらOSの起動時に
+Waiting for network configuration...  や
+Waiting up to 60 more seconds for network configuration...  が出て遅くなってしまった。
+とりあえず、/etc/init/failsafe.confを修正。
+sleep 20をsleep 5に変え、
+$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1  をコメントアウトすると起動は速くなる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20140120/">play frameworkの自動起動設定</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-01-20T09:00:00&#43;09:00">
+          Jan 20, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    簡単なplayのアプリケーションを作ってさくっとデプロイして本番運用していたが、本番機のロードアベレージが常に1を上回るようになってびっくり。調べると、playのプロセスがCPUを専有していた。単純にplay runで起動していたが、これを変更。
+プロジェクト内で
+$ play clean compile stage  を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、
+	cd /usr/local/play/name_of_project target/start -server -Xms128m -Xmx128m &amp;  などとするとよい。終了用には
+	cd /usr/local/play/name_of_project kill -TERM `cat RUNNING_PID`  play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、
+target/universal/stage/bin/name_of_project  に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。
+	cd /usr/local/play-2.2.3/name_of_project target/universal/stage/bin/name_of_project -Dhttp.port=9001 &gt; /dev/null 2&gt;&amp;1 &amp;  停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20131111/">実行可能Jarファイルの設定</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-11-11T09:00:00&#43;09:00">
+          Nov 11, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Java7になってから、実行可能jarファイルでアプリケーションを起動すると、「JARファイルのマニフェストに権限属性が含まれていないため、このアプリケーションは、今後のJavaセキュリティ・アップデートでブロックされます。」というメッセージが表示されるようになった。これを解消するには、実行可能JarのMANIFEST.MFに
+Permissions: all-permissions Codebase: *.foo.bar.com  を追加する。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20131025/">Java Web Startの仕様変更</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-10-25T09:00:00&#43;09:00">
+          Oct 25, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で
+&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のように渡していた。Java側では
+String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることができた。
+これができなくなったようなので調べてみたら http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html の解説にあるように、
+&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のようにするとVMに引数を渡すことができるんだと。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20131010/">scalaとjavaのコレクションのやり取り</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-10-10T09:00:00&#43;09:00">
+          Oct 10, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    もっといい方法があると思うけれど、とりあえず実現できたやり方
+scalaのMapのvaluesをjava.util.Collectionに変換する
+new java.util.ArrayList[UriageForRanking](result.values)  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20131001/">chromeのポップアップをタブで開く</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-10-01T09:00:00&#43;09:00">
+          Oct 1, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    リンクをクリックするとポップアップが表示されるかわりにタブで表示させるのに、chromeではTab Position Customizerという機能拡張を使ってきたが、いつのまにかchromeウェブストアからなくなっている。ぐぐってみたらウェブストアでないところに、Tab_Position_Customizer_2.9.1_0.crxというファイルがあるので、これをダウンロードし、chromeに機能拡張の一覧を表示させてそこにドラッグするとインストールできる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20130920/">デスクトップフォルダの変更</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-09-20T09:00:00&#43;09:00">
+          Sep 20, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    最近virt-managerを使うことが増えて、vncでlinuxにGUIのアクセスをするようになったが、ホームディレクトリにPublicとかDesktopとかフォルダを作られてしまうのがうざい。なので、~/.config/user-dirs.dirsの内容を修正して、別の場所に作られるようにした。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20130919/">kvm イメージファイルの操作</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-09-19T09:00:00&#43;09:00">
+          Sep 19, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    以下のコマンドで差分ファイルを作ることができる。
+$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img  以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
+$ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $  差分をベースにコミットするには以下のコマンド。
+$ sudo qemu-img commit -f qcow2 vm.test.diff.img  これで差分はいらなくなる。
+この方式だと、ベースのイメージが差分バックアップの対象とならないので、バックアップの効率はよくなる。
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20130919/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+</div>
+<nav class="pagination" role="navigation">
+
+  <hr />
+
+
+<a class="newer-posts" href="https://ymraintree.github.io/blog/page/4/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
+
+  <span class="page-number">Page 5 of 6</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/6/">Older Posts <span aria-hidden="true">&raquo;</span></a>
+
+</nav>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
+
