@@ -250,6 +250,50 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
 </article>
 
   
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20171008/">My First Lambda</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2017-10-08T09:00:00&#43;09:00">
+          Oct 8, 2017
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    def checkio(data): return filter(lambda x: 1 &lt; data.count(x), data) if __name__ == &quot;__main__&quot;: #These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], &quot;1st example&quot; assert list(checkio([1, 2, 3, 4, 5])) == [], &quot;2nd example&quot; assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], &quot;3rd example&quot; assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], &quot;4th example&quot;  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20170424/">psqlのデリミタを変更する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2017-04-24T09:00:00&#43;09:00">
+          Apr 24, 2017
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ psql -A -F $'\t' xxxxxx  で出力のデリミタをタブに変更できる。
+  </div>
+  
+</article>
+
+  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -258,7 +302,9 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 2 of 2</span>
+  <span class="page-number">Page 2 of 3</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/3/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 
 </nav>
 
