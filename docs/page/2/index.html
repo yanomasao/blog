@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20190328/">ブログ開始</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2019-03-28T13:00:00&#43;09:00">
+          Mar 28, 2019
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    古いブログ(http://d.hatena.ne.jp/ymraintree/)から引っ越しました。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/20190111/">Mac keyhacでキーバインドの変更</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -121,6 +143,108 @@ changeKey(keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;)) cha
   </header>
   <div>
     7月末に無事、起業。時間はあったのに、あまり準備をせず、そろそろしなきゃとなったら結果、開業freeeのいうがまま。それでもさっくり起業できた。これから銀行の法人口座を作る。楽天銀行かジャパンネットバンクかという感じだけど、楽天のほうが必要書類が少なくてよさそう。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20180512/">Datastoreをcsvでエクスポート</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-05-12T17:09:00&#43;09:00">
+          May 12, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Google App Engineでよく使うDatastoreのデータをディープラーニングで使うためにcsvにしようとした。簡単なことと思ったら以外になかなかできず、結局以下の方法で実現できた。
+Datastoreのバックアップ BigQueryにインポート 必要なカラムをselectして、Download as csvをクリック
+RDBならcopyコマンドとかで一発なんだけど。簡単なことなんだけど。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20180305/">Pythonの日時表示</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-03-05T09:00:00&#43;09:00">
+          Mar 5, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    日本の日時を表示するには、
+import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/%m/%d %H:%M:%S %Z')  とすると 2018/03/05 17:24:54 JST となる。もうちょっといい方法はないかな。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20180118/">AWS linuxのディスクを拡張する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-01-18T09:00:00&#43;09:00">
+          Jan 18, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    AWSコンソールで当該EBSのサイズを拡張する。 ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。
+$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 8G 0 part / $ df -h /dev/xvda1 7.8G 7.6G 0 100% /  変わっていない。
+$ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487 $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 10G 0 part / $ sudo resize2fs /dev/xvda1 resize2fs 1.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20180118/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20180115/">国民年金・失業保険</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-01-15T09:00:00&#43;09:00">
+          Jan 15, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    思うところあって、2017年末に25年以上勤めた会社を早期退職した。これからどうするかなど、たいしたプランもないなかで、とりあえず必要なことをしていく。
+まずは、厚生年金を国民年金にスイッチ。このまま受給日まで国民年金で行った場合、厚生年金と合わせた受給額はいくらになるのかなどは、年金事務所に問い合わせろとのこと。市役所は手続きのみらしい。
+つづいてハローワークで失業保険受給の手続き。職業安定所といったら、昔は仕事にあぶれたおじさんたちが肩寄せあってタバコを吸いながらしみったれた話しをしているところ、というイメージだったけど、今はすっかりクリーンになっていて、通っても気持ちが暗くなるということもなさそうで安心した。今の労働市場はどうなっているのか、考えてもいなかったような仕事や環境に出会えるのではないかと、期待も芽生えてきた。
+これからどうなっていくのか、随時メモをつけていきたい。あいまにPythonやkotlinの勉強をしようと思う。
   </div>
   
 </article>
