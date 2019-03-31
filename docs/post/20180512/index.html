@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" CircleCI &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" Datastoreをcsvでエクスポート &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20190330/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20180512/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2019-03-30T09:48:11&#43;09:00" />
+  <meta property="og:article:published_time" content="2018-05-12T17:09:00&#43;09:00" />
   
   
 
   <title>
-     CircleCI &middot;  コードの波にゆ～らゆら
+     Datastoreをcsvでエクスポート &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">CircleCI</h1>
+    <h1 class="text-primary">Datastoreをcsvでエクスポート</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2019-03-30T09:48:11&#43;09:00">
-          Mar 30, 2019
+        <time datetime="2018-05-12T17:09:00&#43;09:00">
+          May 12, 2018
         </time>
       </div>
     
@@ -78,9 +78,13 @@
     </div>
   </header>
   <section>
-    <p>このブログをCircleCIで自動化。しかし、config.ymlを変更したりしてもCircleCIが走ってしまうのはどうすればいいのか。<code>commit -m '[ci skip]'</code>しても走ってしまう。ちょっと気持ち悪い。</p>
+    <p>Google App Engineでよく使うDatastoreのデータをディープラーニングで使うためにcsvにしようとした。簡単なことと思ったら以外になかなかできず、結局以下の方法で実現できた。</p>
 
-<p>そうか、CI/CDされたくなければgithub上で直接編集すればいいのか。ローカルでテストできるものでもないし。</p>
+<p>Datastoreのバックアップ
+BigQueryにインポート
+必要なカラムをselectして、Download as csvをクリック</p>
+
+<p>RDBならcopyコマンドとかで一発なんだけど。簡単なことなんだけど。</p>
 
   </section>
   <footer>
@@ -99,10 +103,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/template/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20180305/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20190330-2/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20180816/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

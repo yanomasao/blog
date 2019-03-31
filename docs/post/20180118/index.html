@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" CircleCI &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" AWS linuxのディスクを拡張する &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20190330/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20180118/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2019-03-30T09:48:11&#43;09:00" />
+  <meta property="og:article:published_time" content="2018-01-18T09:00:00&#43;09:00" />
   
   
 
   <title>
-     CircleCI &middot;  コードの波にゆ～らゆら
+     AWS linuxのディスクを拡張する &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">CircleCI</h1>
+    <h1 class="text-primary">AWS linuxのディスクを拡張する</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2019-03-30T09:48:11&#43;09:00">
-          Mar 30, 2019
+        <time datetime="2018-01-18T09:00:00&#43;09:00">
+          Jan 18, 2018
         </time>
       </div>
     
@@ -78,9 +78,40 @@
     </div>
   </header>
   <section>
-    <p>このブログをCircleCIで自動化。しかし、config.ymlを変更したりしてもCircleCIが走ってしまうのはどうすればいいのか。<code>commit -m '[ci skip]'</code>しても走ってしまう。ちょっと気持ち悪い。</p>
+    <p>AWSコンソールで当該EBSのサイズを拡張する。
+ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。</p>
 
-<p>そうか、CI/CDされたくなければgithub上で直接編集すればいいのか。ローカルでテストできるものでもないし。</p>
+<pre><code>$ lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda 202:0 0 10G 0 disk 
+└─xvda1 202:1 0 8G 0 part /
+
+$ df -h
+/dev/xvda1 7.8G 7.6G 0 100% /
+</code></pre>
+
+<p>変わっていない。</p>
+
+<pre><code>$ sudo growpart /dev/xvda 1
+CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487
+
+
+$ lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda 202:0 0 10G 0 disk 
+└─xvda1 202:1 0 10G 0 part /
+
+$ sudo resize2fs /dev/xvda1
+resize2fs 1.42.13 (17-May-2015)
+Filesystem at /dev/xvda1 is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/xvda1 is now 2619427 (4k) blocks long.
+
+$ df -h
+/dev/xvda1 9.8G 7.6G 1.8G 82% /
+</code></pre>
+
+<p>変わった。</p>
 
   </section>
   <footer>
@@ -99,10 +130,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/template/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20180115/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20190330-2/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20180305/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>
