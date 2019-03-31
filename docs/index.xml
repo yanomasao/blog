@@ -207,5 +207,72 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
 これからどうなっていくのか、随時メモをつけていきたい。あいまにPythonやkotlinの勉強をしようと思う。</description>
     </item>
     
+    <item>
+      <title>My First Lambda</title>
+      <link>https://ymraintree.github.io/blog/post/20171008/</link>
+      <pubDate>Sun, 08 Oct 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20171008/</guid>
+      <description>def checkio(data): return filter(lambda x: 1 &amp;lt; data.count(x), data) if __name__ == &amp;quot;__main__&amp;quot;: #These &amp;quot;asserts&amp;quot; using only for self-checking and not necessary for auto-testing assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], &amp;quot;1st example&amp;quot; assert list(checkio([1, 2, 3, 4, 5])) == [], &amp;quot;2nd example&amp;quot; assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], &amp;quot;3rd example&amp;quot; assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], &amp;quot;4th example&amp;quot;  </description>
+    </item>
+    
+    <item>
+      <title>psqlのデリミタを変更する</title>
+      <link>https://ymraintree.github.io/blog/post/20170424/</link>
+      <pubDate>Mon, 24 Apr 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20170424/</guid>
+      <description>$ psql -A -F $&#39;\t&#39; xxxxxx  で出力のデリミタをタブに変更できる。</description>
+    </item>
+    
+    <item>
+      <title>EC2 インスタンスのタイムゾーンを変更する</title>
+      <link>https://ymraintree.github.io/blog/post/20170214/</link>
+      <pubDate>Tue, 14 Feb 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20170214/</guid>
+      <description>EC2のLinuxインスタンスは作りたてだとタイムゾーンがJSTではないので、これを変更
+$ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo localtime $ date Sat Feb 4 14:48:14 JST 2017 $  </description>
+    </item>
+    
+    <item>
+      <title>クローンしたVMのファイル名を変更する</title>
+      <link>https://ymraintree.github.io/blog/post/20170116/</link>
+      <pubDate>Mon, 16 Jan 2017 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20170116/</guid>
+      <description>vmwareのVMをクローンすると、.vmdkファイルの名称が変更されてしまう。たとえば、backupVMというVMをクローンすると、
+# ls backupVM_2-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM_2-flat.vmdk backupVM_2.vmdk backupVM.vmx vmware.log #  となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、
+# vmkfstools -E backupVM_2.vmdk backupVM.vmdk  とすると、すべての_2が取れる。
+# ls backupVM-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM-flat.vmdk backupVM.vmdk backupVM.vmx vmware.log #  さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。</description>
+    </item>
+    
+    <item>
+      <title>keyhac</title>
+      <link>https://ymraintree.github.io/blog/post/20161222/</link>
+      <pubDate>Thu, 22 Dec 2016 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20161222/</guid>
+      <description>Macをsierraにアップグレードしたらkarabinerが使えなくなったので、かわりにkeyhacを試してみる。
+keyhacはkarabinerとちがって、コントロールキーとコマンドキーを交換という定義ができず、常に
+keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;quot;  というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
+def changeKey(keymap): keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;quot; keymap[&amp;quot;Ctrl-c&amp;quot;] = &amp;quot;Cmd-c&amp;quot; keymap[&amp;quot;Ctrl-d&amp;quot;] = &amp;quot;Cmd-d&amp;quot; keymap[&amp;quot;Ctrl-f&amp;quot;] = &amp;quot;Cmd-f&amp;quot; keymap[&amp;quot;Ctrl-p&amp;quot;] = &amp;quot;Cmd-p&amp;quot; keymap[&amp;quot;Ctrl-q&amp;quot;] = &amp;quot;Cmd-q&amp;quot; keymap[&amp;quot;Ctrl-r&amp;quot;] = &amp;quot;Cmd-r&amp;quot; keymap[&amp;quot;Ctrl-s&amp;quot;] = &amp;quot;Cmd-s&amp;quot; keymap[&amp;quot;Ctrl-t&amp;quot;] = &amp;quot;Cmd-t&amp;quot; keymap[&amp;quot;Ctrl-v&amp;quot;] = &amp;quot;Cmd-v&amp;quot; keymap[&amp;quot;Ctrl-w&amp;quot;] = &amp;quot;Cmd-w&amp;quot; keymap[&amp;quot;Ctrl-x&amp;quot;] = &amp;quot;Cmd-x&amp;quot; keymap[&amp;quot;Ctrl-z&amp;quot;] = &amp;quot;Cmd-z&amp;quot; return keymap  を作り、
+ keymap_chrome = keymap.defineWindowKeymap(app_name=&amp;quot;com.google.Chrome&amp;quot;) keymap_chrome = changeKey(keymap_chrome)  で呼び出すようにする。</description>
+    </item>
+    
+    <item>
+      <title>sshセッションのタイムアウトを防止する</title>
+      <link>https://ymraintree.github.io/blog/post/20161216/</link>
+      <pubDate>Fri, 16 Dec 2016 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20161216/</guid>
+      <description>最近AWSを使うことが多くなって、EC2のインスタンスにsshで接続して作業するが、なにかというとタイムアウトするので不便。ちょっと調べたら
+サーバの/etc/ssh/sshd_configに
+ClientAliveInterval 60  を設定する
+~/.ssh/configに
+ServerAliveInterval 60  を設定する
+のいずれかでタイムアウトしなくなるらしい。</description>
+    </item>
+    
   </channel>
 </rss>

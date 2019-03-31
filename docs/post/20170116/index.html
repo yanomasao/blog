@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" 国民年金・失業保険 &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" クローンしたVMのファイル名を変更する &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20180115/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20170116/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2018-01-15T09:00:00&#43;09:00" />
+  <meta property="og:article:published_time" content="2017-01-16T09:00:00&#43;09:00" />
   
   
 
   <title>
-     国民年金・失業保険 &middot;  コードの波にゆ～らゆら
+     クローンしたVMのファイル名を変更する &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">国民年金・失業保険</h1>
+    <h1 class="text-primary">クローンしたVMのファイル名を変更する</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2018-01-15T09:00:00&#43;09:00">
-          Jan 15, 2018
+        <time datetime="2017-01-16T09:00:00&#43;09:00">
+          Jan 16, 2017
         </time>
       </div>
     
@@ -78,13 +78,28 @@
     </div>
   </header>
   <section>
-    <p>思うところあって、2017年末に25年以上勤めた会社を早期退職した。これからどうするかなど、たいしたプランもないなかで、とりあえず必要なことをしていく。</p>
+    <p>vmwareのVMをクローンすると、.vmdkファイルの名称が変更されてしまう。たとえば、backupVMというVMをクローンすると、</p>
 
-<p>まずは、厚生年金を国民年金にスイッチ。このまま受給日まで国民年金で行った場合、厚生年金と合わせた受給額はいくらになるのかなどは、年金事務所に問い合わせろとのこと。市役所は手続きのみらしい。</p>
+<pre><code># ls
+backupVM_2-ctk.vmdk   backupVM.nvram      backupVM.vmsd       backupVM.vmxf
+backupVM_2-flat.vmdk  backupVM_2.vmdk       backupVM.vmx        vmware.log
+#
+</code></pre>
 
-<p>つづいてハローワークで失業保険受給の手続き。職業安定所といったら、昔は仕事にあぶれたおじさんたちが肩寄せあってタバコを吸いながらしみったれた話しをしているところ、というイメージだったけど、今はすっかりクリーンになっていて、通っても気持ちが暗くなるということもなさそうで安心した。今の労働市場はどうなっているのか、考えてもいなかったような仕事や環境に出会えるのではないかと、期待も芽生えてきた。</p>
+<p>となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、</p>
 
-<p>これからどうなっていくのか、随時メモをつけていきたい。あいまにPythonやkotlinの勉強をしようと思う。</p>
+<pre><code># vmkfstools -E backupVM_2.vmdk backupVM.vmdk 
+</code></pre>
+
+<p>とすると、すべての_2が取れる。</p>
+
+<pre><code># ls
+backupVM-ctk.vmdk   backupVM.nvram      backupVM.vmsd       backupVM.vmxf
+backupVM-flat.vmdk  backupVM.vmdk       backupVM.vmx        vmware.log
+#
+</code></pre>
+
+<p>さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。</p>
 
   </section>
   <footer>
@@ -103,10 +118,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20171008/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20161222/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20180118/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20170214/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>
