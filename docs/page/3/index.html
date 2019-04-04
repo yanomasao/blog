@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20170424/">psqlのデリミタを変更する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2017-04-24T09:00:00&#43;09:00">
+          Apr 24, 2017
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ psql -A -F $'\t' xxxxxx  で出力のデリミタをタブに変更できる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/20170214/">EC2 インスタンスのタイムゾーンを変更する</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -276,28 +298,6 @@ x &lt; y  に変換されてしまう。これをしないように、CDATAを�
  &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt;  を定義して、
  &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  を
  &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  とするとキーバインドを変更できる。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/20150122-2/">Yosemite</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2015-01-22T09:00:00&#43;09:00">
-          Jan 22, 2015
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    OSを10.10.1Yosemiteにアップグレードしたところ、eclipse-4.2-junoが起動しなくなった。古いjavaが削除されたらしい。JavaForOSX2014-001.dmgをダウンロードしてインストールしたら起動。しかし、ビルドパスに問題があって、QTJava.zipがないとのこと。こちらはとりあえず、TimeMachineから取り出してクリア。
   </div>
   
 </article>

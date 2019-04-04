@@ -63,6 +63,38 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20130919/">kvm イメージファイルの操作</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-09-19T09:00:00&#43;09:00">
+          Sep 19, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    以下のコマンドで差分ファイルを作ることができる。
+$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img  以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
+$ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $  差分をベースにコミットするには以下のコマンド。
+$ sudo qemu-img commit -f qcow2 vm.test.diff.img  これで差分はいらなくなる。
+この方式だと、ベースのイメージが差分バックアップの対象とならないので、バックアップの効率はよくなる。
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/20130919/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/20130906/">scala objectのMock その2</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">

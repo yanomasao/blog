@@ -6,10 +6,20 @@
     <description>Recent content in Posts on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2019 12:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 04 Apr 2019 09:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://ymraintree.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>スマホでブログを書いてみる</title>
+      <link>https://ymraintree.github.io/blog/post/20190404/</link>
+      <pubDate>Thu, 04 Apr 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/20190404/</guid>
+      <description>スマホでブログを書いてみる。hugo newせずにgithubでcreate new file するので、タイトル部分の
+--- title: &amp;quot;iPad&amp;quot; date: 2019-04-04T09:00:00+09:00 draft: true ---  を別ファイルからコピーしてこないといけないのがめんどう。それでもまあ、書けないことはないということがわかった。</description>
+    </item>
     
     <item>
       <title>『月の満ち欠け』佐藤正午</title>
