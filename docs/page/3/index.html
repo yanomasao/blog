@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20171008/">My First Lambda</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2017-10-08T09:00:00&#43;09:00">
+          Oct 8, 2017
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    def checkio(data): return filter(lambda x: 1 &lt; data.count(x), data) if __name__ == &quot;__main__&quot;: #These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], &quot;1st example&quot; assert list(checkio([1, 2, 3, 4, 5])) == [], &quot;2nd example&quot; assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], &quot;3rd example&quot; assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], &quot;4th example&quot;  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/20170424/">psqlのデリミタを変更する</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -273,31 +295,6 @@ case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2は�
 val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;  みたいなことを書くと、
 x &lt; y  に変換されてしまう。これをしないように、CDATAを使うには
 &lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;  とすればよい。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/20150122/">KarabinerでEclipseのキーバインドを変更</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2015-01-22T09:00:00&#43;09:00">
-          Jan 22, 2015
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は
- &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt;  を定義して、
- &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  を
- &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  とするとキーバインドを変更できる。
   </div>
   
 </article>
