@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" AWS linuxのディスクを拡張する &middot;  コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2018/20180118/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2018-01-18T09:00:00&#43;09:00" />
+  
+  
+
+  <title>
+     AWS linuxのディスクを拡張する &middot;  コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="https://ymraintree.github.io/blog/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">AWS linuxのディスクを拡張する</h1>
+    <div class="post-meta clearfix">
+    
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-01-18T09:00:00&#43;09:00">
+          Jan 18, 2018
+        </time>
+      </div>
+    
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>AWSコンソールで当該EBSのサイズを拡張する。
+ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。</p>
+
+<pre><code>$ lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda 202:0 0 10G 0 disk 
+└─xvda1 202:1 0 8G 0 part /
+
+$ df -h
+/dev/xvda1 7.8G 7.6G 0 100% /
+</code></pre>
+
+<p>変わっていない。</p>
+
+<pre><code>$ sudo growpart /dev/xvda 1
+CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487
+
+
+$ lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda 202:0 0 10G 0 disk 
+└─xvda1 202:1 0 10G 0 part /
+
+$ sudo resize2fs /dev/xvda1
+resize2fs 1.42.13 (17-May-2015)
+Filesystem at /dev/xvda1 is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/xvda1 is now 2619427 (4k) blocks long.
+
+$ df -h
+/dev/xvda1 9.8G 7.6G 1.8G 82% /
+</code></pre>
+
+<p>変わった。</p>
+
+  </section>
+  <footer>
+    
+    
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2018/20180305/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2018/20180115/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+

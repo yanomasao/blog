@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" linuxでiscsi&#43;ocfs2 &middot;  コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2013/20130313/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2013-03-13T09:00:00&#43;09:00" />
+  
+  
+
+  <title>
+     linuxでiscsi&#43;ocfs2 &middot;  コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="https://ymraintree.github.io/blog/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">linuxでiscsi&#43;ocfs2</h1>
+    <div class="post-meta clearfix">
+    
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-03-13T09:00:00&#43;09:00">
+          Mar 13, 2013
+        </time>
+      </div>
+    
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。</p>
+
+<p>iscsiターゲットの構築</p>
+
+<pre><code>$ sudo apt-get install iscsitarget
+$ sudo apt-get install iscsitarget-dkms
+</code></pre>
+
+<p>/etc/iet/ietd.confを編集</p>
+
+<pre><code>Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback
+       Lun 0 Path=/dev/sdb1,Type=blockio
+</code></pre>
+
+<p>のようにiscsiで公開するパーティションを指定。</p>
+
+<p>/etc/default/iscsitargetを編集</p>
+
+<pre><code>ISCSITARGET_ENABLE=true
+</code></pre>
+
+<p>iscsitarget起動</p>
+
+<pre><code>$ sudo /etc/init.d/iscsitarget start
+</code></pre>
+
+<p>ここから、iscsi用のパーティションをocfs2でフォーマットする作業。</p>
+
+<p>iscsiイニシエータをインストール</p>
+
+<pre><code>$ sudo apt-get install open-iscsi 
+</code></pre>
+
+<p>ocfs2をインストール</p>
+
+<pre><code>$ sudo apt-get install ocfs2-tools 
+</code></pre>
+
+<pre><code>$ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM
+10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback
+$ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login
+$ sudo iscsiadm -m session
+</code></pre>
+
+<p>このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。</p>
+
+<pre><code>$ sudo fdisk /dev/sdc
+</code></pre>
+
+<p>でパーティションを定義して、フォーマット。</p>
+
+<pre><code>$ sudo mkfs.ocfs2 /dev/sdc1
+</code></pre>
+
+<p>これでマウントしようとするとエラー。まだできない。</p>
+
+<pre><code>$ sudo mount /dev/sdc1 /iscsi
+mount.ocfs2: Unable to access cluster service while trying initialize cluster
+$
+</code></pre>
+
+<p>以下は、iscsiイニシエータとするマシンでも同様に行う。設定ファイルは全マシンで同じ内容。</p>
+
+<p>（イニシエータにはopen-iscsi, ocfs2-toolsをインストール）</p>
+
+<p>/etc/default/o2cbの編集</p>
+
+<pre><code>O2CB_ENABLED=true
+</code></pre>
+
+<p>O2CB_BOOTCLUSTER=ocfs2となっているので、固有の名称をつけたい場合は変更する。</p>
+
+<p>/etc/ocfs2/cluster.confの編集</p>
+
+<pre><code>node:
+	ip_port = 7777
+	ip_address = 10.5.34.100
+	number = 1
+	name = demeter
+	cluster =ocfs2
+
+node:
+	ip_port = 7777
+	ip_address = 10.5.34.112
+	number = 2
+	name = ikaros
+	cluster =ocfs2
+
+cluster:
+	node_count = 2
+	name =ocfs2
+</code></pre>
+
+<p>o2cbを起動</p>
+
+<pre><code>$ sudo /etc/init.d/o2cb start
+</code></pre>
+
+<p>マウントできるようになったはず</p>
+
+<pre><code>$ sudo mount /dev/sdc1 /iscsi
+</code></pre>
+
+  </section>
+  <footer>
+    
+    
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2013/20130812/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130313-2/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
