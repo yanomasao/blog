@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/20150122/">KarabinerでEclipseのキーバインドを変更</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-01-22T09:00:00&#43;09:00">
+          Jan 22, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は
+ &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt;  を定義して、
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  を
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  とするとキーバインドを変更できる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/20150122-2/">Yosemite</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -285,28 +310,6 @@ $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compa
       <li class="next"><a href="https://ymraintree.github.io/blog/post/20140805/">Read more <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/20140804/">vmdkのクローン</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-08-04T09:00:00&#43;09:00">
-          Aug 4, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    # date; vmkfstools -i foo/barVM.vmdk zoo.vmdk -d thin; date  
-  </div>
   
 </article>
 

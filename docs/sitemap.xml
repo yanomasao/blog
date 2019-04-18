@@ -3,6 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ymraintree.github.io/blog/post/</loc>
+    <lastmod>2019-04-18T14:53:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/</loc>
+    <lastmod>2019-04-18T14:53:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/post/20190418/</loc>
+    <lastmod>2019-04-18T14:53:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ymraintree.github.io/blog/post/20190404/</loc>
     <lastmod>2019-04-04T09:00:00+09:00</lastmod>
   </url>
@@ -303,19 +320,7 @@
   </url>
   
   <url>
-    <loc>https://ymraintree.github.io/blog/post/</loc>
-    <lastmod>2019-04-04T09:00:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://ymraintree.github.io/blog/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/</loc>
-    <lastmod>2019-04-04T09:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
