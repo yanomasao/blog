@@ -703,5 +703,62 @@ $ sudo brctl show $ sudo virsh net-autostart default --disable $ sudo virsh net-
 auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface br0 inet static address 10.5.34.145 network 10.5.0.0 netmask 255.255.0.0 broadcast 10.5.255.255 gateway 10.5.34.254 dns-nameservers 10.4.34.1 dns-search foo.bar.co.jp bridge_ports eth0 bridge_fd 9 bridge_hello 2 bridge_maxage 12 bridge_stp off  10.</description>
     </item>
     
+    <item>
+      <title>heartbeat管理下のIPアドレスが消えるトラブル</title>
+      <link>https://ymraintree.github.io/blog/post/2013/20130226/</link>
+      <pubDate>Tue, 26 Feb 2013 15:59:40 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2013/20130226/</guid>
+      <description>drbd+heartbeatを使用して運用しているサーバで、障害が発生。今までもheartbeatが障害を検知してセカンダリにtakeoverしようとして途中でエラーが発生しtakeoverをあきらめてしまうという現象はあったが、今回はちょっと違った。
+以前と同じ現象ならばdrbd配下のパーティションがプライマリにもセカンダリにもマウントされていないような状態になるが、今回はdrbdのパーティションがプライマリに正常にマウントされている。
+結局異常があったのはサービスIPアドレスのみ。普段は以下のように実アドレスとは別に付与され、サーバのアドレスとして使用しているが、これだけがなくなっていた。
+eth1:1 Link encap:Ethernet HWaddr 8c:89:a5:c3:d8:fb inet addr:10.5.34.125 Bcast:10.5.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:20 Memory:f4400000-f4420000  syslogを見てもheartbeat関連のログは残っていなかったが、かわりに
+Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down  が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。
+とりあえず、消えてしまったサービスIPアドレスを改めて付与するため、以下のheartbeatのコマンドを使用。
+$ sudo ./IPaddr 10.5.34.125/16/eth1 start  ちなみに
+$ sudo ./IPaddr 10.5.34.125/16/eth1 stop  とすればIPアドレスを削除することができる。</description>
+    </item>
+    
+    <item>
+      <title>linuxでsambaのディスクをマウントする</title>
+      <link>https://ymraintree.github.io/blog/post/2013/20130215/</link>
+      <pubDate>Fri, 15 Feb 2013 16:02:43 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2013/20130215/</guid>
+      <description>ubuntuでNASのディスクをマウントする。
+$ sudo apt-get install smbfs  でパッケージをインストール。
+$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx  アンマウントはumountコマンドでよい。
+$ sudo umount /zoo  </description>
+    </item>
+    
+    <item>
+      <title>Javaとの混在環境でのScala</title>
+      <link>https://ymraintree.github.io/blog/post/2013/20130214/</link>
+      <pubDate>Thu, 14 Feb 2013 16:05:09 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2013/20130214/</guid>
+      <description>もともとJavaで書いているプロジェクトにScalaのコードを混ぜていくと、Eclipseの挙動がおかしくなるときがあって、そういうときはJavaの側からScalaでできているオブジェクトやクラスが軒並み見えなくなる。ビルドしなおしても状況は変わらず。いろいろ試した結果、scalaのobjectを作ったときは同名のクラスも用意しないとJavaがそれらを参照するときにおかしな挙動になるようだ。
+ class Foo object Foo { def xxx:String = .... ... }  </description>
+    </item>
+    
+    <item>
+      <title>VirtualBoxでSkyDrive</title>
+      <link>https://ymraintree.github.io/blog/post/2013/20130208/</link>
+      <pubDate>Fri, 08 Feb 2013 16:07:21 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2013/20130208/</guid>
+      <description>VirtualBox上にインストールしたWindows7でSkyDriveを使おうとしても、クラウドにあるファイルのダウンロードがまったく進まない。ちょっと調べて、VirtualBoxのWindows7のネットワーク設定をデフォルトのNATからブリッジアダプターに変更してIPアドレスを別に振るとうまくいくようになった。
+参考URL: http://nosuchblogger.com/post/243/virtualbox-and-skydrive</description>
+    </item>
+    
+    <item>
+      <title>MacOS10.6.8アップデートでjavawsが動かなくなった</title>
+      <link>https://ymraintree.github.io/blog/post/2013/20130201/</link>
+      <pubDate>Fri, 01 Feb 2013 16:08:43 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2013/20130201/</guid>
+      <description>表記のとおりの現象が起き、javawsを利用した業務システムが動かなくなるという怖い現象が起きた。いろいろ調べた結果、Java for OS X Developer Preview 11M4001+10M4001というものがあるというので、apple developers centerからjavadeveloper_for_mac_os_x_10.6_update_12__10m4001.dmgをダウンロードしてインストールすると解決する。これにより、javaのバージョンは1.6.0_37から1.6.0_38に上がった。</description>
+    </item>
+    
   </channel>
 </rss>

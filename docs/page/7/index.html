@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+
+  <title>
+     コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+  <link href="https://ymraintree.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="コードの波にゆ～らゆら" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      
+      <a href="https://ymraintree.github.io/blog/index.xml" class="btn-header btn-subscribe hidden-xs">
+        <i class="fa fa-rss" aria-hidden="true"></i>
+        &nbsp;Subscribe
+      </a>
+      
+    </section>
+  </header>
+  <main class="container">
+
+<div class="article-list">
+  
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130226/">heartbeat管理下のIPアドレスが消えるトラブル</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-02-26T15:59:40&#43;09:00">
+          Feb 26, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    drbd+heartbeatを使用して運用しているサーバで、障害が発生。今までもheartbeatが障害を検知してセカンダリにtakeoverしようとして途中でエラーが発生しtakeoverをあきらめてしまうという現象はあったが、今回はちょっと違った。
+以前と同じ現象ならばdrbd配下のパーティションがプライマリにもセカンダリにもマウントされていないような状態になるが、今回はdrbdのパーティションがプライマリに正常にマウントされている。
+結局異常があったのはサービスIPアドレスのみ。普段は以下のように実アドレスとは別に付与され、サーバのアドレスとして使用しているが、これだけがなくなっていた。
+eth1:1 Link encap:Ethernet HWaddr 8c:89:a5:c3:d8:fb inet addr:10.5.34.125 Bcast:10.5.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:20 Memory:f4400000-f4420000  syslogを見てもheartbeat関連のログは残っていなかったが、かわりに
+Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down  が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。
+とりあえず、消えてしまったサービスIPアドレスを改めて付与するため、以下のheartbeatのコマンドを使用。
+$ sudo ./IPaddr 10.5.34.125/16/eth1 start  ちなみに
+$ sudo ./IPaddr 10.5.34.125/16/eth1 stop  とすればIPアドレスを削除することができる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130215/">linuxでsambaのディスクをマウントする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-02-15T16:02:43&#43;09:00">
+          Feb 15, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ubuntuでNASのディスクをマウントする。
+$ sudo apt-get install smbfs  でパッケージをインストール。
+$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx  アンマウントはumountコマンドでよい。
+$ sudo umount /zoo  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130214/">Javaとの混在環境でのScala</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-02-14T16:05:09&#43;09:00">
+          Feb 14, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    もともとJavaで書いているプロジェクトにScalaのコードを混ぜていくと、Eclipseの挙動がおかしくなるときがあって、そういうときはJavaの側からScalaでできているオブジェクトやクラスが軒並み見えなくなる。ビルドしなおしても状況は変わらず。いろいろ試した結果、scalaのobjectを作ったときは同名のクラスも用意しないとJavaがそれらを参照するときにおかしな挙動になるようだ。
+ class Foo object Foo { def xxx:String = .... ... }  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130208/">VirtualBoxでSkyDrive</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-02-08T16:07:21&#43;09:00">
+          Feb 8, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    VirtualBox上にインストールしたWindows7でSkyDriveを使おうとしても、クラウドにあるファイルのダウンロードがまったく進まない。ちょっと調べて、VirtualBoxのWindows7のネットワーク設定をデフォルトのNATからブリッジアダプターに変更してIPアドレスを別に振るとうまくいくようになった。
+参考URL: http://nosuchblogger.com/post/243/virtualbox-and-skydrive
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130201/">MacOS10.6.8アップデートでjavawsが動かなくなった</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-02-01T16:08:43&#43;09:00">
+          Feb 1, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    表記のとおりの現象が起き、javawsを利用した業務システムが動かなくなるという怖い現象が起きた。いろいろ調べた結果、Java for OS X Developer Preview 11M4001+10M4001というものがあるというので、apple developers centerからjavadeveloper_for_mac_os_x_10.6_update_12__10m4001.dmgをダウンロードしてインストールすると解決する。これにより、javaのバージョンは1.6.0_37から1.6.0_38に上がった。
+  </div>
+  
+</article>
+
+  
+</div>
+<nav class="pagination" role="navigation">
+
+  <hr />
+
+
+<a class="newer-posts" href="https://ymraintree.github.io/blog/page/6/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
+
+  <span class="page-number">Page 7 of 7</span>
+
+</nav>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
+
