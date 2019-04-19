@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" kvm イメージファイルの操作 &middot;  コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2013/20130919/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2013-09-19T09:00:00&#43;09:00" />
+  
+  
+
+  <title>
+     kvm イメージファイルの操作 &middot;  コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="https://ymraintree.github.io/blog/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">kvm イメージファイルの操作</h1>
+    <div class="post-meta clearfix">
+    
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-09-19T09:00:00&#43;09:00">
+          Sep 19, 2013
+        </time>
+      </div>
+    
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>以下のコマンドで差分ファイルを作ることができる。</p>
+
+<pre><code>$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img
+</code></pre>
+
+<p>以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。</p>
+
+<pre><code>$ ls -l vm.test.*
+ -rw-r--r-- 1 root root      198656  9月 19 11:46 vm.test.diff.img
+ -rw------- 1 root root 58913259520  9月 19 11:44 vm.test.img
+$
+
+
+$ ls -l vm.test.*
+ -rw-r--r-- 1 root         root    24838144  9月 19 11:59 vm.test.diff.img
+ -rw------- 1 libvirt-qemu kvm  58913259520  9月 19 11:44 vm.test.img
+$
+</code></pre>
+
+<p>差分をベースにコミットするには以下のコマンド。</p>
+
+<pre><code>$ sudo qemu-img commit -f qcow2 vm.test.diff.img
+</code></pre>
+
+<p>これで差分はいらなくなる。</p>
+
+<p>この方式だと、ベースのイメージが差分バックアップの対象とならないので、バックアップの効率はよくなる。</p>
+
+<p>イメージファイルの圧縮</p>
+
+<p>イメージファイルのサイズが大きくなってきたので圧縮してみる。</p>
+
+<pre><code>$ time sudo qemu-img convert -c -O qcow2 testLinVM.img testLinVM.img.new
+real	109m7.969s
+user	97m1.204s
+sys	5m20.240s
+$ ls -lh
+ -rw------- 1  root root 86G  2月 14 14:33 testLinVM.img
+ -rw-r--r-- 1 root root     19G  2月 14 17:24 testLinVM.img.new
+</code></pre>
+
+<p>86Gあったイメージファイルを109分かけて19Gに圧縮。</p>
+
+  </section>
+  <footer>
+    
+    
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2013/20130920/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130906/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+

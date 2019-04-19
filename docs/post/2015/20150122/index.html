@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" KarabinerでEclipseのキーバインドを変更 &middot;  コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2015/20150122/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2015-01-22T09:00:00&#43;09:00" />
+  
+  
+
+  <title>
+     KarabinerでEclipseのキーバインドを変更 &middot;  コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="https://ymraintree.github.io/blog/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">KarabinerでEclipseのキーバインドを変更</h1>
+    <div class="post-meta clearfix">
+    
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-01-22T09:00:00&#43;09:00">
+          Jan 22, 2015
+        </time>
+      </div>
+    
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は</p>
+
+<pre><code>  &lt;appdef&gt;
+    &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt;
+    &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt;
+  &lt;/appdef&gt;
+</code></pre>
+
+<p>を定義して、</p>
+
+<pre><code>    &lt;item&gt;
+      &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt;
+      &lt;only&gt;ECLIPSE&lt;/only&gt;
+      &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt;
+      &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt;
+      &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt;
+    &lt;/item&gt;   
+</code></pre>
+
+<p>を</p>
+
+<pre><code>    &lt;item&gt;
+      &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt;
+      &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt;
+      &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt;
+      &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt;
+      &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt;
+    &lt;/item&gt;   
+</code></pre>
+
+<p>とするとキーバインドを変更できる。</p>
+
+  </section>
+  <footer>
+    
+    
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2015/20150521/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2015/20150122-2/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+

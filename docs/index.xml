@@ -13,10 +13,10 @@
     
     <item>
       <title>ソフトウェアデザイン 2019年4月号</title>
-      <link>https://ymraintree.github.io/blog/post/20190418/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190418/</link>
       <pubDate>Thu, 18 Apr 2019 14:53:32 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190418/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190418/</guid>
       <description>もう5月号が出ているけれど、ようやく目を通した。
 Git操作、Python環境、コンテナでの開発など実用的な情報が満載。個人的にはあまりきちんとやっていないPythonの仮想環境などは、この情報をもとに整備していきたい。
 また、定例でもGoやdocker-compose、Flutterなどおもしろい記事が多かった。
@@ -26,65 +26,65 @@ Git操作、Python環境、コンテナでの開発など実用的な情報が�
     
     <item>
       <title>スマホでブログを書いてみる</title>
-      <link>https://ymraintree.github.io/blog/post/20190404/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190404/</link>
       <pubDate>Thu, 04 Apr 2019 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190404/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190404/</guid>
       <description>スマホでブログを書いてみる。hugo newせずにgithubでcreate new file するので、タイトル部分の
 --- title: &amp;quot;iPad&amp;quot; date: 2019-04-04T09:00:00+09:00 draft: true ---  を別ファイルからコピーしてこないといけないのがめんどう。それでもまあ、書けないことはないということがわかった。</description>
     </item>
     
     <item>
       <title>『月の満ち欠け』佐藤正午</title>
-      <link>https://ymraintree.github.io/blog/post/20190331-3/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190331-3/</link>
       <pubDate>Sun, 31 Mar 2019 12:30:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190331-3/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190331-3/</guid>
       <description>&lt;p&gt;突然ですが、ここで書籍のおはなし。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>次はカテゴリとかタグかな</title>
-      <link>https://ymraintree.github.io/blog/post/20190331-2/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190331-2/</link>
       <pubDate>Sun, 31 Mar 2019 01:40:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190331-2/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190331-2/</guid>
       <description>TODO: やっぱりカテゴリとかタグとか必要ですよね。</description>
     </item>
     
     <item>
       <title>CircleCI --&gt; Slackへの通知</title>
-      <link>https://ymraintree.github.io/blog/post/20190330-3/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190330-3/</link>
       <pubDate>Sun, 31 Mar 2019 00:44:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190330-3/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190330-3/</guid>
       <description>こちらのページを参考に、サクッとSlack連携。ありがとうございました。</description>
     </item>
     
     <item>
       <title>テスト</title>
-      <link>https://ymraintree.github.io/blog/post/20190331/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190331/</link>
       <pubDate>Sun, 31 Mar 2019 00:14:13 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190331/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190331/</guid>
       <description>githubで直接書いてもいいのね。プレビューもできるし。</description>
     </item>
     
     <item>
       <title>BOSE SoundSport Free購入</title>
-      <link>https://ymraintree.github.io/blog/post/20190330-2/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190330-2/</link>
       <pubDate>Sat, 30 Mar 2019 17:09:13 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190330-2/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190330-2/</guid>
       <description>いつもBOSEのQuiet Comfort 35 IIを使っているが、Amazonで安かった＆LINE PAYで20％オフということで、SoundSport Freeも購入。自宅で使っている限り、とても快適。これでリモートの打ち合わせももっと楽になるかも。</description>
     </item>
     
     <item>
       <title>CircleCI</title>
-      <link>https://ymraintree.github.io/blog/post/20190330/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190330/</link>
       <pubDate>Sat, 30 Mar 2019 09:48:11 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190330/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190330/</guid>
       <description>このブログをCircleCIで自動化。しかし、config.ymlを変更したりしてもCircleCIが走ってしまうのはどうすればいいのか。commit -m &#39;[ci skip]&#39;しても走ってしまう。ちょっと気持ち悪い。
 そうか、CI/CDされたくなければgithub上で直接編集すればいいのか。ローカルでテストできるものでもないし。</description>
     </item>
@@ -100,28 +100,28 @@ Git操作、Python環境、コンテナでの開発など実用的な情報が�
     
     <item>
       <title>github pages&#43;hugoでblog その３ CircleCI</title>
-      <link>https://ymraintree.github.io/blog/post/20190329-3/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190329-3/</link>
       <pubDate>Fri, 29 Mar 2019 23:57:35 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190329-3/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190329-3/</guid>
       <description>&lt;p&gt;ついでなので、CircleCIでビルド＆公開の設定。どうやら、.circleci/config.ymlにgithubに変化があったときに何をするかを定義していくらしい。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>github pages&#43;hugoでblog その２</title>
-      <link>https://ymraintree.github.io/blog/post/20190329-2/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190329-2/</link>
       <pubDate>Fri, 29 Mar 2019 10:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190329-2/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190329-2/</guid>
       <description>&lt;p&gt;前回は公開用とコンテンツ作成用でリポジトリをふたつに分けたが、やっぱりリポジトリはひとつのほうがシンプルでいいので、その方式で再作成。githubのリポジトリはblogとする。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>github pages&#43;hugoでblog</title>
-      <link>https://ymraintree.github.io/blog/post/20190329/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190329/</link>
       <pubDate>Fri, 29 Mar 2019 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190329/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190329/</guid>
       <description>&lt;p&gt;github.comにリポジトリを作成しておく。&lt;/p&gt;
 
 &lt;table&gt;
@@ -150,19 +150,19 @@ Git操作、Python環境、コンテナでの開発など実用的な情報が�
     
     <item>
       <title>ブログ開始</title>
-      <link>https://ymraintree.github.io/blog/post/20190328/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190328/</link>
       <pubDate>Thu, 28 Mar 2019 13:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190328/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190328/</guid>
       <description>古いブログ(http://d.hatena.ne.jp/ymraintree/)から引っ越しました。</description>
     </item>
     
     <item>
       <title>Mac keyhacでキーバインドの変更</title>
-      <link>https://ymraintree.github.io/blog/post/20190111/</link>
+      <link>https://ymraintree.github.io/blog/post/2019/20190111/</link>
       <pubDate>Fri, 11 Jan 2019 17:09:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20190111/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2019/20190111/</guid>
       <description>MacBookProを使っているが、つくづく、コントロールキーとコマンドキーが統合されていればいいのにと思う。Ctrl-aとCmd-aを使い分けるシーンなんてないし。
 しばらく前からKeyHacを使って、アプリケーションごとにコントロールキーとコマンドキーの入れ替えをしているが、ちょっとスマートに書けるようになった。
 changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.google.Chrome&amp;quot;)) changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.apple.Preview&amp;quot;)) def changeKey(keymap): keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;quot; keymap[&amp;quot;Ctrl-c&amp;quot;] = &amp;quot;Cmd-c&amp;quot; keymap[&amp;quot;Ctrl-d&amp;quot;] = &amp;quot;Cmd-d&amp;quot;  </description>
@@ -170,28 +170,28 @@ changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.google.Chrome&amp;quo
     
     <item>
       <title>Emacsのansi-term</title>
-      <link>https://ymraintree.github.io/blog/post/20180917/</link>
+      <link>https://ymraintree.github.io/blog/post/2018/20180917/</link>
       <pubDate>Mon, 17 Sep 2018 17:09:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20180917/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2018/20180917/</guid>
       <description>いままで、/etc/passwdなどを編集するときはmacのターミナルを起動してそこでviしていたが、普段使っているemacsでM-x ansi-termすると、この中でviを使うことができる。これでターミナル不要になった。ありがたい。</description>
     </item>
     
     <item>
       <title>起業</title>
-      <link>https://ymraintree.github.io/blog/post/20180816/</link>
+      <link>https://ymraintree.github.io/blog/post/2018/20180816/</link>
       <pubDate>Thu, 16 Aug 2018 17:09:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20180816/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2018/20180816/</guid>
       <description>7月末に無事、起業。時間はあったのに、あまり準備をせず、そろそろしなきゃとなったら結果、開業freeeのいうがまま。それでもさっくり起業できた。これから銀行の法人口座を作る。楽天銀行かジャパンネットバンクかという感じだけど、楽天のほうが必要書類が少なくてよさそう。</description>
     </item>
     
     <item>
       <title>Datastoreをcsvでエクスポート</title>
-      <link>https://ymraintree.github.io/blog/post/20180512/</link>
+      <link>https://ymraintree.github.io/blog/post/2018/20180512/</link>
       <pubDate>Sat, 12 May 2018 17:09:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20180512/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2018/20180512/</guid>
       <description>Google App Engineでよく使うDatastoreのデータをディープラーニングで使うためにcsvにしようとした。簡単なことと思ったら以外になかなかできず、結局以下の方法で実現できた。
 Datastoreのバックアップ BigQueryにインポート 必要なカラムをselectして、Download as csvをクリック
 RDBならcopyコマンドとかで一発なんだけど。簡単なことなんだけど。</description>
@@ -199,20 +199,20 @@ RDBならcopyコマンドとかで一発なんだけど。簡単なことなん�
     
     <item>
       <title>Pythonの日時表示</title>
-      <link>https://ymraintree.github.io/blog/post/20180305/</link>
+      <link>https://ymraintree.github.io/blog/post/2018/20180305/</link>
       <pubDate>Mon, 05 Mar 2018 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20180305/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2018/20180305/</guid>
       <description>日本の日時を表示するには、
 import time import os os.environ[&#39;TZ&#39;] = &#39;Japan&#39; time.tzset() time.strftime(&#39;%Y/%m/%d %H:%M:%S %Z&#39;)  とすると 2018/03/05 17:24:54 JST となる。もうちょっといい方法はないかな。</description>
     </item>
     
     <item>
       <title>AWS linuxのディスクを拡張する</title>
-      <link>https://ymraintree.github.io/blog/post/20180118/</link>
+      <link>https://ymraintree.github.io/blog/post/2018/20180118/</link>
       <pubDate>Thu, 18 Jan 2018 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20180118/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2018/20180118/</guid>
       <description>AWSコンソールで当該EBSのサイズを拡張する。 ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。
 $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 8G 0 part / $ df -h /dev/xvda1 7.8G 7.6G 0 100% /  変わっていない。
 $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487 $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 10G 0 part / $ sudo resize2fs /dev/xvda1 resize2fs 1.</description>
@@ -220,10 +220,10 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
     
     <item>
       <title>国民年金・失業保険</title>
-      <link>https://ymraintree.github.io/blog/post/20180115/</link>
+      <link>https://ymraintree.github.io/blog/post/2018/20180115/</link>
       <pubDate>Mon, 15 Jan 2018 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20180115/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2018/20180115/</guid>
       <description>思うところあって、2017年末に25年以上勤めた会社を早期退職した。これからどうするかなど、たいしたプランもないなかで、とりあえず必要なことをしていく。
 まずは、厚生年金を国民年金にスイッチ。このまま受給日まで国民年金で行った場合、厚生年金と合わせた受給額はいくらになるのかなどは、年金事務所に問い合わせろとのこと。市役所は手続きのみらしい。
 つづいてハローワークで失業保険受給の手続き。職業安定所といったら、昔は仕事にあぶれたおじさんたちが肩寄せあってタバコを吸いながらしみったれた話しをしているところ、というイメージだったけど、今はすっかりクリーンになっていて、通っても気持ちが暗くなるということもなさそうで安心した。今の労働市場はどうなっているのか、考えてもいなかったような仕事や環境に出会えるのではないかと、期待も芽生えてきた。
@@ -232,38 +232,38 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
     
     <item>
       <title>My First Lambda</title>
-      <link>https://ymraintree.github.io/blog/post/20171008/</link>
+      <link>https://ymraintree.github.io/blog/post/2017/20171008/</link>
       <pubDate>Sun, 08 Oct 2017 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20171008/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2017/20171008/</guid>
       <description>def checkio(data): return filter(lambda x: 1 &amp;lt; data.count(x), data) if __name__ == &amp;quot;__main__&amp;quot;: #These &amp;quot;asserts&amp;quot; using only for self-checking and not necessary for auto-testing assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], &amp;quot;1st example&amp;quot; assert list(checkio([1, 2, 3, 4, 5])) == [], &amp;quot;2nd example&amp;quot; assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], &amp;quot;3rd example&amp;quot; assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], &amp;quot;4th example&amp;quot;  </description>
     </item>
     
     <item>
       <title>psqlのデリミタを変更する</title>
-      <link>https://ymraintree.github.io/blog/post/20170424/</link>
+      <link>https://ymraintree.github.io/blog/post/2017/20170424/</link>
       <pubDate>Mon, 24 Apr 2017 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20170424/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2017/20170424/</guid>
       <description>$ psql -A -F $&#39;\t&#39; xxxxxx  で出力のデリミタをタブに変更できる。</description>
     </item>
     
     <item>
       <title>EC2 インスタンスのタイムゾーンを変更する</title>
-      <link>https://ymraintree.github.io/blog/post/20170214/</link>
+      <link>https://ymraintree.github.io/blog/post/2017/20170214/</link>
       <pubDate>Tue, 14 Feb 2017 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20170214/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2017/20170214/</guid>
       <description>EC2のLinuxインスタンスは作りたてだとタイムゾーンがJSTではないので、これを変更
 $ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo localtime $ date Sat Feb 4 14:48:14 JST 2017 $  </description>
     </item>
     
     <item>
       <title>クローンしたVMのファイル名を変更する</title>
-      <link>https://ymraintree.github.io/blog/post/20170116/</link>
+      <link>https://ymraintree.github.io/blog/post/2017/20170116/</link>
       <pubDate>Mon, 16 Jan 2017 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20170116/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2017/20170116/</guid>
       <description>vmwareのVMをクローンすると、.vmdkファイルの名称が変更されてしまう。たとえば、backupVMというVMをクローンすると、
 # ls backupVM_2-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM_2-flat.vmdk backupVM_2.vmdk backupVM.vmx vmware.log #  となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、
 # vmkfstools -E backupVM_2.vmdk backupVM.vmdk  とすると、すべての_2が取れる。
@@ -272,10 +272,10 @@ $ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tok
     
     <item>
       <title>keyhac</title>
-      <link>https://ymraintree.github.io/blog/post/20161222/</link>
+      <link>https://ymraintree.github.io/blog/post/2016/20161222/</link>
       <pubDate>Thu, 22 Dec 2016 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20161222/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2016/20161222/</guid>
       <description>Macをsierraにアップグレードしたらkarabinerが使えなくなったので、かわりにkeyhacを試してみる。
 keyhacはkarabinerとちがって、コントロールキーとコマンドキーを交換という定義ができず、常に
 keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;quot;  というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
@@ -285,10 +285,10 @@ def changeKey(keymap): keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;
     
     <item>
       <title>sshセッションのタイムアウトを防止する</title>
-      <link>https://ymraintree.github.io/blog/post/20161216/</link>
+      <link>https://ymraintree.github.io/blog/post/2016/20161216/</link>
       <pubDate>Fri, 16 Dec 2016 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20161216/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2016/20161216/</guid>
       <description>最近AWSを使うことが多くなって、EC2のインスタンスにsshで接続して作業するが、なにかというとタイムアウトするので不便。ちょっと調べたら
 サーバの/etc/ssh/sshd_configに
 ClientAliveInterval 60  を設定する
@@ -299,20 +299,20 @@ ServerAliveInterval 60  を設定する
     
     <item>
       <title>EntityManager#createNativeQueryで一部のデータを取り出すとき</title>
-      <link>https://ymraintree.github.io/blog/post/20160204/</link>
+      <link>https://ymraintree.github.io/blog/post/2016/20160204/</link>
       <pubDate>Thu, 04 Feb 2016 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20160204/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2016/20160204/</guid>
       <description>EJBのEntityManagerでテーブルをselectしてそのテーブルのエンティティを返すのは普通にやることだが、group byしてキーだけ取り出したい、などのときは以下のようにObjectの配列のリストとして扱う。
  val keys = em.createNativeQuery(&amp;quot;select t1.key1, t1.key2, t1.key3 &amp;quot; + &amp;quot;from T1 t1 &amp;quot; + &amp;quot;group by t1.key1, t1.key2, t1.key3 &amp;quot; + .getResultList().asInstanceOf[java.util.List[Array[Object] var result = List[fooPK]() keys.foreach(k =&amp;gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt))  </description>
     </item>
     
     <item>
       <title>pythonで正規表現を使った結果の判定</title>
-      <link>https://ymraintree.github.io/blog/post/20151019/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20151019/</link>
       <pubDate>Mon, 19 Oct 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20151019/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20151019/</guid>
       <description>pythonで文字列に数字が含まれているかどうかを判定したいとき、
 import re def hantei(v): return re.search(\d, v)  とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
  return re.search(\d, v) is not None  とするとすっきり。</description>
@@ -320,10 +320,10 @@ import re def hantei(v): return re.search(\d, v)  とすると、re.search()がB
     
     <item>
       <title>オブジェクトの値をコピーする</title>
-      <link>https://ymraintree.github.io/blog/post/20150709/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20150709/</link>
       <pubDate>Thu, 09 Jul 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20150709/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20150709/</guid>
       <description>case class Foo(key:Int, key2:String, key3:Int)  のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
 val foo = Foo(100, &amp;quot;test&amp;quot;, 200) val zoo = foo.copy(key = 300)  とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
 case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2はコピーされない。
@@ -332,10 +332,10 @@ case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2は�
     
     <item>
       <title>scalaでxmlのCDATAを扱う</title>
-      <link>https://ymraintree.github.io/blog/post/20150521/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20150521/</link>
       <pubDate>Thu, 21 May 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20150521/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20150521/</guid>
       <description>普通に
 val naiyo = あいうえお x &amp;lt; y var nodes = Queue.empty[Node] nodes :+= &amp;lt;foo&amp;gt;{naiyo}&amp;lt;/foo&amp;gt;  みたいなことを書くと、
 x &amp;lt; y  に変換されてしまう。これをしないように、CDATAを使うには
@@ -344,10 +344,10 @@ x &amp;lt; y  に変換されてしまう。これをしないように、CDATA�
     
     <item>
       <title>KarabinerでEclipseのキーバインドを変更</title>
-      <link>https://ymraintree.github.io/blog/post/20150122/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20150122/</link>
       <pubDate>Thu, 22 Jan 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20150122/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20150122/</guid>
       <description>eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は
  &amp;lt;appdef&amp;gt; &amp;lt;appname&amp;gt;ECLIPSE_LUNA&amp;lt;/appname&amp;gt; &amp;lt;equal&amp;gt;org.eclipse.platform.ide&amp;lt;/equal&amp;gt; &amp;lt;/appdef&amp;gt;  を定義して、
  &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Swap Control-Space and Command-Space&amp;lt;/name&amp;gt; &amp;lt;only&amp;gt;ECLIPSE&amp;lt;/only&amp;gt; &amp;lt;identifier&amp;gt;private.chrome.swap_controlSpace_and_commandSpace&amp;lt;/identifier&amp;gt; &amp;lt;autogen&amp;gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&amp;lt;/autogen&amp;gt; &amp;lt;autogen&amp;gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&amp;lt;/autogen&amp;gt; &amp;lt;/item&amp;gt;  を
@@ -356,19 +356,19 @@ x &amp;lt; y  に変換されてしまう。これをしないように、CDATA�
     
     <item>
       <title>Yosemite</title>
-      <link>https://ymraintree.github.io/blog/post/20150122-2/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20150122-2/</link>
       <pubDate>Thu, 22 Jan 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20150122-2/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20150122-2/</guid>
       <description>OSを10.10.1Yosemiteにアップグレードしたところ、eclipse-4.2-junoが起動しなくなった。古いjavaが削除されたらしい。JavaForOSX2014-001.dmgをダウンロードしてインストールしたら起動。しかし、ビルドパスに問題があって、QTJava.zipがないとのこと。こちらはとりあえず、TimeMachineから取り出してクリア。</description>
     </item>
     
     <item>
       <title>scala-2.9のscala.reflect.BeanPropertyが2.11ではscala.beans.BeanPropertyに変更されていた</title>
-      <link>https://ymraintree.github.io/blog/post/20150122-3/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20150122-3/</link>
       <pubDate>Thu, 22 Jan 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20150122-3/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20150122-3/</guid>
       <description>表記の件で、システムのscala-libraryを2.11にあげようとすると、importを変更しなければならない。そこで、
 package foo.bar class BeanPropery extends scala.reflect.BeanProperty  というクラスを作って、徐々にこれに切り替えておき、2.11に移行するときに上記クラスを
 package foo.bar class BeanPropery extends scala.beans.BeanProperty  に変更すれば一発で移行できるので便利。ところが、実際に試してみると、2.11ではうまくいくが、2.9ではgetterは生成されるがsetterが生成されないようで、エラーになってしまう。惜しい。</description>
@@ -376,10 +376,10 @@ package foo.bar class BeanPropery extends scala.beans.BeanProperty  に変更す
     
     <item>
       <title>play frameworkのアプリケーションを本番で運用するときに注意すること</title>
-      <link>https://ymraintree.github.io/blog/post/20150120/</link>
+      <link>https://ymraintree.github.io/blog/post/2015/20150120/</link>
       <pubDate>Tue, 20 Jan 2015 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20150120/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2015/20150120/</guid>
       <description>開発中は
 http://localhost:9000/foo  などのURLで動作確認するが、開発が終わって本番で稼働するとき、
 http://liveserver.boo.com/foo  などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。
@@ -390,20 +390,20 @@ GET /foo/assets/*file controllers.Assets.at(path=&amp;quot;/public&amp;quot;, fi
     
     <item>
       <title>イメージファイルの圧縮</title>
-      <link>https://ymraintree.github.io/blog/post/20141120/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20141120/</link>
       <pubDate>Thu, 20 Nov 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20141120/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20141120/</guid>
       <description>kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。
  ゲストOSの停止 スナップショット作成 スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  </description>
     </item>
     
     <item>
       <title>セッションの使用</title>
-      <link>https://ymraintree.github.io/blog/post/20141107/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20141107/</link>
       <pubDate>Fri, 07 Nov 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20141107/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20141107/</guid>
       <description>play-2.2.3を使用。セッションを使ってコントローラからビューへ値を渡す。sessionの受け渡しを追加し、その内容を.withSessionに入れる。
 コントローラ側
  Ok(views.html.index(&amp;quot;&amp;quot;)(session)).withSession(&amp;quot;foo&amp;quot;-&amp;gt;&amp;quot;FOOO&amp;quot;, &amp;quot;bar&amp;quot;-&amp;gt;&amp;quot;BAR&amp;quot;)  ビュー側
@@ -412,10 +412,10 @@ GET /foo/assets/*file controllers.Assets.at(path=&amp;quot;/public&amp;quot;, fi
     
     <item>
       <title>ファイルのアップロード</title>
-      <link>https://ymraintree.github.io/blog/post/20141106/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20141106/</link>
       <pubDate>Thu, 06 Nov 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20141106/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20141106/</guid>
       <description>画像ファイルをアップロードするページで、画像を保存するフォルダはplayの外にあり、public/imagesにシンボリックリンクしている場合、アップロードされた画像がページ上に反映されない。
 これは、実際の画像ファイルを
 ./target/scala-2.10/classes/public/images/myimg/xxxxxx.jpg
@@ -424,10 +424,10 @@ GET /foo/assets/*file controllers.Assets.at(path=&amp;quot;/public&amp;quot;, fi
     
     <item>
       <title>スナップショット作成でエラーになったとき</title>
-      <link>https://ymraintree.github.io/blog/post/20140818/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140818/</link>
       <pubDate>Mon, 18 Aug 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140818/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140818/</guid>
       <description>kvmのqcow2からvmwareのvmdkへコンバートした仮想マシンをvmwareで起動して、とりあえずスナップショットを取ろう、と実行すると、「&amp;hellip;..vmsn」を保存中にエラーが発生しました。」というエラーでパワーオフまでいってしまう。ディレクトリをみると、xxxVM-00001-s999.vmdkのようなファイルが多数あっておかしな状態に。パワーオンしても、「xxxVM-000001.vmdk」、またはディスク「xxxVM-000001.vmdk」が依存しているスナップショット ディスクの 1 つを開くことができません。 」というエラーで起動できない。
 どうもスナップショットを作り損なったのに設定的にはスナップショットができているという状態のようなので、xxxVM.vmxをみると、
 ide1:1.fileName = &amp;quot;xxxVM-000001.vmdk&amp;quot;  という行があるので、これを
@@ -436,10 +436,10 @@ ide1:1.fileName = &amp;quot;xxxVM.vmdk&amp;quot;  に変更しパワーオンし
     
     <item>
       <title>vmdkの圧縮</title>
-      <link>https://ymraintree.github.io/blog/post/20140813/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140813/</link>
       <pubDate>Wed, 13 Aug 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140813/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140813/</guid>
       <description># du -h liveVM20140813/ 269.6G liveVM20140813/ #  このシステムを圧縮。実際には50Gくらい。
 # date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ #  全然減らない。
 そこで、未使用領域をゼロ埋めしてみる。ゼロファイルを作ったらすぐ削除。
@@ -448,38 +448,38 @@ $ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.</description
     
     <item>
       <title>qcow2からvmdkへ変換するとき</title>
-      <link>https://ymraintree.github.io/blog/post/20140805/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140805/</link>
       <pubDate>Tue, 05 Aug 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140805/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140805/</guid>
       <description>-rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img  のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
 $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img real	19m57.342s user	18m2.423s sys	0m24.398s $ ls -lh -rw-r--r-- 1 root root 7.4G 8月 5 18:22 zabbixVM.compact.img -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img $ time sudo qemu-img convert -p -f qcow2 -O vmdk zabbixVM.compact.img zabbixVM.vmdk real	78m36.654s user	5m4.354s sys	2m59.439s $ ls -lh -rw-r--r-- 1 root root 7.</description>
     </item>
     
     <item>
       <title>vmdkのクローン</title>
-      <link>https://ymraintree.github.io/blog/post/20140804/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140804/</link>
       <pubDate>Mon, 04 Aug 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140804/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140804/</guid>
       <description># date; vmkfstools -i foo/barVM.vmdk zoo.vmdk -d thin; date  </description>
     </item>
     
     <item>
       <title>Teamviewerが遅いとき</title>
-      <link>https://ymraintree.github.io/blog/post/20140708/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140708/</link>
       <pubDate>Tue, 08 Jul 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140708/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140708/</guid>
       <description>PCを新しくしたところ、teamviewerの画面描画が遅くて使いものにならなくなってしまった。オプション&amp;ndash;&amp;gt;詳細&amp;ndash;&amp;gt;UDPの使用（推奨）をオフにすると速度が出るようになる。理由はわからない。</description>
     </item>
     
     <item>
       <title>Playframework 2.2で非同期メール送信</title>
-      <link>https://ymraintree.github.io/blog/post/20140630/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140630/</link>
       <pubDate>Mon, 30 Jun 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140630/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140630/</guid>
       <description>Playで作っているアプリケーションでメール送信が必要になり、普通に書いてみたらメール送信が遅いので画面に制御が帰ってくるまで時間がかかってしまった。手っ取り早く非同期でメールを送信するように改良してみた。
 プロジェクト直下のbuild.sbt
 libraryDependenciesに
@@ -493,20 +493,20 @@ import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.I
     
     <item>
       <title>automountが刺さったら</title>
-      <link>https://ymraintree.github.io/blog/post/20140423/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140423/</link>
       <pubDate>Wed, 23 Apr 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140423/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140423/</guid>
       <description>ホームディレクトリをNASに置いて、linuxマシンからはautomountでアクセスするようにしているが、先日NASが異常終了して起動できなくなってしまった。緊急対応として、バックアップのNASサーバを本番のサーバとして使うようにDNSで切り替えた。こんなとき、マシンによってはautomountが以前のサーバにアクセスしようとしてlsコマンドやdfコマンドが刺さってしまう。当該マシンを再起動すればいいことだが、本番運用しているマシンなどは再起動できない。こういうときは
 # umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx  の順で実行する。-lだとたいていはumountできるもよう。</description>
     </item>
     
     <item>
       <title>ubuntu 起動が遅い場合</title>
-      <link>https://ymraintree.github.io/blog/post/20140122/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140122/</link>
       <pubDate>Wed, 22 Jan 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140122/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140122/</guid>
       <description>kvmのゲストOSにubuntu12.04を使っているが、ネットワークの設定を変更してひとつのNICに複数のIPアドレスを振るようにしたらOSの起動時に
 Waiting for network configuration...  や
 Waiting up to 60 more seconds for network configuration...  が出て遅くなってしまった。
@@ -517,10 +517,10 @@ $PLYMOUTH message --text=&amp;quot;Waiting for network configuration...&amp;quot
     
     <item>
       <title>play frameworkの自動起動設定</title>
-      <link>https://ymraintree.github.io/blog/post/20140120/</link>
+      <link>https://ymraintree.github.io/blog/post/2014/20140120/</link>
       <pubDate>Mon, 20 Jan 2014 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20140120/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2014/20140120/</guid>
       <description>簡単なplayのアプリケーションを作ってさくっとデプロイして本番運用していたが、本番機のロードアベレージが常に1を上回るようになってびっくり。調べると、playのプロセスがCPUを専有していた。単純にplay runで起動していたが、これを変更。
 プロジェクト内で
 $ play clean compile stage  を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、
@@ -532,20 +532,20 @@ target/universal/stage/bin/name_of_project  に変更になった。コマンド
     
     <item>
       <title>実行可能Jarファイルの設定</title>
-      <link>https://ymraintree.github.io/blog/post/20131111/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20131111/</link>
       <pubDate>Mon, 11 Nov 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20131111/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20131111/</guid>
       <description>Java7になってから、実行可能jarファイルでアプリケーションを起動すると、「JARファイルのマニフェストに権限属性が含まれていないため、このアプリケーションは、今後のJavaセキュリティ・アップデートでブロックされます。」というメッセージが表示されるようになった。これを解消するには、実行可能JarのMANIFEST.MFに
 Permissions: all-permissions Codebase: *.foo.bar.com  を追加する。</description>
     </item>
     
     <item>
       <title>Java Web Startの仕様変更</title>
-      <link>https://ymraintree.github.io/blog/post/20131025/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20131025/</link>
       <pubDate>Fri, 25 Oct 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20131025/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20131025/</guid>
       <description>Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で
 &amp;lt;property name=&amp;quot;arg1&amp;quot; value=&amp;quot;FOOBAR&amp;quot;/&amp;gt;  のように渡していた。Java側では
 String foo = System.getProperty(&amp;quot;arg1&amp;quot;);  で受け取ることができた。
@@ -555,10 +555,10 @@ String foo = System.getProperty(&amp;quot;arg1&amp;quot;);  で受け取るこ�
     
     <item>
       <title>scalaとjavaのコレクションのやり取り</title>
-      <link>https://ymraintree.github.io/blog/post/20131010/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20131010/</link>
       <pubDate>Thu, 10 Oct 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20131010/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20131010/</guid>
       <description>もっといい方法があると思うけれど、とりあえず実現できたやり方
 scalaのMapのvaluesをjava.util.Collectionに変換する
 new java.util.ArrayList[UriageForRanking](result.values)  </description>
@@ -566,28 +566,28 @@ new java.util.ArrayList[UriageForRanking](result.values)  </description>
     
     <item>
       <title>chromeのポップアップをタブで開く</title>
-      <link>https://ymraintree.github.io/blog/post/20131001/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20131001/</link>
       <pubDate>Tue, 01 Oct 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20131001/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20131001/</guid>
       <description>リンクをクリックするとポップアップが表示されるかわりにタブで表示させるのに、chromeではTab Position Customizerという機能拡張を使ってきたが、いつのまにかchromeウェブストアからなくなっている。ぐぐってみたらウェブストアでないところに、Tab_Position_Customizer_2.9.1_0.crxというファイルがあるので、これをダウンロードし、chromeに機能拡張の一覧を表示させてそこにドラッグするとインストールできる。</description>
     </item>
     
     <item>
       <title>デスクトップフォルダの変更</title>
-      <link>https://ymraintree.github.io/blog/post/20130920/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130920/</link>
       <pubDate>Fri, 20 Sep 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130920/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130920/</guid>
       <description>最近virt-managerを使うことが増えて、vncでlinuxにGUIのアクセスをするようになったが、ホームディレクトリにPublicとかDesktopとかフォルダを作られてしまうのがうざい。なので、~/.config/user-dirs.dirsの内容を修正して、別の場所に作られるようにした。</description>
     </item>
     
     <item>
       <title>kvm イメージファイルの操作</title>
-      <link>https://ymraintree.github.io/blog/post/20130919/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130919/</link>
       <pubDate>Thu, 19 Sep 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130919/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130919/</guid>
       <description>以下のコマンドで差分ファイルを作ることができる。
 $ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img  以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
 $ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $  差分をベースにコミットするには以下のコマンド。
@@ -597,20 +597,20 @@ $ sudo qemu-img commit -f qcow2 vm.test.diff.img  これで差分はいらなく
     
     <item>
       <title>scala objectのMock その2</title>
-      <link>https://ymraintree.github.io/blog/post/20130906/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130906/</link>
       <pubDate>Fri, 06 Sep 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130906/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130906/</guid>
       <description>どうもJMockitではscalaのobjectをモック化できないようなので、scalaベースのscalamockを試してみる。scalamockはsbt, scalatestの使用を前提としているため、sbtでプロジェクトを作る。プロジェクトの構成がsbtの構成になってしまうので、これもちょっと困る。環境構築に必要なファイルは以下
 $PROJECT_ROOT/build.sbt name := &amp;quot;test.sbt&amp;quot; version := &amp;quot;1.0&amp;quot; scalaVersion := &amp;quot;2.9.2&amp;quot; libraryDependencies ++= Seq( &amp;quot;org.scalatest&amp;quot; %% &amp;quot;scalatest&amp;quot; % &amp;quot;1.8&amp;quot; % &amp;quot;test&amp;quot;, &amp;quot;org.scalamock&amp;quot; %% &amp;quot;scalamock-scalatest-support&amp;quot; % &amp;quot;2.3&amp;quot;, &amp;quot;junit&amp;quot; % &amp;quot;junit&amp;quot; % &amp;quot;latest.integration&amp;quot; % &amp;quot;test&amp;quot;, &amp;quot;commons-logging&amp;quot; % &amp;quot;commons-logging&amp;quot; % &amp;quot;1.1.1&amp;quot; ) $PROJECT_ROOT/project/Build.scala import sbt._ import Keys._ import ScalaMockPlugin._ object MyProject extends Build { override lazy val settings = super.settings ++ Seq( organization := &amp;quot;&amp;quot;, version := &amp;quot;1.0&amp;quot;, scalaVersion := &amp;quot;2.9.2&amp;quot;, libraryDependencies += &amp;quot;org.</description>
     </item>
     
     <item>
       <title>scala objectのMock</title>
-      <link>https://ymraintree.github.io/blog/post/20130904/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130904/</link>
       <pubDate>Wed, 04 Sep 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130904/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130904/</guid>
       <description>テストコードでscalaのobjectをモック化したい。
 モック化したいobjectは以下。このクラスはJavaからも呼ぶため、class宣言もしている。
 class Boo object Boo { val log = LogFactory.getLog(this.getClass()) def foo = { log.debug(&amp;quot;Boo#foo called&amp;quot;) true } }  これをモック化するコード
@@ -623,10 +623,10 @@ public class JMockit2Test { private static Log log = LogFactory.</description>
     
     <item>
       <title>windows上のvirtualboxでゲストの解像度が1920x1050になっちゃった</title>
-      <link>https://ymraintree.github.io/blog/post/20130816/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130816/</link>
       <pubDate>Fri, 16 Aug 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130816/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130816/</guid>
       <description>virtualboxのゲストにwindowsを新規インストールして起動。ホストには1920x1080のディスプレイがついているので、ゲストでも当然出せるはずだが、インストール直後にちょっとシームレスモードを試したのが悪かったのか、フルスクリーンモードにしても1920x1050になって天地が余ってしまう。ホストで
 &amp;gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32  とか
 &amp;gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32  とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。
@@ -636,10 +636,10 @@ start.vbs CreateObject(&amp;quot;WScript.Shell&amp;quot;).Run &amp;quot;&amp;quo
     
     <item>
       <title>linux上のvirtualboxのゲストで1920x1080を表示させる</title>
-      <link>https://ymraintree.github.io/blog/post/20130815/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130815/</link>
       <pubDate>Thu, 15 Aug 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130815/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130815/</guid>
       <description>手元のディスプレイが1920x1080でも、virtualboxが乗っているホストにディスプレイがついていない場合、解像度の設定に手間取ることがある。この場合、
  ホストを起動 ホストにsshでログイン $ vnc4server -geometry 1920x1080 手元でvnc接続 virtualboxでゲスト起動  とすると、ゲストの解像度で1920x1080が選べるようになる。ちなみに、ホスト上で
 $ vboxmanage startvm guestVM --type headless  とするとゲストを非表示で起動することができる。</description>
@@ -647,10 +647,10 @@ $ vboxmanage startvm guestVM --type headless  とするとゲストを非表示�
     
     <item>
       <title>ゲストOSのディスク容量を増やす</title>
-      <link>https://ymraintree.github.io/blog/post/20130814/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130814/</link>
       <pubDate>Wed, 14 Aug 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130814/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130814/</guid>
       <description>ディスク容量100Gで気楽に作ったゲストOSをそのまま運用で使うことになり、500Gへ増やすことにした。
 ゲストOS停止 バックアップ
 qemu-img resize aplivevm +400G  これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。
@@ -664,20 +664,20 @@ qemu-img resize aplivevm +400G  これだけだと、ホストからみた容量
     
     <item>
       <title>qcow2でイメージファイルを作る</title>
-      <link>https://ymraintree.github.io/blog/post/20130812/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130812/</link>
       <pubDate>Mon, 12 Aug 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130812/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130812/</guid>
       <description>イメージファイルをqcow2フォーマットで作る場合は、virt-managerで新規作成する前に、ホスト側で
 $ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。</description>
     </item>
     
     <item>
       <title>linuxでiscsi&#43;ocfs2</title>
-      <link>https://ymraintree.github.io/blog/post/20130313/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130313/</link>
       <pubDate>Wed, 13 Mar 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130313/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130313/</guid>
       <description>iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。
 iscsiターゲットの構築
 $ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms  /etc/iet/ietd.confを編集
@@ -692,10 +692,10 @@ $ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets 
     
     <item>
       <title>ubuntuにKVMをインストール</title>
-      <link>https://ymraintree.github.io/blog/post/20130313-2/</link>
+      <link>https://ymraintree.github.io/blog/post/2013/20130313-2/</link>
       <pubDate>Wed, 13 Mar 2013 09:00:00 +0900</pubDate>
       
-      <guid>https://ymraintree.github.io/blog/post/20130313-2/</guid>
+      <guid>https://ymraintree.github.io/blog/post/2013/20130313-2/</guid>
       <description>ubuntuは12.04を使用。普通にインストールしたのち、
 $ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager  デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。
 NAT用のインタフェースを削除する
