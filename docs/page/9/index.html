@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+
+  <title>
+     コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+  <link href="https://ymraintree.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="コードの波にゆ～らゆら" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      
+      <a href="https://ymraintree.github.io/blog/index.xml" class="btn-header btn-subscribe hidden-xs">
+        <i class="fa fa-rss" aria-hidden="true"></i>
+        &nbsp;Subscribe
+      </a>
+      
+    </section>
+  </header>
+  <main class="container">
+
+<div class="article-list">
+  
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120518/">heartbeat&#43;drbd&#43;postgresトラブル</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-05-18T16:15:00&#43;09:00">
+          May 18, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    これまでpgpoolII+postgresでライブのDBを構成していたが、サーバを安いPCサーバにリプレイスするのをきっかけに、heartbeat+drbd+postgresに変えることにした。
+先日、プライマリとなっていたサーバ1が落ち、heartbeatによってセカンダリのサーバ2がプライマリに切り替わった。その際、postgresにエラーが発生。pg_dumpを取ろうとすると、
+pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688 DETAIL: Could not open file &quot;pg_clog/0FFF&quot;: No such file or directory. pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout; pg_dumpall: データベース&quot;common&quot;に対するpg_dumpが失敗しました。終了します  ネットでいろいろ調べ、
+ $ dd bs=256k count=1 if=/dev/zero of=0FFF 1+0 records in 1+0 records out 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s $  で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。
+ # select count(*) from ziplog; ERROR: could not access status of transaction 2319990784 DETAIL: Could not open file &quot;pg_clog/08A4&quot;: No such file or directory.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120518/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120517/">AWSへrsync</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-05-17T16:16:47&#43;09:00">
+          May 17, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    手元のマシンからリモートのAWSのインスタンスへrsync。
+rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4/backup  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120309/">AWSのインスタンスにディスクをマウント</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-03-09T16:17:55&#43;09:00">
+          Mar 9, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    マネージメントコンソールでボリュームを作成。インスタンスにアタッチすると、デバイス名(/dev/sdiなど)が表示されるので、インスタンスにログインして、
+$ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4  で使えるようになる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120123/">ScalaのEJBをJavaから参照する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-01-23T16:18:58&#43;09:00">
+          Jan 23, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    以前からscalaでEJBを書いていたが、ここへ来て問題発生。JavaとScalaの混在プロジェクトでJavaからScalaのクラスを参照したときにコンパイルエラーにはならないのに、eclipseのエディタ上ではエラーの表示がされてしまう。これを解決するには
+Java同様、Scalaのクラスもパッケージと同じ位置に置く。
+case class Foo( @(Id @field) x:Int, @(Temporal @field)(value=TemporalType.DATE) @BeanProperty nyukinDate:Date, @(Column @field)(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @(Column @field)(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  をやめて
+import scala.annotation.target.field object ScalaAnnotations { type Id = javax.persistence.Id @field type Temporal = javax.persistence.Temporal @field type Column = javax.persistence.Column @field }  を定義し、
+import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.DATE) @BeanProperty nyukinDate:Date, @Column(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @Column(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  とする。
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120123/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120119/">galaxy nexus</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-01-19T16:20:43&#43;09:00">
+          Jan 19, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    なんとなく衝動的にgalaxy nexus購入。ひととおりセットアップを終えて使用開始。日本語入力はFlickWnnがいい感じ。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120112/">AspectJのプラグイン</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-01-12T16:21:31&#43;09:00">
+          Jan 12, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    久しく使っていないけれど、以前のプロジェクトで使っていたAspectJ。Eclipse 3.7にプラグインをインストール。
+http://download.eclipse.org/tools/ajdt/37/update
+だとプロジェクトがエラーになってしまうが、
+http://download.eclipse.org/tools/ajdt/37/dev/update
+ならばOK。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111206/">gmailをSMTPサーバとしてjavaからメールを送信する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-12-06T16:23:06&#43;09:00">
+          Dec 6, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。
+2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied  いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
+参考URL: http://www.java.net/node/697528
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111202/">EJB-QLのチューニング</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-12-02T16:24:27&#43;09:00">
+          Dec 2, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、
+@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;)  のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111114/">Entity BeanでCREATE INDEXする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-11-14T16:25:18&#43;09:00">
+          Nov 14, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    アプリケーションのチューニングをして、DBにインデックスを張りたいとき、SQLを直に実行してしまうと移植時などに忘れてしまうことがあるので、Entity Bean内に書いておきたい。調べると、
+@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}), @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})}, appliesTo = &quot;customer&quot;)  などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
+&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;  を
+&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt;  にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111017/">jbossのtransaction timeoutの制御</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-10-17T16:26:28&#43;09:00">
+          Oct 17, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    jbossで大きなバッチ処理などするとtimeoutで落ちてしまうことがある。このようなとき、そのメソッドだけtimeout値を変更するには、以下のアノテーションをメソッドに付ける
+@TransactionTimeout(1500)  参照URL: http://community.jboss.org/wiki/TransactionTimeout
+  </div>
+  
+</article>
+
+  
+</div>
+<nav class="pagination" role="navigation">
+
+  <hr />
+
+
+<a class="newer-posts" href="https://ymraintree.github.io/blog/page/8/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
+
+  <span class="page-number">Page 9 of 12</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/10/">Older Posts <span aria-hidden="true">&raquo;</span></a>
+
+</nav>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
+

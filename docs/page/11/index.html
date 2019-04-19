@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+
+  <title>
+     コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+  <link href="https://ymraintree.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="コードの波にゆ～らゆら" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      
+      <a href="https://ymraintree.github.io/blog/index.xml" class="btn-header btn-subscribe hidden-xs">
+        <i class="fa fa-rss" aria-hidden="true"></i>
+        &nbsp;Subscribe
+      </a>
+      
+    </section>
+  </header>
+  <main class="container">
+
+<div class="article-list">
+  
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110802/">fessでPDF全文検索</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-02T16:49:16&#43;09:00">
+          Aug 2, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    PDFファイルの全文検索がしたいということで、ちょっと調べたらfessというものがあって、solrに検索用のページなどをつけたオールインワンなプロダクトのようで、試しに使ってみました。
+fessを動かすサーバ内のディレクトリにPDFファイルを置いておき、そこを指定してfessにクロールさせる、それを検索ページで表示させる、というのが目標。
+バージョンはfess-server-4.1.0。インストールはzipを解凍するだけ。bin/startup.shで起動すると
+http://xxxxxx.co.jp:8080/fess/admin/
+で管理画面に行けます。ここでPDFファイルを置いているディレクトリを指定してクロール開始。しばし待つと、完了する（経過はfess-server-4.1.0/webapps/fess/WEB-INF/logs/fess_crawler.outで見ることができる）。
+ここで検索画面http://xxxxxx.co.jp:8080/fess/にアクセスして、てきとうなキーワードで検索する。するとヒットしたPDFファイルが列挙される。
+ここまではいいんですが、列挙されたPDFファイルへのリンクをクリックしても画面が白くなってしまい、PDFの内容が表示されませんでした。
+いろいろやってみたんですが、うまくいかず、結局fess-server-4.1.0/webapps/fess/js/search.jsの内容を書き換えて、
+b.push(&quot;go?rt=&quot;); b.push(a); b.push(&quot;&amp;u=&quot;); b.push(encodeURIComponent(c));  を
+b.push(&quot;docs&quot;); var len = c.lastIndexOf(&quot;/&quot;); var file = c.slice(len); b.push(file);  とし、クロールするディレクトリと同様のものをfess-server-4.1.0/webapps/fess/にも置くということで対処。いまいちだけど、とりあえず動きました。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110722/">play&#43;scalaプロジェクトをeclipseにインポートする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-07-22T16:50:30&#43;09:00">
+          Jul 22, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    play+scalaでちょっとずつ書き始めたので、そろそろeclipseも試そうと思いました。
+$ ./play eclipsify xxxxx  してeclipseにインポートしたんですが、scalaのコードにコンパイルエラーが出てしまいました。すでに動いているものなのに。playのeclipsifyでクラスパスもきっちり設定されているのに。気を取り直してよくよく調べるとplay-1.2.1/modules/scala-0.9/libのplay-scala.jarとscalatest-1.2-zzzzzzzzzzzz.jarをインポートしたらコンパイルエラーは出なくなりました。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110714/">mongodb&#43;casbah&#43;scala</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-07-14T16:51:30&#43;09:00">
+          Jul 14, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    遅まきながらmongodbの勉強。sbt-0.10でプロジェクトを作る。
+$ mkdir sbt-mongo $ cd sbt-mongo  ここで、build.sbtを作成。内容は以下。
+name := &quot;Hello Mongo+Casbah&quot; version := &quot;1.0.0&quot; scalaVersion := &quot;2.9.0&quot; organization := &quot;&quot; libraryDependencies ++= Seq( &quot;com.mongodb.casbah&quot; % &quot;casbah_2.9.0-1&quot; % &quot;2.1.5-1&quot; ) mainClass in(Compile, run) := Some(&quot;mongo.casbah.Sample&quot;)  で、sbt実行
+$ sbt  するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。
+package mongo.casbah import com.mongodb.casbah.Imports._ object Sample { def main(args:Array[String]) { val collection = MongoConnection()(&quot;casbah_test&quot;)(&quot;sample&quot;) val user = MongoDBObject(&quot;id&quot;-&gt;1, &quot;name&quot;-&gt;&quot;me&quot;, &quot;address&quot;-&gt;&quot;テスト満載&quot;) println(user) collection += user collection.find().foreach { println(_) } } }  で、sbtプロンプトでrunすると、
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2011/20110714/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110713/">linuxでプリンタ設定</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-07-13T16:52:57&#43;09:00">
+          Jul 13, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    linuxサーバ上でJasperReportを使ってPDFファイルを生成し、プリンタに直接印刷する必要が生じたので、環境を作りました。サーバはubuntuの64bit、プリンタはキャノンLBP8620。
+キャノンのサイトを見てみると、linux 64bit用のドライバはrpmでしか提供されていないようす。ubuntuにはrpmコマンドがないので、どうしたものかと調べて、alienコマンドを使うことにしました。まずはalienのインストール。
+$ sudo apt-get install alien  キャノンのサイトからダウンロードしたドライバのインストール。
+$ sudo alien -i cndrvcups-common_2.20-1.x86_64.rpm $ sudo alien -i cndrvcups-lips4-2.20-1.x86_64.rpm  ここでcupsのリスタート。
+$ sudo /etc/init.d/cups restart  プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。
+$ sudo lpadmin -p cop -m CNCUPSLBPSERIESLJ.ppd -v lpd://cop.is.magazine.co.jp/cop -E  これで、
+$ lpr -P cop XXXXXXXX.pdf  などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110707/">USB3.0 HDD</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-07-07T17:00:56&#43;09:00">
+          Jul 7, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    バックアップ用にUSB3.0の外付けHDDを2本購入。さっそくlinuxにつないで試してみる。4Gのファイルをコピーしてみたら、結果としてはちょっと困った感じになった。
+USB3.0外付けその1　2分10秒
+USB3.0外付けその2　1分20秒
+内蔵HDD　20秒
+内蔵SDD　11秒
+外付けUSBは時間がかかりすぎではないだろうか。おなじUSB3.0でも2本のHDDで1分以上差がつくのも解せない。ためしに、別のlinuxマシンにつないで運用しているUSB2.0のHDDで同様のことをしたら、2分10秒くらいで、USB3.0外付けその1とほぼ同タイム。どういうことなんだろう。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110630/">scalaスクリプトでおかしな挙動？</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-30T17:03:13&#43;09:00">
+          Jun 30, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    たとえば、
+object Foo { val ZOO = &quot;xxxx&quot; }  というクラスを作ってコンパイルします。これをスクリプトの中で使います。
+println(Foo.ZOO)  これはOK。次に、
+object Foo { val ZOO = &quot;xxxx&quot; val ZOO_ADDED = &quot;ZZZZZ&quot; }  と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、
+script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo.ZOO_ADDED) ^ one error found  と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110629/">macでemacs</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-29T17:05:48&#43;09:00">
+          Jun 29, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    一方macではどうかと、macのcocoa emacsに環境設定。こちらのほうは素直になにもかも動いた。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110629-2/">windowsでemacs</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-29T15:06:33&#43;09:00">
+          Jun 29, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    今までは、windows用のXサーバを使って、リモートのlinuxのemacsをwindows上で開いて使っていたが、どうも最近よく落ちる。そこで、windows上で動くemacsを試してみた。emacsを使うには
+ 日本語入出力 trampでリモートファイル編集 sshでファイル名補完  ができるのが大前提。ざっと調べてgnupackを入れてみた。日本語は問題なし。
+trampはdefault methodをpscpにして正常動作を確認。ところが、開けるファイルと開けないファイルがある。開けないときは
+File exists, but cannot be read  というメッセージ。開けるファイルと見比べても違いがわからず、小1時間。結局ファイルサイズに上限があるようで、tramp copy size limitをデフォルトの10240から10240000に変更。これをnilにすると上限なしになるみたいだけど、効かなかった。
+sshは、リモートホストにアクセスすると、
+Pseudo-terminal will not be allocated because stdin is not a terminal.  というメッセージが出る。プロンプトは表示されないが、lsなどが効く。しかしこれでは気持ち悪いのでいろいろやったら、どうも2回目のアクセスは正常に動く。1回目だけを犠牲にすればいいだけだから、まあいいか。裏でtrampが走ってファイル名補完も動作。しかし、sshするときに、いまアクティブになっているバッファが影響するようで、ssh-taro@hogeのバッファがアクティブな状態でhanako@booにアクセスしようとすると、taro@booのパスワードを要求されたりする。この辺はちょっと問題。ほかには
+trampの最初のアクセスで補完が効かない 設定ファイルがgnupack-xxxx/{config.ini, home/.emacs}とかにあって、別の場所に移したい
+など
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110628/">java, scalaでOSコマンド実行</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-28T17:08:45&#43;09:00">
+          Jun 28, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(&quot;cp -p foo.txt foo.txt.BACKUP&quot;); p.waitFor();  など。|や&gt;を使いたいときは、
+String cmd = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot;; String[] cmdArray = {&quot;/bin/sh&quot;, &quot;-c&quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray);  というぐあいにArrayにする。
+ちなみにscalaだとこんな感じ。
+val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&quot;異常終了 &quot; + p.toString()) }  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110623/">scalaでスクリプトを書く</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-23T17:09:45&#43;09:00">
+          Jun 23, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    perlとかで書いていたスクリプトをscalaで書こうとすると、クラスパスなどの環境変数を定義してからscalaスクリプトを起動するような起動ファイルが別にいるんだと、昔のCOBOLとJCLみたいでかっこわるいなと思っていたら、解決することができた。scalaスクリプト冒頭に
+#! /bin/bash cp=&quot;/usr/local/share/commons-logging.jar&quot; export JAVA_OPTS=&quot;-server -Xms1024m -Dcluster=localhost:1100&quot; exec scala -classpath $cp $0 $@ !# println(&quot;Hello, Scala!&quot;)  とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。
+  </div>
+  
+</article>
+
+  
+</div>
+<nav class="pagination" role="navigation">
+
+  <hr />
+
+
+<a class="newer-posts" href="https://ymraintree.github.io/blog/page/10/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
+
+  <span class="page-number">Page 11 of 12</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/12/">Older Posts <span aria-hidden="true">&raquo;</span></a>
+
+</nav>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
+

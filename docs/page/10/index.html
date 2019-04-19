@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+
+  <title>
+     コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+  <link href="https://ymraintree.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="コードの波にゆ～らゆら" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      
+      <a href="https://ymraintree.github.io/blog/index.xml" class="btn-header btn-subscribe hidden-xs">
+        <i class="fa fa-rss" aria-hidden="true"></i>
+        &nbsp;Subscribe
+      </a>
+      
+    </section>
+  </header>
+  <main class="container">
+
+<div class="article-list">
+  
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110930/">linuxサーバでpdfファイルの印刷</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-09-30T16:27:20&#43;09:00">
+          Sep 30, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    linuxサーバ上のjbossでpdfファイルを生成し印刷する必要が生じました。pdfはjasperReportなどで生成できますが、これを普通にlprとかしても日本語が出ません。jasperReport側でフォントの設定などをいろいろと変えてみたが解決せず。
+サーバにacrobat readerを入れるという方法をためしてみました。
+linuxサーバは64bitでacrobat readerは32bit版しか提供されていません。なので、AdbeRdr9.4.2-1_i486linux_jpn.tar.bz2をダウンロード、解凍し、
+# cd AdobeReader # ./INSTALL  としてインストール。
+acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps  とすると印刷できました。ただしASCIIのフォントがちょっと変。
+なお、linux上のacroreadはrootで実行するとエラーになってしまうので、別人になって実行する必要がある。scalaではこんな感じ。
+val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, &quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&quot;) val p = Process(cmd).run if (p.exitValue != 0) { println(&quot;異常終了 &quot; + p.toString()) }  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110929/">drbdの再同期</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-09-29T16:31:58&#43;09:00">
+          Sep 29, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    drbdのフェイルオーバのテストなどをしていると、
+$ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。
+セカンダリ側
+$ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  プライマリ側
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2011/20110929/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110927/">drbdマシンの起動時の処理</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-09-27T16:33:01&#43;09:00">
+          Sep 27, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    drbdのマシンを再起動したときに、以下の処理をしないと正常に起動しない。
+ログイン
+drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可) drbd-overviewで確認 sudo mount /drbd  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110926/">drbd</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-09-26T16:34:30&#43;09:00">
+          Sep 26, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    2台のlinuxマシンを使ってdrbd環境構築。drbd用のパーティションとして1TBを取ってしまったので初期同期に一週間くらいかかってしまった。このパーティションで実用していいんだろうか。
+障害時の切り替え手順
+現プライマリ側
+sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary  新プライマリ側
+sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd  どちらもcat /proc/drbdなどして確認。drbd-overviewだと
+0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1%  となる。not-foundってなんだろう。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110831/">solr</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-31T16:35:34&#43;09:00">
+          Aug 31, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    solrを使ってみる。解凍して、
+$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar  で起動。PDFを読み込ませたいときは
+$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot;  などとする。データの削除は
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot;  とか
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot;  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110830/">findの-execで複数のコマンドを実行する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-30T16:36:46&#43;09:00">
+          Aug 30, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成
+echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1  これをfindで実行。
+$ find . -type f -exec sh z:/foo.sh {} \;  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110829/">play&#43;scala&#43;morphia</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-29T16:39:14&#43;09:00">
+          Aug 29, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ ./play install morphia $ ./play new myapp --with scala  myapp/conf/dependencies.ymlに以下の行を追加する。
+- play -&gt; morphia 1.2.2beta1  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110828/">play&#43;scala&#43;mongo</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-28T16:40:53&#43;09:00">
+          Aug 28, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ ./play install mongo $ ./play new myapp --with scala mongo  myapp/conf/application.confに以下を追加
+# The mongo module module.mongo=${play.path}/modules/mongo # mongodb connection details mongo.host=localhost mongo.port=27017 mongo.database=play mongo.username=test mongo.password=test123  $ ./play run myapp  以下のエラー。
+~ Oops, ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo  myapp/conf/application.confの
+module.mongo=${play.path}/modules/mongo  を
+module.mongo=${play.path}/modules/mongo-1.3  に変更したら動いた。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110819/">caseクラスでパラメータにアノテーション　続き</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-19T16:46:57&#43;09:00">
+          Aug 19, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    前回caseクラスでパラメータにアノテーションを書いても効かなかったと書きましたが、正確にはjavaのアノテーションは効かないということでした。
+case class Shohin ( @BeanProperty pk:String  これは効くけれど、
+case class Shohin ( @Column columnDefinition=&quot;text&quot;) pk:String  これは効かない。これが効かないのはしょうがないとしても、
+case class Shohin ( @Id pk:String  これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、
+http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html
+に解決方法がありました。
+import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @field)(columnDefinition=&quot;text&quot;) pk:String  とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110817/">caseクラスでパラメータにアノテーション</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-17T16:48:08&#43;09:00">
+          Aug 17, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    EJBのエンティティビーンをscalaで書こうと、
+@Entity @Cache(usage=CacheConcurrencyStrategy.NONE) case class Foo(@Id k:Int, v:String)  としてみたところ、以下のエラー。
+Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo  どうも、@Idアノテーションが効いていない様子。
+http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html
+によると、バグとのこと。
+  </div>
+  
+</article>
+
+  
+</div>
+<nav class="pagination" role="navigation">
+
+  <hr />
+
+
+<a class="newer-posts" href="https://ymraintree.github.io/blog/page/9/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
+
+  <span class="page-number">Page 10 of 12</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/11/">Older Posts <span aria-hidden="true">&raquo;</span></a>
+
+</nav>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
+

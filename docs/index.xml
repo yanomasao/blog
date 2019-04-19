@@ -946,5 +946,476 @@ host replication repl_user 192.168.0.2/32 md5  ベースバックアップ 上�
 $ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose  スタンバイサーバの設定 postgresql.</description>
     </item>
     
+    <item>
+      <title>heartbeat&#43;drbd&#43;postgresトラブル</title>
+      <link>https://ymraintree.github.io/blog/post/2012/20120518/</link>
+      <pubDate>Fri, 18 May 2012 16:15:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2012/20120518/</guid>
+      <description>これまでpgpoolII+postgresでライブのDBを構成していたが、サーバを安いPCサーバにリプレイスするのをきっかけに、heartbeat+drbd+postgresに変えることにした。
+先日、プライマリとなっていたサーバ1が落ち、heartbeatによってセカンダリのサーバ2がプライマリに切り替わった。その際、postgresにエラーが発生。pg_dumpを取ろうとすると、
+pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688 DETAIL: Could not open file &amp;quot;pg_clog/0FFF&amp;quot;: No such file or directory. pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout; pg_dumpall: データベース&amp;quot;common&amp;quot;に対するpg_dumpが失敗しました。終了します  ネットでいろいろ調べ、
+ $ dd bs=256k count=1 if=/dev/zero of=0FFF 1+0 records in 1+0 records out 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s $  で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。
+ # select count(*) from ziplog; ERROR: could not access status of transaction 2319990784 DETAIL: Could not open file &amp;quot;pg_clog/08A4&amp;quot;: No such file or directory.</description>
+    </item>
+    
+    <item>
+      <title>AWSへrsync</title>
+      <link>https://ymraintree.github.io/blog/post/2012/20120517/</link>
+      <pubDate>Thu, 17 May 2012 16:16:47 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2012/20120517/</guid>
+      <description>手元のマシンからリモートのAWSのインスタンスへrsync。
+rsync -avz -e &#39;ssh -i /foo/bar/zoo.pem&#39; PDFClown-0.1 ec2-user@aws-sandbox:/disk4/backup  </description>
+    </item>
+    
+    <item>
+      <title>AWSのインスタンスにディスクをマウント</title>
+      <link>https://ymraintree.github.io/blog/post/2012/20120309/</link>
+      <pubDate>Fri, 09 Mar 2012 16:17:55 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2012/20120309/</guid>
+      <description>マネージメントコンソールでボリュームを作成。インスタンスにアタッチすると、デバイス名(/dev/sdiなど)が表示されるので、インスタンスにログインして、
+$ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4  で使えるようになる。</description>
+    </item>
+    
+    <item>
+      <title>ScalaのEJBをJavaから参照する</title>
+      <link>https://ymraintree.github.io/blog/post/2012/20120123/</link>
+      <pubDate>Mon, 23 Jan 2012 16:18:58 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2012/20120123/</guid>
+      <description>以前からscalaでEJBを書いていたが、ここへ来て問題発生。JavaとScalaの混在プロジェクトでJavaからScalaのクラスを参照したときにコンパイルエラーにはならないのに、eclipseのエディタ上ではエラーの表示がされてしまう。これを解決するには
+Java同様、Scalaのクラスもパッケージと同じ位置に置く。
+case class Foo( @(Id @field) x:Int, @(Temporal @field)(value=TemporalType.DATE) @BeanProperty nyukinDate:Date, @(Column @field)(columnDefinition=&amp;quot;numeric(13, 2)&amp;quot;) @BeanProperty var shohizei:Double, @(Column @field)(columnDefinition=&amp;quot;text&amp;quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  をやめて
+import scala.annotation.target.field object ScalaAnnotations { type Id = javax.persistence.Id @field type Temporal = javax.persistence.Temporal @field type Column = javax.persistence.Column @field }  を定義し、
+import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.DATE) @BeanProperty nyukinDate:Date, @Column(columnDefinition=&amp;quot;numeric(13, 2)&amp;quot;) @BeanProperty var shohizei:Double, @Column(columnDefinition=&amp;quot;text&amp;quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  とする。</description>
+    </item>
+    
+    <item>
+      <title>galaxy nexus</title>
+      <link>https://ymraintree.github.io/blog/post/2012/20120119/</link>
+      <pubDate>Thu, 19 Jan 2012 16:20:43 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2012/20120119/</guid>
+      <description>なんとなく衝動的にgalaxy nexus購入。ひととおりセットアップを終えて使用開始。日本語入力はFlickWnnがいい感じ。</description>
+    </item>
+    
+    <item>
+      <title>AspectJのプラグイン</title>
+      <link>https://ymraintree.github.io/blog/post/2012/20120112/</link>
+      <pubDate>Thu, 12 Jan 2012 16:21:31 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2012/20120112/</guid>
+      <description>久しく使っていないけれど、以前のプロジェクトで使っていたAspectJ。Eclipse 3.7にプラグインをインストール。
+http://download.eclipse.org/tools/ajdt/37/update
+だとプロジェクトがエラーになってしまうが、
+http://download.eclipse.org/tools/ajdt/37/dev/update
+ならばOK。</description>
+    </item>
+    
+    <item>
+      <title>gmailをSMTPサーバとしてjavaからメールを送信する</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20111206/</link>
+      <pubDate>Tue, 06 Dec 2011 16:23:06 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20111206/</guid>
+      <description>会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。
+2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied  いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
+参考URL: http://www.java.net/node/697528</description>
+    </item>
+    
+    <item>
+      <title>EJB-QLのチューニング</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20111202/</link>
+      <pubDate>Fri, 02 Dec 2011 16:24:27 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20111202/</guid>
+      <description>EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、
+@NamedQuery(name=&amp;quot;torihiki.findForReport&amp;quot;, query=&amp;quot;select torihiki from Torihiki torihiki &amp;quot; + &amp;quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &amp;quot; + &amp;quot;where torihiki.nohinDate = :nohinDate&amp;quot;)  のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。</description>
+    </item>
+    
+    <item>
+      <title>Entity BeanでCREATE INDEXする</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20111114/</link>
+      <pubDate>Mon, 14 Nov 2011 16:25:18 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20111114/</guid>
+      <description>アプリケーションのチューニングをして、DBにインデックスを張りたいとき、SQLを直に実行してしまうと移植時などに忘れてしまうことがあるので、Entity Bean内に書いておきたい。調べると、
+@Table(indexes = {@Index(name=&amp;quot;customer_idx&amp;quot;, columnNames = {&amp;quot;customerCd&amp;quot;, &amp;quot;customerKbnCd&amp;quot;}), @Index(name=&amp;quot;customer_idx2&amp;quot;, columnNames = {&amp;quot;seikyuDate&amp;quot;})}, appliesTo = &amp;quot;customer&amp;quot;)  などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
+&amp;lt;property name=&amp;quot;hibernate.hbm2ddl.auto&amp;quot;&amp;gt;update&amp;lt;/property&amp;gt;  を
+&amp;lt;property name=&amp;quot;hibernate.hbm2ddl.auto&amp;quot;&amp;gt;create&amp;lt;/property&amp;gt;  にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。</description>
+    </item>
+    
+    <item>
+      <title>jbossのtransaction timeoutの制御</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20111017/</link>
+      <pubDate>Mon, 17 Oct 2011 16:26:28 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20111017/</guid>
+      <description>jbossで大きなバッチ処理などするとtimeoutで落ちてしまうことがある。このようなとき、そのメソッドだけtimeout値を変更するには、以下のアノテーションをメソッドに付ける
+@TransactionTimeout(1500)  参照URL: http://community.jboss.org/wiki/TransactionTimeout</description>
+    </item>
+    
+    <item>
+      <title>linuxサーバでpdfファイルの印刷</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110930/</link>
+      <pubDate>Fri, 30 Sep 2011 16:27:20 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110930/</guid>
+      <description>linuxサーバ上のjbossでpdfファイルを生成し印刷する必要が生じました。pdfはjasperReportなどで生成できますが、これを普通にlprとかしても日本語が出ません。jasperReport側でフォントの設定などをいろいろと変えてみたが解決せず。
+サーバにacrobat readerを入れるという方法をためしてみました。
+linuxサーバは64bitでacrobat readerは32bit版しか提供されていません。なので、AdbeRdr9.4.2-1_i486linux_jpn.tar.bz2をダウンロード、解凍し、
+# cd AdobeReader # ./INSTALL  としてインストール。
+acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps  とすると印刷できました。ただしASCIIのフォントがちょっと変。
+なお、linux上のacroreadはrootで実行するとエラーになってしまうので、別人になって実行する必要がある。scalaではこんな感じ。
+val cmd = Array(&amp;quot;su&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;nobody&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&amp;quot;) val p = Process(cmd).run if (p.exitValue != 0) { println(&amp;quot;異常終了 &amp;quot; + p.toString()) }  </description>
+    </item>
+    
+    <item>
+      <title>drbdの再同期</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110929/</link>
+      <pubDate>Thu, 29 Sep 2011 16:31:58 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110929/</guid>
+      <description>drbdのフェイルオーバのテストなどをしていると、
+$ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。
+セカンダリ側
+$ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  プライマリ側</description>
+    </item>
+    
+    <item>
+      <title>drbdマシンの起動時の処理</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110927/</link>
+      <pubDate>Tue, 27 Sep 2011 16:33:01 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110927/</guid>
+      <description>drbdのマシンを再起動したときに、以下の処理をしないと正常に起動しない。
+ログイン
+drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可) drbd-overviewで確認 sudo mount /drbd  </description>
+    </item>
+    
+    <item>
+      <title>drbd</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110926/</link>
+      <pubDate>Mon, 26 Sep 2011 16:34:30 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110926/</guid>
+      <description>2台のlinuxマシンを使ってdrbd環境構築。drbd用のパーティションとして1TBを取ってしまったので初期同期に一週間くらいかかってしまった。このパーティションで実用していいんだろうか。
+障害時の切り替え手順
+現プライマリ側
+sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary  新プライマリ側
+sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd  どちらもcat /proc/drbdなどして確認。drbd-overviewだと
+0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1%  となる。not-foundってなんだろう。</description>
+    </item>
+    
+    <item>
+      <title>solr</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110831/</link>
+      <pubDate>Wed, 31 Aug 2011 16:35:34 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110831/</guid>
+      <description>solrを使ってみる。解凍して、
+$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar  で起動。PDFを読み込ませたいときは
+$ curl &amp;quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;amp;commit=true&amp;quot; -F &amp;quot;myfile=@XXXXXXX.pdf&amp;quot;  などとする。データの削除は
+$ sudo java -Ddata=args -jar exampledocs/post.jar &amp;quot;&amp;lt;delete&amp;gt;&amp;lt;id&amp;gt;vvvvvv&amp;lt;/id&amp;gt;&amp;lt;/delete&amp;gt;&amp;quot;  とか
+$ sudo java -Ddata=args -jar exampledocs/post.jar &amp;quot;&amp;lt;delete&amp;gt;&amp;lt;query&amp;gt;kkkkkk:vvvvvv&amp;lt;/query&amp;gt;&amp;lt;/delete&amp;gt;&amp;quot;  </description>
+    </item>
+    
+    <item>
+      <title>findの-execで複数のコマンドを実行する</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110830/</link>
+      <pubDate>Tue, 30 Aug 2011 16:36:46 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110830/</guid>
+      <description>eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成
+echo $1 nkf -w $1 &amp;gt; /tmp/foo mv /tmp/foo $1  これをfindで実行。
+$ find . -type f -exec sh z:/foo.sh {} \;  </description>
+    </item>
+    
+    <item>
+      <title>play&#43;scala&#43;morphia</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110829/</link>
+      <pubDate>Mon, 29 Aug 2011 16:39:14 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110829/</guid>
+      <description>$ ./play install morphia $ ./play new myapp --with scala  myapp/conf/dependencies.ymlに以下の行を追加する。
+- play -&amp;gt; morphia 1.2.2beta1  </description>
+    </item>
+    
+    <item>
+      <title>play&#43;scala&#43;mongo</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110828/</link>
+      <pubDate>Sun, 28 Aug 2011 16:40:53 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110828/</guid>
+      <description>$ ./play install mongo $ ./play new myapp --with scala mongo  myapp/conf/application.confに以下を追加
+# The mongo module module.mongo=${play.path}/modules/mongo # mongodb connection details mongo.host=localhost mongo.port=27017 mongo.database=play mongo.username=test mongo.password=test123  $ ./play run myapp  以下のエラー。
+~ Oops, ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo  myapp/conf/application.confの
+module.mongo=${play.path}/modules/mongo  を
+module.mongo=${play.path}/modules/mongo-1.3  に変更したら動いた。</description>
+    </item>
+    
+    <item>
+      <title>caseクラスでパラメータにアノテーション　続き</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110819/</link>
+      <pubDate>Fri, 19 Aug 2011 16:46:57 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110819/</guid>
+      <description>前回caseクラスでパラメータにアノテーションを書いても効かなかったと書きましたが、正確にはjavaのアノテーションは効かないということでした。
+case class Shohin ( @BeanProperty pk:String  これは効くけれど、
+case class Shohin ( @Column columnDefinition=&amp;quot;text&amp;quot;) pk:String  これは効かない。これが効かないのはしょうがないとしても、
+case class Shohin ( @Id pk:String  これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、
+http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html
+に解決方法がありました。
+import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @field)(columnDefinition=&amp;quot;text&amp;quot;) pk:String  とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。</description>
+    </item>
+    
+    <item>
+      <title>caseクラスでパラメータにアノテーション</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110817/</link>
+      <pubDate>Wed, 17 Aug 2011 16:48:08 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110817/</guid>
+      <description>EJBのエンティティビーンをscalaで書こうと、
+@Entity @Cache(usage=CacheConcurrencyStrategy.NONE) case class Foo(@Id k:Int, v:String)  としてみたところ、以下のエラー。
+Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo  どうも、@Idアノテーションが効いていない様子。
+http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html
+によると、バグとのこと。</description>
+    </item>
+    
+    <item>
+      <title>fessでPDF全文検索</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110802/</link>
+      <pubDate>Tue, 02 Aug 2011 16:49:16 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110802/</guid>
+      <description>PDFファイルの全文検索がしたいということで、ちょっと調べたらfessというものがあって、solrに検索用のページなどをつけたオールインワンなプロダクトのようで、試しに使ってみました。
+fessを動かすサーバ内のディレクトリにPDFファイルを置いておき、そこを指定してfessにクロールさせる、それを検索ページで表示させる、というのが目標。
+バージョンはfess-server-4.1.0。インストールはzipを解凍するだけ。bin/startup.shで起動すると
+http://xxxxxx.co.jp:8080/fess/admin/
+で管理画面に行けます。ここでPDFファイルを置いているディレクトリを指定してクロール開始。しばし待つと、完了する（経過はfess-server-4.1.0/webapps/fess/WEB-INF/logs/fess_crawler.outで見ることができる）。
+ここで検索画面http://xxxxxx.co.jp:8080/fess/にアクセスして、てきとうなキーワードで検索する。するとヒットしたPDFファイルが列挙される。
+ここまではいいんですが、列挙されたPDFファイルへのリンクをクリックしても画面が白くなってしまい、PDFの内容が表示されませんでした。
+いろいろやってみたんですが、うまくいかず、結局fess-server-4.1.0/webapps/fess/js/search.jsの内容を書き換えて、
+b.push(&amp;quot;go?rt=&amp;quot;); b.push(a); b.push(&amp;quot;&amp;amp;u=&amp;quot;); b.push(encodeURIComponent(c));  を
+b.push(&amp;quot;docs&amp;quot;); var len = c.lastIndexOf(&amp;quot;/&amp;quot;); var file = c.slice(len); b.push(file);  とし、クロールするディレクトリと同様のものをfess-server-4.1.0/webapps/fess/にも置くということで対処。いまいちだけど、とりあえず動きました。</description>
+    </item>
+    
+    <item>
+      <title>play&#43;scalaプロジェクトをeclipseにインポートする</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110722/</link>
+      <pubDate>Fri, 22 Jul 2011 16:50:30 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110722/</guid>
+      <description>play+scalaでちょっとずつ書き始めたので、そろそろeclipseも試そうと思いました。
+$ ./play eclipsify xxxxx  してeclipseにインポートしたんですが、scalaのコードにコンパイルエラーが出てしまいました。すでに動いているものなのに。playのeclipsifyでクラスパスもきっちり設定されているのに。気を取り直してよくよく調べるとplay-1.2.1/modules/scala-0.9/libのplay-scala.jarとscalatest-1.2-zzzzzzzzzzzz.jarをインポートしたらコンパイルエラーは出なくなりました。</description>
+    </item>
+    
+    <item>
+      <title>mongodb&#43;casbah&#43;scala</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110714/</link>
+      <pubDate>Thu, 14 Jul 2011 16:51:30 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110714/</guid>
+      <description>遅まきながらmongodbの勉強。sbt-0.10でプロジェクトを作る。
+$ mkdir sbt-mongo $ cd sbt-mongo  ここで、build.sbtを作成。内容は以下。
+name := &amp;quot;Hello Mongo+Casbah&amp;quot; version := &amp;quot;1.0.0&amp;quot; scalaVersion := &amp;quot;2.9.0&amp;quot; organization := &amp;quot;&amp;quot; libraryDependencies ++= Seq( &amp;quot;com.mongodb.casbah&amp;quot; % &amp;quot;casbah_2.9.0-1&amp;quot; % &amp;quot;2.1.5-1&amp;quot; ) mainClass in(Compile, run) := Some(&amp;quot;mongo.casbah.Sample&amp;quot;)  で、sbt実行
+$ sbt  するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。
+package mongo.casbah import com.mongodb.casbah.Imports._ object Sample { def main(args:Array[String]) { val collection = MongoConnection()(&amp;quot;casbah_test&amp;quot;)(&amp;quot;sample&amp;quot;) val user = MongoDBObject(&amp;quot;id&amp;quot;-&amp;gt;1, &amp;quot;name&amp;quot;-&amp;gt;&amp;quot;me&amp;quot;, &amp;quot;address&amp;quot;-&amp;gt;&amp;quot;テスト満載&amp;quot;) println(user) collection += user collection.find().foreach { println(_) } } }  で、sbtプロンプトでrunすると、</description>
+    </item>
+    
+    <item>
+      <title>linuxでプリンタ設定</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110713/</link>
+      <pubDate>Wed, 13 Jul 2011 16:52:57 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110713/</guid>
+      <description>linuxサーバ上でJasperReportを使ってPDFファイルを生成し、プリンタに直接印刷する必要が生じたので、環境を作りました。サーバはubuntuの64bit、プリンタはキャノンLBP8620。
+キャノンのサイトを見てみると、linux 64bit用のドライバはrpmでしか提供されていないようす。ubuntuにはrpmコマンドがないので、どうしたものかと調べて、alienコマンドを使うことにしました。まずはalienのインストール。
+$ sudo apt-get install alien  キャノンのサイトからダウンロードしたドライバのインストール。
+$ sudo alien -i cndrvcups-common_2.20-1.x86_64.rpm $ sudo alien -i cndrvcups-lips4-2.20-1.x86_64.rpm  ここでcupsのリスタート。
+$ sudo /etc/init.d/cups restart  プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。
+$ sudo lpadmin -p cop -m CNCUPSLBPSERIESLJ.ppd -v lpd://cop.is.magazine.co.jp/cop -E  これで、
+$ lpr -P cop XXXXXXXX.pdf  などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。</description>
+    </item>
+    
+    <item>
+      <title>USB3.0 HDD</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110707/</link>
+      <pubDate>Thu, 07 Jul 2011 17:00:56 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110707/</guid>
+      <description>バックアップ用にUSB3.0の外付けHDDを2本購入。さっそくlinuxにつないで試してみる。4Gのファイルをコピーしてみたら、結果としてはちょっと困った感じになった。
+USB3.0外付けその1　2分10秒
+USB3.0外付けその2　1分20秒
+内蔵HDD　20秒
+内蔵SDD　11秒
+外付けUSBは時間がかかりすぎではないだろうか。おなじUSB3.0でも2本のHDDで1分以上差がつくのも解せない。ためしに、別のlinuxマシンにつないで運用しているUSB2.0のHDDで同様のことをしたら、2分10秒くらいで、USB3.0外付けその1とほぼ同タイム。どういうことなんだろう。</description>
+    </item>
+    
+    <item>
+      <title>scalaスクリプトでおかしな挙動？</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110630/</link>
+      <pubDate>Thu, 30 Jun 2011 17:03:13 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110630/</guid>
+      <description>たとえば、
+object Foo { val ZOO = &amp;quot;xxxx&amp;quot; }  というクラスを作ってコンパイルします。これをスクリプトの中で使います。
+println(Foo.ZOO)  これはOK。次に、
+object Foo { val ZOO = &amp;quot;xxxx&amp;quot; val ZOO_ADDED = &amp;quot;ZZZZZ&amp;quot; }  と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、
+script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo.ZOO_ADDED) ^ one error found  と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。</description>
+    </item>
+    
+    <item>
+      <title>macでemacs</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110629/</link>
+      <pubDate>Wed, 29 Jun 2011 17:05:48 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110629/</guid>
+      <description>一方macではどうかと、macのcocoa emacsに環境設定。こちらのほうは素直になにもかも動いた。</description>
+    </item>
+    
+    <item>
+      <title>windowsでemacs</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110629-2/</link>
+      <pubDate>Wed, 29 Jun 2011 15:06:33 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110629-2/</guid>
+      <description>今までは、windows用のXサーバを使って、リモートのlinuxのemacsをwindows上で開いて使っていたが、どうも最近よく落ちる。そこで、windows上で動くemacsを試してみた。emacsを使うには
+ 日本語入出力 trampでリモートファイル編集 sshでファイル名補完  ができるのが大前提。ざっと調べてgnupackを入れてみた。日本語は問題なし。
+trampはdefault methodをpscpにして正常動作を確認。ところが、開けるファイルと開けないファイルがある。開けないときは
+File exists, but cannot be read  というメッセージ。開けるファイルと見比べても違いがわからず、小1時間。結局ファイルサイズに上限があるようで、tramp copy size limitをデフォルトの10240から10240000に変更。これをnilにすると上限なしになるみたいだけど、効かなかった。
+sshは、リモートホストにアクセスすると、
+Pseudo-terminal will not be allocated because stdin is not a terminal.  というメッセージが出る。プロンプトは表示されないが、lsなどが効く。しかしこれでは気持ち悪いのでいろいろやったら、どうも2回目のアクセスは正常に動く。1回目だけを犠牲にすればいいだけだから、まあいいか。裏でtrampが走ってファイル名補完も動作。しかし、sshするときに、いまアクティブになっているバッファが影響するようで、ssh-taro@hogeのバッファがアクティブな状態でhanako@booにアクセスしようとすると、taro@booのパスワードを要求されたりする。この辺はちょっと問題。ほかには
+trampの最初のアクセスで補完が効かない 設定ファイルがgnupack-xxxx/{config.ini, home/.emacs}とかにあって、別の場所に移したい
+など</description>
+    </item>
+    
+    <item>
+      <title>java, scalaでOSコマンド実行</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110628/</link>
+      <pubDate>Tue, 28 Jun 2011 17:08:45 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110628/</guid>
+      <description>Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(&amp;quot;cp -p foo.txt foo.txt.BACKUP&amp;quot;); p.waitFor();  など。|や&amp;gt;を使いたいときは、
+String cmd = &amp;quot;diff foo.txt foo.txt.BACKUP &amp;gt; foo.txt.diff&amp;quot;; String[] cmdArray = {&amp;quot;/bin/sh&amp;quot;, &amp;quot;-c&amp;quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray);  というぐあいにArrayにする。
+ちなみにscalaだとこんな感じ。
+val cmdBody = &amp;quot;diff foo.txt foo.txt.BACKUP &amp;gt; foo.txt.diff&amp;quot; val cmd = Array(&amp;quot;su&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;nobody&amp;quot;, &amp;quot;-c&amp;quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&amp;quot;異常終了 &amp;quot; + p.toString()) }  </description>
+    </item>
+    
+    <item>
+      <title>scalaでスクリプトを書く</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110623/</link>
+      <pubDate>Thu, 23 Jun 2011 17:09:45 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110623/</guid>
+      <description>perlとかで書いていたスクリプトをscalaで書こうとすると、クラスパスなどの環境変数を定義してからscalaスクリプトを起動するような起動ファイルが別にいるんだと、昔のCOBOLとJCLみたいでかっこわるいなと思っていたら、解決することができた。scalaスクリプト冒頭に
+#! /bin/bash cp=&amp;quot;/usr/local/share/commons-logging.jar&amp;quot; export JAVA_OPTS=&amp;quot;-server -Xms1024m -Dcluster=localhost:1100&amp;quot; exec scala -classpath $cp $0 $@ !# println(&amp;quot;Hello, Scala!&amp;quot;)  とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。</description>
+    </item>
+    
+    <item>
+      <title>ubuntuのcron環境</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110620/</link>
+      <pubDate>Mon, 20 Jun 2011 17:10:48 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110620/</guid>
+      <description>今までRedHatで動いていたcronのジョブをubuntuに移植したところ、sourceコマンドがない、というエラーが出るようになった。なぜかubuntuのcronはbashではなく、shで動いているもよう。crontab -eでcronの編集画面を開いて、
+SHELL=/bin/bash  を加えるとbashで動くようになった。
+さらに、cronから出るメールが文字化け。ヘッダをみると、
+Content-type: text/plain; charset=ANSI_X3.4-1968  となっていたので、上記のようにcrontab -eで
+CONTENT_TYPE=text/plain; utf-8  を追加して解決。</description>
+    </item>
+    
+    <item>
+      <title>ubuntuのインストール</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110609/</link>
+      <pubDate>Thu, 09 Jun 2011 17:11:47 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110609/</guid>
+      <description>ひさしぶりのlinuxインストール。マシンはSSDを搭載しているので、SSDにインストールしたところ、最後にgrubの書き込みに失敗とのメッセージ。windowsに戻してデュアルブートにしたり、super grub diskを使ってみたり、いろいろしましたが、インストール時にブートローダのインストール場所を指定するところで、/dev/sdaとしていたのがいけなかったようで。/dev/mapper/xxxxx (striped)を指定したらすっと入りました。SSDだからとかは関係なかった。そのほか気がついたこと。
+64bitインストーラは日本のサイトでは見つけられなかった。ubuntu.comからダウンロード。ファイル名にamdとあるが気にしない
+当然のことながらCDに焼くよりusbメモリのほうが速い。インストールも速い。
+usbにインストーラを入れるときはnetbootinというツールを使用</description>
+    </item>
+    
+    <item>
+      <title>portからbrewへ</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110608/</link>
+      <pubDate>Wed, 08 Jun 2011 17:12:31 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110608/</guid>
+      <description>MacBook Airでportを使っていましたが、scala29をインストールするとエラーが発生。ライブラリがないとかいってきましたが、これを機会にbrewに乗り換えました。
+$ cd /usr $ sudo mkdir local $ sudo chown xxxx local $ cd local $ ruby -e &amp;quot;$(curl -fsSL https://raw.github.com/gist/323731/39fc1416e34b9f6db201b4a026181f4ceb7cfa74)&amp;quot;  で、brew install scala, brew install sbtなど。インストールすると、/usr/local/Cellarというディレクトリにもろもろ入るようです。
+あとは、~/.bash_profileで/usr/local/binへのパスを張っときます。これで、play + scala環境がMacにできたと。やっぱり手元がunixだとなにかと便利、な気がします。</description>
+    </item>
+    
+    <item>
+      <title>play &#43; scala</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110607/</link>
+      <pubDate>Tue, 07 Jun 2011 17:13:19 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110607/</guid>
+      <description>playにscalaをインストールする
+$ play install scala  プロジェクトを作る
+$ play new sampleappscala --with scala  実行
+$ play run sampleappscala  </description>
+    </item>
+    
+    <item>
+      <title>scala &#43; google app engineでのエラー回避</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110422/</link>
+      <pubDate>Fri, 22 Apr 2011 17:14:16 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110422/</guid>
+      <description>eclipseでscalaを使ってgoogle app engineのプロジェクトを作りビルドすると
+scala org.datanucleus.metadata.MetaDataManager loadClasses  的なエラーが出る。これを回避するには.projectのdatanucleusあたりをコメントアウト。</description>
+    </item>
+    
+    <item>
+      <title>eclipseでandroid&#43;scalaプロジェクトを作る手順</title>
+      <link>https://ymraintree.github.io/blog/post/2011/20110420/</link>
+      <pubDate>Wed, 20 Apr 2011 17:15:16 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2011/20110420/</guid>
+      <description>./create_project crashball org.crashball --platform android-7 --scala-version 2.8.1  でプロジェクトを作成。
+eclipseでプロジェクトを作成。こちらはscalaプロジェクト。
+create_projectで作ったディレクトリからproject, src/*, testsをeclipseプロジェクトへ移動。
+sbt update  eclipseでソースフォルダの設定
+src/main/java src/main/scala src/test/scala  クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。
+これでできあがり。あとはsbtでcompileなり、start-emulator, start-deviceなり。</description>
+    </item>
+    
+    <item>
+      <title>映画『バレンタインデー』</title>
+      <link>https://ymraintree.github.io/blog/post/2010/20100830/</link>
+      <pubDate>Mon, 30 Aug 2010 17:16:29 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2010/20100830/</guid>
+      <description>ITには関係ないけれど、休日のリフレッシュのために映画「バレンタインデー」を観ました。いろいろ詰め込み過ぎなのか、ユーモアの部分とシリアスの部分の振れ幅が小さいなど、編集がちょっと甘かったりしましたが、そこそこおもしろかったです。似たような作品では「ラブ・アクチュアリー」のほうが出来は上だったかな。中にはいいセリフもありました。「愛するということは、相手の好きなところ、いいところを愛するだけでなく、悪いところ、嫌なところも丸ごと愛するということだ」みたいなことをシャーリー・マクレーンがいっていました。いかんせん、このシーンの彼女の衣装がなんかフワフワしてて、いいセリフがずしーんとこないんですよねえ。</description>
+    </item>
+    
+    <item>
+      <title>scalaでJavaのインナークラスを扱う</title>
+      <link>https://ymraintree.github.io/blog/post/2010/20100729/</link>
+      <pubDate>Thu, 29 Jul 2010 17:19:06 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2010/20100729/</guid>
+      <description>scalaでJavaのインナークラスを使う場面に、apache pivotをさわっているとき出くわしました。
+import org.apache.pivot.wtk.Component  して
+var style:Component#StyleDictionary = label.getStyles()  とする。#を使うんですねえ。</description>
+    </item>
+    
+    <item>
+      <title>scala-2.8でEJB</title>
+      <link>https://ymraintree.github.io/blog/post/2010/20100720/</link>
+      <pubDate>Tue, 20 Jul 2010 17:20:04 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2010/20100720/</guid>
+      <description>scala-2.8が先週リリースされたので、eclipseプラグインもアップデートしてみました。既存のEJBが
+@GeneratedValue(strategy=GenerationType.AUTO)  の行でannotation needs to be a constantというメッセージでエラーになりました。
+コマンドラインでscalacするとコンパイルできるようなので、eclipseプラグインの問題のようです。移行はもうちょっと待ってみよう。</description>
+    </item>
+    
   </channel>
 </rss>
