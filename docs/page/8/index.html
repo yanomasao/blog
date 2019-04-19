@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/" />
+  
+  
+  <meta property="og:type" content="website" />
+  
+
+  <title>
+     コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+  <link href="https://ymraintree.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="コードの波にゆ～らゆら" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      
+      <a href="https://ymraintree.github.io/blog/index.xml" class="btn-header btn-subscribe hidden-xs">
+        <i class="fa fa-rss" aria-hidden="true"></i>
+        &nbsp;Subscribe
+      </a>
+      
+    </section>
+  </header>
+  <main class="container">
+
+<div class="article-list">
+  
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20121031/">ssh.el</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-10-31T15:39:29&#43;09:00">
+          Oct 31, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ssh.elを使ってリモートホストにアクセスするとき、-l taro付きで開いたバッファ上から別のsshアクセスを-lなしですると、-l taroが付け加えられてしまう。これを防ぐには、init.elに
+'(ssh-explicit-args (quote (&quot;-lhanako&quot;)))  のようにデフォルトのユーザ名をセットしておくとよい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20121024/">KeyRemap4MacBookにアプリケーションを追加する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-10-24T15:40:38&#43;09:00">
+          Oct 24, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    KeyRemap4MacBookで設定をしていて、TeamViewerへの変更が効かないことに気づいた。調べたところ、
+http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
+を参考にしてできた。
+メニューバーにあるKeyRemap4MacBookのアイコンからLaunch EventViewerをクリック。 TeamViewerのウィンドウをアクティブにするとEventViewerのCurrent Applicationにcom.teamviewer.TeamViewerと表示される。 private.xmlに以下を追加
+&lt;appdef&gt; &lt;appname&gt;TEAMVIEWER&lt;/appname&gt; &lt;equal&gt;com.teamviewer.TeamViewer&lt;/equal&gt; &lt;/appdef&gt;  を追加。これで、設定にTEAMVIEWERというキーワードが使える。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20121023/">KeyRemap4MacBookでControlとCommandキーを入れ替える</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-10-23T15:41:47&#43;09:00">
+          Oct 23, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Macを使っていると、Emacs, Terminal以外では、ほとんどコントロールキーを使わず、コマンドキーをメインで使う。しかし、コマンドキーは位置がスペースバーのとなりで、ほかのキーと組み合わせるのに押しづらい。なので、Emacs, Terminalなど以外のアプリケーションのときはコントロールキーとコマンドキーを入れ替えることにした。KeyRemap4MacBookの~/Library/Application Support/KeyRemap4MacBook/private.xmlは以下のとおり。
+&lt;item&gt; &lt;name&gt;Swap Control and Command&lt;/name&gt; &lt;not&gt;EMACS, TERMINAL, TEAMVIEWER, VIRTUALMACHINE&lt;/not&gt; &lt;identifier&gt;private.swap_control_and_command&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L&lt;/autogen&gt; &lt;/item&gt;  以前は
+&lt;item&gt; &lt;name&gt;Swap Control-/ and Command-/&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.eclipse.swap_control/_and_command/&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::SLASH, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::SLASH, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120919/">qnapのcronの設定</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-19T15:43:03&#43;09:00">
+          Sep 19, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    普通にcrontab -eで設定してもなにかのタイミングで消えてしまう。
+# vi /etc/config/crontab # /etc/init.d/crond.sh restart  このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120911/">ubuntuでavahi-daemonなどの停止</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-11T15:44:06&#43;09:00">
+          Sep 11, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。
+$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove  他には
+$ sudo update-rc.d XXXXXX disable  で起動しなくなるものもあるらしい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905/">heartbeat環境構築</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-05T16:00:51&#43;09:00">
+          Sep 5, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat  /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
+heartbeatの管理下に置くプロセスはharesourcesに記述するとともに、OS起動時に起動しないようにしておくこと。
+起動
+$ sudo /etc/init.d/heartbeat start  確認
+$ sudo /etc/init.d/heartbeat status  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">drbd環境構築</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-05T15:04:16&#43;09:00">
+          Sep 5, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    プライマリでの作業
+$ dpkg --list|grep drbd $ sudo apt-get install drbd8-utils $ dpkg --list|grep drbd  /etc/drbd.confの設定
+メタデータ領域の作成
+$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1  メタデータ作成
+$ sudo drbdadm create-md r0  ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。
+プライマリ、セカンダリともdrbd起動。このとき、drbdで使用するディスクをアンマウントしておくこと
+$ sudo /etc/init.d/drbd start  状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。
+$ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F513ACA6DA60 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136 $  あるいは
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904/">emacs trampでリモートのファイルをrootで開く</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-04T16:06:51&#43;09:00">
+          Sep 4, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    http://philos0.blog94.fc2.com/blog-entry-20.html
+を参考に
+init.elに以下を追加
+(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil))  C-x C-f /sudo:remoteserver:/etc/hosts  が使えるようになった。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904-2/">apt関係のコマンド</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-04T15:08:14&#43;09:00">
+          Sep 4, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ubunbuのパッケージ管理に関するコマンド
+検索
+apt-cache search XXXXXX  インストール
+apt-get install XXXXXX  インストール済パッケージの一覧
+dpkg --list  アンインストール
+apt-get remove XXXXXX  設定まで消すときは
+apt-get --purge remove XXXXXX  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120530/">postgres ストリーミングレプリケーション</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-05-30T16:09:52&#43;09:00">
+          May 30, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ホットスタンバイ・非同期の設定
+準備 ロールの作成
+$ psql postgres postgres=# create role repl_user login replication password 'xxxxxx';  アーカイブディレクトリの作成
+$ sudo mkdir /usr/local/pgsql/archive $ sudo chown postgres /usr/local/pgsql/archive  設定ファイル postgresql.conf
+wal_level = hot_standby archive_mode = on archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f' max_wal_senders = 2  pg_hba.conf
+host replication repl_user 192.168.0.2/32 md5  ベースバックアップ 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。 スタンバイでベースバックアップ。
+$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose  スタンバイサーバの設定 postgresql.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120530/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+</div>
+<nav class="pagination" role="navigation">
+
+  <hr />
+
+
+<a class="newer-posts" href="https://ymraintree.github.io/blog/page/7/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
+
+  <span class="page-number">Page 8 of 8</span>
+
+</nav>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
+

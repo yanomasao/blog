@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" MacOS10.6.8アップデートでjavawsが動かなくなった &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" openntpdとisc-dhcp-serverの自動起動 &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2013/20130201/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2013/20130125/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2013-02-01T16:08:43&#43;09:00" />
+  <meta property="og:article:published_time" content="2013-01-25T15:33:57&#43;09:00" />
   
   
 
   <title>
-     MacOS10.6.8アップデートでjavawsが動かなくなった &middot;  コードの波にゆ～らゆら
+     openntpdとisc-dhcp-serverの自動起動 &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">MacOS10.6.8アップデートでjavawsが動かなくなった</h1>
+    <h1 class="text-primary">openntpdとisc-dhcp-serverの自動起動</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2013-02-01T16:08:43&#43;09:00">
-          Feb 1, 2013
+        <time datetime="2013-01-25T15:33:57&#43;09:00">
+          Jan 25, 2013
         </time>
       </div>
     
@@ -78,7 +78,29 @@
     </div>
   </header>
   <section>
-    <p>表記のとおりの現象が起き、javawsを利用した業務システムが動かなくなるという怖い現象が起きた。いろいろ調べた結果、Java for OS X Developer Preview 11M4001+10M4001というものがあるというので、apple developers centerからjavadeveloper_for_mac_os_x_10.6_update_12__10m4001.dmgをダウンロードしてインストールすると解決する。これにより、javaのバージョンは1.6.0_37から1.6.0_38に上がった。</p>
+    <p>openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに</p>
+
+<pre><code>/etc/init.d/isc-dhcp-server start
+/etc/init.d/openntpd start
+
+exit 0
+</code></pre>
+
+<p>と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。</p>
+
+<pre><code>fatal: bind: Cannot assign requested address
+</code></pre>
+
+<p>そこで、/etc/rc.localを</p>
+
+<pre><code>/etc/init.d/isc-dhcp-server start
+sleep 10
+/etc/init.d/openntpd start
+
+exit 0
+</code></pre>
+
+<p>としたら動くようになった。</p>
 
   </section>
   <footer>
@@ -97,10 +119,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2013/20130208/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2013/20130128/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130129/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130117/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>
