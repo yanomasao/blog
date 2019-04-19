@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" qcow2でイメージファイルを作る &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" play&#43;scalaプロジェクトをeclipseにインポートする &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/20130812/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2011/20110722/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2013-08-12T09:00:00&#43;09:00" />
+  <meta property="og:article:published_time" content="2011-07-22T16:50:30&#43;09:00" />
   
   
 
   <title>
-     qcow2でイメージファイルを作る &middot;  コードの波にゆ～らゆら
+     play&#43;scalaプロジェクトをeclipseにインポートする &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">qcow2でイメージファイルを作る</h1>
+    <h1 class="text-primary">play&#43;scalaプロジェクトをeclipseにインポートする</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2013-08-12T09:00:00&#43;09:00">
-          Aug 12, 2013
+        <time datetime="2011-07-22T16:50:30&#43;09:00">
+          Jul 22, 2011
         </time>
       </div>
     
@@ -78,12 +78,12 @@
     </div>
   </header>
   <section>
-    <p>イメージファイルをqcow2フォーマットで作る場合は、virt-managerで新規作成する前に、ホスト側で</p>
+    <p>play+scalaでちょっとずつ書き始めたので、そろそろeclipseも試そうと思いました。</p>
 
-<pre><code>$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G
+<pre><code>$ ./play eclipsify xxxxx
 </code></pre>
 
-<p>としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。</p>
+<p>してeclipseにインポートしたんですが、scalaのコードにコンパイルエラーが出てしまいました。すでに動いているものなのに。playのeclipsifyでクラスパスもきっちり設定されているのに。気を取り直してよくよく調べるとplay-1.2.1/modules/scala-0.9/libのplay-scala.jarとscalatest-1.2-zzzzzzzzzzzz.jarをインポートしたらコンパイルエラーは出なくなりました。</p>
 
   </section>
   <footer>
@@ -102,10 +102,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/20130814/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2011/20110802/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/20130313/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2011/20110714/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

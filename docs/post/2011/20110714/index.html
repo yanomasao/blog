@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" mongodb&#43;casbah&#43;scala &middot;  コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2011/20110714/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2011-07-14T16:51:30&#43;09:00" />
+  
+  
+
+  <title>
+     mongodb&#43;casbah&#43;scala &middot;  コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="https://ymraintree.github.io/blog/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">mongodb&#43;casbah&#43;scala</h1>
+    <div class="post-meta clearfix">
+    
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-07-14T16:51:30&#43;09:00">
+          Jul 14, 2011
+        </time>
+      </div>
+    
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>遅まきながらmongodbの勉強。sbt-0.10でプロジェクトを作る。</p>
+
+<pre><code>$ mkdir sbt-mongo
+$ cd sbt-mongo
+</code></pre>
+
+<p>ここで、build.sbtを作成。内容は以下。</p>
+
+<pre><code>name := &quot;Hello Mongo+Casbah&quot;
+
+version := &quot;1.0.0&quot;
+
+scalaVersion := &quot;2.9.0&quot;
+
+organization := &quot;&quot;
+
+libraryDependencies ++= Seq(
+  &quot;com.mongodb.casbah&quot; % &quot;casbah_2.9.0-1&quot; % &quot;2.1.5-1&quot;
+)
+
+mainClass in(Compile, run) := Some(&quot;mongo.casbah.Sample&quot;)
+</code></pre>
+
+<p>で、sbt実行</p>
+
+<pre><code>$ sbt
+</code></pre>
+
+<p>するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。</p>
+
+<pre><code>package mongo.casbah
+
+import com.mongodb.casbah.Imports._
+
+object Sample {
+  def main(args:Array[String]) {
+    val collection = MongoConnection()(&quot;casbah_test&quot;)(&quot;sample&quot;)
+    
+    val user = MongoDBObject(&quot;id&quot;-&gt;1, &quot;name&quot;-&gt;&quot;me&quot;, &quot;address&quot;-&gt;&quot;テスト満載&quot;)
+    println(user)
+    collection += user
+
+    collection.find().foreach { println(_) }
+  }
+}
+</code></pre>
+
+<p>で、sbtプロンプトでrunすると、</p>
+
+<pre><code>&gt; run
+run
+[info] Compiling 1 Scala source to /net/ares/disk1/home/yano/project/scala/sbt-scalaquery/target/scala-2.9.0.final/classes...
+[info] Running mongo.casbah.Sample 
+SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+{ &quot;name&quot; : &quot;me&quot; , &quot;address&quot; : &quot;テスト満載&quot;}
+{ &quot;_id&quot; : { &quot;$oid&quot; : &quot;4e1e5687d6f3c6582990f4c6&quot;} , &quot;name&quot; : &quot;me&quot; , &quot;address&quot; : &quot;テスト満載&quot;}
+[success] Total time: 8 s, completed 2011/07/14 11:38:00
+&gt; 
+</code></pre>
+
+<p>となる。</p>
+
+<p>これをmongodbのプロンプトで見てみると、</p>
+
+<pre><code>$ mongo
+MongoDB shell version: 1.8.2
+connecting to: test
+&gt; use casbah
+switched to db casbah
+&gt; db.sample.find()
+{ &quot;_id&quot; : ObjectId(&quot;4e1e5687d6f3c6582990f4c6&quot;), &quot;name&quot; : &quot;me&quot;, &quot;address&quot; : &quot;テスト満載&quot; }
+&gt; 
+</code></pre>
+
+<p>となる。</p>
+
+<p>mongodbもcasbahもsbtにも慣れていないので要領が悪いが、ぼちぼち進めていきたい。</p>
+
+  </section>
+  <footer>
+    
+    
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2011/20110722/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2011/20110713/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
