@@ -3,20 +3,20 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content=" MacOS10.6.8アップデートでjavawsが動かなくなった &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" リモートからのEJB呼び出し &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2013/20130201/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2013/20130129/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2013-02-01T16:08:43&#43;09:00" />
+  <meta property="og:article:published_time" content="2013-01-29T15:28:41&#43;09:00" />
   
   
 
   <title>
-     MacOS10.6.8アップデートでjavawsが動かなくなった &middot;  コードの波にゆ～らゆら
+     リモートからのEJB呼び出し &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -62,13 +62,13 @@
 
 <article>
   <header>
-    <h1 class="text-primary">MacOS10.6.8アップデートでjavawsが動かなくなった</h1>
+    <h1 class="text-primary">リモートからのEJB呼び出し</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2013-02-01T16:08:43&#43;09:00">
-          Feb 1, 2013
+        <time datetime="2013-01-29T15:28:41&#43;09:00">
+          Jan 29, 2013
         </time>
       </div>
     
@@ -78,7 +78,23 @@
     </div>
   </header>
   <section>
-    <p>表記のとおりの現象が起き、javawsを利用した業務システムが動かなくなるという怖い現象が起きた。いろいろ調べた結果、Java for OS X Developer Preview 11M4001+10M4001というものがあるというので、apple developers centerからjavadeveloper_for_mac_os_x_10.6_update_12__10m4001.dmgをダウンロードしてインストールすると解決する。これにより、javaのバージョンは1.6.0_37から1.6.0_38に上がった。</p>
+    <p>なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。</p>
+
+<pre><code>private def getBean:ZZZZZZSession = {
+val props = new Hashtable[String, AnyRef];
+props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;);
+props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;);
+props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;);
+props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;);
+props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]);
+//	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;);
+
+val ctxRemote = new InitialContext(props);
+ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession]
+}
+</code></pre>
+
+<p>上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。</p>
 
   </section>
   <footer>
@@ -97,10 +113,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2013/20130208/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2013/20130201/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130129/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130128/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

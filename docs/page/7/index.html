@@ -180,6 +180,137 @@ $ sudo umount /zoo
 </article>
 
   
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130129/">リモートからのEJB呼び出し</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-29T15:28:41&#43;09:00">
+          Jan 29, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。
+private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] }  上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130128/">JBoss7にscalaで書いたプロジェクトをデプロイする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-28T15:31:04&#43;09:00">
+          Jan 28, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    scalaで書いたEJBのプロジェクトをデプロイするには、
+modules/org/scala/mainディレクトリ作成して、modules.xmlを以下の内容で作成。scala-library.jarも置く。
+&lt;module xmlns=&quot;urn:jboss:module:1.1&quot; name=&quot;org.scala&quot;&gt; &lt;resources&gt; &lt;resource-root path=&quot;scala-library.jar&quot;/&gt; &lt;/resources&gt; &lt;dependencies&gt; &lt;/dependencies&gt; &lt;/module&gt;  scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。
+&lt;jboss-deployment-structure&gt; &lt;deployment&gt; &lt;dependencies&gt; &lt;module name=&quot;org.scala&quot; /&gt; &lt;/dependencies&gt; &lt;/deployment&gt; &lt;/jboss-deployment-structure&gt;  これでデプロイが正常にされる。
+上記設定をせずに、scala-library.jarをstandalone/deploymentsに入れてEJBプロジェクトをデプロイしても、
+java.lang.NoClassDefFoundError: scala/ScalaObject  のエラーが出て正常にデプロイできない。
+&lt;&lt;追記&gt;&gt; その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに
+&lt;module name=&quot;deployment.scala-library.jar&quot; /&gt;  で参照できると判明。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130125/">openntpdとisc-dhcp-serverの自動起動</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-25T15:33:57&#43;09:00">
+          Jan 25, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに
+/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0  と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
+fatal: bind: Cannot assign requested address  そこで、/etc/rc.localを
+/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0  としたら動くようになった。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130117/">Mac emacsのバージョン</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-17T15:35:29&#43;09:00">
+          Jan 17, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    brewでemacsをインストールすると、24.2.1が入ったが、以前使っていた23に比べて、
+sshでリモートマシンにログインした時のファイル名補完が遅い。 別のアプリでコピーしたテキストを中ボタンクリック（マジックトラックパッドでの3本指タップ）でペーストできない。
+などの不便な点があり、ためしに、http://emacsformacosx.com/builds　から23.4をダウンロードしてインストールしたら上記問題は解決。しばらくはこれで様子をみる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130108/">Mac CPAN</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-08T15:37:25&#43;09:00">
+          Jan 8, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    開発用にMac miniを買って、eclipseなどインストールしたところ、perlのスクリプトにJcodeが見えないというエラーが。せっかくだからJcodeをインストール。
+bash-3.2$ sudo perl -MCPAN -e shell cpan[1]&gt; install Jcode  ついでにinstall Pgもしたがエラー。
+cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Checksum for /Users/yano/.cpan/sources/authors/id/M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz ok CPAN.pm: Going to build M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Configuring Pg Remember to actually read the README file ! please set environment variables POSTGRES_INCLUDE and POSTGRES_LIB ! Warning: No success on command[/usr/bin/perl Makefile.PL] MERGL/pgsql_perl5-1.9.0.tar.gz /usr/bin/perl Makefile.PL -- NOT OK Running make test Make had some problems, won't test Running make install Make had some problems, won't install Failed during this command: MERGL/pgsql_perl5-1.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130108/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -188,7 +319,9 @@ $ sudo umount /zoo
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/6/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 7 of 7</span>
+  <span class="page-number">Page 7 of 8</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/8/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 
 </nav>
 

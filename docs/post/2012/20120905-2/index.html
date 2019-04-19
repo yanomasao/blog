@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" drbd環境構築 &middot;  コードの波にゆ～らゆら" />
+  
+  <meta property="og:site_name" content="コードの波にゆ～らゆら" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2012/20120905-2/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2012-09-05T15:04:16&#43;09:00" />
+  
+  
+
+  <title>
+     drbd環境構築 &middot;  コードの波にゆ～らゆら
+  </title>
+
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/main.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://ymraintree.github.io/blog/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://ymraintree.github.io/blog/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://ymraintree.github.io/blog/">コードの波にゆ～らゆら</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="https://ymraintree.github.io/blog/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">drbd環境構築</h1>
+    <div class="post-meta clearfix">
+    
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-05T15:04:16&#43;09:00">
+          Sep 5, 2012
+        </time>
+      </div>
+    
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>プライマリでの作業</p>
+
+<pre><code>$ dpkg --list|grep drbd
+$ sudo apt-get install drbd8-utils
+$ dpkg --list|grep drbd
+</code></pre>
+
+<p>/etc/drbd.confの設定</p>
+
+<p>メタデータ領域の作成</p>
+
+<pre><code>$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1
+</code></pre>
+
+<p>メタデータ作成</p>
+
+<pre><code>$ sudo drbdadm create-md r0
+</code></pre>
+
+<p>ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。</p>
+
+<p>プライマリ、セカンダリともdrbd起動。このとき、drbdで使用するディスクをアンマウントしておくこと</p>
+
+<pre><code>$ sudo /etc/init.d/drbd start
+</code></pre>
+
+<p>状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。</p>
+
+<pre><code>$ cat /proc/drbd
+version: 8.3.11 (api:88/proto:86-96)
+srcversion: 71955441799F513ACA6DA60 
+0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r-----
+ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136
+$ 
+</code></pre>
+
+<p>あるいは</p>
+
+<pre><code>$ drbd-overview
+0:??not-found?? Connected Secondary/Secondary Inconsistent/Inconsistent C r----- 
+$ 
+</code></pre>
+
+<p>強制的にプライマリを指定。当然ながら、プライマリサーバで実行。この処理はインストール時のみ。</p>
+
+<pre><code>$ sudo drbdadm -- --overwrite-data-of-peer primary r0
+</code></pre>
+
+<p>同期が自動的に始まる。</p>
+
+<pre><code>$ cat /proc/drbd
+version: 8.3.11 (api:88/proto:86-96)
+srcversion: 71955441799F513ACA6DA60 
+0: cs:SyncSource ro:Primary/Secondary ds:UpToDate/Inconsistent C r-----
+ns:4674424 nr:0 dw:0 dr:4683168 al:0 bm:285 lo:1 pe:23 ua:64 ap:0 ep:1 wo:f oos:397767648
+[&gt;....................] sync'ed: 1.2% (388444/393004)Mfinish: 0:55:39 speed: 119,072 (116,784) K/sec
+$
+</code></pre>
+
+<p>ファイルシステム構築</p>
+
+<pre><code>$ sudo mkfs.ext4 /dev/drbd0
+</code></pre>
+
+<p>マウントして使用開始</p>
+
+<pre><code>$ sudo mkdir /drbd0
+$ sudo mount /dev/drbd0 /drbd0
+</code></pre>
+
+  </section>
+  <footer>
+    
+    
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2012/20120905/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120904/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://ymraintree.github.io/blog/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
