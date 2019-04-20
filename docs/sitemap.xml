@@ -25,6 +25,18 @@
   </url>
   
   <url>
+    <loc>https://ymraintree.github.io/blog/tags/</loc>
+    <lastmod>2019-03-31T12:30:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/book/</loc>
+    <lastmod>2019-03-31T12:30:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ymraintree.github.io/blog/post/2019/20190331-3/</loc>
     <lastmod>2019-03-31T12:30:00+09:00</lastmod>
   </url>
@@ -611,11 +623,6 @@
   
   <url>
     <loc>https://ymraintree.github.io/blog/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/tags/</loc>
     <priority>0</priority>
   </url>
   
