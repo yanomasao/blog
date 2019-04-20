@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on コードの波にゆ～らゆら</title>
+    <link>https://ymraintree.github.io/blog/tags/github/</link>
+    <description>Recent content in github on コードの波にゆ～らゆら</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Apr 2019 09:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://ymraintree.github.io/blog/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>スマホでブログを書いてみる</title>
+      <link>https://ymraintree.github.io/blog/post/2019/20190404/</link>
+      <pubDate>Thu, 04 Apr 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2019/20190404/</guid>
+      <description>&lt;p&gt;スマホでブログを書いてみる。&lt;code&gt;hugo new&lt;/code&gt;せずにgithubでcreate new file
+するので、&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

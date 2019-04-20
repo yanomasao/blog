@@ -17,11 +17,7 @@
       <pubDate>Thu, 18 Apr 2019 14:53:32 +0900</pubDate>
       
       <guid>https://ymraintree.github.io/blog/post/2019/20190418/</guid>
-      <description>もう5月号が出ているけれど、ようやく目を通した。
-Git操作、Python環境、コンテナでの開発など実用的な情報が満載。個人的にはあまりきちんとやっていないPythonの仮想環境などは、この情報をもとに整備していきたい。
-また、定例でもGoやdocker-compose、Flutterなどおもしろい記事が多かった。
-こういう情報を読んだら、ちょっとでもいいから手を動かして実践していくのがだいじなので、周回遅れながらもついていくようにしようと思う。
- </description>
+      <description>&lt;p&gt;もう5月号が出ているけれど、ようやく目を通した。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,8 +26,8 @@ Git操作、Python環境、コンテナでの開発など実用的な情報が�
       <pubDate>Thu, 04 Apr 2019 09:00:00 +0900</pubDate>
       
       <guid>https://ymraintree.github.io/blog/post/2019/20190404/</guid>
-      <description>スマホでブログを書いてみる。hugo newせずにgithubでcreate new file するので、タイトル部分の
---- title: &amp;quot;iPad&amp;quot; date: 2019-04-04T09:00:00+09:00 draft: true ---  を別ファイルからコピーしてこないといけないのがめんどう。それでもまあ、書けないことはないということがわかった。</description>
+      <description>&lt;p&gt;スマホでブログを書いてみる。&lt;code&gt;hugo new&lt;/code&gt;せずにgithubでcreate new file
+するので、&lt;/p&gt;</description>
     </item>
     
     <item>
