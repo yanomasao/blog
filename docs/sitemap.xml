@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ymraintree.github.io/blog/tags/</loc>
+    <lastmod>2019-04-18T14:53:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ymraintree.github.io/blog/post/</loc>
+    <lastmod>2019-04-18T14:53:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/</loc>
+    <lastmod>2019-04-18T14:53:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/book/</loc>
     <lastmod>2019-04-18T14:53:32+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -20,20 +38,20 @@
   </url>
   
   <url>
+    <loc>https://ymraintree.github.io/blog/tags/github/</loc>
+    <lastmod>2019-04-04T09:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/hugo/</loc>
+    <lastmod>2019-04-04T09:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ymraintree.github.io/blog/post/2019/20190404/</loc>
     <lastmod>2019-04-04T09:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/tags/</loc>
-    <lastmod>2019-03-31T12:30:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/tags/book/</loc>
-    <lastmod>2019-03-31T12:30:00+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -49,6 +67,18 @@
   <url>
     <loc>https://ymraintree.github.io/blog/post/2019/20190330-3/</loc>
     <lastmod>2019-03-31T00:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/circleci/</loc>
+    <lastmod>2019-03-31T00:44:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/slack/</loc>
+    <lastmod>2019-03-31T00:44:00+09:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -94,6 +124,12 @@
   <url>
     <loc>https://ymraintree.github.io/blog/post/2019/20190111/</loc>
     <lastmod>2019-01-11T17:09:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/mac/</loc>
+    <lastmod>2019-01-11T17:09:00+09:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
