@@ -63,6 +63,36 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130108/">Mac CPAN</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-08T15:37:25&#43;09:00">
+          Jan 8, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    開発用にMac miniを買って、eclipseなどインストールしたところ、perlのスクリプトにJcodeが見えないというエラーが。せっかくだからJcodeをインストール。
+bash-3.2$ sudo perl -MCPAN -e shell cpan[1]&gt; install Jcode  ついでにinstall Pgもしたがエラー。
+cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Checksum for /Users/yano/.cpan/sources/authors/id/M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz ok CPAN.pm: Going to build M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Configuring Pg Remember to actually read the README file ! please set environment variables POSTGRES_INCLUDE and POSTGRES_LIB ! Warning: No success on command[/usr/bin/perl Makefile.PL] MERGL/pgsql_perl5-1.9.0.tar.gz /usr/bin/perl Makefile.PL -- NOT OK Running make test Make had some problems, won't test Running make install Make had some problems, won't install Failed during this command: MERGL/pgsql_perl5-1.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130108/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20121031/">ssh.el</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -288,40 +318,6 @@ dpkg --list  アンインストール
 apt-get remove XXXXXX  設定まで消すときは
 apt-get --purge remove XXXXXX  
   </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120530/">postgres ストリーミングレプリケーション</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-05-30T16:09:52&#43;09:00">
-          May 30, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    ホットスタンバイ・非同期の設定
-準備 ロールの作成
-$ psql postgres postgres=# create role repl_user login replication password 'xxxxxx';  アーカイブディレクトリの作成
-$ sudo mkdir /usr/local/pgsql/archive $ sudo chown postgres /usr/local/pgsql/archive  設定ファイル postgresql.conf
-wal_level = hot_standby archive_mode = on archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f' max_wal_senders = 2  pg_hba.conf
-host replication repl_user 192.168.0.2/32 md5  ベースバックアップ 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。 スタンバイでベースバックアップ。
-$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose  スタンバイサーバの設定 postgresql.
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120530/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
   
 </article>
 

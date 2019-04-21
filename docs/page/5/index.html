@@ -63,6 +63,35 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140805/">qcow2からvmdkへ変換するとき</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-08-05T09:00:00&#43;09:00">
+          Aug 5, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img  のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
+$ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img real	19m57.342s user	18m2.423s sys	0m24.398s $ ls -lh -rw-r--r-- 1 root root 7.4G 8月 5 18:22 zabbixVM.compact.img -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img $ time sudo qemu-img convert -p -f qcow2 -O vmdk zabbixVM.compact.img zabbixVM.vmdk real	78m36.654s user	5m4.354s sys	2m59.439s $ ls -lh -rw-r--r-- 1 root root 7.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2014/20140805/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2014/20140804/">vmdkのクローン</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -284,28 +313,6 @@ String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることがで�
     もっといい方法があると思うけれど、とりあえず実現できたやり方
 scalaのMapのvaluesをjava.util.Collectionに変換する
 new java.util.ArrayList[UriageForRanking](result.values)  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131001/">chromeのポップアップをタブで開く</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-10-01T09:00:00&#43;09:00">
-          Oct 1, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    リンクをクリックするとポップアップが表示されるかわりにタブで表示させるのに、chromeではTab Position Customizerという機能拡張を使ってきたが、いつのまにかchromeウェブストアからなくなっている。ぐぐってみたらウェブストアでないところに、Tab_Position_Customizer_2.9.1_0.crxというファイルがあるので、これをダウンロードし、chromeに機能拡張の一覧を表示させてそこにドラッグするとインストールできる。
   </div>
   
 </article>

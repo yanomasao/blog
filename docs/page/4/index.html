@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150521/">scalaでxmlのCDATAを扱う</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-05-21T09:00:00&#43;09:00">
+          May 21, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    普通に
+val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;  みたいなことを書くと、
+x &lt; y  に変換されてしまう。これをしないように、CDATAを使うには
+&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;  とすればよい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2015/20150122/">KarabinerでEclipseのキーバインドを変更</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -279,35 +304,6 @@ $ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
   <footer>
     <ul class="pager">
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2014/20140813/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140805/">qcow2からvmdkへ変換するとき</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-08-05T09:00:00&#43;09:00">
-          Aug 5, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img  のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
-$ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img real	19m57.342s user	18m2.423s sys	0m24.398s $ ls -lh -rw-r--r-- 1 root root 7.4G 8月 5 18:22 zabbixVM.compact.img -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img $ time sudo qemu-img convert -p -f qcow2 -O vmdk zabbixVM.compact.img zabbixVM.vmdk real	78m36.654s user	5m4.354s sys	2m59.439s $ ls -lh -rw-r--r-- 1 root root 7.
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2014/20140805/">Read more <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
   

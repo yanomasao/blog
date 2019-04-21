@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2018/20180115/">国民年金・失業保険</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-01-15T09:00:00&#43;09:00">
+          Jan 15, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    思うところあって、2017年末に25年以上勤めた会社を早期退職した。これからどうするかなど、たいしたプランもないなかで、とりあえず必要なことをしていく。
+まずは、厚生年金を国民年金にスイッチ。このまま受給日まで国民年金で行った場合、厚生年金と合わせた受給額はいくらになるのかなどは、年金事務所に問い合わせろとのこと。市役所は手続きのみらしい。
+つづいてハローワークで失業保険受給の手続き。職業安定所といったら、昔は仕事にあぶれたおじさんたちが肩寄せあってタバコを吸いながらしみったれた話しをしているところ、というイメージだったけど、今はすっかりクリーンになっていて、通っても気持ちが暗くなるということもなさそうで安心した。今の労働市場はどうなっているのか、考えてもいなかったような仕事や環境に出会えるのではないかと、期待も芽生えてきた。
+これからどうなっていくのか、随時メモをつけていきたい。あいまにPythonやkotlinの勉強をしようと思う。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2017/20171008/">My First Lambda</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -270,31 +295,6 @@ import re def hantei(v): return re.search(\d, v)  とすると、re.search()がB
 val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300)  とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
 case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2はコピーされない。
 となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150521/">scalaでxmlのCDATAを扱う</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2015-05-21T09:00:00&#43;09:00">
-          May 21, 2015
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    普通に
-val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;  みたいなことを書くと、
-x &lt; y  に変換されてしまう。これをしないように、CDATAを使うには
-&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;  とすればよい。
   </div>
   
 </article>

@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110817/">caseクラスでパラメータにアノテーション</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-17T16:48:08&#43;09:00">
+          Aug 17, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    EJBのエンティティビーンをscalaで書こうと、
+@Entity @Cache(usage=CacheConcurrencyStrategy.NONE) case class Foo(@Id k:Int, v:String)  としてみたところ、以下のエラー。
+Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo  どうも、@Idアノテーションが効いていない様子。
+http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html
+によると、バグとのこと。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110802/">fessでPDF全文検索</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -296,29 +322,6 @@ trampの最初のアクセスで補完が効かない 設定ファイルがgnupa
 String cmd = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot;; String[] cmdArray = {&quot;/bin/sh&quot;, &quot;-c&quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray);  というぐあいにArrayにする。
 ちなみにscalaだとこんな感じ。
 val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&quot;異常終了 &quot; + p.toString()) }  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110623/">scalaでスクリプトを書く</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-06-23T17:09:45&#43;09:00">
-          Jun 23, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    perlとかで書いていたスクリプトをscalaで書こうとすると、クラスパスなどの環境変数を定義してからscalaスクリプトを起動するような起動ファイルが別にいるんだと、昔のCOBOLとJCLみたいでかっこわるいなと思っていたら、解決することができた。scalaスクリプト冒頭に
-#! /bin/bash cp=&quot;/usr/local/share/commons-logging.jar&quot; export JAVA_OPTS=&quot;-server -Xms1024m -Dcluster=localhost:1100&quot; exec scala -classpath $cp $0 $@ !# println(&quot;Hello, Scala!&quot;)  とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。
   </div>
   
 </article>

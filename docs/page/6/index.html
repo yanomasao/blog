@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131001/">chromeのポップアップをタブで開く</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-10-01T09:00:00&#43;09:00">
+          Oct 1, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    リンクをクリックするとポップアップが表示されるかわりにタブで表示させるのに、chromeではTab Position Customizerという機能拡張を使ってきたが、いつのまにかchromeウェブストアからなくなっている。ぐぐってみたらウェブストアでないところに、Tab_Position_Customizer_2.9.1_0.crxというファイルがあるので、これをダウンロードし、chromeに機能拡張の一覧を表示させてそこにドラッグするとインストールできる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130920/">デスクトップフォルダの変更</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -310,38 +332,6 @@ $ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets 
   <footer>
     <ul class="pager">
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130313/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130313-2/">ubuntuにKVMをインストール</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-03-13T09:00:00&#43;09:00">
-          Mar 13, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    ubuntuは12.04を使用。普通にインストールしたのち、
-$ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager  デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。
-NAT用のインタフェースを削除する
-$ sudo brctl show $ sudo virsh net-autostart default --disable $ sudo virsh net-destroy default $ sudo brctl show  /etc/network/interfacesの変更。以下のようにbr0を追加する。
-auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface br0 inet static address 10.5.34.145 network 10.5.0.0 netmask 255.255.0.0 broadcast 10.5.255.255 gateway 10.5.34.254 dns-nameservers 10.4.34.1 dns-search foo.bar.co.jp bridge_ports eth0 bridge_fd 9 bridge_hello 2 bridge_maxage 12 bridge_stp off  10.
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130313-2/">Read more <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
   

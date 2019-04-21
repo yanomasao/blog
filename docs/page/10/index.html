@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111017/">jbossのtransaction timeoutの制御</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-10-17T16:26:28&#43;09:00">
+          Oct 17, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    jbossで大きなバッチ処理などするとtimeoutで落ちてしまうことがある。このようなとき、そのメソッドだけtimeout値を変更するには、以下のアノテーションをメソッドに付ける
+@TransactionTimeout(1500)  参照URL: http://community.jboss.org/wiki/TransactionTimeout
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110930/">linuxサーバでpdfファイルの印刷</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -290,32 +313,6 @@ case class Shohin ( @Id pk:String  これが効かないと、EJBコンテナに
 http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html
 に解決方法がありました。
 import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @field)(columnDefinition=&quot;text&quot;) pk:String  とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110817/">caseクラスでパラメータにアノテーション</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-08-17T16:48:08&#43;09:00">
-          Aug 17, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    EJBのエンティティビーンをscalaで書こうと、
-@Entity @Cache(usage=CacheConcurrencyStrategy.NONE) case class Foo(@Id k:Int, v:String)  としてみたところ、以下のエラー。
-Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo  どうも、@Idアノテーションが効いていない様子。
-http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html
-によると、バグとのこと。
   </div>
   
 </article>

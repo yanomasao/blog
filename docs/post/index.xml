@@ -6,10 +6,19 @@
     <description>Recent content in Posts on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Apr 2019 14:53:32 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2019 01:32:41 +0900</lastBuildDate>
     
 	<atom:link href="https://ymraintree.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Karabiner-Elements</title>
+      <link>https://ymraintree.github.io/blog/post/2019/20190420/</link>
+      <pubDate>Sun, 21 Apr 2019 01:32:41 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2019/20190420/</guid>
+      <description>&lt;p&gt;Macのコマンドキーとコントロールキーを入れ替えるのにkeyhacを使っていたけれど、&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>ソフトウェアデザイン 2019年4月号</title>
