@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/template/"></a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2019-03-30T09:00:00&#43;09:00">
+          Mar 30, 2019
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2019/20190329-3/">github pages&#43;hugoでblog その３ CircleCI</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -302,36 +324,6 @@ import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2018/20180118/">AWS linuxのディスクを拡張する</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2018-01-18T09:00:00&#43;09:00">
-          Jan 18, 2018
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    AWSコンソールで当該EBSのサイズを拡張する。 ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。
-$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 8G 0 part / $ df -h /dev/xvda1 7.8G 7.6G 0 100% /  変わっていない。
-$ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487 $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 10G 0 part / $ sudo resize2fs /dev/xvda1 resize2fs 1.
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2018/20180118/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -340,7 +332,7 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 2 of 12</span>
+  <span class="page-number">Page 2 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/3/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 

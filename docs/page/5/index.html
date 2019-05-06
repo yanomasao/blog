@@ -63,6 +63,37 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140813/">vmdkの圧縮</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-08-13T09:00:00&#43;09:00">
+          Aug 13, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    # du -h liveVM20140813/ 269.6G liveVM20140813/ #  このシステムを圧縮。実際には50Gくらい。
+# date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ #  全然減らない。
+そこで、未使用領域をゼロ埋めしてみる。ゼロファイルを作ったらすぐ削除。
+$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2014/20140813/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2014/20140805/">qcow2からvmdkへ変換するとき</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -294,30 +325,6 @@ String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることがで�
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131010/">scalaとjavaのコレクションのやり取り</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-10-10T09:00:00&#43;09:00">
-          Oct 10, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    もっといい方法があると思うけれど、とりあえず実現できたやり方
-scalaのMapのvaluesをjava.util.Collectionに変換する
-new java.util.ArrayList[UriageForRanking](result.values)  
-  </div>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -326,7 +333,7 @@ new java.util.ArrayList[UriageForRanking](result.values)
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/4/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 5 of 12</span>
+  <span class="page-number">Page 5 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/6/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 

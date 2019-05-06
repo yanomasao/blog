@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150709/">オブジェクトの値をコピーする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-07-09T09:00:00&#43;09:00">
+          Jul 9, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    case class Foo(key:Int, key2:String, key3:Int)  のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
+val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300)  とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
+case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2はコピーされない。
+となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2015/20150521/">scalaでxmlのCDATAを扱う</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -279,37 +304,6 @@ ide1:1.fileName = &quot;xxxVM.vmdk&quot;  に変更しパワーオンしたら�
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140813/">vmdkの圧縮</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-08-13T09:00:00&#43;09:00">
-          Aug 13, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    # du -h liveVM20140813/ 269.6G liveVM20140813/ #  このシステムを圧縮。実際には50Gくらい。
-# date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ #  全然減らない。
-そこで、未使用領域をゼロ埋めしてみる。ゼロファイルを作ったらすぐ削除。
-$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2014/20140813/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -318,7 +312,7 @@ $ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/3/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 4 of 12</span>
+  <span class="page-number">Page 4 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/5/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 

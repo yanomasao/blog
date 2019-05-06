@@ -63,6 +63,34 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904-2/">apt関係のコマンド</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-04T15:08:14&#43;09:00">
+          Sep 4, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ubunbuのパッケージ管理に関するコマンド
+検索
+apt-cache search XXXXXX  インストール
+apt-get install XXXXXX  インストール済パッケージの一覧
+dpkg --list  アンインストール
+apt-get remove XXXXXX  設定まで消すときは
+apt-get --purge remove XXXXXX  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20120530/">postgres ストリーミングレプリケーション</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -297,31 +325,6 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111114/">Entity BeanでCREATE INDEXする</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-11-14T16:25:18&#43;09:00">
-          Nov 14, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    アプリケーションのチューニングをして、DBにインデックスを張りたいとき、SQLを直に実行してしまうと移植時などに忘れてしまうことがあるので、Entity Bean内に書いておきたい。調べると、
-@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}), @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})}, appliesTo = &quot;customer&quot;)  などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
-&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;  を
-&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt;  にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。
-  </div>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -330,7 +333,7 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/8/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 9 of 12</span>
+  <span class="page-number">Page 9 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/10/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 

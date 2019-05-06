@@ -63,6 +63,30 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131010/">scalaとjavaのコレクションのやり取り</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-10-10T09:00:00&#43;09:00">
+          Oct 10, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    もっといい方法があると思うけれど、とりあえず実現できたやり方
+scalaのMapのvaluesをjava.util.Collectionに変換する
+new java.util.ArrayList[UriageForRanking](result.values)  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20131001/">chromeのポップアップをタブで開く</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -301,43 +325,6 @@ $ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500G
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130313/">linuxでiscsi&#43;ocfs2</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-03-13T09:00:00&#43;09:00">
-          Mar 13, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。
-iscsiターゲットの構築
-$ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms  /etc/iet/ietd.confを編集
-Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback Lun 0 Path=/dev/sdb1,Type=blockio  のようにiscsiで公開するパーティションを指定。
-/etc/default/iscsitargetを編集
-ISCSITARGET_ENABLE=true  iscsitarget起動
-$ sudo /etc/init.d/iscsitarget start  ここから、iscsi用のパーティションをocfs2でフォーマットする作業。
-iscsiイニシエータをインストール
-$ sudo apt-get install open-iscsi  ocfs2をインストール
-$ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login $ sudo iscsiadm -m session  このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130313/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -346,7 +333,7 @@ $ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets 
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/5/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 6 of 12</span>
+  <span class="page-number">Page 6 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/7/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 

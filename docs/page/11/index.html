@@ -63,6 +63,34 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110819/">caseクラスでパラメータにアノテーション　続き</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-19T16:46:57&#43;09:00">
+          Aug 19, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    前回caseクラスでパラメータにアノテーションを書いても効かなかったと書きましたが、正確にはjavaのアノテーションは効かないということでした。
+case class Shohin ( @BeanProperty pk:String  これは効くけれど、
+case class Shohin ( @Column columnDefinition=&quot;text&quot;) pk:String  これは効かない。これが効かないのはしょうがないとしても、
+case class Shohin ( @Id pk:String  これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、
+http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html
+に解決方法がありました。
+import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @field)(columnDefinition=&quot;text&quot;) pk:String  とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110817/">caseクラスでパラメータにアノテーション</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -302,31 +330,6 @@ trampの最初のアクセスで補完が効かない 設定ファイルがgnupa
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110628/">java, scalaでOSコマンド実行</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-06-28T17:08:45&#43;09:00">
-          Jun 28, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(&quot;cp -p foo.txt foo.txt.BACKUP&quot;); p.waitFor();  など。|や&gt;を使いたいときは、
-String cmd = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot;; String[] cmdArray = {&quot;/bin/sh&quot;, &quot;-c&quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray);  というぐあいにArrayにする。
-ちなみにscalaだとこんな感じ。
-val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&quot;異常終了 &quot; + p.toString()) }  
-  </div>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -335,7 +338,7 @@ val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd 
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/10/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 11 of 12</span>
+  <span class="page-number">Page 11 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/12/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 
