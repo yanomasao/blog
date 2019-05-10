@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2018/20180305/">Pythonの日時表示</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-03-05T09:00:00&#43;09:00">
+          Mar 5, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    日本の日時を表示するには、
+import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/%m/%d %H:%M:%S %Z')  とすると 2018/03/05 17:24:54 JST となる。もうちょっといい方法はないかな。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2018/20180118/">AWS linuxのディスクを拡張する</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -276,30 +299,6 @@ ServerAliveInterval 60  を設定する
   <div>
     EJBのEntityManagerでテーブルをselectしてそのテーブルのエンティティを返すのは普通にやることだが、group byしてキーだけ取り出したい、などのときは以下のようにObjectの配列のリストとして扱う。
  val keys = em.createNativeQuery(&quot;select t1.key1, t1.key2, t1.key3 &quot; + &quot;from T1 t1 &quot; + &quot;group by t1.key1, t1.key2, t1.key3 &quot; + .getResultList().asInstanceOf[java.util.List[Array[Object] var result = List[fooPK]() keys.foreach(k =&gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt))  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2015/20151019/">pythonで正規表現を使った結果の判定</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2015-10-19T09:00:00&#43;09:00">
-          Oct 19, 2015
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    pythonで文字列に数字が含まれているかどうかを判定したいとき、
-import re def hantei(v): return re.search(\d, v)  とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
- return re.search(\d, v) is not None  とするとすっきり。
   </div>
   
 </article>

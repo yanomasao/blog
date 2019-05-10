@@ -6,10 +6,19 @@
     <description>Recent content in Posts on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2019 10:24:20 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 10 May 2019 09:04:01 +0900</lastBuildDate>
     
 	<atom:link href="https://ymraintree.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dockerでsambaサーバ作成</title>
+      <link>https://ymraintree.github.io/blog/post/2019/20190509/</link>
+      <pubDate>Fri, 10 May 2019 09:04:01 +0900</pubDate>
+      
+      <guid>https://ymraintree.github.io/blog/post/2019/20190509/</guid>
+      <description>&lt;p&gt;vmware上のsambaサーバをDockerコンテナ化。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>ラ・フォル・ジュルネ 2019</title>

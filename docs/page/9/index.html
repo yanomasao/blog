@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904/">emacs trampでリモートのファイルをrootで開く</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-04T16:06:51&#43;09:00">
+          Sep 4, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    http://philos0.blog94.fc2.com/blog-entry-20.html
+を参考に
+init.elに以下を追加
+(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil))  C-x C-f /sudo:remoteserver:/etc/hosts  が使えるようになった。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904-2/">apt関係のコマンド</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -297,29 +322,6 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
     会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。
 2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied  いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
 参考URL: http://www.java.net/node/697528
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111202/">EJB-QLのチューニング</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-12-02T16:24:27&#43;09:00">
-          Dec 2, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、
-@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;)  のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
   </div>
   
 </article>

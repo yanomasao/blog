@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111202/">EJB-QLのチューニング</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-12-02T16:24:27&#43;09:00">
+          Dec 2, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、
+@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;)  のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20111114/">Entity BeanでCREATE INDEXする</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -284,32 +307,6 @@ $ find . -type f -exec sh z:/foo.sh {} \;
   <div>
     $ ./play install morphia $ ./play new myapp --with scala  myapp/conf/dependencies.ymlに以下の行を追加する。
 - play -&gt; morphia 1.2.2beta1  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110828/">play&#43;scala&#43;mongo</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-08-28T16:40:53&#43;09:00">
-          Aug 28, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    $ ./play install mongo $ ./play new myapp --with scala mongo  myapp/conf/application.confに以下を追加
-# The mongo module module.mongo=${play.path}/modules/mongo # mongodb connection details mongo.host=localhost mongo.port=27017 mongo.database=play mongo.username=test mongo.password=test123  $ ./play run myapp  以下のエラー。
-~ Oops, ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo  myapp/conf/application.confの
-module.mongo=${play.path}/modules/mongo  を
-module.mongo=${play.path}/modules/mongo-1.3  に変更したら動いた。
   </div>
   
 </article>

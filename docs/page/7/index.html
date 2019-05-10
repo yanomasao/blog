@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130812/">qcow2でイメージファイルを作る</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-08-12T09:00:00&#43;09:00">
+          Aug 12, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    イメージファイルをqcow2フォーマットで作る場合は、virt-managerで新規作成する前に、ホスト側で
+$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130313/">linuxでiscsi&#43;ocfs2</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -296,31 +319,6 @@ modules/org/scala/mainディレクトリ作成して、modules.xmlを以下の�
 java.lang.NoClassDefFoundError: scala/ScalaObject  のエラーが出て正常にデプロイできない。
 &lt;&lt;追記&gt;&gt; その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに
 &lt;module name=&quot;deployment.scala-library.jar&quot; /&gt;  で参照できると判明。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130125/">openntpdとisc-dhcp-serverの自動起動</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-01-25T15:33:57&#43;09:00">
-          Jan 25, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに
-/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0  と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
-fatal: bind: Cannot assign requested address  そこで、/etc/rc.localを
-/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0  としたら動くようになった。
   </div>
   
 </article>

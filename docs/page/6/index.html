@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131025/">Java Web Startの仕様変更</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-10-25T09:00:00&#43;09:00">
+          Oct 25, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で
+&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のように渡していた。Java側では
+String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることができた。
+これができなくなったようなので調べてみたら http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html の解説にあるように、
+&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のようにするとVMに引数を渡すことができるんだと。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20131010/">scalaとjavaのコレクションのやり取り</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -297,29 +323,6 @@ qemu-img resize aplivevm +400G  これだけだと、ホストからみた容量
 # mkfs.ext4 /dev/vda3  としたところで、なぜかゲストOS死亡。ためしに
 # mkfs.ext3 /dev/vda3  はできた。その後
 # mkfs.ext4 -j /dev/vda3  もできたのでよしとする。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130812/">qcow2でイメージファイルを作る</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-08-12T09:00:00&#43;09:00">
-          Aug 12, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    イメージファイルをqcow2フォーマットで作る場合は、virt-managerで新規作成する前に、ホスト側で
-$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。
   </div>
   
 </article>

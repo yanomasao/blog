@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130125/">openntpdとisc-dhcp-serverの自動起動</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-25T15:33:57&#43;09:00">
+          Jan 25, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに
+/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0  と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
+fatal: bind: Cannot assign requested address  そこで、/etc/rc.localを
+/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0  としたら動くようになった。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130117/">Mac emacsのバージョン</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -289,31 +314,6 @@ $ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F51
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">Read more <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904/">emacs trampでリモートのファイルをrootで開く</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-09-04T16:06:51&#43;09:00">
-          Sep 4, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    http://philos0.blog94.fc2.com/blog-entry-20.html
-を参考に
-init.elに以下を追加
-(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil))  C-x C-f /sudo:remoteserver:/etc/hosts  が使えるようになった。
-  </div>
   
 </article>
 

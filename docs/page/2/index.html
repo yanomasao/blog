@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2019/20190330/">CircleCI</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2019-03-30T09:48:11&#43;09:00">
+          Mar 30, 2019
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    このブログをCircleCIで自動化。しかし、config.ymlを変更したりしてもCircleCIが走ってしまうのはどうすればいいのか。commit -m '[ci skip]'しても走ってしまう。ちょっと気持ち悪い。
+そうか、CI/CDされたくなければgithub上で直接編集すればいいのか。ローカルでテストできるものでもないし。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/template/"></a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -296,29 +319,6 @@ changeKey(keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;)) cha
     Google App Engineでよく使うDatastoreのデータをディープラーニングで使うためにcsvにしようとした。簡単なことと思ったら以外になかなかできず、結局以下の方法で実現できた。
 Datastoreのバックアップ BigQueryにインポート 必要なカラムをselectして、Download as csvをクリック
 RDBならcopyコマンドとかで一発なんだけど。簡単なことなんだけど。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2018/20180305/">Pythonの日時表示</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2018-03-05T09:00:00&#43;09:00">
-          Mar 5, 2018
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    日本の日時を表示するには、
-import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/%m/%d %H:%M:%S %Z')  とすると 2018/03/05 17:24:54 JST となる。もうちょっといい方法はないかな。
   </div>
   
 </article>

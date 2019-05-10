@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140818/">スナップショット作成でエラーになったとき</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-08-18T09:00:00&#43;09:00">
+          Aug 18, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    kvmのqcow2からvmwareのvmdkへコンバートした仮想マシンをvmwareで起動して、とりあえずスナップショットを取ろう、と実行すると、「&hellip;..vmsn」を保存中にエラーが発生しました。」というエラーでパワーオフまでいってしまう。ディレクトリをみると、xxxVM-00001-s999.vmdkのようなファイルが多数あっておかしな状態に。パワーオンしても、「xxxVM-000001.vmdk」、またはディスク「xxxVM-000001.vmdk」が依存しているスナップショット ディスクの 1 つを開くことができません。 」というエラーで起動できない。
+どうもスナップショットを作り損なったのに設定的にはスナップショットができているという状態のようなので、xxxVM.vmxをみると、
+ide1:1.fileName = &quot;xxxVM-000001.vmdk&quot;  という行があるので、これを
+ide1:1.fileName = &quot;xxxVM.vmdk&quot;  に変更しパワーオンしたらできた。そこで、パワーオフしてxxxVM-000001*を削除し、再度パワーオンしたら正常起動。これで復旧できたようにみえる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2014/20140813/">vmdkの圧縮</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -294,32 +319,6 @@ target/universal/stage/bin/name_of_project  に変更になった。コマンド
   <div>
     Java7になってから、実行可能jarファイルでアプリケーションを起動すると、「JARファイルのマニフェストに権限属性が含まれていないため、このアプリケーションは、今後のJavaセキュリティ・アップデートでブロックされます。」というメッセージが表示されるようになった。これを解消するには、実行可能JarのMANIFEST.MFに
 Permissions: all-permissions Codebase: *.foo.bar.com  を追加する。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131025/">Java Web Startの仕様変更</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-10-25T09:00:00&#43;09:00">
-          Oct 25, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で
-&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のように渡していた。Java側では
-String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることができた。
-これができなくなったようなので調べてみたら http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html の解説にあるように、
-&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のようにするとVMに引数を渡すことができるんだと。
   </div>
   
 </article>

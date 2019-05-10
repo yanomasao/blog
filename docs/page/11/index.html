@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110828/">play&#43;scala&#43;mongo</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-28T16:40:53&#43;09:00">
+          Aug 28, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ ./play install mongo $ ./play new myapp --with scala mongo  myapp/conf/application.confに以下を追加
+# The mongo module module.mongo=${play.path}/modules/mongo # mongodb connection details mongo.host=localhost mongo.port=27017 mongo.database=play mongo.username=test mongo.password=test123  $ ./play run myapp  以下のエラー。
+~ Oops, ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo  myapp/conf/application.confの
+module.mongo=${play.path}/modules/mongo  を
+module.mongo=${play.path}/modules/mongo-1.3  に変更したら動いた。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110819/">caseクラスでパラメータにアノテーション　続き</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -296,35 +322,6 @@ script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo
   </header>
   <div>
     一方macではどうかと、macのcocoa emacsに環境設定。こちらのほうは素直になにもかも動いた。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110629-2/">windowsでemacs</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-06-29T15:06:33&#43;09:00">
-          Jun 29, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    今までは、windows用のXサーバを使って、リモートのlinuxのemacsをwindows上で開いて使っていたが、どうも最近よく落ちる。そこで、windows上で動くemacsを試してみた。emacsを使うには
- 日本語入出力 trampでリモートファイル編集 sshでファイル名補完  ができるのが大前提。ざっと調べてgnupackを入れてみた。日本語は問題なし。
-trampはdefault methodをpscpにして正常動作を確認。ところが、開けるファイルと開けないファイルがある。開けないときは
-File exists, but cannot be read  というメッセージ。開けるファイルと見比べても違いがわからず、小1時間。結局ファイルサイズに上限があるようで、tramp copy size limitをデフォルトの10240から10240000に変更。これをnilにすると上限なしになるみたいだけど、効かなかった。
-sshは、リモートホストにアクセスすると、
-Pseudo-terminal will not be allocated because stdin is not a terminal.  というメッセージが出る。プロンプトは表示されないが、lsなどが効く。しかしこれでは気持ち悪いのでいろいろやったら、どうも2回目のアクセスは正常に動く。1回目だけを犠牲にすればいいだけだから、まあいいか。裏でtrampが走ってファイル名補完も動作。しかし、sshするときに、いまアクティブになっているバッファが影響するようで、ssh-taro@hogeのバッファがアクティブな状態でhanako@booにアクセスしようとすると、taro@booのパスワードを要求されたりする。この辺はちょっと問題。ほかには
-trampの最初のアクセスで補完が効かない 設定ファイルがgnupack-xxxx/{config.ini, home/.emacs}とかにあって、別の場所に移したい
-など
   </div>
   
 </article>
