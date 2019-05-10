@@ -63,6 +63,43 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130313/">linuxでiscsi&#43;ocfs2</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-03-13T09:00:00&#43;09:00">
+          Mar 13, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。
+iscsiターゲットの構築
+$ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms  /etc/iet/ietd.confを編集
+Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback Lun 0 Path=/dev/sdb1,Type=blockio  のようにiscsiで公開するパーティションを指定。
+/etc/default/iscsitargetを編集
+ISCSITARGET_ENABLE=true  iscsitarget起動
+$ sudo /etc/init.d/iscsitarget start  ここから、iscsi用のパーティションをocfs2でフォーマットする作業。
+iscsiイニシエータをインストール
+$ sudo apt-get install open-iscsi  ocfs2をインストール
+$ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login $ sudo iscsiadm -m session  このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130313/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130313-2/">ubuntuにKVMをインストール</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -289,30 +326,6 @@ fatal: bind: Cannot assign requested address  そこで、/etc/rc.localを
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130117/">Mac emacsのバージョン</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-01-17T15:35:29&#43;09:00">
-          Jan 17, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    brewでemacsをインストールすると、24.2.1が入ったが、以前使っていた23に比べて、
-sshでリモートマシンにログインした時のファイル名補完が遅い。 別のアプリでコピーしたテキストを中ボタンクリック（マジックトラックパッドでの3本指タップ）でペーストできない。
-などの不便な点があり、ためしに、http://emacsformacosx.com/builds　から23.4をダウンロードしてインストールしたら上記問題は解決。しばらくはこれで様子をみる。
-  </div>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -321,7 +334,7 @@ sshでリモートマシンにログインした時のファイル名補完が�
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/6/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 7 of 12</span>
+  <span class="page-number">Page 7 of 13</span>
 
 <a class="older-posts" href="https://ymraintree.github.io/blog/page/8/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 

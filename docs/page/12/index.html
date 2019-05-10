@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110628/">java, scalaでOSコマンド実行</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-28T17:08:45&#43;09:00">
+          Jun 28, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(&quot;cp -p foo.txt foo.txt.BACKUP&quot;); p.waitFor();  など。|や&gt;を使いたいときは、
+String cmd = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot;; String[] cmdArray = {&quot;/bin/sh&quot;, &quot;-c&quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray);  というぐあいにArrayにする。
+ちなみにscalaだとこんな感じ。
+val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&quot;異常終了 &quot; + p.toString()) }  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110623/">scalaでスクリプトを書く</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -277,30 +302,6 @@ var style:Component#StyleDictionary = label.getStyles()  とする。#を使う�
 </article>
 
   
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2010/20100720/">scala-2.8でEJB</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2010-07-20T17:20:04&#43;09:00">
-          Jul 20, 2010
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    scala-2.8が先週リリースされたので、eclipseプラグインもアップデートしてみました。既存のEJBが
-@GeneratedValue(strategy=GenerationType.AUTO)  の行でannotation needs to be a constantというメッセージでエラーになりました。
-コマンドラインでscalacするとコンパイルできるようなので、eclipseプラグインの問題のようです。移行はもうちょっと待ってみよう。
-  </div>
-  
-</article>
-
-  
 </div>
 <nav class="pagination" role="navigation">
 
@@ -309,7 +310,9 @@ var style:Component#StyleDictionary = label.getStyles()  とする。#を使う�
 
 <a class="newer-posts" href="https://ymraintree.github.io/blog/page/11/"><span aria-hidden="true">&laquo;</span> Newer Posts</a>
 
-  <span class="page-number">Page 12 of 12</span>
+  <span class="page-number">Page 12 of 13</span>
+
+<a class="older-posts" href="https://ymraintree.github.io/blog/page/13/">Older Posts <span aria-hidden="true">&raquo;</span></a>
 
 </nav>
 
