@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110630/">scalaスクリプトでおかしな挙動？</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-06-30T17:03:13&#43;09:00">
+          Jun 30, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    たとえば、
+object Foo { val ZOO = &quot;xxxx&quot; } というクラスを作ってコンパイルします。これをスクリプトの中で使います。
+println(Foo.ZOO) これはOK。次に、
+object Foo { val ZOO = &quot;xxxx&quot; val ZOO_ADDED = &quot;ZZZZZ&quot; } と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、
+script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo.ZOO_ADDED) ^ one error found と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110629/">macでemacs</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -275,33 +301,6 @@ $ play run sampleappscala
   <div>
     eclipseでscalaを使ってgoogle app engineのプロジェクトを作りビルドすると
 scala org.datanucleus.metadata.MetaDataManager loadClasses 的なエラーが出る。これを回避するには.projectのdatanucleusあたりをコメントアウト。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110420/">eclipseでandroid&#43;scalaプロジェクトを作る手順</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-04-20T17:15:16&#43;09:00">
-          Apr 20, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    ./create_project crashball org.crashball --platform android-7 --scala-version 2.8.1 でプロジェクトを作成。
-eclipseでプロジェクトを作成。こちらはscalaプロジェクト。
-create_projectで作ったディレクトリからproject, src/*, testsをeclipseプロジェクトへ移動。
-sbt update eclipseでソースフォルダの設定
-src/main/java src/main/scala src/test/scala クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。
-これでできあがり。あとはsbtでcompileなり、start-emulator, start-deviceなり。
   </div>
   
 </article>

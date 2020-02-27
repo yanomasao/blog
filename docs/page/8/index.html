@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130129/">リモートからのEJB呼び出し</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-29T15:28:41&#43;09:00">
+          Jan 29, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。
+private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] } 上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130128/">JBoss7にscalaで書いたプロジェクトをデプロイする</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -281,32 +304,6 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
     サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。
 $ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove 他には
 $ sudo update-rc.d XXXXXX disable で起動しなくなるものもあるらしい。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905/">heartbeat環境構築</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-09-05T16:00:51&#43;09:00">
-          Sep 5, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
-heartbeatの管理下に置くプロセスはharesourcesに記述するとともに、OS起動時に起動しないようにしておくこと。
-起動
-$ sudo /etc/init.d/heartbeat start 確認
-$ sudo /etc/init.d/heartbeat status 
   </div>
   
 </article>

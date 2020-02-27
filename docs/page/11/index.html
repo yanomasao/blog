@@ -63,6 +63,30 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110830/">findの-execで複数のコマンドを実行する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-30T16:36:46&#43;09:00">
+          Aug 30, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成
+echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1 これをfindで実行。
+$ find . -type f -exec sh z:/foo.sh {} \; 
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110829/">play&#43;scala&#43;morphia</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -297,32 +321,6 @@ USB3.0外付けその2　1分20秒
 内蔵HDD　20秒
 内蔵SDD　11秒
 外付けUSBは時間がかかりすぎではないだろうか。おなじUSB3.0でも2本のHDDで1分以上差がつくのも解せない。ためしに、別のlinuxマシンにつないで運用しているUSB2.0のHDDで同様のことをしたら、2分10秒くらいで、USB3.0外付けその1とほぼ同タイム。どういうことなんだろう。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110630/">scalaスクリプトでおかしな挙動？</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-06-30T17:03:13&#43;09:00">
-          Jun 30, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    たとえば、
-object Foo { val ZOO = &quot;xxxx&quot; } というクラスを作ってコンパイルします。これをスクリプトの中で使います。
-println(Foo.ZOO) これはOK。次に、
-object Foo { val ZOO = &quot;xxxx&quot; val ZOO_ADDED = &quot;ZZZZZ&quot; } と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、
-script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo.ZOO_ADDED) ^ one error found と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。
   </div>
   
 </article>

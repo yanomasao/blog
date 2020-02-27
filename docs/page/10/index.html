@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120112/">AspectJのプラグイン</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-01-12T16:21:31&#43;09:00">
+          Jan 12, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    久しく使っていないけれど、以前のプロジェクトで使っていたAspectJ。Eclipse 3.7にプラグインをインストール。
+http://download.eclipse.org/tools/ajdt/37/update
+だとプロジェクトがエラーになってしまうが、
+http://download.eclipse.org/tools/ajdt/37/dev/update
+ならばOK。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20111206/">gmailをSMTPサーバとしてjavaからメールを送信する</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -284,30 +310,6 @@ $ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar で起動。PDFを�
 $ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot; などとする。データの削除は
 $ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot; とか
 $ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot; 
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110830/">findの-execで複数のコマンドを実行する</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-08-30T16:36:46&#43;09:00">
-          Aug 30, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成
-echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1 これをfindで実行。
-$ find . -type f -exec sh z:/foo.sh {} \; 
   </div>
   
 </article>

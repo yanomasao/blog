@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905/">heartbeat環境構築</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-05T16:00:51&#43;09:00">
+          Sep 5, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
+heartbeatの管理下に置くプロセスはharesourcesに記述するとともに、OS起動時に起動しないようにしておくこと。
+起動
+$ sudo /etc/init.d/heartbeat start 確認
+$ sudo /etc/init.d/heartbeat status 
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">drbd環境構築</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -308,32 +334,6 @@ import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.
   </header>
   <div>
     なんとなく衝動的にgalaxy nexus購入。ひととおりセットアップを終えて使用開始。日本語入力はFlickWnnがいい感じ。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120112/">AspectJのプラグイン</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-01-12T16:21:31&#43;09:00">
-          Jan 12, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    久しく使っていないけれど、以前のプロジェクトで使っていたAspectJ。Eclipse 3.7にプラグインをインストール。
-http://download.eclipse.org/tools/ajdt/37/update
-だとプロジェクトがエラーになってしまうが、
-http://download.eclipse.org/tools/ajdt/37/dev/update
-ならばOK。
   </div>
   
 </article>

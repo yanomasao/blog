@@ -63,6 +63,33 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2016/20161216/">sshセッションのタイムアウトを防止する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2016-12-16T09:00:00&#43;09:00">
+          Dec 16, 2016
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    最近AWSを使うことが多くなって、EC2のインスタンスにsshで接続して作業するが、なにかというとタイムアウトするので不便。ちょっと調べたら
+サーバの/etc/ssh/sshd_configに
+ClientAliveInterval 60 を設定する
+~/.ssh/configに
+ServerAliveInterval 60 を設定する
+のいずれかでタイムアウトしなくなるらしい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2016/20160204/">EntityManager#createNativeQueryで一部のデータを取り出すとき</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -271,31 +298,6 @@ GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) と�
   <div>
     kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。
  ゲストOSの停止 スナップショット作成   スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2014/20141107/">セッションの使用</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-11-07T09:00:00&#43;09:00">
-          Nov 7, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    play-2.2.3を使用。セッションを使ってコントローラからビューへ値を渡す。sessionの受け渡しを追加し、その内容を.withSessionに入れる。
-コントローラ側
- Ok(views.html.index(&quot;&quot;)(session)).withSession(&quot;foo&quot;-&gt;&quot;FOOO&quot;, &quot;bar&quot;-&gt;&quot;BAR&quot;) ビュー側
- @(message: String)(session:play.api.mvc.Session) @session.get(&quot;foo&quot;) 
   </div>
   
 </article>

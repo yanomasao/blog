@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2018/20180816/">起業</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-08-16T17:09:00&#43;09:00">
+          Aug 16, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    7月末に無事、起業。時間はあったのに、あまり準備をせず、そろそろしなきゃとなったら結果、開業freeeのいうがまま。それでもさっくり起業できた。これから銀行の法人口座を作る。楽天銀行かジャパンネットバンクかという感じだけど、楽天のほうが必要書類が少なくてよさそう。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2018/20180512/">Datastoreをcsvでエクスポート</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -273,33 +295,6 @@ keyhacはkarabinerとちがって、コントロールキーとコマンドキ�
 keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
 def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot; keymap[&quot;Ctrl-f&quot;] = &quot;Cmd-f&quot; keymap[&quot;Ctrl-p&quot;] = &quot;Cmd-p&quot; keymap[&quot;Ctrl-q&quot;] = &quot;Cmd-q&quot; keymap[&quot;Ctrl-r&quot;] = &quot;Cmd-r&quot; keymap[&quot;Ctrl-s&quot;] = &quot;Cmd-s&quot; keymap[&quot;Ctrl-t&quot;] = &quot;Cmd-t&quot; keymap[&quot;Ctrl-v&quot;] = &quot;Cmd-v&quot; keymap[&quot;Ctrl-w&quot;] = &quot;Cmd-w&quot; keymap[&quot;Ctrl-x&quot;] = &quot;Cmd-x&quot; keymap[&quot;Ctrl-z&quot;] = &quot;Cmd-z&quot; return keymap を作り、
  keymap_chrome = keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;) keymap_chrome = changeKey(keymap_chrome) で呼び出すようにする。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2016/20161216/">sshセッションのタイムアウトを防止する</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2016-12-16T09:00:00&#43;09:00">
-          Dec 16, 2016
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    最近AWSを使うことが多くなって、EC2のインスタンスにsshで接続して作業するが、なにかというとタイムアウトするので不便。ちょっと調べたら
-サーバの/etc/ssh/sshd_configに
-ClientAliveInterval 60 を設定する
-~/.ssh/configに
-ServerAliveInterval 60 を設定する
-のいずれかでタイムアウトしなくなるらしい。
   </div>
   
 </article>

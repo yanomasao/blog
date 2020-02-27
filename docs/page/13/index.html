@@ -63,6 +63,33 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110420/">eclipseでandroid&#43;scalaプロジェクトを作る手順</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-04-20T17:15:16&#43;09:00">
+          Apr 20, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ./create_project crashball org.crashball --platform android-7 --scala-version 2.8.1 でプロジェクトを作成。
+eclipseでプロジェクトを作成。こちらはscalaプロジェクト。
+create_projectで作ったディレクトリからproject, src/*, testsをeclipseプロジェクトへ移動。
+sbt update eclipseでソースフォルダの設定
+src/main/java src/main/scala src/test/scala クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。
+これでできあがり。あとはsbtでcompileなり、start-emulator, start-deviceなり。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2010/20100830/">映画『バレンタインデー』</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">

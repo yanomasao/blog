@@ -63,6 +63,30 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130815/">linux上のvirtualboxのゲストで1920x1080を表示させる</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-08-15T09:00:00&#43;09:00">
+          Aug 15, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    手元のディスプレイが1920x1080でも、virtualboxが乗っているホストにディスプレイがついていない場合、解像度の設定に手間取ることがある。この場合、
+ ホストを起動 ホストにsshでログイン $ vnc4server -geometry 1920x1080 手元でvnc接続 virtualboxでゲスト起動  とすると、ゲストの解像度で1920x1080が選べるようになる。ちなみに、ホスト上で
+$ vboxmanage startvm guestVM --type headless とするとゲストを非表示で起動することができる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130814/">ゲストOSのディスク容量を増やす</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -299,29 +323,6 @@ $ sudo umount /zoo
   </header>
   <div>
     表記のとおりの現象が起き、javawsを利用した業務システムが動かなくなるという怖い現象が起きた。いろいろ調べた結果、Java for OS X Developer Preview 11M4001+10M4001というものがあるというので、apple developers centerからjavadeveloper_for_mac_os_x_10.6_update_12__10m4001.dmgをダウンロードしてインストールすると解決する。これにより、javaのバージョンは1.6.0_37から1.6.0_38に上がった。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130129/">リモートからのEJB呼び出し</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-01-29T15:28:41&#43;09:00">
-          Jan 29, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。
-private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] } 上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
   </div>
   
 </article>
