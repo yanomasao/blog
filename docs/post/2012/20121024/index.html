@@ -79,22 +79,16 @@
   </header>
   <section>
     <p>KeyRemap4MacBookで設定をしていて、TeamViewerへの変更が効かないことに気づいた。調べたところ、</p>
-
 <p><a href="http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja">http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja</a></p>
-
 <p>を参考にしてできた。</p>
-
 <p>メニューバーにあるKeyRemap4MacBookのアイコンからLaunch EventViewerをクリック。
 TeamViewerのウィンドウをアクティブにするとEventViewerのCurrent Applicationにcom.teamviewer.TeamViewerと表示される。
 private.xmlに以下を追加</p>
-
 <pre><code>&lt;appdef&gt;
 &lt;appname&gt;TEAMVIEWER&lt;/appname&gt;
 &lt;equal&gt;com.teamviewer.TeamViewer&lt;/equal&gt;
 &lt;/appdef&gt;
-</code></pre>
-
-<p>を追加。これで、設定にTEAMVIEWERというキーワードが使える。</p>
+</code></pre><p>を追加。これで、設定にTEAMVIEWERというキーワードが使える。</p>
 
   </section>
   <footer>

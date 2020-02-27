@@ -79,9 +79,7 @@
   </header>
   <section>
     <p>以前からscalaでEJBを書いていたが、ここへ来て問題発生。JavaとScalaの混在プロジェクトでJavaからScalaのクラスを参照したときにコンパイルエラーにはならないのに、eclipseのエディタ上ではエラーの表示がされてしまう。これを解決するには</p>
-
 <p>Java同様、Scalaのクラスもパッケージと同じ位置に置く。</p>
-
 <pre><code>case class Foo(
   @(Id @field) x:Int, 
   @(Temporal @field)(value=TemporalType.DATE)  @BeanProperty nyukinDate:Date,
@@ -89,10 +87,7 @@
   @(Column @field)(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _
   y:String
 )
-</code></pre>
-
-<p>をやめて</p>
-
+</code></pre><p>をやめて</p>
 <pre><code>import scala.annotation.target.field
 
 object ScalaAnnotations {
@@ -100,10 +95,7 @@ object ScalaAnnotations {
   type Temporal = javax.persistence.Temporal @field
   type Column = javax.persistence.Column @field
 }
-</code></pre>
-
-<p>を定義し、</p>
-
+</code></pre><p>を定義し、</p>
 <pre><code>import boo.ScalaAnnotations._
 case class Foo(
   @Id x:Int, 
@@ -112,28 +104,20 @@ case class Foo(
   @Column(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _
   y:String
 )
-</code></pre>
-
-<p>とする。</p>
-
+</code></pre><p>とする。</p>
 <pre><code>@NamedQueries ({
   Array(new NamedQuery(name = &quot;foo.findByZoo&quot;,
 	query=&quot;&quot;&quot;SELECT foo FROM Foo foo
 	  Where id = :id&quot;&quot;&quot;)
   )
 })
-</code></pre>
-
-<p>を</p>
-
+</code></pre><p>を</p>
 <pre><code>@NamedQueries ({
   Array(new NamedQuery(name = &quot;foo.findByZoo&quot;,
 	query=&quot;SELECT foo FROM Foo foo Where id = :id&quot;)
   )
 })
-</code></pre>
-
-<p>として、&rdquo;&ldquo;&ldquo;をやめると解決できる。どうも妙な現象で、eclipseの問題のように見える。</p>
+</code></pre><p>として、&ldquo;&ldquo;&ldquo;をやめると解決できる。どうも妙な現象で、eclipseの問題のように見える。</p>
 
   </section>
   <footer>

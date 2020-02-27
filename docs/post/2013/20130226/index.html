@@ -79,35 +79,20 @@
   </header>
   <section>
     <p>drbd+heartbeatを使用して運用しているサーバで、障害が発生。今までもheartbeatが障害を検知してセカンダリにtakeoverしようとして途中でエラーが発生しtakeoverをあきらめてしまうという現象はあったが、今回はちょっと違った。</p>
-
 <p>以前と同じ現象ならばdrbd配下のパーティションがプライマリにもセカンダリにもマウントされていないような状態になるが、今回はdrbdのパーティションがプライマリに正常にマウントされている。</p>
-
 <p>結局異常があったのはサービスIPアドレスのみ。普段は以下のように実アドレスとは別に付与され、サーバのアドレスとして使用しているが、これだけがなくなっていた。</p>
-
 <pre><code>eth1:1    Link encap:Ethernet  HWaddr 8c:89:a5:c3:d8:fb  
           inet addr:10.5.34.125  Bcast:10.5.255.255  Mask:255.255.0.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           Interrupt:20 Memory:f4400000-f4420000 
-</code></pre>
-
-<p>syslogを見てもheartbeat関連のログは残っていなかったが、かわりに</p>
-
+</code></pre><p>syslogを見てもheartbeat関連のログは残っていなかったが、かわりに</p>
 <pre><code>Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down
-</code></pre>
-
-<p>が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。</p>
-
+</code></pre><p>が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。</p>
 <p>とりあえず、消えてしまったサービスIPアドレスを改めて付与するため、以下のheartbeatのコマンドを使用。</p>
-
 <pre><code>$ sudo ./IPaddr 10.5.34.125/16/eth1 start
-</code></pre>
-
-<p>ちなみに</p>
-
+</code></pre><p>ちなみに</p>
 <pre><code>$ sudo ./IPaddr 10.5.34.125/16/eth1 stop
-</code></pre>
-
-<p>とすればIPアドレスを削除することができる。</p>
+</code></pre><p>とすればIPアドレスを削除することができる。</p>
 
   </section>
   <footer>

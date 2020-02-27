@@ -79,17 +79,13 @@
   </header>
   <section>
     <p>会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。</p>
-
 <pre><code>2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic
 ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl
 e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul
 t session denied
 javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau
 lt session denied
-</code></pre>
-
-<p>いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。</p>
-
+</code></pre><p>いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。</p>
 <p>参考URL: <a href="http://www.java.net/node/697528">http://www.java.net/node/697528</a></p>
 
   </section>

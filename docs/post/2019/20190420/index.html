@@ -87,9 +87,7 @@
   </header>
   <section>
     <p>Macのコマンドキーとコントロールキーを入れ替えるのにkeyhacを使っていたけれど、</p>
-
 <p>chromeのウィンドウで、chromeと認識することができず、キーの入れ替えがされないという事象が多発。chromeのときだけキーバインドが変わるので、さすがに辛くなってKarabiner-Elementsに変更。こちらのほうはcommand+aをcontrol+aに割り当てるのに、</p>
-
 <pre><code>    {
         &quot;type&quot;: &quot;basic&quot;,
         &quot;from&quot;: {&quot;key_code&quot;: &quot;a&quot;, &quot;modifiers&quot;: {&quot;mandatory&quot;: [&quot;control&quot;], &quot;optional&quot;: [&quot;any&quot;]}},
@@ -106,9 +104,7 @@
             ]
         }]
     },
-</code></pre>
-
-<p>これだけ書く必要があり、キーの入れ替えひとつずつで同様の記述を追加していく必要がある。conditionsをまとめて指定することはできないものか。</p>
+</code></pre><p>これだけ書く必要があり、キーの入れ替えひとつずつで同様の記述を追加していく必要がある。conditionsをまとめて指定することはできないものか。</p>
   </section>
   <footer>
     

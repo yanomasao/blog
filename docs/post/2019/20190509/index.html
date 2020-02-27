@@ -87,19 +87,12 @@
   </header>
   <section>
     <p>vmware上のsambaサーバをDockerコンテナ化。</p>
-
 <p>そうすれば、次期構成として、vmware抜きでlinuxサーバ（予備も兼ねて複数台）を用意し、その上でDockerコンテナを走らせれば、vmwareはいらなくなる。</p>
-
 <p>linuxサーバに問題が生じても、Dockerのコンテナならば可搬性が高いので、別のlinuxサーバへ移動するのも簡単だし、最初から複数台で動かしておいてもいい。</p>
-
 <p>docker runでいろいろいじりながら手順を確定し、Dockerfileとdocker-compose.ymlにまとめる。</p>
-
 <p>DockerfileのCMDで、最後のプロセス起動を</p>
-
 <pre><code>smbd -F &lt; /dev/null
-</code></pre>
-
-<p>することで、プロセスがフォアグラウンドで起動し、コンテナが終了しないようになる。起動したプロセスがバックグラウンドで動いているのに、ひととおり終わったと思ってコンテナが終了してしまうというのは、ちょっと解せない。</p>
+</code></pre><p>することで、プロセスがフォアグラウンドで起動し、コンテナが終了しないようになる。起動したプロセスがバックグラウンドで動いているのに、ひととおり終わったと思ってコンテナが終了してしまうというのは、ちょっと解せない。</p>
   </section>
   <footer>
     
@@ -117,7 +110,7 @@
     </section>
     <ul class="pager">
       
-      <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2020/20200227/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2019/20190506/">Newer <span aria-hidden="true">&rarr;</span></a></li>

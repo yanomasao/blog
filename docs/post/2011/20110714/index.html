@@ -79,13 +79,9 @@
   </header>
   <section>
     <p>遅まきながらmongodbの勉強。sbt-0.10でプロジェクトを作る。</p>
-
 <pre><code>$ mkdir sbt-mongo
 $ cd sbt-mongo
-</code></pre>
-
-<p>ここで、build.sbtを作成。内容は以下。</p>
-
+</code></pre><p>ここで、build.sbtを作成。内容は以下。</p>
 <pre><code>name := &quot;Hello Mongo+Casbah&quot;
 
 version := &quot;1.0.0&quot;
@@ -99,15 +95,9 @@ libraryDependencies ++= Seq(
 )
 
 mainClass in(Compile, run) := Some(&quot;mongo.casbah.Sample&quot;)
-</code></pre>
-
-<p>で、sbt実行</p>
-
+</code></pre><p>で、sbt実行</p>
 <pre><code>$ sbt
-</code></pre>
-
-<p>するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。</p>
-
+</code></pre><p>するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。</p>
 <pre><code>package mongo.casbah
 
 import com.mongodb.casbah.Imports._
@@ -123,10 +113,7 @@ object Sample {
     collection.find().foreach { println(_) }
   }
 }
-</code></pre>
-
-<p>で、sbtプロンプトでrunすると、</p>
-
+</code></pre><p>で、sbtプロンプトでrunすると、</p>
 <pre><code>&gt; run
 run
 [info] Compiling 1 Scala source to /net/ares/disk1/home/yano/project/scala/sbt-scalaquery/target/scala-2.9.0.final/classes...
@@ -138,12 +125,8 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 { &quot;_id&quot; : { &quot;$oid&quot; : &quot;4e1e5687d6f3c6582990f4c6&quot;} , &quot;name&quot; : &quot;me&quot; , &quot;address&quot; : &quot;テスト満載&quot;}
 [success] Total time: 8 s, completed 2011/07/14 11:38:00
 &gt; 
-</code></pre>
-
-<p>となる。</p>
-
+</code></pre><p>となる。</p>
 <p>これをmongodbのプロンプトで見てみると、</p>
-
 <pre><code>$ mongo
 MongoDB shell version: 1.8.2
 connecting to: test
@@ -152,10 +135,7 @@ switched to db casbah
 &gt; db.sample.find()
 { &quot;_id&quot; : ObjectId(&quot;4e1e5687d6f3c6582990f4c6&quot;), &quot;name&quot; : &quot;me&quot;, &quot;address&quot; : &quot;テスト満載&quot; }
 &gt; 
-</code></pre>
-
-<p>となる。</p>
-
+</code></pre><p>となる。</p>
 <p>mongodbもcasbahもsbtにも慣れていないので要領が悪いが、ぼちぼち進めていきたい。</p>
 
   </section>

@@ -79,36 +79,20 @@
   </header>
   <section>
     <p>簡単なplayのアプリケーションを作ってさくっとデプロイして本番運用していたが、本番機のロードアベレージが常に1を上回るようになってびっくり。調べると、playのプロセスがCPUを専有していた。単純にplay runで起動していたが、これを変更。</p>
-
 <p>プロジェクト内で</p>
-
 <pre><code>$ play clean compile stage
-</code></pre>
-
-<p>を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、</p>
-
+</code></pre><p>を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、</p>
 <pre><code>	cd /usr/local/play/name_of_project
 	target/start -server -Xms128m -Xmx128m &amp;
-</code></pre>
-
-<p>などとするとよい。終了用には</p>
-
+</code></pre><p>などとするとよい。終了用には</p>
 <pre><code>	cd /usr/local/play/name_of_project
 	kill -TERM `cat RUNNING_PID`
-</code></pre>
-
-<p>play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、</p>
-
+</code></pre><p>play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、</p>
 <pre><code>target/universal/stage/bin/name_of_project
-</code></pre>
-
-<p>に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。</p>
-
+</code></pre><p>に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。</p>
 <pre><code>	cd /usr/local/play-2.2.3/name_of_project
 	target/universal/stage/bin/name_of_project -Dhttp.port=9001 &gt; /dev/null 2&gt;&amp;1 &amp;
-</code></pre>
-
-<p>停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。</p>
+</code></pre><p>停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。</p>
 
   </section>
   <footer>

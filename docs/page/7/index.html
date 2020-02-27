@@ -63,6 +63,36 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130814/">ゲストOSのディスク容量を増やす</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-08-14T09:00:00&#43;09:00">
+          Aug 14, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    ディスク容量100Gで気楽に作ったゲストOSをそのまま運用で使うことになり、500Gへ増やすことにした。
+ゲストOS停止 バックアップ
+qemu-img resize aplivevm +400G これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。
+そこで、ゲストを起動し、
+# shutdown now でシングルユーザモードへ移行。virt-managerのコンソールにシングルユーザモードのシェルがでるので、
+# fdisk /dev/vda を使うが、ルートパーティションはそのままにして、別のパーティションを追加（/dev/vda3）する。OSを再起動させ、
+# mkfs.ext4 /dev/vda3 としたところで、なぜかゲストOS死亡。ためしに
+# mkfs.ext3 /dev/vda3 はできた。その後
+# mkfs.ext4 -j /dev/vda3 もできたのでよしとする。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130812/">qcow2でイメージファイルを作る</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -75,7 +105,7 @@
   </header>
   <div>
     イメージファイルをqcow2フォーマットで作る場合は、virt-managerで新規作成する前に、ホスト側で
-$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。
+$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。
   </div>
   
 </article>
@@ -99,14 +129,16 @@ $ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500G
   <div>
     iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。
 iscsiターゲットの構築
-$ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms  /etc/iet/ietd.confを編集
-Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback Lun 0 Path=/dev/sdb1,Type=blockio  のようにiscsiで公開するパーティションを指定。
+$ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms /etc/iet/ietd.confを編集
+Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback Lun 0 Path=/dev/sdb1,Type=blockio のようにiscsiで公開するパーティションを指定。
 /etc/default/iscsitargetを編集
-ISCSITARGET_ENABLE=true  iscsitarget起動
-$ sudo /etc/init.d/iscsitarget start  ここから、iscsi用のパーティションをocfs2でフォーマットする作業。
+ISCSITARGET_ENABLE=true iscsitarget起動
+$ sudo /etc/init.d/iscsitarget start ここから、iscsi用のパーティションをocfs2でフォーマットする作業。
 iscsiイニシエータをインストール
-$ sudo apt-get install open-iscsi  ocfs2をインストール
-$ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login $ sudo iscsiadm -m session  このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。
+$ sudo apt-get install open-iscsi ocfs2をインストール
+$ sudo apt-get install ocfs2-tools $ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login $ sudo iscsiadm -m session このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。
+$ sudo fdisk /dev/sdc でパーティションを定義して、フォーマット。
+$ sudo mkfs.
   </div>
   
   <footer>
@@ -135,10 +167,10 @@ $ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets 
   </header>
   <div>
     ubuntuは12.04を使用。普通にインストールしたのち、
-$ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager  デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。
+$ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。
 NAT用のインタフェースを削除する
-$ sudo brctl show $ sudo virsh net-autostart default --disable $ sudo virsh net-destroy default $ sudo brctl show  /etc/network/interfacesの変更。以下のようにbr0を追加する。
-auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface br0 inet static address 10.5.34.145 network 10.5.0.0 netmask 255.255.0.0 broadcast 10.5.255.255 gateway 10.5.34.254 dns-nameservers 10.4.34.1 dns-search foo.bar.co.jp bridge_ports eth0 bridge_fd 9 bridge_hello 2 bridge_maxage 12 bridge_stp off  10.
+$ sudo brctl show $ sudo virsh net-autostart default --disable $ sudo virsh net-destroy default $ sudo brctl show /etc/network/interfacesの変更。以下のようにbr0を追加する。
+auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface br0 inet static address 10.5.34.145 network 10.5.0.0 netmask 255.255.0.0 broadcast 10.5.255.255 gateway 10.5.34.254 dns-nameservers 10.4.34.1 dns-search foo.bar.co.jp bridge_ports eth0 bridge_fd 9 bridge_hello 2 bridge_maxage 12 bridge_stp off 10.
   </div>
   
   <footer>
@@ -169,11 +201,11 @@ auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface b
     drbd+heartbeatを使用して運用しているサーバで、障害が発生。今までもheartbeatが障害を検知してセカンダリにtakeoverしようとして途中でエラーが発生しtakeoverをあきらめてしまうという現象はあったが、今回はちょっと違った。
 以前と同じ現象ならばdrbd配下のパーティションがプライマリにもセカンダリにもマウントされていないような状態になるが、今回はdrbdのパーティションがプライマリに正常にマウントされている。
 結局異常があったのはサービスIPアドレスのみ。普段は以下のように実アドレスとは別に付与され、サーバのアドレスとして使用しているが、これだけがなくなっていた。
-eth1:1 Link encap:Ethernet HWaddr 8c:89:a5:c3:d8:fb inet addr:10.5.34.125 Bcast:10.5.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:20 Memory:f4400000-f4420000  syslogを見てもheartbeat関連のログは残っていなかったが、かわりに
-Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down  が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。
+eth1:1 Link encap:Ethernet HWaddr 8c:89:a5:c3:d8:fb inet addr:10.5.34.125 Bcast:10.5.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:20 Memory:f4400000-f4420000 syslogを見てもheartbeat関連のログは残っていなかったが、かわりに
+Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。
 とりあえず、消えてしまったサービスIPアドレスを改めて付与するため、以下のheartbeatのコマンドを使用。
-$ sudo ./IPaddr 10.5.34.125/16/eth1 start  ちなみに
-$ sudo ./IPaddr 10.5.34.125/16/eth1 stop  とすればIPアドレスを削除することができる。
+$ sudo ./IPaddr 10.5.34.125/16/eth1 start ちなみに
+$ sudo ./IPaddr 10.5.34.125/16/eth1 stop とすればIPアドレスを削除することができる。
   </div>
   
 </article>
@@ -196,9 +228,9 @@ $ sudo ./IPaddr 10.5.34.125/16/eth1 stop  とすればIPアドレスを削除す
   </header>
   <div>
     ubuntuでNASのディスクをマウントする。
-$ sudo apt-get install smbfs  でパッケージをインストール。
-$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx  アンマウントはumountコマンドでよい。
-$ sudo umount /zoo  
+$ sudo apt-get install smbfs でパッケージをインストール。
+$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx アンマウントはumountコマンドでよい。
+$ sudo umount /zoo 
   </div>
   
 </article>
@@ -221,7 +253,7 @@ $ sudo umount /zoo
   </header>
   <div>
     もともとJavaで書いているプロジェクトにScalaのコードを混ぜていくと、Eclipseの挙動がおかしくなるときがあって、そういうときはJavaの側からScalaでできているオブジェクトやクラスが軒並み見えなくなる。ビルドしなおしても状況は変わらず。いろいろ試した結果、scalaのobjectを作ったときは同名のクラスも用意しないとJavaがそれらを参照するときにおかしな挙動になるようだ。
- class Foo object Foo { def xxx:String = .... ... }  
+ class Foo object Foo { def xxx:String = .... ... } 
   </div>
   
 </article>
@@ -289,36 +321,7 @@ $ sudo umount /zoo
   </header>
   <div>
     なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。
-private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] }  上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130128/">JBoss7にscalaで書いたプロジェクトをデプロイする</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-01-28T15:31:04&#43;09:00">
-          Jan 28, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    scalaで書いたEJBのプロジェクトをデプロイするには、
-modules/org/scala/mainディレクトリ作成して、modules.xmlを以下の内容で作成。scala-library.jarも置く。
-&lt;module xmlns=&quot;urn:jboss:module:1.1&quot; name=&quot;org.scala&quot;&gt; &lt;resources&gt; &lt;resource-root path=&quot;scala-library.jar&quot;/&gt; &lt;/resources&gt; &lt;dependencies&gt; &lt;/dependencies&gt; &lt;/module&gt;  scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。
-&lt;jboss-deployment-structure&gt; &lt;deployment&gt; &lt;dependencies&gt; &lt;module name=&quot;org.scala&quot; /&gt; &lt;/dependencies&gt; &lt;/deployment&gt; &lt;/jboss-deployment-structure&gt;  これでデプロイが正常にされる。
-上記設定をせずに、scala-library.jarをstandalone/deploymentsに入れてEJBプロジェクトをデプロイしても、
-java.lang.NoClassDefFoundError: scala/ScalaObject  のエラーが出て正常にデプロイできない。
-&lt;&lt;追記&gt;&gt; その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに
-&lt;module name=&quot;deployment.scala-library.jar&quot; /&gt;  で参照できると判明。
+private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] } 上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
   </div>
   
 </article>

@@ -79,55 +79,31 @@
   </header>
   <section>
     <p>プライマリでの作業</p>
-
 <pre><code>$ dpkg --list|grep drbd
 $ sudo apt-get install drbd8-utils
 $ dpkg --list|grep drbd
-</code></pre>
-
-<p>/etc/drbd.confの設定</p>
-
+</code></pre><p>/etc/drbd.confの設定</p>
 <p>メタデータ領域の作成</p>
-
 <pre><code>$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1
-</code></pre>
-
-<p>メタデータ作成</p>
-
+</code></pre><p>メタデータ作成</p>
 <pre><code>$ sudo drbdadm create-md r0
-</code></pre>
-
-<p>ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。</p>
-
+</code></pre><p>ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。</p>
 <p>プライマリ、セカンダリともdrbd起動。このとき、drbdで使用するディスクをアンマウントしておくこと</p>
-
 <pre><code>$ sudo /etc/init.d/drbd start
-</code></pre>
-
-<p>状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。</p>
-
+</code></pre><p>状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。</p>
 <pre><code>$ cat /proc/drbd
 version: 8.3.11 (api:88/proto:86-96)
 srcversion: 71955441799F513ACA6DA60 
 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r-----
 ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136
 $ 
-</code></pre>
-
-<p>あるいは</p>
-
+</code></pre><p>あるいは</p>
 <pre><code>$ drbd-overview
 0:??not-found?? Connected Secondary/Secondary Inconsistent/Inconsistent C r----- 
 $ 
-</code></pre>
-
-<p>強制的にプライマリを指定。当然ながら、プライマリサーバで実行。この処理はインストール時のみ。</p>
-
+</code></pre><p>強制的にプライマリを指定。当然ながら、プライマリサーバで実行。この処理はインストール時のみ。</p>
 <pre><code>$ sudo drbdadm -- --overwrite-data-of-peer primary r0
-</code></pre>
-
-<p>同期が自動的に始まる。</p>
-
+</code></pre><p>同期が自動的に始まる。</p>
 <pre><code>$ cat /proc/drbd
 version: 8.3.11 (api:88/proto:86-96)
 srcversion: 71955441799F513ACA6DA60 
@@ -135,19 +111,12 @@ srcversion: 71955441799F513ACA6DA60
 ns:4674424 nr:0 dw:0 dr:4683168 al:0 bm:285 lo:1 pe:23 ua:64 ap:0 ep:1 wo:f oos:397767648
 [&gt;....................] sync'ed: 1.2% (388444/393004)Mfinish: 0:55:39 speed: 119,072 (116,784) K/sec
 $
-</code></pre>
-
-<p>ファイルシステム構築</p>
-
+</code></pre><p>ファイルシステム構築</p>
 <pre><code>$ sudo mkfs.ext4 /dev/drbd0
-</code></pre>
-
-<p>マウントして使用開始</p>
-
+</code></pre><p>マウントして使用開始</p>
 <pre><code>$ sudo mkdir /drbd0
 $ sudo mount /dev/drbd0 /drbd0
 </code></pre>
-
   </section>
   <footer>
     

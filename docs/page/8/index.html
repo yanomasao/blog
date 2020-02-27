@@ -63,6 +63,35 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130128/">JBoss7にscalaで書いたプロジェクトをデプロイする</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-01-28T15:31:04&#43;09:00">
+          Jan 28, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    scalaで書いたEJBのプロジェクトをデプロイするには、
+modules/org/scala/mainディレクトリ作成して、modules.xmlを以下の内容で作成。scala-library.jarも置く。
+&lt;module xmlns=&quot;urn:jboss:module:1.1&quot; name=&quot;org.scala&quot;&gt; &lt;resources&gt; &lt;resource-root path=&quot;scala-library.jar&quot;/&gt; &lt;/resources&gt; &lt;dependencies&gt; &lt;/dependencies&gt; &lt;/module&gt; scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。
+&lt;jboss-deployment-structure&gt; &lt;deployment&gt; &lt;dependencies&gt; &lt;module name=&quot;org.scala&quot; /&gt; &lt;/dependencies&gt; &lt;/deployment&gt; &lt;/jboss-deployment-structure&gt; これでデプロイが正常にされる。
+上記設定をせずに、scala-library.jarをstandalone/deploymentsに入れてEJBプロジェクトをデプロイしても、
+java.lang.NoClassDefFoundError: scala/ScalaObject のエラーが出て正常にデプロイできない。
+&laquo;追記&raquo; その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに
+&lt;module name=&quot;deployment.scala-library.jar&quot; /&gt; で参照できると判明。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130125/">openntpdとisc-dhcp-serverの自動起動</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -75,9 +104,9 @@
   </header>
   <div>
     openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに
-/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0  と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
-fatal: bind: Cannot assign requested address  そこで、/etc/rc.localを
-/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0  としたら動くようになった。
+/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0 と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
+fatal: bind: Cannot assign requested address そこで、/etc/rc.localを
+/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0 としたら動くようになった。
   </div>
   
 </article>
@@ -124,7 +153,7 @@ sshでリモートマシンにログインした時のファイル名補完が�
   </header>
   <div>
     開発用にMac miniを買って、eclipseなどインストールしたところ、perlのスクリプトにJcodeが見えないというエラーが。せっかくだからJcodeをインストール。
-bash-3.2$ sudo perl -MCPAN -e shell cpan[1]&gt; install Jcode  ついでにinstall Pgもしたがエラー。
+bash-3.2$ sudo perl -MCPAN -e shell cpan[1]&gt; install Jcode ついでにinstall Pgもしたがエラー。
 cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Checksum for /Users/yano/.cpan/sources/authors/id/M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz ok CPAN.pm: Going to build M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Configuring Pg Remember to actually read the README file ! please set environment variables POSTGRES_INCLUDE and POSTGRES_LIB ! Warning: No success on command[/usr/bin/perl Makefile.PL] MERGL/pgsql_perl5-1.9.0.tar.gz /usr/bin/perl Makefile.PL -- NOT OK Running make test Make had some problems, won't test Running make install Make had some problems, won't install Failed during this command: MERGL/pgsql_perl5-1.
   </div>
   
@@ -154,7 +183,7 @@ cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MER
   </header>
   <div>
     ssh.elを使ってリモートホストにアクセスするとき、-l taro付きで開いたバッファ上から別のsshアクセスを-lなしですると、-l taroが付け加えられてしまう。これを防ぐには、init.elに
-'(ssh-explicit-args (quote (&quot;-lhanako&quot;)))  のようにデフォルトのユーザ名をセットしておくとよい。
+'(ssh-explicit-args (quote (&quot;-lhanako&quot;))) のようにデフォルトのユーザ名をセットしておくとよい。
   </div>
   
 </article>
@@ -180,7 +209,7 @@ cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MER
 http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
 を参考にしてできた。
 メニューバーにあるKeyRemap4MacBookのアイコンからLaunch EventViewerをクリック。 TeamViewerのウィンドウをアクティブにするとEventViewerのCurrent Applicationにcom.teamviewer.TeamViewerと表示される。 private.xmlに以下を追加
-&lt;appdef&gt; &lt;appname&gt;TEAMVIEWER&lt;/appname&gt; &lt;equal&gt;com.teamviewer.TeamViewer&lt;/equal&gt; &lt;/appdef&gt;  を追加。これで、設定にTEAMVIEWERというキーワードが使える。
+&lt;appdef&gt; &lt;appname&gt;TEAMVIEWER&lt;/appname&gt; &lt;equal&gt;com.teamviewer.TeamViewer&lt;/equal&gt; &lt;/appdef&gt; を追加。これで、設定にTEAMVIEWERというキーワードが使える。
   </div>
   
 </article>
@@ -203,8 +232,8 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   </header>
   <div>
     Macを使っていると、Emacs, Terminal以外では、ほとんどコントロールキーを使わず、コマンドキーをメインで使う。しかし、コマンドキーは位置がスペースバーのとなりで、ほかのキーと組み合わせるのに押しづらい。なので、Emacs, Terminalなど以外のアプリケーションのときはコントロールキーとコマンドキーを入れ替えることにした。KeyRemap4MacBookの~/Library/Application Support/KeyRemap4MacBook/private.xmlは以下のとおり。
-&lt;item&gt; &lt;name&gt;Swap Control and Command&lt;/name&gt; &lt;not&gt;EMACS, TERMINAL, TEAMVIEWER, VIRTUALMACHINE&lt;/not&gt; &lt;identifier&gt;private.swap_control_and_command&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L&lt;/autogen&gt; &lt;/item&gt;  以前は
-&lt;item&gt; &lt;name&gt;Swap Control-/ and Command-/&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.eclipse.swap_control/_and_command/&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::SLASH, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::SLASH, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。
+&lt;item&gt; &lt;name&gt;Swap Control and Command&lt;/name&gt; &lt;not&gt;EMACS, TERMINAL, TEAMVIEWER, VIRTUALMACHINE&lt;/not&gt; &lt;identifier&gt;private.swap_control_and_command&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L&lt;/autogen&gt; &lt;/item&gt; 以前は
+&lt;item&gt; &lt;name&gt;Swap Control-/ and Command-/&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.eclipse.swap_control/_and_command/&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::SLASH, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::SLASH, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt; のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。
   </div>
   
 </article>
@@ -227,7 +256,7 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   </header>
   <div>
     普通にcrontab -eで設定してもなにかのタイミングで消えてしまう。
-# vi /etc/config/crontab # /etc/init.d/crond.sh restart  このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。
+# vi /etc/config/crontab # /etc/init.d/crond.sh restart このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。
   </div>
   
 </article>
@@ -250,8 +279,8 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   </header>
   <div>
     サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。
-$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove  他には
-$ sudo update-rc.d XXXXXX disable  で起動しなくなるものもあるらしい。
+$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove 他には
+$ sudo update-rc.d XXXXXX disable で起動しなくなるものもあるらしい。
   </div>
   
 </article>
@@ -273,47 +302,12 @@ $ sudo update-rc.d XXXXXX disable  で起動しなくなるものもあるらし
     </div>
   </header>
   <div>
-    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat  /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
+    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
 heartbeatの管理下に置くプロセスはharesourcesに記述するとともに、OS起動時に起動しないようにしておくこと。
 起動
-$ sudo /etc/init.d/heartbeat start  確認
-$ sudo /etc/init.d/heartbeat status  
+$ sudo /etc/init.d/heartbeat start 確認
+$ sudo /etc/init.d/heartbeat status 
   </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">drbd環境構築</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-09-05T15:04:16&#43;09:00">
-          Sep 5, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    プライマリでの作業
-$ dpkg --list|grep drbd $ sudo apt-get install drbd8-utils $ dpkg --list|grep drbd  /etc/drbd.confの設定
-メタデータ領域の作成
-$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1  メタデータ作成
-$ sudo drbdadm create-md r0  ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。
-プライマリ、セカンダリともdrbd起動。このとき、drbdで使用するディスクをアンマウントしておくこと
-$ sudo /etc/init.d/drbd start  状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。
-$ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F513ACA6DA60 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136 $  あるいは
-  </div>
-  
-  <footer>
-    <ul class="pager">
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">Read more <span aria-hidden="true">&raquo;</span></a></li>
-    </ul>
-  </footer>
   
 </article>
 

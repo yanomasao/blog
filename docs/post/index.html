@@ -67,6 +67,30 @@
   <hr/>
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2020/20200227/"></a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2020-02-20T09:00:00&#43;09:00">
+          Feb 20, 2020
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    <h1 id="windowsでtail">Windowsでtail</h1>
+<p>最近windowsサーバを使うことが多くなり、tomcatのログを流しながら作業したくて、調べた。power shellで以下を実行。</p>
+<blockquote>
+<p>get-content -path ファイル名 -wait</p>
+</blockquote>
+  </div>
+  
+</article>
+
+  
+  <hr/>
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2019/20190509/">Dockerでsambaサーバ作成</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -104,8 +128,7 @@
     </div>
   </header>
   <div>
-    <p><a target="_blank"  href="https://www.amazon.co.jp/gp/product/B07LBKC13R/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07LBKC13R&linkCode=as2&tag=ymraintree03-22&linkId=9b410880785a62fe2cdbd8805b8d8bf5"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=JP&ASIN=B07LBKC13R&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=ymraintree03-22" ></a><img src="//ir-jp.amazon-adsystem.com/e/ir?t=ymraintree03-22&l=am2&o=9&a=B07LBKC13R" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
-
+    <p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>10連休の今年のGW、例年と変わらずなにもせずに終わりつつありますが、唯一のイベントとして、東京国際フォーラムのラ・フォル・ジュルネに行ってきました。</p>
   </div>
   
@@ -411,7 +434,6 @@
   </header>
   <div>
     <p>github.comにリポジトリを作成しておく。</p>
-
 <table>
 <thead>
 <tr>
@@ -419,21 +441,21 @@
 <th></th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>ymraintree.github.io</td>
 <td>公開コンテンツ用</td>
 </tr>
-
 <tr>
-<td>ymraintree.github.io.hugo&nbsp;&nbsp;&nbsp;</td>
+<td>ymraintree.github.io.hugo   </td>
 <td>hugoでのコンテンツ作成用</td>
+</tr>
+<tr>
+<td><!-- raw HTML omitted --></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-
-<p><br></p>
   </div>
   
   <footer>
@@ -481,7 +503,7 @@
   <div>
     MacBookProを使っているが、つくづく、コントロールキーとコマンドキーが統合されていればいいのにと思う。Ctrl-aとCmd-aを使い分けるシーンなんてないし。
 しばらく前からKeyHacを使って、アプリケーションごとにコントロールキーとコマンドキーの入れ替えをしているが、ちょっとスマートに書けるようになった。
-changeKey(keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;)) changeKey(keymap.defineWindowKeymap(app_name=&quot;com.apple.Preview&quot;)) def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot;  
+changeKey(keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;)) changeKey(keymap.defineWindowKeymap(app_name=&quot;com.apple.Preview&quot;)) def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot; 
   </div>
   
 </article>
@@ -564,7 +586,7 @@ RDBならcopyコマンドとかで一発なんだけど。簡単なことなん�
   </header>
   <div>
     日本の日時を表示するには、
-import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/%m/%d %H:%M:%S %Z')  とすると 2018/03/05 17:24:54 JST となる。もうちょっといい方法はないかな。
+import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/%m/%d %H:%M:%S %Z') とすると 2018/03/05 17:24:54 JST となる。もうちょっといい方法はないかな。
   </div>
   
 </article>
@@ -585,7 +607,7 @@ import time import os os.environ['TZ'] = 'Japan' time.tzset() time.strftime('%Y/
   </header>
   <div>
     AWSコンソールで当該EBSのサイズを拡張する。 ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。
-$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 8G 0 part / $ df -h /dev/xvda1 7.8G 7.6G 0 100% /  変わっていない。
+$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 8G 0 part / $ df -h /dev/xvda1 7.8G 7.6G 0 100% / 変わっていない。
 $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487 $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT xvda 202:0 0 10G 0 disk └─xvda1 202:1 0 10G 0 part / $ sudo resize2fs /dev/xvda1 resize2fs 1.
   </div>
   
@@ -635,7 +657,7 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
     </div>
   </header>
   <div>
-    def checkio(data): return filter(lambda x: 1 &lt; data.count(x), data) if __name__ == &quot;__main__&quot;: #These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], &quot;1st example&quot; assert list(checkio([1, 2, 3, 4, 5])) == [], &quot;2nd example&quot; assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], &quot;3rd example&quot; assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], &quot;4th example&quot;  
+    def checkio(data): return filter(lambda x: 1 &lt; data.count(x), data) if __name__ == &quot;__main__&quot;: #These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], &quot;1st example&quot; assert list(checkio([1, 2, 3, 4, 5])) == [], &quot;2nd example&quot; assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], &quot;3rd example&quot; assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], &quot;4th example&quot; 
   </div>
   
 </article>
@@ -655,7 +677,7 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
     </div>
   </header>
   <div>
-    $ psql -A -F $'\t' xxxxxx  で出力のデリミタをタブに変更できる。
+    $ psql -A -F $'\t' xxxxxx で出力のデリミタをタブに変更できる。
   </div>
   
 </article>
@@ -676,7 +698,7 @@ $ sudo growpart /dev/xvda 1 CHANGED: partition=1 start=16065 old: size=16761118 
   </header>
   <div>
     EC2のLinuxインスタンスは作りたてだとタイムゾーンがJSTではないので、これを変更
-$ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo localtime $ date Sat Feb 4 14:48:14 JST 2017 $  
+$ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo localtime $ date Sat Feb 4 14:48:14 JST 2017 $ 
   </div>
   
 </article>
@@ -697,9 +719,9 @@ $ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tok
   </header>
   <div>
     vmwareのVMをクローンすると、.vmdkファイルの名称が変更されてしまう。たとえば、backupVMというVMをクローンすると、
-# ls backupVM_2-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM_2-flat.vmdk backupVM_2.vmdk backupVM.vmx vmware.log #  となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、
-# vmkfstools -E backupVM_2.vmdk backupVM.vmdk  とすると、すべての_2が取れる。
-# ls backupVM-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM-flat.vmdk backupVM.vmdk backupVM.vmx vmware.log #  さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。
+# ls backupVM_2-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM_2-flat.vmdk backupVM_2.vmdk backupVM.vmx vmware.log # となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、
+# vmkfstools -E backupVM_2.vmdk backupVM.vmdk とすると、すべての_2が取れる。
+# ls backupVM-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM-flat.vmdk backupVM.vmdk backupVM.vmx vmware.log # さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。
   </div>
   
 </article>
@@ -721,9 +743,9 @@ $ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tok
   <div>
     Macをsierraにアップグレードしたらkarabinerが使えなくなったので、かわりにkeyhacを試してみる。
 keyhacはkarabinerとちがって、コントロールキーとコマンドキーを交換という定義ができず、常に
-keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot;  というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
-def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot; keymap[&quot;Ctrl-f&quot;] = &quot;Cmd-f&quot; keymap[&quot;Ctrl-p&quot;] = &quot;Cmd-p&quot; keymap[&quot;Ctrl-q&quot;] = &quot;Cmd-q&quot; keymap[&quot;Ctrl-r&quot;] = &quot;Cmd-r&quot; keymap[&quot;Ctrl-s&quot;] = &quot;Cmd-s&quot; keymap[&quot;Ctrl-t&quot;] = &quot;Cmd-t&quot; keymap[&quot;Ctrl-v&quot;] = &quot;Cmd-v&quot; keymap[&quot;Ctrl-w&quot;] = &quot;Cmd-w&quot; keymap[&quot;Ctrl-x&quot;] = &quot;Cmd-x&quot; keymap[&quot;Ctrl-z&quot;] = &quot;Cmd-z&quot; return keymap  を作り、
- keymap_chrome = keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;) keymap_chrome = changeKey(keymap_chrome)  で呼び出すようにする。
+keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
+def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot; keymap[&quot;Ctrl-f&quot;] = &quot;Cmd-f&quot; keymap[&quot;Ctrl-p&quot;] = &quot;Cmd-p&quot; keymap[&quot;Ctrl-q&quot;] = &quot;Cmd-q&quot; keymap[&quot;Ctrl-r&quot;] = &quot;Cmd-r&quot; keymap[&quot;Ctrl-s&quot;] = &quot;Cmd-s&quot; keymap[&quot;Ctrl-t&quot;] = &quot;Cmd-t&quot; keymap[&quot;Ctrl-v&quot;] = &quot;Cmd-v&quot; keymap[&quot;Ctrl-w&quot;] = &quot;Cmd-w&quot; keymap[&quot;Ctrl-x&quot;] = &quot;Cmd-x&quot; keymap[&quot;Ctrl-z&quot;] = &quot;Cmd-z&quot; return keymap を作り、
+ keymap_chrome = keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;) keymap_chrome = changeKey(keymap_chrome) で呼び出すようにする。
   </div>
   
 </article>
@@ -745,9 +767,9 @@ def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&qu
   <div>
     最近AWSを使うことが多くなって、EC2のインスタンスにsshで接続して作業するが、なにかというとタイムアウトするので不便。ちょっと調べたら
 サーバの/etc/ssh/sshd_configに
-ClientAliveInterval 60  を設定する
+ClientAliveInterval 60 を設定する
 ~/.ssh/configに
-ServerAliveInterval 60  を設定する
+ServerAliveInterval 60 を設定する
 のいずれかでタイムアウトしなくなるらしい。
   </div>
   
@@ -769,7 +791,7 @@ ServerAliveInterval 60  を設定する
   </header>
   <div>
     EJBのEntityManagerでテーブルをselectしてそのテーブルのエンティティを返すのは普通にやることだが、group byしてキーだけ取り出したい、などのときは以下のようにObjectの配列のリストとして扱う。
- val keys = em.createNativeQuery(&quot;select t1.key1, t1.key2, t1.key3 &quot; + &quot;from T1 t1 &quot; + &quot;group by t1.key1, t1.key2, t1.key3 &quot; + .getResultList().asInstanceOf[java.util.List[Array[Object] var result = List[fooPK]() keys.foreach(k =&gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt))  
+ val keys = em.createNativeQuery(&quot;select t1.key1, t1.key2, t1.key3 &quot; + &quot;from T1 t1 &quot; + &quot;group by t1.key1, t1.key2, t1.key3 &quot; + .getResultList().asInstanceOf[java.util.List[Array[Object] var result = List[fooPK]() keys.foreach(k =&gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt)) 
   </div>
   
 </article>
@@ -790,8 +812,8 @@ ServerAliveInterval 60  を設定する
   </header>
   <div>
     pythonで文字列に数字が含まれているかどうかを判定したいとき、
-import re def hantei(v): return re.search(\d, v)  とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
- return re.search(\d, v) is not None  とするとすっきり。
+import re def hantei(v): return re.search(\d, v) とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
+ return re.search(\d, v) is not None とするとすっきり。
   </div>
   
 </article>
@@ -811,9 +833,9 @@ import re def hantei(v): return re.search(\d, v)  とすると、re.search()がB
     </div>
   </header>
   <div>
-    case class Foo(key:Int, key2:String, key3:Int)  のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
-val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300)  とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
-case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2はコピーされない。
+    case class Foo(key:Int, key2:String, key3:Int) のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
+val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300) とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
+case class Foo(key:Int) { var v1:String =_ var v2:Int = _ } だと、v1, v2はコピーされない。
 となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。
   </div>
   
@@ -835,9 +857,9 @@ case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2は�
   </header>
   <div>
     普通に
-val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;  みたいなことを書くと、
-x &lt; y  に変換されてしまう。これをしないように、CDATAを使うには
-&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;  とすればよい。
+val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt; みたいなことを書くと、
+x &lt; y に変換されてしまう。これをしないように、CDATAを使うには
+&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt; とすればよい。
   </div>
   
 </article>
@@ -858,9 +880,31 @@ x &lt; y  に変換されてしまう。これをしないように、CDATAを�
   </header>
   <div>
     eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は
- &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt;  を定義して、
- &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  を
- &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  とするとキーバインドを変更できる。
+ &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt; を定義して、
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt; を
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt; とするとキーバインドを変更できる。
+  </div>
+  
+</article>
+
+  
+  <hr/>
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150122-3/">scala-2.9のscala.reflect.BeanPropertyが2.11ではscala.beans.BeanPropertyに変更されていた</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-01-22T09:00:00&#43;09:00">
+          Jan 22, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    表記の件で、システムのscala-libraryを2.11にあげようとすると、importを変更しなければならない。そこで、
+package foo.bar class BeanPropery extends scala.reflect.BeanProperty というクラスを作って、徐々にこれに切り替えておき、2.11に移行するときに上記クラスを
+package foo.bar class BeanPropery extends scala.beans.BeanProperty に変更すれば一発で移行できるので便利。ところが、実際に試してみると、2.11ではうまくいくが、2.9ではgetterは生成されるがsetterが生成されないようで、エラーになってしまう。惜しい。
   </div>
   
 </article>
@@ -889,28 +933,6 @@ x &lt; y  に変換されてしまう。これをしないように、CDATAを�
   <hr/>
   <article>
   <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150122-3/">scala-2.9のscala.reflect.BeanPropertyが2.11ではscala.beans.BeanPropertyに変更されていた</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2015-01-22T09:00:00&#43;09:00">
-          Jan 22, 2015
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    表記の件で、システムのscala-libraryを2.11にあげようとすると、importを変更しなければならない。そこで、
-package foo.bar class BeanPropery extends scala.reflect.BeanProperty  というクラスを作って、徐々にこれに切り替えておき、2.11に移行するときに上記クラスを
-package foo.bar class BeanPropery extends scala.beans.BeanProperty  に変更すれば一発で移行できるので便利。ところが、実際に試してみると、2.11ではうまくいくが、2.9ではgetterは生成されるがsetterが生成されないようで、エラーになってしまう。惜しい。
-  </div>
-  
-</article>
-
-  
-  <hr/>
-  <article>
-  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2015/20150120/">play frameworkのアプリケーションを本番で運用するときに注意すること</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -923,11 +945,11 @@ package foo.bar class BeanPropery extends scala.beans.BeanProperty  に変更す
   </header>
   <div>
     開発中は
-http://localhost:9000/foo  などのURLで動作確認するが、開発が終わって本番で稼働するとき、
-http://liveserver.boo.com/foo  などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。
+http://localhost:9000/foo などのURLで動作確認するが、開発が終わって本番で稼働するとき、
+http://liveserver.boo.com/foo などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。
 これはconf/routesファイルの
-GET /assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  を
-GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と修正すれば動くようになる。
+GET /assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) を
+GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) と修正すれば動くようになる。
   </div>
   
 </article>
@@ -948,7 +970,7 @@ GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と
   </header>
   <div>
     kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。
- ゲストOSの停止 スナップショット作成 スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
+ ゲストOSの停止 スナップショット作成   スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
   </div>
   
 </article>
@@ -970,8 +992,8 @@ GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と
   <div>
     play-2.2.3を使用。セッションを使ってコントローラからビューへ値を渡す。sessionの受け渡しを追加し、その内容を.withSessionに入れる。
 コントローラ側
- Ok(views.html.index(&quot;&quot;)(session)).withSession(&quot;foo&quot;-&gt;&quot;FOOO&quot;, &quot;bar&quot;-&gt;&quot;BAR&quot;)  ビュー側
- @(message: String)(session:play.api.mvc.Session) @session.get(&quot;foo&quot;)  
+ Ok(views.html.index(&quot;&quot;)(session)).withSession(&quot;foo&quot;-&gt;&quot;FOOO&quot;, &quot;bar&quot;-&gt;&quot;BAR&quot;) ビュー側
+ @(message: String)(session:play.api.mvc.Session) @session.get(&quot;foo&quot;) 
   </div>
   
 </article>
@@ -1016,8 +1038,8 @@ GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と
   <div>
     kvmのqcow2からvmwareのvmdkへコンバートした仮想マシンをvmwareで起動して、とりあえずスナップショットを取ろう、と実行すると、「&hellip;..vmsn」を保存中にエラーが発生しました。」というエラーでパワーオフまでいってしまう。ディレクトリをみると、xxxVM-00001-s999.vmdkのようなファイルが多数あっておかしな状態に。パワーオンしても、「xxxVM-000001.vmdk」、またはディスク「xxxVM-000001.vmdk」が依存しているスナップショット ディスクの 1 つを開くことができません。 」というエラーで起動できない。
 どうもスナップショットを作り損なったのに設定的にはスナップショットができているという状態のようなので、xxxVM.vmxをみると、
-ide1:1.fileName = &quot;xxxVM-000001.vmdk&quot;  という行があるので、これを
-ide1:1.fileName = &quot;xxxVM.vmdk&quot;  に変更しパワーオンしたらできた。そこで、パワーオフしてxxxVM-000001*を削除し、再度パワーオンしたら正常起動。これで復旧できたようにみえる。
+ide1:1.fileName = &quot;xxxVM-000001.vmdk&quot; という行があるので、これを
+ide1:1.fileName = &quot;xxxVM.vmdk&quot; に変更しパワーオンしたらできた。そこで、パワーオフしてxxxVM-000001*を削除し、再度パワーオンしたら正常起動。これで復旧できたようにみえる。
   </div>
   
 </article>
@@ -1037,10 +1059,10 @@ ide1:1.fileName = &quot;xxxVM.vmdk&quot;  に変更しパワーオンしたら�
     </div>
   </header>
   <div>
-    # du -h liveVM20140813/ 269.6G liveVM20140813/ #  このシステムを圧縮。実際には50Gくらい。
-# date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ #  全然減らない。
+    # du -h liveVM20140813/ 269.6G liveVM20140813/ # このシステムを圧縮。実際には50Gくらい。
+# date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ # 全然減らない。
 そこで、未使用領域をゼロ埋めしてみる。ゼロファイルを作ったらすぐ削除。
-$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
+$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.7G 86G 5% / udev 32G 4.
   </div>
   
   <footer>
@@ -1066,7 +1088,7 @@ $ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
     </div>
   </header>
   <div>
-    -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img  のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
+    -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
 $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img real	19m57.342s user	18m2.423s sys	0m24.398s $ ls -lh -rw-r--r-- 1 root root 7.4G 8月 5 18:22 zabbixVM.compact.img -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img $ time sudo qemu-img convert -p -f qcow2 -O vmdk zabbixVM.compact.img zabbixVM.vmdk real	78m36.654s user	5m4.354s sys	2m59.439s $ ls -lh -rw-r--r-- 1 root root 7.
   </div>
   
@@ -1093,7 +1115,7 @@ $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compa
     </div>
   </header>
   <div>
-    # date; vmkfstools -i foo/barVM.vmdk zoo.vmdk -d thin; date  
+    # date; vmkfstools -i foo/barVM.vmdk zoo.vmdk -d thin; date 
   </div>
   
 </article>
@@ -1136,12 +1158,12 @@ $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compa
     Playで作っているアプリケーションでメール送信が必要になり、普通に書いてみたらメール送信が遅いので画面に制御が帰ってくるまで時間がかかってしまった。手っ取り早く非同期でメールを送信するように改良してみた。
 プロジェクト直下のbuild.sbt
 libraryDependenciesに
-&quot;play.modules.mailer&quot; %% &quot;play-mailer&quot; % &quot;2.1.3&quot;  を追加。
-resolvers ++= Seq( &quot;Rhinofly Internal Release Repository&quot; at &quot;http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local&quot; )  を追加。
+&quot;play.modules.mailer&quot; %% &quot;play-mailer&quot; % &quot;2.1.3&quot; を追加。
+resolvers ++= Seq( &quot;Rhinofly Internal Release Repository&quot; at &quot;http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local&quot; ) を追加。
 conf/application.confに
-mail.failTo=&quot;(sender address)&quot; mail.host=smtp.gmail.com mail.port=465 mail.username=&quot;foo@coo.bar.com&quot; mail.password=xxxxxxxx  を追加。
+mail.failTo=&quot;(sender address)&quot; mail.host=smtp.gmail.com mail.port=465 mail.username=&quot;foo@coo.bar.com&quot; mail.password=xxxxxxxx を追加。
 Application.scalaで送信。エラー処理などはまたこんど。
-import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.Implicits.global // 添付ファイルの用意 val bis = new BufferedInputStream(new FileInputStream(pdf)) val bArray = Stream.continually(bis.read).takeWhile(-1 !=).map(_.toByte).toArray val email = Email( subject = &quot;サブジェクト&quot;, from = EmailAddress(&quot;送付者名&quot;, &quot;donotreply@coo.bar.com&quot;), text = body, htmlText = body) .to(&quot;受信者名&quot;, &quot;xxxxx@zoo.co.jp&quot;) .
+import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.Implicits.global // 添付ファイルの用意 val bis = new BufferedInputStream(new FileInputStream(pdf)) val bArray = Stream.continually(bis.read).takeWhile(-1 !=).map(_.toByte).toArray val email = Email( subject = &quot;サブジェクト&quot;, from = EmailAddress(&quot;送付者名&quot;, &quot;donotreply@coo.bar.com&quot;), text = body, htmlText = body) .to(&quot;受信者名&quot;, &quot;xxxxx@zoo.co.jp&quot;) .withAttachments( Attachment(pdf.getName(), bArray, &quot;application/pdf&quot;)) AsyncMailer.
   </div>
   
   <footer>
@@ -1168,7 +1190,7 @@ import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.I
   </header>
   <div>
     ホームディレクトリをNASに置いて、linuxマシンからはautomountでアクセスするようにしているが、先日NASが異常終了して起動できなくなってしまった。緊急対応として、バックアップのNASサーバを本番のサーバとして使うようにDNSで切り替えた。こんなとき、マシンによってはautomountが以前のサーバにアクセスしようとしてlsコマンドやdfコマンドが刺さってしまう。当該マシンを再起動すればいいことだが、本番運用しているマシンなどは再起動できない。こういうときは
-# umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx  の順で実行する。-lだとたいていはumountできるもよう。
+# umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx の順で実行する。-lだとたいていはumountできるもよう。
   </div>
   
 </article>
@@ -1189,11 +1211,11 @@ import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.I
   </header>
   <div>
     kvmのゲストOSにubuntu12.04を使っているが、ネットワークの設定を変更してひとつのNICに複数のIPアドレスを振るようにしたらOSの起動時に
-Waiting for network configuration...  や
-Waiting up to 60 more seconds for network configuration...  が出て遅くなってしまった。
+Waiting for network configuration... や
+Waiting up to 60 more seconds for network configuration... が出て遅くなってしまった。
 とりあえず、/etc/init/failsafe.confを修正。
 sleep 20をsleep 5に変え、
-$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1  をコメントアウトすると起動は速くなる。
+$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1 をコメントアウトすると起動は速くなる。
   </div>
   
 </article>
@@ -1215,11 +1237,11 @@ $PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : s
   <div>
     簡単なplayのアプリケーションを作ってさくっとデプロイして本番運用していたが、本番機のロードアベレージが常に1を上回るようになってびっくり。調べると、playのプロセスがCPUを専有していた。単純にplay runで起動していたが、これを変更。
 プロジェクト内で
-$ play clean compile stage  を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、
-	cd /usr/local/play/name_of_project target/start -server -Xms128m -Xmx128m &amp;  などとするとよい。終了用には
-	cd /usr/local/play/name_of_project kill -TERM `cat RUNNING_PID`  play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、
-target/universal/stage/bin/name_of_project  に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。
-	cd /usr/local/play-2.2.3/name_of_project target/universal/stage/bin/name_of_project -Dhttp.port=9001 &gt; /dev/null 2&gt;&amp;1 &amp;  停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。
+$ play clean compile stage を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、
+	cd /usr/local/play/name_of_project target/start -server -Xms128m -Xmx128m &amp; などとするとよい。終了用には
+	cd /usr/local/play/name_of_project kill -TERM `cat RUNNING_PID` play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、
+target/universal/stage/bin/name_of_project に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。
+	cd /usr/local/play-2.2.3/name_of_project target/universal/stage/bin/name_of_project -Dhttp.port=9001 &gt; /dev/null 2&gt;&amp;1 &amp; 停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。
   </div>
   
 </article>
@@ -1240,7 +1262,7 @@ target/universal/stage/bin/name_of_project  に変更になった。コマンド
   </header>
   <div>
     Java7になってから、実行可能jarファイルでアプリケーションを起動すると、「JARファイルのマニフェストに権限属性が含まれていないため、このアプリケーションは、今後のJavaセキュリティ・アップデートでブロックされます。」というメッセージが表示されるようになった。これを解消するには、実行可能JarのMANIFEST.MFに
-Permissions: all-permissions Codebase: *.foo.bar.com  を追加する。
+Permissions: all-permissions Codebase: *.foo.bar.com を追加する。
   </div>
   
 </article>
@@ -1261,10 +1283,10 @@ Permissions: all-permissions Codebase: *.foo.bar.com  を追加する。
   </header>
   <div>
     Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で
-&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のように渡していた。Java側では
-String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることができた。
+&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt; のように渡していた。Java側では
+String foo = System.getProperty(&quot;arg1&quot;); で受け取ることができた。
 これができなくなったようなので調べてみたら http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html の解説にあるように、
-&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のようにするとVMに引数を渡すことができるんだと。
+&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt; のようにするとVMに引数を渡すことができるんだと。
   </div>
   
 </article>
@@ -1286,7 +1308,7 @@ String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることがで�
   <div>
     もっといい方法があると思うけれど、とりあえず実現できたやり方
 scalaのMapのvaluesをjava.util.Collectionに変換する
-new java.util.ArrayList[UriageForRanking](result.values)  
+new java.util.ArrayList[UriageForRanking](result.values) 
   </div>
   
 </article>
@@ -1347,10 +1369,13 @@ new java.util.ArrayList[UriageForRanking](result.values)
   </header>
   <div>
     以下のコマンドで差分ファイルを作ることができる。
-$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img  以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
-$ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $  差分をベースにコミットするには以下のコマンド。
-$ sudo qemu-img commit -f qcow2 vm.test.diff.img  これで差分はいらなくなる。
+$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img 以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
+$ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $ 差分をベースにコミットするには以下のコマンド。
+$ sudo qemu-img commit -f qcow2 vm.test.diff.img これで差分はいらなくなる。
 この方式だと、ベースのイメージが差分バックアップの対象とならないので、バックアップの効率はよくなる。
+イメージファイルの圧縮
+イメージファイルのサイズが大きくなってきたので圧縮してみる。
+$ time sudo qemu-img convert -c -O qcow2 testLinVM.
   </div>
   
   <footer>
@@ -1405,10 +1430,10 @@ $PROJECT_ROOT/build.sbt name := &quot;test.sbt&quot; version := &quot;1.0&quot; 
   <div>
     テストコードでscalaのobjectをモック化したい。
 モック化したいobjectは以下。このクラスはJavaからも呼ぶため、class宣言もしている。
-class Boo object Boo { val log = LogFactory.getLog(this.getClass()) def foo = { log.debug(&quot;Boo#foo called&quot;) true } }  これをモック化するコード
-@MockClass(realClass=classOf[Boo]) object BooMock { val log = LogFactory.getLog(this.getClass()) @Mock def foo = { log.debug(&quot;BooMock#foo called&quot;) false } }  テストコード
-class JMockitTest { val log = LogFactory.getLog(this.getClass()) @Test def foo { setUpMocks(classOf[BooMock]) log.debug(Boo.foo) } }  これを実行しても、
-DEBUG (JMockitTest.scala:15) Boo#foo called DEBUG (JMockitTest.scala:51) true  となって、モックが呼ばれない。
+class Boo object Boo { val log = LogFactory.getLog(this.getClass()) def foo = { log.debug(&quot;Boo#foo called&quot;) true } } これをモック化するコード
+@MockClass(realClass=classOf[Boo]) object BooMock { val log = LogFactory.getLog(this.getClass()) @Mock def foo = { log.debug(&quot;BooMock#foo called&quot;) false } } テストコード
+class JMockitTest { val log = LogFactory.getLog(this.getClass()) @Test def foo { setUpMocks(classOf[BooMock]) log.debug(Boo.foo) } } これを実行しても、
+DEBUG (JMockitTest.scala:15) Boo#foo called DEBUG (JMockitTest.scala:51) true となって、モックが呼ばれない。
 一方で、テストコードをJavaにしてみる。
 public class JMockit2Test { private static Log log = LogFactory.
   </div>
@@ -1437,10 +1462,10 @@ public class JMockit2Test { private static Log log = LogFactory.
   </header>
   <div>
     virtualboxのゲストにwindowsを新規インストールして起動。ホストには1920x1080のディスプレイがついているので、ゲストでも当然出せるはずだが、インストール直後にちょっとシームレスモードを試したのが悪かったのか、フルスクリーンモードにしても1920x1050になって天地が余ってしまう。ホストで
-&gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32  とか
-&gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32  とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。
+&gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32 とか
+&gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32 とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。
 ちなみに、windowsホスト上でゲストを非表示で起動・終了するには以下のようなスクリプトがあるとよい。
-start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxHeadless.exe&quot;&quot; -s nameOfVM&quot;, 0 stop.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxManage.exe&quot;&quot; controlvm nameOfVM poweroff&quot;, 0  
+start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxHeadless.exe&quot;&quot; -s nameOfVM&quot;, 0 stop.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxManage.exe&quot;&quot; controlvm nameOfVM poweroff&quot;, 0 
   </div>
   
 </article>
@@ -1462,7 +1487,7 @@ start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Progr
   <div>
     手元のディスプレイが1920x1080でも、virtualboxが乗っているホストにディスプレイがついていない場合、解像度の設定に手間取ることがある。この場合、
  ホストを起動 ホストにsshでログイン $ vnc4server -geometry 1920x1080 手元でvnc接続 virtualboxでゲスト起動  とすると、ゲストの解像度で1920x1080が選べるようになる。ちなみに、ホスト上で
-$ vboxmanage startvm guestVM --type headless  とするとゲストを非表示で起動することができる。
+$ vboxmanage startvm guestVM --type headless とするとゲストを非表示で起動することができる。
   </div>
   
 </article>
@@ -1484,13 +1509,13 @@ $ vboxmanage startvm guestVM --type headless  とするとゲストを非表示�
   <div>
     ディスク容量100Gで気楽に作ったゲストOSをそのまま運用で使うことになり、500Gへ増やすことにした。
 ゲストOS停止 バックアップ
-qemu-img resize aplivevm +400G  これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。
+qemu-img resize aplivevm +400G これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。
 そこで、ゲストを起動し、
-# shutdown now  でシングルユーザモードへ移行。virt-managerのコンソールにシングルユーザモードのシェルがでるので、
-# fdisk /dev/vda  を使うが、ルートパーティションはそのままにして、別のパーティションを追加（/dev/vda3）する。OSを再起動させ、
-# mkfs.ext4 /dev/vda3  としたところで、なぜかゲストOS死亡。ためしに
-# mkfs.ext3 /dev/vda3  はできた。その後
-# mkfs.ext4 -j /dev/vda3  もできたのでよしとする。
+# shutdown now でシングルユーザモードへ移行。virt-managerのコンソールにシングルユーザモードのシェルがでるので、
+# fdisk /dev/vda を使うが、ルートパーティションはそのままにして、別のパーティションを追加（/dev/vda3）する。OSを再起動させ、
+# mkfs.ext4 /dev/vda3 としたところで、なぜかゲストOS死亡。ためしに
+# mkfs.ext3 /dev/vda3 はできた。その後
+# mkfs.ext4 -j /dev/vda3 もできたのでよしとする。
   </div>
   
 </article>
@@ -1511,7 +1536,7 @@ qemu-img resize aplivevm +400G  これだけだと、ホストからみた容量
   </header>
   <div>
     イメージファイルをqcow2フォーマットで作る場合は、virt-managerで新規作成する前に、ホスト側で
-$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。
+$ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G としておく。500Gは上限値で、作った当初のサイズは200kにも満たない。
   </div>
   
 </article>
@@ -1533,14 +1558,16 @@ $ sudo qemu-img create -f qcow2 baseVM-windows7.img 500G  としておく。500G
   <div>
     iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。
 iscsiターゲットの構築
-$ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms  /etc/iet/ietd.confを編集
-Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback Lun 0 Path=/dev/sdb1,Type=blockio  のようにiscsiで公開するパーティションを指定。
+$ sudo apt-get install iscsitarget $ sudo apt-get install iscsitarget-dkms /etc/iet/ietd.confを編集
+Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback Lun 0 Path=/dev/sdb1,Type=blockio のようにiscsiで公開するパーティションを指定。
 /etc/default/iscsitargetを編集
-ISCSITARGET_ENABLE=true  iscsitarget起動
-$ sudo /etc/init.d/iscsitarget start  ここから、iscsi用のパーティションをocfs2でフォーマットする作業。
+ISCSITARGET_ENABLE=true iscsitarget起動
+$ sudo /etc/init.d/iscsitarget start ここから、iscsi用のパーティションをocfs2でフォーマットする作業。
 iscsiイニシエータをインストール
-$ sudo apt-get install open-iscsi  ocfs2をインストール
-$ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login $ sudo iscsiadm -m session  このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。
+$ sudo apt-get install open-iscsi ocfs2をインストール
+$ sudo apt-get install ocfs2-tools $ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login $ sudo iscsiadm -m session このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。
+$ sudo fdisk /dev/sdc でパーティションを定義して、フォーマット。
+$ sudo mkfs.
   </div>
   
   <footer>
@@ -1567,10 +1594,10 @@ $ sudo apt-get install ocfs2-tools  $ sudo iscsiadm -m discovery -t sendtargets 
   </header>
   <div>
     ubuntuは12.04を使用。普通にインストールしたのち、
-$ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager  デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。
+$ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。
 NAT用のインタフェースを削除する
-$ sudo brctl show $ sudo virsh net-autostart default --disable $ sudo virsh net-destroy default $ sudo brctl show  /etc/network/interfacesの変更。以下のようにbr0を追加する。
-auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface br0 inet static address 10.5.34.145 network 10.5.0.0 netmask 255.255.0.0 broadcast 10.5.255.255 gateway 10.5.34.254 dns-nameservers 10.4.34.1 dns-search foo.bar.co.jp bridge_ports eth0 bridge_fd 9 bridge_hello 2 bridge_maxage 12 bridge_stp off  10.
+$ sudo brctl show $ sudo virsh net-autostart default --disable $ sudo virsh net-destroy default $ sudo brctl show /etc/network/interfacesの変更。以下のようにbr0を追加する。
+auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface br0 inet static address 10.5.34.145 network 10.5.0.0 netmask 255.255.0.0 broadcast 10.5.255.255 gateway 10.5.34.254 dns-nameservers 10.4.34.1 dns-search foo.bar.co.jp bridge_ports eth0 bridge_fd 9 bridge_hello 2 bridge_maxage 12 bridge_stp off 10.
   </div>
   
   <footer>
@@ -1599,11 +1626,11 @@ auto lo iface lo inet loopback auto eth0 iface eth0 inet manual auto br0 iface b
     drbd+heartbeatを使用して運用しているサーバで、障害が発生。今までもheartbeatが障害を検知してセカンダリにtakeoverしようとして途中でエラーが発生しtakeoverをあきらめてしまうという現象はあったが、今回はちょっと違った。
 以前と同じ現象ならばdrbd配下のパーティションがプライマリにもセカンダリにもマウントされていないような状態になるが、今回はdrbdのパーティションがプライマリに正常にマウントされている。
 結局異常があったのはサービスIPアドレスのみ。普段は以下のように実アドレスとは別に付与され、サーバのアドレスとして使用しているが、これだけがなくなっていた。
-eth1:1 Link encap:Ethernet HWaddr 8c:89:a5:c3:d8:fb inet addr:10.5.34.125 Bcast:10.5.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:20 Memory:f4400000-f4420000  syslogを見てもheartbeat関連のログは残っていなかったが、かわりに
-Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down  が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。
+eth1:1 Link encap:Ethernet HWaddr 8c:89:a5:c3:d8:fb inet addr:10.5.34.125 Bcast:10.5.255.255 Mask:255.255.0.0 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 Interrupt:20 Memory:f4400000-f4420000 syslogを見てもheartbeat関連のログは残っていなかったが、かわりに
+Feb 25 01:51:25 apollo2 kernel: [3666623.094611] e1000e: eth1 NIC Link is Down が残っていた。その後、6秒ほどでNICは復活。つまり、NICがダウンしたことで、heartbeatが付与しているサービスIPアドレスは消えてしまった。その後NICが復活するも、短時間で復旧したためにheartbeatも障害を検知しなかった。したがってサービスIPアドレスは消えたまま、という推測が成り立つ。
 とりあえず、消えてしまったサービスIPアドレスを改めて付与するため、以下のheartbeatのコマンドを使用。
-$ sudo ./IPaddr 10.5.34.125/16/eth1 start  ちなみに
-$ sudo ./IPaddr 10.5.34.125/16/eth1 stop  とすればIPアドレスを削除することができる。
+$ sudo ./IPaddr 10.5.34.125/16/eth1 start ちなみに
+$ sudo ./IPaddr 10.5.34.125/16/eth1 stop とすればIPアドレスを削除することができる。
   </div>
   
 </article>
@@ -1624,9 +1651,9 @@ $ sudo ./IPaddr 10.5.34.125/16/eth1 stop  とすればIPアドレスを削除す
   </header>
   <div>
     ubuntuでNASのディスクをマウントする。
-$ sudo apt-get install smbfs  でパッケージをインストール。
-$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx  アンマウントはumountコマンドでよい。
-$ sudo umount /zoo  
+$ sudo apt-get install smbfs でパッケージをインストール。
+$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx アンマウントはumountコマンドでよい。
+$ sudo umount /zoo 
   </div>
   
 </article>
@@ -1647,7 +1674,7 @@ $ sudo umount /zoo
   </header>
   <div>
     もともとJavaで書いているプロジェクトにScalaのコードを混ぜていくと、Eclipseの挙動がおかしくなるときがあって、そういうときはJavaの側からScalaでできているオブジェクトやクラスが軒並み見えなくなる。ビルドしなおしても状況は変わらず。いろいろ試した結果、scalaのobjectを作ったときは同名のクラスも用意しないとJavaがそれらを参照するときにおかしな挙動になるようだ。
- class Foo object Foo { def xxx:String = .... ... }  
+ class Foo object Foo { def xxx:String = .... ... } 
   </div>
   
 </article>
@@ -1709,7 +1736,7 @@ $ sudo umount /zoo
   </header>
   <div>
     なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。
-private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] }  上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
+private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef]; props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;); props.put(Context.PROVIDER_URL, &quot;remote://foo.bar.com:4447&quot;); props.put(Context.SECURITY_PRINCIPAL, &quot;appuser&quot;); props.put(Context.SECURITY_CREDENTIALS, &quot;xxxxxx&quot;); props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.lang.Boolean]); //	props.put(Context.URL_PKG_PREFIXES, &quot;org.jboss.ejb.client.naming&quot;); val ctxRemote = new InitialContext(props); ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession] } 上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。
   </div>
   
 </article>
@@ -1731,12 +1758,12 @@ private def getBean:ZZZZZZSession = { val props = new Hashtable[String, AnyRef];
   <div>
     scalaで書いたEJBのプロジェクトをデプロイするには、
 modules/org/scala/mainディレクトリ作成して、modules.xmlを以下の内容で作成。scala-library.jarも置く。
-&lt;module xmlns=&quot;urn:jboss:module:1.1&quot; name=&quot;org.scala&quot;&gt; &lt;resources&gt; &lt;resource-root path=&quot;scala-library.jar&quot;/&gt; &lt;/resources&gt; &lt;dependencies&gt; &lt;/dependencies&gt; &lt;/module&gt;  scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。
-&lt;jboss-deployment-structure&gt; &lt;deployment&gt; &lt;dependencies&gt; &lt;module name=&quot;org.scala&quot; /&gt; &lt;/dependencies&gt; &lt;/deployment&gt; &lt;/jboss-deployment-structure&gt;  これでデプロイが正常にされる。
+&lt;module xmlns=&quot;urn:jboss:module:1.1&quot; name=&quot;org.scala&quot;&gt; &lt;resources&gt; &lt;resource-root path=&quot;scala-library.jar&quot;/&gt; &lt;/resources&gt; &lt;dependencies&gt; &lt;/dependencies&gt; &lt;/module&gt; scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。
+&lt;jboss-deployment-structure&gt; &lt;deployment&gt; &lt;dependencies&gt; &lt;module name=&quot;org.scala&quot; /&gt; &lt;/dependencies&gt; &lt;/deployment&gt; &lt;/jboss-deployment-structure&gt; これでデプロイが正常にされる。
 上記設定をせずに、scala-library.jarをstandalone/deploymentsに入れてEJBプロジェクトをデプロイしても、
-java.lang.NoClassDefFoundError: scala/ScalaObject  のエラーが出て正常にデプロイできない。
-&lt;&lt;追記&gt;&gt; その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに
-&lt;module name=&quot;deployment.scala-library.jar&quot; /&gt;  で参照できると判明。
+java.lang.NoClassDefFoundError: scala/ScalaObject のエラーが出て正常にデプロイできない。
+&laquo;追記&raquo; その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに
+&lt;module name=&quot;deployment.scala-library.jar&quot; /&gt; で参照できると判明。
   </div>
   
 </article>
@@ -1757,9 +1784,9 @@ java.lang.NoClassDefFoundError: scala/ScalaObject  のエラーが出て正常�
   </header>
   <div>
     openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに
-/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0  と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
-fatal: bind: Cannot assign requested address  そこで、/etc/rc.localを
-/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0  としたら動くようになった。
+/etc/init.d/isc-dhcp-server start /etc/init.d/openntpd start exit 0 と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。
+fatal: bind: Cannot assign requested address そこで、/etc/rc.localを
+/etc/init.d/isc-dhcp-server start sleep 10 /etc/init.d/openntpd start exit 0 としたら動くようになった。
   </div>
   
 </article>
@@ -1802,7 +1829,7 @@ sshでリモートマシンにログインした時のファイル名補完が�
   </header>
   <div>
     開発用にMac miniを買って、eclipseなどインストールしたところ、perlのスクリプトにJcodeが見えないというエラーが。せっかくだからJcodeをインストール。
-bash-3.2$ sudo perl -MCPAN -e shell cpan[1]&gt; install Jcode  ついでにinstall Pgもしたがエラー。
+bash-3.2$ sudo perl -MCPAN -e shell cpan[1]&gt; install Jcode ついでにinstall Pgもしたがエラー。
 cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Checksum for /Users/yano/.cpan/sources/authors/id/M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz ok CPAN.pm: Going to build M/ME/MERGL/pgsql_perl5-1.9.0.tar.gz Configuring Pg Remember to actually read the README file ! please set environment variables POSTGRES_INCLUDE and POSTGRES_LIB ! Warning: No success on command[/usr/bin/perl Makefile.PL] MERGL/pgsql_perl5-1.9.0.tar.gz /usr/bin/perl Makefile.PL -- NOT OK Running make test Make had some problems, won't test Running make install Make had some problems, won't install Failed during this command: MERGL/pgsql_perl5-1.
   </div>
   
@@ -1830,7 +1857,7 @@ cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MER
   </header>
   <div>
     ssh.elを使ってリモートホストにアクセスするとき、-l taro付きで開いたバッファ上から別のsshアクセスを-lなしですると、-l taroが付け加えられてしまう。これを防ぐには、init.elに
-'(ssh-explicit-args (quote (&quot;-lhanako&quot;)))  のようにデフォルトのユーザ名をセットしておくとよい。
+'(ssh-explicit-args (quote (&quot;-lhanako&quot;))) のようにデフォルトのユーザ名をセットしておくとよい。
   </div>
   
 </article>
@@ -1854,7 +1881,7 @@ cpan[3]&gt; install Pg Running install for module 'Pg' Running make for M/ME/MER
 http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
 を参考にしてできた。
 メニューバーにあるKeyRemap4MacBookのアイコンからLaunch EventViewerをクリック。 TeamViewerのウィンドウをアクティブにするとEventViewerのCurrent Applicationにcom.teamviewer.TeamViewerと表示される。 private.xmlに以下を追加
-&lt;appdef&gt; &lt;appname&gt;TEAMVIEWER&lt;/appname&gt; &lt;equal&gt;com.teamviewer.TeamViewer&lt;/equal&gt; &lt;/appdef&gt;  を追加。これで、設定にTEAMVIEWERというキーワードが使える。
+&lt;appdef&gt; &lt;appname&gt;TEAMVIEWER&lt;/appname&gt; &lt;equal&gt;com.teamviewer.TeamViewer&lt;/equal&gt; &lt;/appdef&gt; を追加。これで、設定にTEAMVIEWERというキーワードが使える。
   </div>
   
 </article>
@@ -1875,8 +1902,8 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   </header>
   <div>
     Macを使っていると、Emacs, Terminal以外では、ほとんどコントロールキーを使わず、コマンドキーをメインで使う。しかし、コマンドキーは位置がスペースバーのとなりで、ほかのキーと組み合わせるのに押しづらい。なので、Emacs, Terminalなど以外のアプリケーションのときはコントロールキーとコマンドキーを入れ替えることにした。KeyRemap4MacBookの~/Library/Application Support/KeyRemap4MacBook/private.xmlは以下のとおり。
-&lt;item&gt; &lt;name&gt;Swap Control and Command&lt;/name&gt; &lt;not&gt;EMACS, TERMINAL, TEAMVIEWER, VIRTUALMACHINE&lt;/not&gt; &lt;identifier&gt;private.swap_control_and_command&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L&lt;/autogen&gt; &lt;/item&gt;  以前は
-&lt;item&gt; &lt;name&gt;Swap Control-/ and Command-/&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.eclipse.swap_control/_and_command/&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::SLASH, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::SLASH, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。
+&lt;item&gt; &lt;name&gt;Swap Control and Command&lt;/name&gt; &lt;not&gt;EMACS, TERMINAL, TEAMVIEWER, VIRTUALMACHINE&lt;/not&gt; &lt;identifier&gt;private.swap_control_and_command&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L&lt;/autogen&gt; &lt;/item&gt; 以前は
+&lt;item&gt; &lt;name&gt;Swap Control-/ and Command-/&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.eclipse.swap_control/_and_command/&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::SLASH, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::SLASH, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt; のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。
   </div>
   
 </article>
@@ -1897,7 +1924,7 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   </header>
   <div>
     普通にcrontab -eで設定してもなにかのタイミングで消えてしまう。
-# vi /etc/config/crontab # /etc/init.d/crond.sh restart  このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。
+# vi /etc/config/crontab # /etc/init.d/crond.sh restart このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。
   </div>
   
 </article>
@@ -1918,8 +1945,8 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   </header>
   <div>
     サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。
-$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove  他には
-$ sudo update-rc.d XXXXXX disable  で起動しなくなるものもあるらしい。
+$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove 他には
+$ sudo update-rc.d XXXXXX disable で起動しなくなるものもあるらしい。
   </div>
   
 </article>
@@ -1939,11 +1966,11 @@ $ sudo update-rc.d XXXXXX disable  で起動しなくなるものもあるらし
     </div>
   </header>
   <div>
-    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat  /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
+    $ dpkg --list|grep heartbeat $ sudo apt-get install heartbeat $ dpkg --list|grep heartbeat /etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。
 heartbeatの管理下に置くプロセスはharesourcesに記述するとともに、OS起動時に起動しないようにしておくこと。
 起動
-$ sudo /etc/init.d/heartbeat start  確認
-$ sudo /etc/init.d/heartbeat status  
+$ sudo /etc/init.d/heartbeat start 確認
+$ sudo /etc/init.d/heartbeat status 
   </div>
   
 </article>
@@ -1964,13 +1991,14 @@ $ sudo /etc/init.d/heartbeat status
   </header>
   <div>
     プライマリでの作業
-$ dpkg --list|grep drbd $ sudo apt-get install drbd8-utils $ dpkg --list|grep drbd  /etc/drbd.confの設定
+$ dpkg --list|grep drbd $ sudo apt-get install drbd8-utils $ dpkg --list|grep drbd /etc/drbd.confの設定
 メタデータ領域の作成
-$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1  メタデータ作成
-$ sudo drbdadm create-md r0  ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。
+$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1 メタデータ作成
+$ sudo drbdadm create-md r0 ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。
 プライマリ、セカンダリともdrbd起動。このとき、drbdで使用するディスクをアンマウントしておくこと
-$ sudo /etc/init.d/drbd start  状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。
-$ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F513ACA6DA60 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136 $  あるいは
+$ sudo /etc/init.d/drbd start 状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。
+$ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F513ACA6DA60 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136 $ あるいは
+$ drbd-overview 0:??not-found?? Connected Secondary/Secondary Inconsistent/Inconsistent C r----- $ 強制的にプライマリを指定。当然ながら、プライマリサーバで実行。この処理はインストール時のみ。
   </div>
   
   <footer>
@@ -1999,7 +2027,7 @@ $ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F51
     http://philos0.blog94.fc2.com/blog-entry-20.html
 を参考に
 init.elに以下を追加
-(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil))  C-x C-f /sudo:remoteserver:/etc/hosts  が使えるようになった。
+(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil)) C-x C-f /sudo:remoteserver:/etc/hosts が使えるようになった。
   </div>
   
 </article>
@@ -2021,11 +2049,11 @@ init.elに以下を追加
   <div>
     ubunbuのパッケージ管理に関するコマンド
 検索
-apt-cache search XXXXXX  インストール
-apt-get install XXXXXX  インストール済パッケージの一覧
-dpkg --list  アンインストール
-apt-get remove XXXXXX  設定まで消すときは
-apt-get --purge remove XXXXXX  
+apt-cache search XXXXXX インストール
+apt-get install XXXXXX インストール済パッケージの一覧
+dpkg --list アンインストール
+apt-get remove XXXXXX 設定まで消すときは
+apt-get --purge remove XXXXXX 
   </div>
   
 </article>
@@ -2047,11 +2075,11 @@ apt-get --purge remove XXXXXX
   <div>
     ホットスタンバイ・非同期の設定
 準備 ロールの作成
-$ psql postgres postgres=# create role repl_user login replication password 'xxxxxx';  アーカイブディレクトリの作成
-$ sudo mkdir /usr/local/pgsql/archive $ sudo chown postgres /usr/local/pgsql/archive  設定ファイル postgresql.conf
-wal_level = hot_standby archive_mode = on archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f' max_wal_senders = 2  pg_hba.conf
-host replication repl_user 192.168.0.2/32 md5  ベースバックアップ 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。 スタンバイでベースバックアップ。
-$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose  スタンバイサーバの設定 postgresql.
+$ psql postgres postgres=# create role repl_user login replication password 'xxxxxx'; アーカイブディレクトリの作成
+$ sudo mkdir /usr/local/pgsql/archive $ sudo chown postgres /usr/local/pgsql/archive 設定ファイル postgresql.conf
+wal_level = hot_standby archive_mode = on archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f' max_wal_senders = 2 pg_hba.conf
+host replication repl_user 192.168.0.2/32 md5 ベースバックアップ 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。 スタンバイでベースバックアップ。
+$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose スタンバイサーバの設定 postgresql.
   </div>
   
   <footer>
@@ -2079,8 +2107,8 @@ $ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --f
   <div>
     これまでpgpoolII+postgresでライブのDBを構成していたが、サーバを安いPCサーバにリプレイスするのをきっかけに、heartbeat+drbd+postgresに変えることにした。
 先日、プライマリとなっていたサーバ1が落ち、heartbeatによってセカンダリのサーバ2がプライマリに切り替わった。その際、postgresにエラーが発生。pg_dumpを取ろうとすると、
-pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688 DETAIL: Could not open file &quot;pg_clog/0FFF&quot;: No such file or directory. pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout; pg_dumpall: データベース&quot;common&quot;に対するpg_dumpが失敗しました。終了します  ネットでいろいろ調べ、
- $ dd bs=256k count=1 if=/dev/zero of=0FFF 1+0 records in 1+0 records out 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s $  で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。
+pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688 DETAIL: Could not open file &quot;pg_clog/0FFF&quot;: No such file or directory. pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout; pg_dumpall: データベース&quot;common&quot;に対するpg_dumpが失敗しました。終了します ネットでいろいろ調べ、
+ $ dd bs=256k count=1 if=/dev/zero of=0FFF 1+0 records in 1+0 records out 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s $ で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。
  # select count(*) from ziplog; ERROR: could not access status of transaction 2319990784 DETAIL: Could not open file &quot;pg_clog/08A4&quot;: No such file or directory.
   </div>
   
@@ -2108,7 +2136,7 @@ pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメ�
   </header>
   <div>
     手元のマシンからリモートのAWSのインスタンスへrsync。
-rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4/backup  
+rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4/backup 
   </div>
   
 </article>
@@ -2129,7 +2157,7 @@ rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4
   </header>
   <div>
     マネージメントコンソールでボリュームを作成。インスタンスにアタッチすると、デバイス名(/dev/sdiなど)が表示されるので、インスタンスにログインして、
-$ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4  で使えるようになる。
+$ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4 で使えるようになる。
   </div>
   
 </article>
@@ -2151,9 +2179,9 @@ $ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4  で使えるように
   <div>
     以前からscalaでEJBを書いていたが、ここへ来て問題発生。JavaとScalaの混在プロジェクトでJavaからScalaのクラスを参照したときにコンパイルエラーにはならないのに、eclipseのエディタ上ではエラーの表示がされてしまう。これを解決するには
 Java同様、Scalaのクラスもパッケージと同じ位置に置く。
-case class Foo( @(Id @field) x:Int, @(Temporal @field)(value=TemporalType.DATE) @BeanProperty nyukinDate:Date, @(Column @field)(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @(Column @field)(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  をやめて
-import scala.annotation.target.field object ScalaAnnotations { type Id = javax.persistence.Id @field type Temporal = javax.persistence.Temporal @field type Column = javax.persistence.Column @field }  を定義し、
-import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.DATE) @BeanProperty nyukinDate:Date, @Column(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @Column(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  とする。
+case class Foo( @(Id @field) x:Int, @(Temporal @field)(value=TemporalType.DATE) @BeanProperty nyukinDate:Date, @(Column @field)(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @(Column @field)(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String ) をやめて
+import scala.annotation.target.field object ScalaAnnotations { type Id = javax.persistence.Id @field type Temporal = javax.persistence.Temporal @field type Column = javax.persistence.Column @field } を定義し、
+import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.DATE) @BeanProperty nyukinDate:Date, @Column(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @Column(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String ) とする。
   </div>
   
   <footer>
@@ -2224,7 +2252,7 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
   </header>
   <div>
     会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。
-2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied  いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
+2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
 参考URL: http://www.java.net/node/697528
   </div>
   
@@ -2246,7 +2274,7 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
   </header>
   <div>
     EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、
-@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;)  のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
+@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;) のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
   </div>
   
 </article>
@@ -2267,9 +2295,9 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
   </header>
   <div>
     アプリケーションのチューニングをして、DBにインデックスを張りたいとき、SQLを直に実行してしまうと移植時などに忘れてしまうことがあるので、Entity Bean内に書いておきたい。調べると、
-@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}), @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})}, appliesTo = &quot;customer&quot;)  などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
-&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;  を
-&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt;  にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。
+@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}), @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})}, appliesTo = &quot;customer&quot;) などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
+&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt; を
+&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt; にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。
   </div>
   
 </article>
@@ -2290,7 +2318,7 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
   </header>
   <div>
     jbossで大きなバッチ処理などするとtimeoutで落ちてしまうことがある。このようなとき、そのメソッドだけtimeout値を変更するには、以下のアノテーションをメソッドに付ける
-@TransactionTimeout(1500)  参照URL: http://community.jboss.org/wiki/TransactionTimeout
+@TransactionTimeout(1500) 参照URL: http://community.jboss.org/wiki/TransactionTimeout
   </div>
   
 </article>
@@ -2313,10 +2341,10 @@ http://download.eclipse.org/tools/ajdt/37/dev/update
     linuxサーバ上のjbossでpdfファイルを生成し印刷する必要が生じました。pdfはjasperReportなどで生成できますが、これを普通にlprとかしても日本語が出ません。jasperReport側でフォントの設定などをいろいろと変えてみたが解決せず。
 サーバにacrobat readerを入れるという方法をためしてみました。
 linuxサーバは64bitでacrobat readerは32bit版しか提供されていません。なので、AdbeRdr9.4.2-1_i486linux_jpn.tar.bz2をダウンロード、解凍し、
-# cd AdobeReader # ./INSTALL  としてインストール。
-acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps  とすると印刷できました。ただしASCIIのフォントがちょっと変。
+# cd AdobeReader # ./INSTALL としてインストール。
+acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps とすると印刷できました。ただしASCIIのフォントがちょっと変。
 なお、linux上のacroreadはrootで実行するとエラーになってしまうので、別人になって実行する必要がある。scalaではこんな感じ。
-val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, &quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&quot;) val p = Process(cmd).run if (p.exitValue != 0) { println(&quot;異常終了 &quot; + p.toString()) }  
+val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, &quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&quot;) val p = Process(cmd).run if (p.exitValue != 0) { println(&quot;異常終了 &quot; + p.toString()) } 
   </div>
   
 </article>
@@ -2337,9 +2365,9 @@ val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot
   </header>
   <div>
     drbdのフェイルオーバのテストなどをしていると、
-$ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。
+$ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $ のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。
 セカンダリ側
-$ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  プライマリ側
+$ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $ プライマリ側
   </div>
   
   <footer>
@@ -2367,7 +2395,7 @@ $ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /
   <div>
     drbdのマシンを再起動したときに、以下の処理をしないと正常に起動しない。
 ログイン
-drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可) drbd-overviewで確認 sudo mount /drbd  
+drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可) drbd-overviewで確認 sudo mount /drbd 
   </div>
   
 </article>
@@ -2390,9 +2418,9 @@ drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm prim
     2台のlinuxマシンを使ってdrbd環境構築。drbd用のパーティションとして1TBを取ってしまったので初期同期に一週間くらいかかってしまった。このパーティションで実用していいんだろうか。
 障害時の切り替え手順
 現プライマリ側
-sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary  新プライマリ側
-sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd  どちらもcat /proc/drbdなどして確認。drbd-overviewだと
-0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1%  となる。not-foundってなんだろう。
+sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary 新プライマリ側
+sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd どちらもcat /proc/drbdなどして確認。drbd-overviewだと
+0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1% となる。not-foundってなんだろう。
   </div>
   
 </article>
@@ -2413,10 +2441,10 @@ sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd  どちらもcat /
   </header>
   <div>
     solrを使ってみる。解凍して、
-$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar  で起動。PDFを読み込ませたいときは
-$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot;  などとする。データの削除は
-$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot;  とか
-$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot;  
+$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar で起動。PDFを読み込ませたいときは
+$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot; などとする。データの削除は
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot; とか
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot; 
   </div>
   
 </article>
@@ -2437,8 +2465,8 @@ $ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&
   </header>
   <div>
     eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成
-echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1  これをfindで実行。
-$ find . -type f -exec sh z:/foo.sh {} \;  
+echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1 これをfindで実行。
+$ find . -type f -exec sh z:/foo.sh {} \; 
   </div>
   
 </article>
@@ -2458,8 +2486,8 @@ $ find . -type f -exec sh z:/foo.sh {} \;
     </div>
   </header>
   <div>
-    $ ./play install morphia $ ./play new myapp --with scala  myapp/conf/dependencies.ymlに以下の行を追加する。
-- play -&gt; morphia 1.2.2beta1  
+    $ ./play install morphia $ ./play new myapp --with scala myapp/conf/dependencies.ymlに以下の行を追加する。
+- play -&gt; morphia 1.2.2beta1 
   </div>
   
 </article>
@@ -2479,11 +2507,11 @@ $ find . -type f -exec sh z:/foo.sh {} \;
     </div>
   </header>
   <div>
-    $ ./play install mongo $ ./play new myapp --with scala mongo  myapp/conf/application.confに以下を追加
-# The mongo module module.mongo=${play.path}/modules/mongo # mongodb connection details mongo.host=localhost mongo.port=27017 mongo.database=play mongo.username=test mongo.password=test123  $ ./play run myapp  以下のエラー。
-~ Oops, ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo  myapp/conf/application.confの
-module.mongo=${play.path}/modules/mongo  を
-module.mongo=${play.path}/modules/mongo-1.3  に変更したら動いた。
+    $ ./play install mongo $ ./play new myapp --with scala mongo myapp/conf/application.confに以下を追加
+# The mongo module module.mongo=${play.path}/modules/mongo # mongodb connection details mongo.host=localhost mongo.port=27017 mongo.database=play mongo.username=test mongo.password=test123 $ ./play run myapp 以下のエラー。
+~ Oops, ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo myapp/conf/application.confの
+module.mongo=${play.path}/modules/mongo を
+module.mongo=${play.path}/modules/mongo-1.3 に変更したら動いた。
   </div>
   
 </article>
@@ -2504,12 +2532,12 @@ module.mongo=${play.path}/modules/mongo-1.3  に変更したら動いた。
   </header>
   <div>
     前回caseクラスでパラメータにアノテーションを書いても効かなかったと書きましたが、正確にはjavaのアノテーションは効かないということでした。
-case class Shohin ( @BeanProperty pk:String  これは効くけれど、
-case class Shohin ( @Column columnDefinition=&quot;text&quot;) pk:String  これは効かない。これが効かないのはしょうがないとしても、
-case class Shohin ( @Id pk:String  これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、
+case class Shohin ( @BeanProperty pk:String これは効くけれど、
+case class Shohin ( @Column columnDefinition=&quot;text&quot;) pk:String これは効かない。これが効かないのはしょうがないとしても、
+case class Shohin ( @Id pk:String これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、
 http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html
 に解決方法がありました。
-import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @field)(columnDefinition=&quot;text&quot;) pk:String  とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。
+import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @field)(columnDefinition=&quot;text&quot;) pk:String とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。
   </div>
   
 </article>
@@ -2530,8 +2558,8 @@ import scala.annotation.target._ case class Shohin ( @(Id @field) @(Column @fiel
   </header>
   <div>
     EJBのエンティティビーンをscalaで書こうと、
-@Entity @Cache(usage=CacheConcurrencyStrategy.NONE) case class Foo(@Id k:Int, v:String)  としてみたところ、以下のエラー。
-Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo  どうも、@Idアノテーションが効いていない様子。
+@Entity @Cache(usage=CacheConcurrencyStrategy.NONE) case class Foo(@Id k:Int, v:String) としてみたところ、以下のエラー。
+Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo どうも、@Idアノテーションが効いていない様子。
 http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html
 によると、バグとのこと。
   </div>
@@ -2561,8 +2589,8 @@ http://xxxxxx.co.jp:8080/fess/admin/
 ここで検索画面http://xxxxxx.co.jp:8080/fess/にアクセスして、てきとうなキーワードで検索する。するとヒットしたPDFファイルが列挙される。
 ここまではいいんですが、列挙されたPDFファイルへのリンクをクリックしても画面が白くなってしまい、PDFの内容が表示されませんでした。
 いろいろやってみたんですが、うまくいかず、結局fess-server-4.1.0/webapps/fess/js/search.jsの内容を書き換えて、
-b.push(&quot;go?rt=&quot;); b.push(a); b.push(&quot;&amp;u=&quot;); b.push(encodeURIComponent(c));  を
-b.push(&quot;docs&quot;); var len = c.lastIndexOf(&quot;/&quot;); var file = c.slice(len); b.push(file);  とし、クロールするディレクトリと同様のものをfess-server-4.1.0/webapps/fess/にも置くということで対処。いまいちだけど、とりあえず動きました。
+b.push(&quot;go?rt=&quot;); b.push(a); b.push(&quot;&amp;u=&quot;); b.push(encodeURIComponent(c)); を
+b.push(&quot;docs&quot;); var len = c.lastIndexOf(&quot;/&quot;); var file = c.slice(len); b.push(file); とし、クロールするディレクトリと同様のものをfess-server-4.1.0/webapps/fess/にも置くということで対処。いまいちだけど、とりあえず動きました。
   </div>
   
 </article>
@@ -2583,7 +2611,7 @@ b.push(&quot;docs&quot;); var len = c.lastIndexOf(&quot;/&quot;); var file = c.s
   </header>
   <div>
     play+scalaでちょっとずつ書き始めたので、そろそろeclipseも試そうと思いました。
-$ ./play eclipsify xxxxx  してeclipseにインポートしたんですが、scalaのコードにコンパイルエラーが出てしまいました。すでに動いているものなのに。playのeclipsifyでクラスパスもきっちり設定されているのに。気を取り直してよくよく調べるとplay-1.2.1/modules/scala-0.9/libのplay-scala.jarとscalatest-1.2-zzzzzzzzzzzz.jarをインポートしたらコンパイルエラーは出なくなりました。
+$ ./play eclipsify xxxxx してeclipseにインポートしたんですが、scalaのコードにコンパイルエラーが出てしまいました。すでに動いているものなのに。playのeclipsifyでクラスパスもきっちり設定されているのに。気を取り直してよくよく調べるとplay-1.2.1/modules/scala-0.9/libのplay-scala.jarとscalatest-1.2-zzzzzzzzzzzz.jarをインポートしたらコンパイルエラーは出なくなりました。
   </div>
   
 </article>
@@ -2604,10 +2632,10 @@ $ ./play eclipsify xxxxx  してeclipseにインポートしたんですが、sc
   </header>
   <div>
     遅まきながらmongodbの勉強。sbt-0.10でプロジェクトを作る。
-$ mkdir sbt-mongo $ cd sbt-mongo  ここで、build.sbtを作成。内容は以下。
-name := &quot;Hello Mongo+Casbah&quot; version := &quot;1.0.0&quot; scalaVersion := &quot;2.9.0&quot; organization := &quot;&quot; libraryDependencies ++= Seq( &quot;com.mongodb.casbah&quot; % &quot;casbah_2.9.0-1&quot; % &quot;2.1.5-1&quot; ) mainClass in(Compile, run) := Some(&quot;mongo.casbah.Sample&quot;)  で、sbt実行
-$ sbt  するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。
-package mongo.casbah import com.mongodb.casbah.Imports._ object Sample { def main(args:Array[String]) { val collection = MongoConnection()(&quot;casbah_test&quot;)(&quot;sample&quot;) val user = MongoDBObject(&quot;id&quot;-&gt;1, &quot;name&quot;-&gt;&quot;me&quot;, &quot;address&quot;-&gt;&quot;テスト満載&quot;) println(user) collection += user collection.find().foreach { println(_) } } }  で、sbtプロンプトでrunすると、
+$ mkdir sbt-mongo $ cd sbt-mongo ここで、build.sbtを作成。内容は以下。
+name := &quot;Hello Mongo+Casbah&quot; version := &quot;1.0.0&quot; scalaVersion := &quot;2.9.0&quot; organization := &quot;&quot; libraryDependencies ++= Seq( &quot;com.mongodb.casbah&quot; % &quot;casbah_2.9.0-1&quot; % &quot;2.1.5-1&quot; ) mainClass in(Compile, run) := Some(&quot;mongo.casbah.Sample&quot;) で、sbt実行
+$ sbt するとproject, targetディレクトリができる。ここで、src/main/scala/mongo.casbah/Sample.scalaを以下のように作成。
+package mongo.casbah import com.mongodb.casbah.Imports._ object Sample { def main(args:Array[String]) { val collection = MongoConnection()(&quot;casbah_test&quot;)(&quot;sample&quot;) val user = MongoDBObject(&quot;id&quot;-&gt;1, &quot;name&quot;-&gt;&quot;me&quot;, &quot;address&quot;-&gt;&quot;テスト満載&quot;) println(user) collection += user collection.find().foreach { println(_) } } } で、sbtプロンプトでrunすると、
   </div>
   
   <footer>
@@ -2635,11 +2663,11 @@ package mongo.casbah import com.mongodb.casbah.Imports._ object Sample { def mai
   <div>
     linuxサーバ上でJasperReportを使ってPDFファイルを生成し、プリンタに直接印刷する必要が生じたので、環境を作りました。サーバはubuntuの64bit、プリンタはキャノンLBP8620。
 キャノンのサイトを見てみると、linux 64bit用のドライバはrpmでしか提供されていないようす。ubuntuにはrpmコマンドがないので、どうしたものかと調べて、alienコマンドを使うことにしました。まずはalienのインストール。
-$ sudo apt-get install alien  キャノンのサイトからダウンロードしたドライバのインストール。
-$ sudo alien -i cndrvcups-common_2.20-1.x86_64.rpm $ sudo alien -i cndrvcups-lips4-2.20-1.x86_64.rpm  ここでcupsのリスタート。
-$ sudo /etc/init.d/cups restart  プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。
-$ sudo lpadmin -p cop -m CNCUPSLBPSERIESLJ.ppd -v lpd://cop.is.magazine.co.jp/cop -E  これで、
-$ lpr -P cop XXXXXXXX.pdf  などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。
+$ sudo apt-get install alien キャノンのサイトからダウンロードしたドライバのインストール。
+$ sudo alien -i cndrvcups-common_2.20-1.x86_64.rpm $ sudo alien -i cndrvcups-lips4-2.20-1.x86_64.rpm ここでcupsのリスタート。
+$ sudo /etc/init.d/cups restart プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。
+$ sudo lpadmin -p cop -m CNCUPSLBPSERIESLJ.ppd -v lpd://cop.is.magazine.co.jp/cop -E これで、
+$ lpr -P cop XXXXXXXX.pdf などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。
   </div>
   
 </article>
@@ -2685,10 +2713,10 @@ USB3.0外付けその2　1分20秒
   </header>
   <div>
     たとえば、
-object Foo { val ZOO = &quot;xxxx&quot; }  というクラスを作ってコンパイルします。これをスクリプトの中で使います。
-println(Foo.ZOO)  これはOK。次に、
-object Foo { val ZOO = &quot;xxxx&quot; val ZOO_ADDED = &quot;ZZZZZ&quot; }  と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、
-script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo.ZOO_ADDED) ^ one error found  と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。
+object Foo { val ZOO = &quot;xxxx&quot; } というクラスを作ってコンパイルします。これをスクリプトの中で使います。
+println(Foo.ZOO) これはOK。次に、
+object Foo { val ZOO = &quot;xxxx&quot; val ZOO_ADDED = &quot;ZZZZZ&quot; } と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、
+script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo.ZOO_ADDED) ^ one error found と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。
   </div>
   
 </article>
@@ -2731,9 +2759,9 @@ script.scala:2: error: value ZOO_ADDED is not a member of object Foo println(Foo
     今までは、windows用のXサーバを使って、リモートのlinuxのemacsをwindows上で開いて使っていたが、どうも最近よく落ちる。そこで、windows上で動くemacsを試してみた。emacsを使うには
  日本語入出力 trampでリモートファイル編集 sshでファイル名補完  ができるのが大前提。ざっと調べてgnupackを入れてみた。日本語は問題なし。
 trampはdefault methodをpscpにして正常動作を確認。ところが、開けるファイルと開けないファイルがある。開けないときは
-File exists, but cannot be read  というメッセージ。開けるファイルと見比べても違いがわからず、小1時間。結局ファイルサイズに上限があるようで、tramp copy size limitをデフォルトの10240から10240000に変更。これをnilにすると上限なしになるみたいだけど、効かなかった。
+File exists, but cannot be read というメッセージ。開けるファイルと見比べても違いがわからず、小1時間。結局ファイルサイズに上限があるようで、tramp copy size limitをデフォルトの10240から10240000に変更。これをnilにすると上限なしになるみたいだけど、効かなかった。
 sshは、リモートホストにアクセスすると、
-Pseudo-terminal will not be allocated because stdin is not a terminal.  というメッセージが出る。プロンプトは表示されないが、lsなどが効く。しかしこれでは気持ち悪いのでいろいろやったら、どうも2回目のアクセスは正常に動く。1回目だけを犠牲にすればいいだけだから、まあいいか。裏でtrampが走ってファイル名補完も動作。しかし、sshするときに、いまアクティブになっているバッファが影響するようで、ssh-taro@hogeのバッファがアクティブな状態でhanako@booにアクセスしようとすると、taro@booのパスワードを要求されたりする。この辺はちょっと問題。ほかには
+Pseudo-terminal will not be allocated because stdin is not a terminal. というメッセージが出る。プロンプトは表示されないが、lsなどが効く。しかしこれでは気持ち悪いのでいろいろやったら、どうも2回目のアクセスは正常に動く。1回目だけを犠牲にすればいいだけだから、まあいいか。裏でtrampが走ってファイル名補完も動作。しかし、sshするときに、いまアクティブになっているバッファが影響するようで、ssh-taro@hogeのバッファがアクティブな状態でhanako@booにアクセスしようとすると、taro@booのパスワードを要求されたりする。この辺はちょっと問題。ほかには
 trampの最初のアクセスで補完が効かない 設定ファイルがgnupack-xxxx/{config.ini, home/.emacs}とかにあって、別の場所に移したい
 など
   </div>
@@ -2755,10 +2783,10 @@ trampの最初のアクセスで補完が効かない 設定ファイルがgnupa
     </div>
   </header>
   <div>
-    Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(&quot;cp -p foo.txt foo.txt.BACKUP&quot;); p.waitFor();  など。|や&gt;を使いたいときは、
-String cmd = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot;; String[] cmdArray = {&quot;/bin/sh&quot;, &quot;-c&quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray);  というぐあいにArrayにする。
+    Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(&quot;cp -p foo.txt foo.txt.BACKUP&quot;); p.waitFor(); など。|や&gt;を使いたいときは、
+String cmd = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot;; String[] cmdArray = {&quot;/bin/sh&quot;, &quot;-c&quot;, cmd}; Runtime	rt = Runtime.getRuntime(); Process p = rt.exec(cmdArray); というぐあいにArrayにする。
 ちなみにscalaだとこんな感じ。
-val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&quot;異常終了 &quot; + p.toString()) }  
+val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, cmdBody) val p = Process(cmd).run if (p.exitValue != 0) { p.toString() println(&quot;異常終了 &quot; + p.toString()) } 
   </div>
   
 </article>
@@ -2779,7 +2807,7 @@ val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd 
   </header>
   <div>
     perlとかで書いていたスクリプトをscalaで書こうとすると、クラスパスなどの環境変数を定義してからscalaスクリプトを起動するような起動ファイルが別にいるんだと、昔のCOBOLとJCLみたいでかっこわるいなと思っていたら、解決することができた。scalaスクリプト冒頭に
-#! /bin/bash cp=&quot;/usr/local/share/commons-logging.jar&quot; export JAVA_OPTS=&quot;-server -Xms1024m -Dcluster=localhost:1100&quot; exec scala -classpath $cp $0 $@ !# println(&quot;Hello, Scala!&quot;)  とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。
+#! /bin/bash cp=&quot;/usr/local/share/commons-logging.jar&quot; export JAVA_OPTS=&quot;-server -Xms1024m -Dcluster=localhost:1100&quot; exec scala -classpath $cp $0 $@ !# println(&quot;Hello, Scala!&quot;) とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。
   </div>
   
 </article>
@@ -2800,10 +2828,10 @@ val cmdBody = &quot;diff foo.txt foo.txt.BACKUP &gt; foo.txt.diff&quot; val cmd 
   </header>
   <div>
     今までRedHatで動いていたcronのジョブをubuntuに移植したところ、sourceコマンドがない、というエラーが出るようになった。なぜかubuntuのcronはbashではなく、shで動いているもよう。crontab -eでcronの編集画面を開いて、
-SHELL=/bin/bash  を加えるとbashで動くようになった。
+SHELL=/bin/bash を加えるとbashで動くようになった。
 さらに、cronから出るメールが文字化け。ヘッダをみると、
-Content-type: text/plain; charset=ANSI_X3.4-1968  となっていたので、上記のようにcrontab -eで
-CONTENT_TYPE=text/plain; utf-8  を追加して解決。
+Content-type: text/plain; charset=ANSI_X3.4-1968 となっていたので、上記のようにcrontab -eで
+CONTENT_TYPE=text/plain; utf-8 を追加して解決。
   </div>
   
 </article>
@@ -2847,7 +2875,7 @@ usbにインストーラを入れるときはnetbootinというツールを使�
   </header>
   <div>
     MacBook Airでportを使っていましたが、scala29をインストールするとエラーが発生。ライブラリがないとかいってきましたが、これを機会にbrewに乗り換えました。
-$ cd /usr $ sudo mkdir local $ sudo chown xxxx local $ cd local $ ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731/39fc1416e34b9f6db201b4a026181f4ceb7cfa74)&quot;  で、brew install scala, brew install sbtなど。インストールすると、/usr/local/Cellarというディレクトリにもろもろ入るようです。
+$ cd /usr $ sudo mkdir local $ sudo chown xxxx local $ cd local $ ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731/39fc1416e34b9f6db201b4a026181f4ceb7cfa74)&quot; で、brew install scala, brew install sbtなど。インストールすると、/usr/local/Cellarというディレクトリにもろもろ入るようです。
 あとは、~/.bash_profileで/usr/local/binへのパスを張っときます。これで、play + scala環境がMacにできたと。やっぱり手元がunixだとなにかと便利、な気がします。
   </div>
   
@@ -2869,9 +2897,9 @@ $ cd /usr $ sudo mkdir local $ sudo chown xxxx local $ cd local $ ruby -e &quot;
   </header>
   <div>
     playにscalaをインストールする
-$ play install scala  プロジェクトを作る
-$ play new sampleappscala --with scala  実行
-$ play run sampleappscala  
+$ play install scala プロジェクトを作る
+$ play new sampleappscala --with scala 実行
+$ play run sampleappscala 
   </div>
   
 </article>
@@ -2892,7 +2920,7 @@ $ play run sampleappscala
   </header>
   <div>
     eclipseでscalaを使ってgoogle app engineのプロジェクトを作りビルドすると
-scala org.datanucleus.metadata.MetaDataManager loadClasses  的なエラーが出る。これを回避するには.projectのdatanucleusあたりをコメントアウト。
+scala org.datanucleus.metadata.MetaDataManager loadClasses 的なエラーが出る。これを回避するには.projectのdatanucleusあたりをコメントアウト。
   </div>
   
 </article>
@@ -2912,11 +2940,11 @@ scala org.datanucleus.metadata.MetaDataManager loadClasses  的なエラーが�
     </div>
   </header>
   <div>
-    ./create_project crashball org.crashball --platform android-7 --scala-version 2.8.1  でプロジェクトを作成。
+    ./create_project crashball org.crashball --platform android-7 --scala-version 2.8.1 でプロジェクトを作成。
 eclipseでプロジェクトを作成。こちらはscalaプロジェクト。
 create_projectで作ったディレクトリからproject, src/*, testsをeclipseプロジェクトへ移動。
-sbt update  eclipseでソースフォルダの設定
-src/main/java src/main/scala src/test/scala  クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。
+sbt update eclipseでソースフォルダの設定
+src/main/java src/main/scala src/test/scala クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。
 これでできあがり。あとはsbtでcompileなり、start-emulator, start-deviceなり。
   </div>
   
@@ -2958,8 +2986,8 @@ src/main/java src/main/scala src/test/scala  クラスパスの設定。android-
   </header>
   <div>
     scalaでJavaのインナークラスを使う場面に、apache pivotをさわっているとき出くわしました。
-import org.apache.pivot.wtk.Component  して
-var style:Component#StyleDictionary = label.getStyles()  とする。#を使うんですねえ。
+import org.apache.pivot.wtk.Component して
+var style:Component#StyleDictionary = label.getStyles() とする。#を使うんですねえ。
   </div>
   
 </article>
@@ -2980,7 +3008,7 @@ var style:Component#StyleDictionary = label.getStyles()  とする。#を使う�
   </header>
   <div>
     scala-2.8が先週リリースされたので、eclipseプラグインもアップデートしてみました。既存のEJBが
-@GeneratedValue(strategy=GenerationType.AUTO)  の行でannotation needs to be a constantというメッセージでエラーになりました。
+@GeneratedValue(strategy=GenerationType.AUTO) の行でannotation needs to be a constantというメッセージでエラーになりました。
 コマンドラインでscalacするとコンパイルできるようなので、eclipseプラグインの問題のようです。移行はもうちょっと待ってみよう。
   </div>
   

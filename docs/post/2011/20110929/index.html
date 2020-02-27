@@ -79,19 +79,14 @@
   </header>
   <section>
     <p>drbdのフェイルオーバのテストなどをしていると、</p>
-
 <pre><code>$ cat /proc/drbd
 version: 8.3.9 (api:88/proto:86-95)
 srcversion: CF228D42875CF3A43F2945A
 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r-----
 ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312
 $
-</code></pre>
-
-<p>のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。</p>
-
+</code></pre><p>のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。</p>
 <p>セカンダリ側</p>
-
 <pre><code>$ sudo drbdadm down r0
 $ sudo drbdadm up r0
 $ sudo drbdadm invalidate r0
@@ -101,18 +96,13 @@ srcversion: CF228D42875CF3A43F2945A
 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s
 ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312
 $
-</code></pre>
-
-<p>プライマリ側</p>
-
+</code></pre><p>プライマリ側</p>
 <pre><code>$ sudo drbdadm connect r0
 $ drbd-overview
 0:??not-found?? SyncSource Primary/Secondary UpToDate/Inconsistent C r----- /drbd ext4 917G 520M 870G 1% 
 [===========&gt;........] sync'ed: 60.5% (376836/953640)M
 $ 
-</code></pre>
-
-<p>で再同期開始。この時は、元ネタがどちらなのかを意識すること。</p>
+</code></pre><p>で再同期開始。この時は、元ネタがどちらなのかを意識すること。</p>
 
   </section>
   <footer>

@@ -79,9 +79,7 @@
   </header>
   <section>
     <p>テストコードでscalaのobjectをモック化したい。</p>
-
 <p>モック化したいobjectは以下。このクラスはJavaからも呼ぶため、class宣言もしている。</p>
-
 <pre><code>class Boo
 object Boo {
   val log = LogFactory.getLog(this.getClass())
@@ -90,10 +88,7 @@ object Boo {
     true
   }
 }
-</code></pre>
-
-<p>これをモック化するコード</p>
-
+</code></pre><p>これをモック化するコード</p>
 <pre><code>@MockClass(realClass=classOf[Boo])
 object BooMock {
   val log = LogFactory.getLog(this.getClass())
@@ -102,10 +97,7 @@ object BooMock {
     false
   }
 }
-</code></pre>
-
-<p>テストコード</p>
-
+</code></pre><p>テストコード</p>
 <pre><code>class JMockitTest {
   val log = LogFactory.getLog(this.getClass())
   
@@ -114,18 +106,11 @@ object BooMock {
     log.debug(Boo.foo)
   }  
 }
-</code></pre>
-
-<p>これを実行しても、</p>
-
+</code></pre><p>これを実行しても、</p>
 <pre><code>DEBUG (JMockitTest.scala:15) Boo#foo called
 DEBUG (JMockitTest.scala:51) true
-</code></pre>
-
-<p>となって、モックが呼ばれない。</p>
-
+</code></pre><p>となって、モックが呼ばれない。</p>
 <p>一方で、テストコードをJavaにしてみる。</p>
-
 <pre><code>public class JMockit2Test {
 	private static Log log = LogFactory.getLog(JMockit2Test.class);
 	
@@ -134,15 +119,10 @@ DEBUG (JMockitTest.scala:51) true
 		log.debug(Boo.foo());
 	}
 }
-</code></pre>
-
-<p>これを実行すると、</p>
-
+</code></pre><p>これを実行すると、</p>
 <pre><code>DEBUG (JMockitTest.scala:26) BooMock#foo called
 DEBUG (JMockit2Test.java:25) false
-</code></pre>
-
-<p>となって、モックが呼ばれるようになる。scalaのテストコードではobjectをモック化できないが、Javaのテストコードではできる。解決方法が今のところみつからない。</p>
+</code></pre><p>となって、モックが呼ばれるようになる。scalaのテストコードではobjectをモック化できないが、Javaのテストコードではできる。解決方法が今のところみつからない。</p>
 
   </section>
   <footer>

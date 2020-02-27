@@ -79,14 +79,9 @@
   </header>
   <section>
     <p>Macをsierraにアップグレードしたらkarabinerが使えなくなったので、かわりにkeyhacを試してみる。</p>
-
 <p>keyhacはkarabinerとちがって、コントロールキーとコマンドキーを交換という定義ができず、常に</p>
-
 <pre><code>keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot;
-</code></pre>
-
-<p>というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。</p>
-
+</code></pre><p>というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。</p>
 <pre><code>def changeKey(keymap):
     keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot;
     keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot;
@@ -102,15 +97,10 @@
     keymap[&quot;Ctrl-x&quot;] = &quot;Cmd-x&quot;
     keymap[&quot;Ctrl-z&quot;] = &quot;Cmd-z&quot;
     return keymap
-</code></pre>
-
-<p>を作り、</p>
-
+</code></pre><p>を作り、</p>
 <pre><code>    keymap_chrome = keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;)
     keymap_chrome = changeKey(keymap_chrome)
-</code></pre>
-
-<p>で呼び出すようにする。</p>
+</code></pre><p>で呼び出すようにする。</p>
 
   </section>
   <footer>

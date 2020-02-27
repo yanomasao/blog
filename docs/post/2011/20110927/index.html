@@ -79,9 +79,7 @@
   </header>
   <section>
     <p>drbdのマシンを再起動したときに、以下の処理をしないと正常に起動しない。</p>
-
 <p>ログイン</p>
-
 <pre><code>drbd-overviewで確認
 sudo drbdadm down r0
 sudo drbdadm up r0
@@ -89,7 +87,6 @@ sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可)
 drbd-overviewで確認
 sudo mount /drbd
 </code></pre>
-
   </section>
   <footer>
     

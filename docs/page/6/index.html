@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131111/">実行可能Jarファイルの設定</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-11-11T09:00:00&#43;09:00">
+          Nov 11, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Java7になってから、実行可能jarファイルでアプリケーションを起動すると、「JARファイルのマニフェストに権限属性が含まれていないため、このアプリケーションは、今後のJavaセキュリティ・アップデートでブロックされます。」というメッセージが表示されるようになった。これを解消するには、実行可能JarのMANIFEST.MFに
+Permissions: all-permissions Codebase: *.foo.bar.com を追加する。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20131025/">Java Web Startの仕様変更</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -75,10 +98,10 @@
   </header>
   <div>
     Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で
-&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のように渡していた。Java側では
-String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることができた。
+&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt; のように渡していた。Java側では
+String foo = System.getProperty(&quot;arg1&quot;); で受け取ることができた。
 これができなくなったようなので調べてみたら http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html の解説にあるように、
-&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt;  のようにするとVMに引数を渡すことができるんだと。
+&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt; のようにするとVMに引数を渡すことができるんだと。
   </div>
   
 </article>
@@ -102,7 +125,7 @@ String foo = System.getProperty(&quot;arg1&quot;);  で受け取ることがで�
   <div>
     もっといい方法があると思うけれど、とりあえず実現できたやり方
 scalaのMapのvaluesをjava.util.Collectionに変換する
-new java.util.ArrayList[UriageForRanking](result.values)  
+new java.util.ArrayList[UriageForRanking](result.values) 
   </div>
   
 </article>
@@ -169,10 +192,13 @@ new java.util.ArrayList[UriageForRanking](result.values)
   </header>
   <div>
     以下のコマンドで差分ファイルを作ることができる。
-$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img  以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
-$ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $  差分をベースにコミットするには以下のコマンド。
-$ sudo qemu-img commit -f qcow2 vm.test.diff.img  これで差分はいらなくなる。
+$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img 以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。
+$ ls -l vm.test.* -rw-r--r-- 1 root root 198656 9月 19 11:46 vm.test.diff.img -rw------- 1 root root 58913259520 9月 19 11:44 vm.test.img $ $ ls -l vm.test.* -rw-r--r-- 1 root root 24838144 9月 19 11:59 vm.test.diff.img -rw------- 1 libvirt-qemu kvm 58913259520 9月 19 11:44 vm.test.img $ 差分をベースにコミットするには以下のコマンド。
+$ sudo qemu-img commit -f qcow2 vm.test.diff.img これで差分はいらなくなる。
 この方式だと、ベースのイメージが差分バックアップの対象とならないので、バックアップの効率はよくなる。
+イメージファイルの圧縮
+イメージファイルのサイズが大きくなってきたので圧縮してみる。
+$ time sudo qemu-img convert -c -O qcow2 testLinVM.
   </div>
   
   <footer>
@@ -231,10 +257,10 @@ $PROJECT_ROOT/build.sbt name := &quot;test.sbt&quot; version := &quot;1.0&quot; 
   <div>
     テストコードでscalaのobjectをモック化したい。
 モック化したいobjectは以下。このクラスはJavaからも呼ぶため、class宣言もしている。
-class Boo object Boo { val log = LogFactory.getLog(this.getClass()) def foo = { log.debug(&quot;Boo#foo called&quot;) true } }  これをモック化するコード
-@MockClass(realClass=classOf[Boo]) object BooMock { val log = LogFactory.getLog(this.getClass()) @Mock def foo = { log.debug(&quot;BooMock#foo called&quot;) false } }  テストコード
-class JMockitTest { val log = LogFactory.getLog(this.getClass()) @Test def foo { setUpMocks(classOf[BooMock]) log.debug(Boo.foo) } }  これを実行しても、
-DEBUG (JMockitTest.scala:15) Boo#foo called DEBUG (JMockitTest.scala:51) true  となって、モックが呼ばれない。
+class Boo object Boo { val log = LogFactory.getLog(this.getClass()) def foo = { log.debug(&quot;Boo#foo called&quot;) true } } これをモック化するコード
+@MockClass(realClass=classOf[Boo]) object BooMock { val log = LogFactory.getLog(this.getClass()) @Mock def foo = { log.debug(&quot;BooMock#foo called&quot;) false } } テストコード
+class JMockitTest { val log = LogFactory.getLog(this.getClass()) @Test def foo { setUpMocks(classOf[BooMock]) log.debug(Boo.foo) } } これを実行しても、
+DEBUG (JMockitTest.scala:15) Boo#foo called DEBUG (JMockitTest.scala:51) true となって、モックが呼ばれない。
 一方で、テストコードをJavaにしてみる。
 public class JMockit2Test { private static Log log = LogFactory.
   </div>
@@ -265,10 +291,10 @@ public class JMockit2Test { private static Log log = LogFactory.
   </header>
   <div>
     virtualboxのゲストにwindowsを新規インストールして起動。ホストには1920x1080のディスプレイがついているので、ゲストでも当然出せるはずだが、インストール直後にちょっとシームレスモードを試したのが悪かったのか、フルスクリーンモードにしても1920x1050になって天地が余ってしまう。ホストで
-&gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32  とか
-&gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32  とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。
+&gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32 とか
+&gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32 とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。
 ちなみに、windowsホスト上でゲストを非表示で起動・終了するには以下のようなスクリプトがあるとよい。
-start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxHeadless.exe&quot;&quot; -s nameOfVM&quot;, 0 stop.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxManage.exe&quot;&quot; controlvm nameOfVM poweroff&quot;, 0  
+start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxHeadless.exe&quot;&quot; -s nameOfVM&quot;, 0 stop.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxManage.exe&quot;&quot; controlvm nameOfVM poweroff&quot;, 0 
   </div>
   
 </article>
@@ -292,37 +318,7 @@ start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Progr
   <div>
     手元のディスプレイが1920x1080でも、virtualboxが乗っているホストにディスプレイがついていない場合、解像度の設定に手間取ることがある。この場合、
  ホストを起動 ホストにsshでログイン $ vnc4server -geometry 1920x1080 手元でvnc接続 virtualboxでゲスト起動  とすると、ゲストの解像度で1920x1080が選べるようになる。ちなみに、ホスト上で
-$ vboxmanage startvm guestVM --type headless  とするとゲストを非表示で起動することができる。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130814/">ゲストOSのディスク容量を増やす</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-08-14T09:00:00&#43;09:00">
-          Aug 14, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    ディスク容量100Gで気楽に作ったゲストOSをそのまま運用で使うことになり、500Gへ増やすことにした。
-ゲストOS停止 バックアップ
-qemu-img resize aplivevm +400G  これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。
-そこで、ゲストを起動し、
-# shutdown now  でシングルユーザモードへ移行。virt-managerのコンソールにシングルユーザモードのシェルがでるので、
-# fdisk /dev/vda  を使うが、ルートパーティションはそのままにして、別のパーティションを追加（/dev/vda3）する。OSを再起動させ、
-# mkfs.ext4 /dev/vda3  としたところで、なぜかゲストOS死亡。ためしに
-# mkfs.ext3 /dev/vda3  はできた。その後
-# mkfs.ext4 -j /dev/vda3  もできたのでよしとする。
+$ vboxmanage startvm guestVM --type headless とするとゲストを非表示で起動することができる。
   </div>
   
 </article>

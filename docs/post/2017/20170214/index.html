@@ -79,14 +79,12 @@
   </header>
   <section>
     <p>EC2のLinuxインスタンスは作りたてだとタイムゾーンがJSTではないので、これを変更</p>
-
 <pre><code>$ sudo mv localtime localtime.20170204
 $ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo localtime
 $ date
 Sat Feb  4 14:48:14 JST 2017
 $
 </code></pre>
-
   </section>
   <footer>
     

@@ -79,27 +79,16 @@
   </header>
   <section>
     <p>solrを使ってみる。解凍して、</p>
-
 <pre><code>$ cd apache-solr-3.3.0/
 $ cd example/
 $ java -jar start.jar
-</code></pre>
-
-<p>で起動。PDFを読み込ませたいときは</p>
-
+</code></pre><p>で起動。PDFを読み込ませたいときは</p>
 <pre><code>$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot;
-</code></pre>
-
-<p>などとする。データの削除は</p>
-
+</code></pre><p>などとする。データの削除は</p>
 <pre><code>$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot;
-</code></pre>
-
-<p>とか</p>
-
+</code></pre><p>とか</p>
 <pre><code>$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot;
 </code></pre>
-
   </section>
   <footer>
     

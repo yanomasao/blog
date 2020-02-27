@@ -79,17 +79,11 @@
   </header>
   <section>
     <p>サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。</p>
-
 <pre><code>$ sudo /etc/init.d/avahi-daemon stop
 $ sudo update-rc.d -f avahi-daemon remove
-</code></pre>
-
-<p>他には</p>
-
+</code></pre><p>他には</p>
 <pre><code>$ sudo update-rc.d XXXXXX disable
-</code></pre>
-
-<p>で起動しなくなるものもあるらしい。</p>
+</code></pre><p>で起動しなくなるものもあるらしい。</p>
 
   </section>
   <footer>

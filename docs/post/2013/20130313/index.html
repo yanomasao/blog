@@ -79,79 +79,40 @@
   </header>
   <section>
     <p>iscsiはひとつのパーティションをひとつのマシンに割り当てるため、NFSほどの自由がなく敬遠してきたが、ocfs2というフォーマットを使えば複数のマシンにアタッチできるというのでやってみる。</p>
-
 <p>iscsiターゲットの構築</p>
-
 <pre><code>$ sudo apt-get install iscsitarget
 $ sudo apt-get install iscsitarget-dkms
-</code></pre>
-
-<p>/etc/iet/ietd.confを編集</p>
-
+</code></pre><p>/etc/iet/ietd.confを編集</p>
 <pre><code>Target iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback
        Lun 0 Path=/dev/sdb1,Type=blockio
-</code></pre>
-
-<p>のようにiscsiで公開するパーティションを指定。</p>
-
+</code></pre><p>のようにiscsiで公開するパーティションを指定。</p>
 <p>/etc/default/iscsitargetを編集</p>
-
 <pre><code>ISCSITARGET_ENABLE=true
-</code></pre>
-
-<p>iscsitarget起動</p>
-
+</code></pre><p>iscsitarget起動</p>
 <pre><code>$ sudo /etc/init.d/iscsitarget start
-</code></pre>
-
-<p>ここから、iscsi用のパーティションをocfs2でフォーマットする作業。</p>
-
+</code></pre><p>ここから、iscsi用のパーティションをocfs2でフォーマットする作業。</p>
 <p>iscsiイニシエータをインストール</p>
-
 <pre><code>$ sudo apt-get install open-iscsi 
-</code></pre>
-
-<p>ocfs2をインストール</p>
-
+</code></pre><p>ocfs2をインストール</p>
 <pre><code>$ sudo apt-get install ocfs2-tools 
-</code></pre>
-
-<pre><code>$ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM
+</code></pre><pre><code>$ sudo iscsiadm -m discovery -t sendtargets -p testIscsiVM
 10.5.34.142:3260,1 iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback
 $ sudo iscsiadm -m node --targetname iqn.2013-03.testIscsiVM.sdb1:testIscsiVM-loopback --login
 $ sudo iscsiadm -m session
-</code></pre>
-
-<p>このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。</p>
-
+</code></pre><p>このとき、syslogにiscsiのパーティションがアタッチされたことが出力され、デバイスファイル名（/dev/sdcなど）もわかるので、そのデバイスをocfs2でフォーマットする。</p>
 <pre><code>$ sudo fdisk /dev/sdc
-</code></pre>
-
-<p>でパーティションを定義して、フォーマット。</p>
-
+</code></pre><p>でパーティションを定義して、フォーマット。</p>
 <pre><code>$ sudo mkfs.ocfs2 /dev/sdc1
-</code></pre>
-
-<p>これでマウントしようとするとエラー。まだできない。</p>
-
+</code></pre><p>これでマウントしようとするとエラー。まだできない。</p>
 <pre><code>$ sudo mount /dev/sdc1 /iscsi
 mount.ocfs2: Unable to access cluster service while trying initialize cluster
 $
-</code></pre>
-
-<p>以下は、iscsiイニシエータとするマシンでも同様に行う。設定ファイルは全マシンで同じ内容。</p>
-
+</code></pre><p>以下は、iscsiイニシエータとするマシンでも同様に行う。設定ファイルは全マシンで同じ内容。</p>
 <p>（イニシエータにはopen-iscsi, ocfs2-toolsをインストール）</p>
-
 <p>/etc/default/o2cbの編集</p>
-
 <pre><code>O2CB_ENABLED=true
-</code></pre>
-
-<p>O2CB_BOOTCLUSTER=ocfs2となっているので、固有の名称をつけたい場合は変更する。</p>
-
+</code></pre><p>O2CB_BOOTCLUSTER=ocfs2となっているので、固有の名称をつけたい場合は変更する。</p>
 <p>/etc/ocfs2/cluster.confの編集</p>
-
 <pre><code>node:
 	ip_port = 7777
 	ip_address = 10.5.34.100
@@ -169,18 +130,11 @@ node:
 cluster:
 	node_count = 2
 	name =ocfs2
-</code></pre>
-
-<p>o2cbを起動</p>
-
+</code></pre><p>o2cbを起動</p>
 <pre><code>$ sudo /etc/init.d/o2cb start
-</code></pre>
-
-<p>マウントできるようになったはず</p>
-
+</code></pre><p>マウントできるようになったはず</p>
 <pre><code>$ sudo mount /dev/sdc1 /iscsi
 </code></pre>
-
   </section>
   <footer>
     

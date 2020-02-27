@@ -79,22 +79,14 @@
   </header>
   <section>
     <p>ubuntuは12.04を使用。普通にインストールしたのち、</p>
-
 <pre><code>$ sudo apt-get install kvm libvirt-bin bridge-utils virt-manager
-</code></pre>
-
-<p>デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。</p>
-
+</code></pre><p>デフォルトではゲストOSのネットワークはNATで接続するようになっているが、ゲストOSを各種サーバとして使うために、StaticなIPアドレスが割り当てられるようにブリッジ接続に変更する。</p>
 <p>NAT用のインタフェースを削除する</p>
-
 <pre><code>$ sudo brctl show
 $ sudo virsh net-autostart default --disable
 $ sudo virsh net-destroy default
 $ sudo brctl show
-</code></pre>
-
-<p>/etc/network/interfacesの変更。以下のようにbr0を追加する。</p>
-
+</code></pre><p>/etc/network/interfacesの変更。以下のようにbr0を追加する。</p>
 <pre><code>auto lo
 iface lo inet loopback
 
@@ -115,19 +107,12 @@ iface br0 inet static
   bridge_hello 2
   bridge_maxage 12
   bridge_stp off
-</code></pre>
-
-<p>10.5.34.145はホストOSで使うIPアドレス。</p>
-
+</code></pre><p>10.5.34.145はホストOSで使うIPアドレス。</p>
 <p>最初はゲストOSを増やすたびにbrを増やしていくのかと思ったが、br0だけでOK。ゲストOSはbr0を通して別のIPアドレスで通信するようになる。ここでいちど再起動。</p>
-
 <p>あとはvirt-managerを起動してゲストOSをインストールする。その際、ネットワークインタフェースを聞かれるのでbr0を指定する。ゲストOSインストール後、ネットワークの設定で固定IPアドレス（br0と同一セグメントであること）を割り当てれば通信ができるようになる。</p>
-
 <p>設定を上書きされてしまうことがあるので、ホストOS上のネットワークマネージャを消しておく。</p>
-
 <pre><code>$ sudo apt-get remove network-manager
 </code></pre>
-
   </section>
   <footer>
     

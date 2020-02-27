@@ -79,15 +79,11 @@
   </header>
   <section>
     <p>eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は</p>
-
 <pre><code>  &lt;appdef&gt;
     &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt;
     &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt;
   &lt;/appdef&gt;
-</code></pre>
-
-<p>を定義して、</p>
-
+</code></pre><p>を定義して、</p>
 <pre><code>    &lt;item&gt;
       &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt;
       &lt;only&gt;ECLIPSE&lt;/only&gt;
@@ -95,10 +91,7 @@
       &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt;
       &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt;
     &lt;/item&gt;   
-</code></pre>
-
-<p>を</p>
-
+</code></pre><p>を</p>
 <pre><code>    &lt;item&gt;
       &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt;
       &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt;
@@ -106,9 +99,7 @@
       &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt;
       &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt;
     &lt;/item&gt;   
-</code></pre>
-
-<p>とするとキーバインドを変更できる。</p>
+</code></pre><p>とするとキーバインドを変更できる。</p>
 
   </section>
   <footer>
@@ -130,7 +121,7 @@
       <li class="previous"><a href="https://ymraintree.github.io/blog/post/2015/20150521/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2015/20150122-2/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2015/20150122-3/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

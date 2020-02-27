@@ -79,26 +79,15 @@
   </header>
   <section>
     <pre><code>./create_project crashball org.crashball --platform android-7 --scala-version 2.8.1
-</code></pre>
-
-<p>でプロジェクトを作成。</p>
-
+</code></pre><p>でプロジェクトを作成。</p>
 <p>eclipseでプロジェクトを作成。こちらはscalaプロジェクト。</p>
-
 <p>create_projectで作ったディレクトリからproject, src/*, testsをeclipseプロジェクトへ移動。</p>
-
 <pre><code>sbt update
-</code></pre>
-
-<p>eclipseでソースフォルダの設定</p>
-
+</code></pre><p>eclipseでソースフォルダの設定</p>
 <pre><code>src/main/java
 src/main/scala
 src/test/scala
-</code></pre>
-
-<p>クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。</p>
-
+</code></pre><p>クラスパスの設定。android-sdkから適当なバージョンのandroid.jarを追加。プロジェクト内のlib_managed/scala_2.8.1/test/scalatest-1.2.jarも追加。</p>
 <p>これでできあがり。あとはsbtでcompileなり、start-emulator, start-deviceなり。</p>
 
   </section>

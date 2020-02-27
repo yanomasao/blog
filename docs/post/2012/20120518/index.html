@@ -79,37 +79,26 @@
   </header>
   <section>
     <p>これまでpgpoolII+postgresでライブのDBを構成していたが、サーバを安いPCサーバにリプレイスするのをきっかけに、heartbeat+drbd+postgresに変えることにした。</p>
-
 <p>先日、プライマリとなっていたサーバ1が落ち、heartbeatによってセカンダリのサーバ2がプライマリに切り替わった。その際、postgresにエラーが発生。pg_dumpを取ろうとすると、</p>
-
 <pre><code>pg_dump: SQLコマンドが失敗しました
 pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688
 DETAIL: Could not open file &quot;pg_clog/0FFF&quot;: No such file or directory.
 pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout;
 pg_dumpall: データベース&quot;common&quot;に対するpg_dumpが失敗しました。終了します
-</code></pre>
-
-<p>ネットでいろいろ調べ、</p>
-
+</code></pre><p>ネットでいろいろ調べ、</p>
 <pre><code>
 $ dd bs=256k count=1 if=/dev/zero of=0FFF
 1+0 records in
 1+0 records out
 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s
 $ 
-</code></pre>
-
-<p>で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。</p>
-
+</code></pre><p>で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。</p>
 <pre><code>
 # select count(*) from ziplog;
 ERROR: could not access status of transaction 2319990784
 DETAIL: Could not open file &quot;pg_clog/08A4&quot;: No such file or directory.
 #
-</code></pre>
-
-<p>いわれるままに、7つほどファイルを作るとメッセージが変わり、postgresが落ちるようになってしまった。</p>
-
+</code></pre><p>いわれるままに、7つほどファイルを作るとメッセージが変わり、postgresが落ちるようになってしまった。</p>
 <pre><code>
 # select count(*) from ziplog;
 ERROR: invalid page header in block 30526 of relation base/16397/1046635
@@ -122,16 +111,10 @@ HINT: In a moment you should be able to reconnect to the database and repeat you
 したことを意味しています。
 サーバーへの接続が切れました。リセットしています: 失敗。
 !&gt; 
-</code></pre>
-
-<p>作った7つのclogファイルを消したところで異常終了はしなくなった。エラーとなるテーブルはdrop tableすることができたので、create tableしなおし、直近のバックアップから復旧させることにした。しかし、今回は静的なテーブルがエラーとなったので、このような対応で済んだが、頻繁に更新されているようなテーブルだとこうはいかない。</p>
-
+</code></pre><p>作った7つのclogファイルを消したところで異常終了はしなくなった。エラーとなるテーブルはdrop tableすることができたので、create tableしなおし、直近のバックアップから復旧させることにした。しかし、今回は静的なテーブルがエラーとなったので、このような対応で済んだが、頻繁に更新されているようなテーブルだとこうはいかない。</p>
 <p>サーバ1はなぜ落ちたのか。/var/log/syslogなどにもなにも残っていない。ただ、落ちた時間にはcopyコマンドで比較的大きなテーブルにデータをロードしていた。メモリを64G積んでいるので、postgresの共有メモリの設定などを大きく取っていて、そのへんが問題になったのかとも思う。それにしてもOSまで落ちてしまってはいけない。</p>
-
 <p>なぜclogファイルはなくなったのか。OSが落ちてしまったので、postgresの整合性が取れない状態になってしまったのか、はたまたdrbdが正常に機能しなかったのか。</p>
-
 <p>テーブルをdrop &amp; createする以外の復旧方法はないのか。pg_resetxlogコマンドなどもあると聞いたが、全体に波及してしまう感じがして、実行できなかった。ほかにもpostgresインスタンスを作りなおすとよいという情報もあったが、ライブのDBということもあり、ビビって試せなかった。</p>
-
 <p>今回のような障害に対応するため、ストリーミングレプリケーションの導入を決め、準備を進める。</p>
 
   </section>

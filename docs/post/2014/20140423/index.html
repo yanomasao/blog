@@ -79,13 +79,10 @@
   </header>
   <section>
     <p>ホームディレクトリをNASに置いて、linuxマシンからはautomountでアクセスするようにしているが、先日NASが異常終了して起動できなくなってしまった。緊急対応として、バックアップのNASサーバを本番のサーバとして使うようにDNSで切り替えた。こんなとき、マシンによってはautomountが以前のサーバにアクセスしようとしてlsコマンドやdfコマンドが刺さってしまう。当該マシンを再起動すればいいことだが、本番運用しているマシンなどは再起動できない。こういうときは</p>
-
 <pre><code># umount /home/xxx
 # umount -f /home/xxx
 # umount -l /home/xxx
-</code></pre>
-
-<p>の順で実行する。-lだとたいていはumountできるもよう。</p>
+</code></pre><p>の順で実行する。-lだとたいていはumountできるもよう。</p>
 
   </section>
   <footer>

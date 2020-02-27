@@ -79,20 +79,12 @@
   </header>
   <section>
     <p>ubuntuでNASのディスクをマウントする。</p>
-
 <pre><code>$ sudo apt-get install smbfs
-</code></pre>
-
-<p>でパッケージをインストール。</p>
-
+</code></pre><p>でパッケージをインストール。</p>
 <pre><code>$ sudo smbmount //foo.bar.co.jp/zoo /zoo -o username=xxxxxx
-</code></pre>
-
-<p>アンマウントはumountコマンドでよい。</p>
-
+</code></pre><p>アンマウントはumountコマンドでよい。</p>
 <pre><code>$ sudo umount /zoo
 </code></pre>
-
   </section>
   <footer>
     

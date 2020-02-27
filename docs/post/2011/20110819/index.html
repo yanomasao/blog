@@ -79,35 +79,21 @@
   </header>
   <section>
     <p>前回caseクラスでパラメータにアノテーションを書いても効かなかったと書きましたが、正確にはjavaのアノテーションは効かないということでした。</p>
-
 <pre><code>case class Shohin (
   @BeanProperty pk:String
-</code></pre>
-
-<p>これは効くけれど、</p>
-
+</code></pre><p>これは効くけれど、</p>
 <pre><code>case class Shohin (
   @Column columnDefinition=&quot;text&quot;) pk:String
-</code></pre>
-
-<p>これは効かない。これが効かないのはしょうがないとしても、</p>
-
+</code></pre><p>これは効かない。これが効かないのはしょうがないとしても、</p>
 <pre><code>case class Shohin (
   @Id pk:String
-</code></pre>
-
-<p>これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、</p>
-
+</code></pre><p>これが効かないと、EJBコンテナにデプロイしたときにエラーになってしまうので、致命的。それでcaseクラスを諦めていたわけですが、</p>
 <p><a href="http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html">http://www.davidgreco.it/MySite/Blog/Entries/2011/2/16_Scala_and_JPA__a_couple_of_hints.html</a></p>
-
 <p>に解決方法がありました。</p>
-
 <pre><code>import scala.annotation.target._
 case class Shohin (
   @(Id @field) @(Column @field)(columnDefinition=&quot;text&quot;) pk:String
-</code></pre>
-
-<p>とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。</p>
+</code></pre><p>とするということです。なにはともあれ、エンティティビーンにcaseクラスが使えるようになったのは、とてもうれしい。</p>
 
   </section>
   <footer>

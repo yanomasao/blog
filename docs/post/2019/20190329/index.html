@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>github.comにリポジトリを作成しておく。</p>
-
 <table>
 <thead>
 <tr>
@@ -87,78 +86,61 @@
 <th></th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>ymraintree.github.io</td>
 <td>公開コンテンツ用</td>
 </tr>
-
 <tr>
-<td>ymraintree.github.io.hugo&nbsp;&nbsp;&nbsp;</td>
+<td>ymraintree.github.io.hugo   </td>
 <td>hugoでのコンテンツ作成用</td>
+</tr>
+<tr>
+<td><!-- raw HTML omitted --></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-
-<p><br></p>
-
-<p>$ brew install hugo<br />
-$ hugo new site blog<br />
-$ cd blog<br />
-$ git init<br />
-$ git add &ndash;all<br />
-$ git commit -m &ldquo;initial commit&rdquo;<br />
-$ git remote add origin <a href="https://github.com/ymraintree/ymraintree.github.io.hugo.git">https://github.com/ymraintree/ymraintree.github.io.hugo.git</a><br />
-$ git push -u origin master<br />
-$ hugo<br />
+<p>$ brew install hugo<br>
+$ hugo new site blog<br>
+$ cd blog<br>
+$ git init<br>
+$ git add &ndash;all<br>
+$ git commit -m &ldquo;initial commit&rdquo;<br>
+$ git remote add origin <a href="https://github.com/ymraintree/ymraintree.github.io.hugo.git">https://github.com/ymraintree/ymraintree.github.io.hugo.git</a><br>
+$ git push -u origin master<br>
+$ hugo<br>
 publicディレクトリができた。</p>
-
 <p>$ cd public
-$ git init<br />
-$ git add &ndash;all<br />
-$ git commit -m &ldquo;initial commit&rdquo;<br />
-$ git remote add origin <a href="https://github.com/ymraintree/ymraintree.github.io.git">https://github.com/ymraintree/ymraintree.github.io.git</a><br />
-$ git push -u origin master<br />
+$ git init<br>
+$ git add &ndash;all<br>
+$ git commit -m &ldquo;initial commit&rdquo;<br>
+$ git remote add origin <a href="https://github.com/ymraintree/ymraintree.github.io.git">https://github.com/ymraintree/ymraintree.github.io.git</a><br>
+$ git push -u origin master<br>
 $ cd ..</p>
-
 <p>.gitignoreを作成。内容は以下</p>
-
 <pre><code>/public
-</code></pre>
-
-<p>$ git add .gitignore<br />
-$ git commit -m &ldquo;add .gitignore&rdquo;<br />
+</code></pre><p>$ git add .gitignore<br>
+$ git commit -m &ldquo;add .gitignore&rdquo;<br>
 $ git submodule add <a href="https://github.com/keichi/vienna">https://github.com/keichi/vienna</a> themes/vienna
-$ git add &ndash;all<br />
+$ git add &ndash;all<br>
 $ git commit -m &ldquo;add theme vienna&rdquo;</p>
-
 <p>config.tomlを変更</p>
-
 <pre><code>theme = &quot;vienna&quot;
-</code></pre>
-
-<p>を追加</p>
-
+</code></pre><p>を追加</p>
 <p>$ hugo server</p>
-
 <p>localhost:1313で確認</p>
-
-<p>$ hugo new post/20190329.md<br />
+<p>$ hugo new post/20190329.md<br>
 で、この記事を作成。</p>
-
 <p>あとは、hugo serverがlocalhost:1313を適宜更新してくれるので、これを見ながらマークダウンを編集。</p>
-
-<p>$ git add &ndash;all<br />
-$ git commit -m &lsquo;xxxx&rsquo;<br />
+<p>$ git add &ndash;all<br>
+$ git commit -m &lsquo;xxxx&rsquo;<br>
 $ git push -u origin master</p>
-
-<p>$ hugo<br />
-$ cd public<br />
-$ git add &ndash;all<br />
-$ git commit -m &lsquo;xxxx&rsquo;<br />
+<p>$ hugo<br>
+$ cd public<br>
+$ git add &ndash;all<br>
+$ git commit -m &lsquo;xxxx&rsquo;<br>
 $ git push -u origin master</p>
-
 <p>の繰り返し。このあたりでCI/CDによる自動化か。</p>
   </section>
   <footer>

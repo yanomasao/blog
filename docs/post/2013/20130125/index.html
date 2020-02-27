@@ -79,28 +79,19 @@
   </header>
   <section>
     <p>openntpdとisc-dhcp-serverが、ubuntu起動時に起動しない。ただし、OS起動後に/etc/init.d/openntpd startとすると起動する。/etc/rc5.dにあるS20openntpd, S20isc-dhcp-serverをS99に移動したりしてみたがだめ。S99rc.localから実行される/etc/rc.localに</p>
-
 <pre><code>/etc/init.d/isc-dhcp-server start
 /etc/init.d/openntpd start
 
 exit 0
-</code></pre>
-
-<p>と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。</p>
-
+</code></pre><p>と書いてみたらdhcpdは起動するようになった。しかし、ntpdはエラー。syslogには以下のメッセージ。</p>
 <pre><code>fatal: bind: Cannot assign requested address
-</code></pre>
-
-<p>そこで、/etc/rc.localを</p>
-
+</code></pre><p>そこで、/etc/rc.localを</p>
 <pre><code>/etc/init.d/isc-dhcp-server start
 sleep 10
 /etc/init.d/openntpd start
 
 exit 0
-</code></pre>
-
-<p>としたら動くようになった。</p>
+</code></pre><p>としたら動くようになった。</p>
 
   </section>
   <footer>

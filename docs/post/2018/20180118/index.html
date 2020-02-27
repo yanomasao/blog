@@ -80,7 +80,6 @@
   <section>
     <p>AWSコンソールで当該EBSのサイズを拡張する。
 ボリュームの状態が、しばらくすると「in-use - completed (100%)」となる。</p>
-
 <pre><code>$ lsblk
 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
 xvda 202:0 0 10G 0 disk 
@@ -88,10 +87,7 @@ xvda 202:0 0 10G 0 disk
 
 $ df -h
 /dev/xvda1 7.8G 7.6G 0 100% /
-</code></pre>
-
-<p>変わっていない。</p>
-
+</code></pre><p>変わっていない。</p>
 <pre><code>$ sudo growpart /dev/xvda 1
 CHANGED: partition=1 start=16065 old: size=16761118 end=16777183 new: size=20955422,end=20971487
 
@@ -109,9 +105,7 @@ The filesystem on /dev/xvda1 is now 2619427 (4k) blocks long.
 
 $ df -h
 /dev/xvda1 9.8G 7.6G 1.8G 82% /
-</code></pre>
-
-<p>変わった。</p>
+</code></pre><p>変わった。</p>
 
   </section>
   <footer>

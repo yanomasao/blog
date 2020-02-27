@@ -79,41 +79,21 @@
   </header>
   <section>
     <p>ディスク容量100Gで気楽に作ったゲストOSをそのまま運用で使うことになり、500Gへ増やすことにした。</p>
-
 <p>ゲストOS停止
 バックアップ</p>
-
 <pre><code>qemu-img resize aplivevm +400G
-</code></pre>
-
-<p>これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。</p>
-
+</code></pre><p>これだけだと、ホストからみた容量は増えたが、ゲストからするとあいかわらず100Gのまま。使用量が100Gを超えるとパンクする。</p>
 <p>そこで、ゲストを起動し、</p>
-
 <pre><code># shutdown now
-</code></pre>
-
-<p>でシングルユーザモードへ移行。virt-managerのコンソールにシングルユーザモードのシェルがでるので、</p>
-
+</code></pre><p>でシングルユーザモードへ移行。virt-managerのコンソールにシングルユーザモードのシェルがでるので、</p>
 <pre><code># fdisk /dev/vda
-</code></pre>
-
-<p>を使うが、ルートパーティションはそのままにして、別のパーティションを追加（/dev/vda3）する。OSを再起動させ、</p>
-
+</code></pre><p>を使うが、ルートパーティションはそのままにして、別のパーティションを追加（/dev/vda3）する。OSを再起動させ、</p>
 <pre><code># mkfs.ext4 /dev/vda3
-</code></pre>
-
-<p>としたところで、なぜかゲストOS死亡。ためしに</p>
-
+</code></pre><p>としたところで、なぜかゲストOS死亡。ためしに</p>
 <pre><code># mkfs.ext3 /dev/vda3
-</code></pre>
-
-<p>はできた。その後</p>
-
+</code></pre><p>はできた。その後</p>
 <pre><code># mkfs.ext4 -j /dev/vda3
-</code></pre>
-
-<p>もできたのでよしとする。</p>
+</code></pre><p>もできたのでよしとする。</p>
 
   </section>
   <footer>

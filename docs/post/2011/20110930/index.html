@@ -79,31 +79,20 @@
   </header>
   <section>
     <p>linuxサーバ上のjbossでpdfファイルを生成し印刷する必要が生じました。pdfはjasperReportなどで生成できますが、これを普通にlprとかしても日本語が出ません。jasperReport側でフォントの設定などをいろいろと変えてみたが解決せず。</p>
-
 <p>サーバにacrobat readerを入れるという方法をためしてみました。</p>
-
 <p>linuxサーバは64bitでacrobat readerは32bit版しか提供されていません。なので、AdbeRdr9.4.2-1_i486linux_jpn.tar.bz2をダウンロード、解凍し、</p>
-
 <pre><code># cd AdobeReader
 # ./INSTALL
-</code></pre>
-
-<p>としてインストール。</p>
-
+</code></pre><p>としてインストール。</p>
 <pre><code>acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps
-</code></pre>
-
-<p>とすると印刷できました。ただしASCIIのフォントがちょっと変。</p>
-
+</code></pre><p>とすると印刷できました。ただしASCIIのフォントがちょっと変。</p>
 <p>なお、linux上のacroreadはrootで実行するとエラーになってしまうので、別人になって実行する必要がある。scalaではこんな感じ。</p>
-
 <pre><code>val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, &quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&quot;)
 val p = Process(cmd).run
 if (p.exitValue != 0) {
 println(&quot;異常終了 &quot; + p.toString())
 }
 </code></pre>
-
   </section>
   <footer>
     

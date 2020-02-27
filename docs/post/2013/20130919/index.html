@@ -79,12 +79,8 @@
   </header>
   <section>
     <p>以下のコマンドで差分ファイルを作ることができる。</p>
-
 <pre><code>$ sudo qemu-img create -b vm.test.img -f qcow2 vm.test.diff.img
-</code></pre>
-
-<p>以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。</p>
-
+</code></pre><p>以後、vm.test.diff.imgで起動するとベースのvm.test.imgは変更されない。</p>
 <pre><code>$ ls -l vm.test.*
  -rw-r--r-- 1 root root      198656  9月 19 11:46 vm.test.diff.img
  -rw------- 1 root root 58913259520  9月 19 11:44 vm.test.img
@@ -95,21 +91,12 @@ $ ls -l vm.test.*
  -rw-r--r-- 1 root         root    24838144  9月 19 11:59 vm.test.diff.img
  -rw------- 1 libvirt-qemu kvm  58913259520  9月 19 11:44 vm.test.img
 $
-</code></pre>
-
-<p>差分をベースにコミットするには以下のコマンド。</p>
-
+</code></pre><p>差分をベースにコミットするには以下のコマンド。</p>
 <pre><code>$ sudo qemu-img commit -f qcow2 vm.test.diff.img
-</code></pre>
-
-<p>これで差分はいらなくなる。</p>
-
+</code></pre><p>これで差分はいらなくなる。</p>
 <p>この方式だと、ベースのイメージが差分バックアップの対象とならないので、バックアップの効率はよくなる。</p>
-
 <p>イメージファイルの圧縮</p>
-
 <p>イメージファイルのサイズが大きくなってきたので圧縮してみる。</p>
-
 <pre><code>$ time sudo qemu-img convert -c -O qcow2 testLinVM.img testLinVM.img.new
 real	109m7.969s
 user	97m1.204s
@@ -117,9 +104,7 @@ sys	5m20.240s
 $ ls -lh
  -rw------- 1  root root 86G  2月 14 14:33 testLinVM.img
  -rw-r--r-- 1 root root     19G  2月 14 17:24 testLinVM.img.new
-</code></pre>
-
-<p>86Gあったイメージファイルを109分かけて19Gに圧縮。</p>
+</code></pre><p>86Gあったイメージファイルを109分かけて19Gに圧縮。</p>
 
   </section>
   <footer>

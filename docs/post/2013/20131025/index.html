@@ -79,25 +79,15 @@
   </header>
   <section>
     <p>Java Web Startで起動するアプリケーションが、Java7 45にアップデートしたら動かなくなった。動かなくなったとはいっても、アプリケーション自身は起動するが、途中でエラーになってしまう。エラーの内容からすると、アプリケーションに渡っているべき環境変数が渡っていない模様。この変数は.jnlpのresourcesタグ内で</p>
-
 <pre><code>&lt;property name=&quot;arg1&quot; value=&quot;FOOBAR&quot;/&gt;
-</code></pre>
-
-<p>のように渡していた。Java側では</p>
-
+</code></pre><p>のように渡していた。Java側では</p>
 <pre><code>String foo = System.getProperty(&quot;arg1&quot;);
-</code></pre>
-
-<p>で受け取ることができた。</p>
-
+</code></pre><p>で受け取ることができた。</p>
 <p>これができなくなったようなので調べてみたら
 <a href="http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html">http://docs.oracle.com/javase/jp/1.5.0/guide/javaws/developersguide/syntax.html</a>
 の解説にあるように、</p>
-
 <pre><code>&lt;property name=&quot;jnlp.arg1&quot; value=&quot;FOOBAR&quot;/&gt;
-</code></pre>
-
-<p>のようにするとVMに引数を渡すことができるんだと。</p>
+</code></pre><p>のようにするとVMに引数を渡すことができるんだと。</p>
 
   </section>
   <footer>

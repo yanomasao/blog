@@ -79,37 +79,24 @@
   </header>
   <section>
     <p>ついでなので、CircleCIでビルド＆公開の設定。どうやら、.circleci/config.ymlにgithubに変化があったときに何をするかを定義していくらしい。</p>
-
 <ul>
 <li>dockerコンテナを起動</li>
 <li>hugoをインストール</li>
 <li>hugoコマンドを実行して公開コンテンツを生成</li>
 <li>git pushして公開</li>
 </ul>
-
 <p>ということをすればいいみたい。dockerコンテナには、起動時に自動的に当該リポジトリがcloneされているようなので、config.yml中でgit cloneはする必要がない模様。</p>
-
 <p>dockerコンテナは</p>
-
 <pre><code>- image: circleci/golang:1.9
-</code></pre>
-
-<p>としていたが、</p>
-
+</code></pre><p>としていたが、</p>
 <pre><code>../../gohugoio/hugo/parser/metadecoders/decoder.go:45:9: undefined: strings.Builder
-</code></pre>
-
-<p>というエラーが出るので、1.12にあげてクリア。しかし今度は</p>
-
+</code></pre><p>というエラーが出るので、1.12にあげてクリア。しかし今度は</p>
 <pre><code>ERROR: The key you are authenticating with has been marked as read only.
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-</code></pre>
-
-<p><a href="http://jackale.hateblo.jp/entry/2018/01/14/000709">こちらのページ</a>を参考にして、sshキーを追加したら、上記エラーをクリア。はじめてCircleCIのSUCCESSが見られてうれしい。うれしいので焼酎お湯割りを飲むことにする。</p>
-
+</code></pre><p><a href="http://jackale.hateblo.jp/entry/2018/01/14/000709">こちらのページ</a>を参考にして、sshキーを追加したら、上記エラーをクリア。はじめてCircleCIのSUCCESSが見られてうれしい。うれしいので焼酎お湯割りを飲むことにする。</p>
 <p>ところが、どうもCircleCIがfailしている。酔っているので、デバッグは明日。</p>
   </section>
   <footer>

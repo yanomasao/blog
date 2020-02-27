@@ -81,10 +81,7 @@
     <pre><code># du -h liveVM20140813/
 269.6G  liveVM20140813/
 #
-</code></pre>
-
-<p>このシステムを圧縮。実際には50Gくらい。</p>
-
+</code></pre><p>このシステムを圧縮。実際には50Gくらい。</p>
 <pre><code># date; time vmkfstools --punc
 hzero liveVM20140813/liveVM20140813.vmdk; date
 Wed Aug 13 13:02:13 UTC 2014
@@ -97,12 +94,8 @@ Wed Aug 13 13:08:22 UTC 2014
 # du -h liveVM20140813/
 269.6G  liveVM20140813/
 # 
-</code></pre>
-
-<p>全然減らない。</p>
-
+</code></pre><p>全然減らない。</p>
 <p>そこで、未使用領域をゼロ埋めしてみる。ゼロファイルを作ったらすぐ削除。</p>
-
 <pre><code>$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        95G  3.7G   86G   5% /
@@ -162,10 +155,7 @@ none            5.0M     0  5.0M   0% /run/lock
 none             32G  144K   32G   1% /run/shm
 /dev/sda3       394G  386G     0 100% /usr/local
 $ sudo rm /usr/local/zerofile
-</code></pre>
-
-<p>これでゼロ埋め。</p>
-
+</code></pre><p>これでゼロ埋め。</p>
 <pre><code>$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        95G  3.7G   86G   5% /
@@ -175,17 +165,11 @@ none            5.0M     0  5.0M   0% /run/lock
 none             32G  144K   32G   1% /run/shm
 /dev/sda3       394G   43G  331G  12% /usr/local
 $
-</code></pre>
-
-<p>サイズ的には元に戻った。ESXiから見るとサイズは大きくなっている。ゼロ埋めしすぎか。</p>
-
+</code></pre><p>サイズ的には元に戻った。ESXiから見るとサイズは大きくなっている。ゼロ埋めしすぎか。</p>
 <pre><code># du -h liveVM20140813/
 484.1G  liveVM20140813/
 # 
-</code></pre>
-
-<p>システムを停止後、ESXiで.vmdkを圧縮。</p>
-
+</code></pre><p>システムを停止後、ESXiで.vmdkを圧縮。</p>
 <pre><code># date; time vmkfstools --punchzero liveVM20140813/liveVM20140813.vmdk; date
 Wed Aug 13 13:32:21 UTC 2014
 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576
@@ -197,9 +181,7 @@ Wed Aug 13 13:42:03 UTC 2014
 # du -h liveVM20140813/
 54.3G   liveVM20140813/
 # 
-</code></pre>
-
-<p>270Gあったのが、55G まで縮小できた。</p>
+</code></pre><p>270Gあったのが、55G まで縮小できた。</p>
 
   </section>
   <footer>

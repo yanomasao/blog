@@ -81,22 +81,13 @@
     <pre><code>$ dpkg --list|grep heartbeat
 $ sudo apt-get install heartbeat
 $ dpkg --list|grep heartbeat
-</code></pre>
-
-<p>/etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。</p>
-
+</code></pre><p>/etc/ha.d/{authkeys, ha.cf, haresources}を設定。元ネタは/usr/share/doc/heartbeatにある。</p>
 <p>heartbeatの管理下に置くプロセスはharesourcesに記述するとともに、OS起動時に起動しないようにしておくこと。</p>
-
 <p>起動</p>
-
 <pre><code>$ sudo /etc/init.d/heartbeat start
-</code></pre>
-
-<p>確認</p>
-
+</code></pre><p>確認</p>
 <pre><code>$ sudo /etc/init.d/heartbeat status
 </code></pre>
-
   </section>
   <footer>
     

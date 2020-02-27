@@ -79,34 +79,22 @@
   </header>
   <section>
     <p>たとえば、</p>
-
 <pre><code>object Foo {
   val ZOO = &quot;xxxx&quot;
 }
-</code></pre>
-
-<p>というクラスを作ってコンパイルします。これをスクリプトの中で使います。</p>
-
+</code></pre><p>というクラスを作ってコンパイルします。これをスクリプトの中で使います。</p>
 <pre><code>println(Foo.ZOO)
-</code></pre>
-
-<p>これはOK。次に、</p>
-
+</code></pre><p>これはOK。次に、</p>
 <pre><code>object Foo {
   val ZOO = &quot;xxxx&quot;
   val ZOO_ADDED = &quot;ZZZZZ&quot;
 }
-</code></pre>
-
-<p>と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、</p>
-
+</code></pre><p>と、ZOO_ADDEDを増やします。そして、これをスクリプト中で使います。すると、</p>
 <pre><code>script.scala:2: error: value ZOO_ADDED is not a member of object Foo
 println(Foo.ZOO_ADDED)
 ^
 one error found
-</code></pre>
-
-<p>と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。</p>
+</code></pre><p>と、エラーになってしまいます。同じことをREPLでやるとこちらはエラーになりません。すごく不思議なんですが、scalaのテンポラリディレクトリ（/tmp/scala-devel）を一度削除するとスクリプトも動くようになります。ちょっと気持ちの悪い挙動でした。</p>
 
   </section>
   <footer>

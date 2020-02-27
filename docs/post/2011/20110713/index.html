@@ -79,34 +79,18 @@
   </header>
   <section>
     <p>linuxサーバ上でJasperReportを使ってPDFファイルを生成し、プリンタに直接印刷する必要が生じたので、環境を作りました。サーバはubuntuの64bit、プリンタはキャノンLBP8620。</p>
-
 <p>キャノンのサイトを見てみると、linux 64bit用のドライバはrpmでしか提供されていないようす。ubuntuにはrpmコマンドがないので、どうしたものかと調べて、alienコマンドを使うことにしました。まずはalienのインストール。</p>
-
 <pre><code>$ sudo apt-get install alien
-</code></pre>
-
-<p>キャノンのサイトからダウンロードしたドライバのインストール。</p>
-
+</code></pre><p>キャノンのサイトからダウンロードしたドライバのインストール。</p>
 <pre><code>$ sudo alien -i cndrvcups-common_2.20-1.x86_64.rpm
 $ sudo alien -i cndrvcups-lips4-2.20-1.x86_64.rpm
-</code></pre>
-
-<p>ここでcupsのリスタート。</p>
-
+</code></pre><p>ここでcupsのリスタート。</p>
 <pre><code>$ sudo /etc/init.d/cups restart
-</code></pre>
-
-<p>プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。</p>
-
+</code></pre><p>プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。</p>
 <pre><code>$ sudo lpadmin -p cop -m CNCUPSLBPSERIESLJ.ppd -v lpd://cop.is.magazine.co.jp/cop -E
-</code></pre>
-
-<p>これで、</p>
-
+</code></pre><p>これで、</p>
 <pre><code>$ lpr -P cop XXXXXXXX.pdf
-</code></pre>
-
-<p>などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。</p>
+</code></pre><p>などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。</p>
 
   </section>
   <footer>

@@ -79,14 +79,12 @@
   </header>
   <section>
     <p>もともとJavaで書いているプロジェクトにScalaのコードを混ぜていくと、Eclipseの挙動がおかしくなるときがあって、そういうときはJavaの側からScalaでできているオブジェクトやクラスが軒並み見えなくなる。ビルドしなおしても状況は変わらず。いろいろ試した結果、scalaのobjectを作ったときは同名のクラスも用意しないとJavaがそれらを参照するときにおかしな挙動になるようだ。</p>
-
 <pre><code> class Foo
  object Foo {
    def xxx:String = ....
    ...
  }
 </code></pre>
-
   </section>
   <footer>
     

@@ -79,28 +79,15 @@
   </header>
   <section>
     <p>開発中は</p>
-
 <pre><code>http://localhost:9000/foo
-</code></pre>
-
-<p>などのURLで動作確認するが、開発が終わって本番で稼働するとき、</p>
-
+</code></pre><p>などのURLで動作確認するが、開発が終わって本番で稼働するとき、</p>
 <pre><code>http://liveserver.boo.com/foo
-</code></pre>
-
-<p>などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。</p>
-
+</code></pre><p>などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。</p>
 <p>これはconf/routesファイルの</p>
-
 <pre><code>GET     /assets/*file               controllers.Assets.at(path=&quot;/public&quot;, file)
-</code></pre>
-
-<p>を</p>
-
+</code></pre><p>を</p>
 <pre><code>GET     /foo/assets/*file               controllers.Assets.at(path=&quot;/public&quot;, file)
-</code></pre>
-
-<p>と修正すれば動くようになる。</p>
+</code></pre><p>と修正すれば動くようになる。</p>
 
   </section>
   <footer>
@@ -119,7 +106,7 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2015/20150122-3/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2015/20150122-2/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2014/20141120/">Newer <span aria-hidden="true">&rarr;</span></a></li>

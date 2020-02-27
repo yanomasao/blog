@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>EJBのEntityManagerでテーブルをselectしてそのテーブルのエンティティを返すのは普通にやることだが、group byしてキーだけ取り出したい、などのときは以下のようにObjectの配列のリストとして扱う。</p>
-
 <pre><code>    val keys = em.createNativeQuery(&quot;select t1.key1, t1.key2, t1.key3 &quot; + 
         &quot;from T1 t1 &quot; +
         &quot;group by t1.key1, t1.key2, t1.key3 &quot; + 
@@ -87,7 +86,6 @@
     var result = List[fooPK]()
     keys.foreach(k =&gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt))
 </code></pre>
-
   </section>
   <footer>
     

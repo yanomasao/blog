@@ -79,11 +79,8 @@
   </header>
   <section>
     <p>ssh.elを使ってリモートホストにアクセスするとき、-l taro付きで開いたバッファ上から別のsshアクセスを-lなしですると、-l taroが付け加えられてしまう。これを防ぐには、init.elに</p>
-
 <pre><code>'(ssh-explicit-args (quote (&quot;-lhanako&quot;)))
-</code></pre>
-
-<p>のようにデフォルトのユーザ名をセットしておくとよい。</p>
+</code></pre><p>のようにデフォルトのユーザ名をセットしておくとよい。</p>
 
   </section>
   <footer>

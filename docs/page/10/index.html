@@ -63,6 +63,30 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111206/">gmailをSMTPサーバとしてjavaからメールを送信する</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-12-06T16:23:06&#43;09:00">
+          Dec 6, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。
+2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
+参考URL: http://www.java.net/node/697528
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20111202/">EJB-QLのチューニング</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -75,7 +99,7 @@
   </header>
   <div>
     EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、
-@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;)  のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
+@NamedQuery(name=&quot;torihiki.findForReport&quot;, query=&quot;select torihiki from Torihiki torihiki &quot; + &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; + &quot;where torihiki.nohinDate = :nohinDate&quot;) のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。
   </div>
   
 </article>
@@ -98,9 +122,9 @@
   </header>
   <div>
     アプリケーションのチューニングをして、DBにインデックスを張りたいとき、SQLを直に実行してしまうと移植時などに忘れてしまうことがあるので、Entity Bean内に書いておきたい。調べると、
-@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}), @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})}, appliesTo = &quot;customer&quot;)  などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
-&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;  を
-&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt;  にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。
+@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}), @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})}, appliesTo = &quot;customer&quot;) などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの
+&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt; を
+&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt; にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。
   </div>
   
 </article>
@@ -123,7 +147,7 @@
   </header>
   <div>
     jbossで大きなバッチ処理などするとtimeoutで落ちてしまうことがある。このようなとき、そのメソッドだけtimeout値を変更するには、以下のアノテーションをメソッドに付ける
-@TransactionTimeout(1500)  参照URL: http://community.jboss.org/wiki/TransactionTimeout
+@TransactionTimeout(1500) 参照URL: http://community.jboss.org/wiki/TransactionTimeout
   </div>
   
 </article>
@@ -148,10 +172,10 @@
     linuxサーバ上のjbossでpdfファイルを生成し印刷する必要が生じました。pdfはjasperReportなどで生成できますが、これを普通にlprとかしても日本語が出ません。jasperReport側でフォントの設定などをいろいろと変えてみたが解決せず。
 サーバにacrobat readerを入れるという方法をためしてみました。
 linuxサーバは64bitでacrobat readerは32bit版しか提供されていません。なので、AdbeRdr9.4.2-1_i486linux_jpn.tar.bz2をダウンロード、解凍し、
-# cd AdobeReader # ./INSTALL  としてインストール。
-acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps  とすると印刷できました。ただしASCIIのフォントがちょっと変。
+# cd AdobeReader # ./INSTALL としてインストール。
+acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps とすると印刷できました。ただしASCIIのフォントがちょっと変。
 なお、linux上のacroreadはrootで実行するとエラーになってしまうので、別人になって実行する必要がある。scalaではこんな感じ。
-val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, &quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&quot;) val p = Process(cmd).run if (p.exitValue != 0) { println(&quot;異常終了 &quot; + p.toString()) }  
+val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot;, &quot;acroread -toPostScript -pairs foo.pdf foo.ps; lpr -P myprinter foo.ps&quot;) val p = Process(cmd).run if (p.exitValue != 0) { println(&quot;異常終了 &quot; + p.toString()) } 
   </div>
   
 </article>
@@ -174,9 +198,9 @@ val cmd = Array(&quot;su&quot;, &quot;-&quot;, &quot;nobody&quot;, &quot;-c&quot
   </header>
   <div>
     drbdのフェイルオーバのテストなどをしていると、
-$ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。
+$ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:StandAlone ro:Secondary/Unknown ds:Inconsistent/DUnknown r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $ のような状態になる。これはプライマリとセカンダリが同期していない状態。こういう場合の再同期の処理。
 セカンダリ側
-$ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $  プライマリ側
+$ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /proc/drbd version: 8.3.9 (api:88/proto:86-95) srcversion: CF228D42875CF3A43F2945A 0: cs:WFConnection ro:Secondary/Unknown ds:Inconsistent/DUnknown C r----s ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:976531312 $ プライマリ側
   </div>
   
   <footer>
@@ -206,7 +230,7 @@ $ sudo drbdadm down r0 $ sudo drbdadm up r0 $ sudo drbdadm invalidate r0 $ cat /
   <div>
     drbdのマシンを再起動したときに、以下の処理をしないと正常に起動しない。
 ログイン
-drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可) drbd-overviewで確認 sudo mount /drbd  
+drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm primary r0 (sudo drbdsetup (0 or /dev/drbd0) primary でも可) drbd-overviewで確認 sudo mount /drbd 
   </div>
   
 </article>
@@ -231,9 +255,9 @@ drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm prim
     2台のlinuxマシンを使ってdrbd環境構築。drbd用のパーティションとして1TBを取ってしまったので初期同期に一週間くらいかかってしまった。このパーティションで実用していいんだろうか。
 障害時の切り替え手順
 現プライマリ側
-sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary  新プライマリ側
-sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd  どちらもcat /proc/drbdなどして確認。drbd-overviewだと
-0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1%  となる。not-foundってなんだろう。
+sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary 新プライマリ側
+sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd どちらもcat /proc/drbdなどして確認。drbd-overviewだと
+0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1% となる。not-foundってなんだろう。
   </div>
   
 </article>
@@ -256,10 +280,10 @@ sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd  どちらもcat /
   </header>
   <div>
     solrを使ってみる。解凍して、
-$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar  で起動。PDFを読み込ませたいときは
-$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot;  などとする。データの削除は
-$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot;  とか
-$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot;  
+$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar で起動。PDFを読み込ませたいときは
+$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot; などとする。データの削除は
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot; とか
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot; 
   </div>
   
 </article>
@@ -282,31 +306,8 @@ $ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&
   </header>
   <div>
     eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成
-echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1  これをfindで実行。
-$ find . -type f -exec sh z:/foo.sh {} \;  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110829/">play&#43;scala&#43;morphia</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-08-29T16:39:14&#43;09:00">
-          Aug 29, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    $ ./play install morphia $ ./play new myapp --with scala  myapp/conf/dependencies.ymlに以下の行を追加する。
-- play -&gt; morphia 1.2.2beta1  
+echo $1 nkf -w $1 &gt; /tmp/foo mv /tmp/foo $1 これをfindで実行。
+$ find . -type f -exec sh z:/foo.sh {} \; 
   </div>
   
 </article>

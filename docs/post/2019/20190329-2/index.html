@@ -79,47 +79,32 @@
   </header>
   <section>
     <p>前回は公開用とコンテンツ作成用でリポジトリをふたつに分けたが、やっぱりリポジトリはひとつのほうがシンプルでいいので、その方式で再作成。githubのリポジトリはblogとする。</p>
-
-<p>$ hugo new site blog<br />
-$ cd blog<br />
-$ git init<br />
-$ git add &ndash;all<br />
-$ git commit -m &ldquo;initial commit&rdquo;<br />
-$ git remote add origin <a href="https://github.com/ymraintree/blog.git">https://github.com/ymraintree/blog.git</a><br />
+<p>$ hugo new site blog<br>
+$ cd blog<br>
+$ git init<br>
+$ git add &ndash;all<br>
+$ git commit -m &ldquo;initial commit&rdquo;<br>
+$ git remote add origin <a href="https://github.com/ymraintree/blog.git">https://github.com/ymraintree/blog.git</a><br>
 $ git push -u origin master</p>
-
 <p>今回はgithub pagesの仕様にのっとって、masterブランチのdocsディレクトリを公開コンテンツとするので、config.tomlに</p>
-
 <pre><code>publishDir = &quot;docs&quot;
-</code></pre>
-
-<p>を追加。</p>
-
-<p>$ hugo<br />
+</code></pre><p>を追加。</p>
+<p>$ hugo<br>
 docsディレクトリができた。</p>
-
-<p>$ git add &ndash;all<br />
-$ git commit -m &ldquo;add docs&rdquo;<br />
+<p>$ git add &ndash;all<br>
+$ git commit -m &ldquo;add docs&rdquo;<br>
 $ git push -u origin master</p>
-
 <p>githubのページでSettings中のGitHub PagesのSourceに<code>master branch/docs folter</code>を選択。</p>
-
-<p>これで、<a href="https://ymraintree.github.io/blog/">https://ymraintree.github.io/blog/</a> で公開となった。</p>
-
+<p>これで、https://ymraintree.github.io/blog/ で公開となった。</p>
 <p>あとは</p>
-
 <p>$ hugo new post/xxxxx.md</p>
-
 <p>でコンテンツを作って、</p>
-
-<p>$ hugo serverで確認(localhost:1313)<br />
-$ hugo<br />
-$ git add &ndash;all<br />
-$ git commit -m &lsquo;xxxx&rsquo;<br />
+<p>$ hugo serverで確認(localhost:1313)<br>
+$ hugo<br>
+$ git add &ndash;all<br>
+$ git commit -m &lsquo;xxxx&rsquo;<br>
 $ git push -u origin master</p>
-
 <p>の繰り返し。</p>
-
 <p>どちらがいいのか正直わからないが、とりあえずシンプルなこっちでやっていこうかと思う。</p>
   </section>
   <footer>

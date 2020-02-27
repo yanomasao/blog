@@ -63,6 +63,31 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2014/20141106/">ファイルのアップロード</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-11-06T09:00:00&#43;09:00">
+          Nov 6, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    画像ファイルをアップロードするページで、画像を保存するフォルダはplayの外にあり、public/imagesにシンボリックリンクしている場合、アップロードされた画像がページ上に反映されない。
+これは、実際の画像ファイルを
+./target/scala-2.10/classes/public/images/myimg/xxxxxx.jpg
+から参照しているからで、ためしにこのmyimgフォルダもシンボリックリンクにしてみたらうまく反映するようになった。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2014/20140818/">スナップショット作成でエラーになったとき</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -76,8 +101,8 @@
   <div>
     kvmのqcow2からvmwareのvmdkへコンバートした仮想マシンをvmwareで起動して、とりあえずスナップショットを取ろう、と実行すると、「&hellip;..vmsn」を保存中にエラーが発生しました。」というエラーでパワーオフまでいってしまう。ディレクトリをみると、xxxVM-00001-s999.vmdkのようなファイルが多数あっておかしな状態に。パワーオンしても、「xxxVM-000001.vmdk」、またはディスク「xxxVM-000001.vmdk」が依存しているスナップショット ディスクの 1 つを開くことができません。 」というエラーで起動できない。
 どうもスナップショットを作り損なったのに設定的にはスナップショットができているという状態のようなので、xxxVM.vmxをみると、
-ide1:1.fileName = &quot;xxxVM-000001.vmdk&quot;  という行があるので、これを
-ide1:1.fileName = &quot;xxxVM.vmdk&quot;  に変更しパワーオンしたらできた。そこで、パワーオフしてxxxVM-000001*を削除し、再度パワーオンしたら正常起動。これで復旧できたようにみえる。
+ide1:1.fileName = &quot;xxxVM-000001.vmdk&quot; という行があるので、これを
+ide1:1.fileName = &quot;xxxVM.vmdk&quot; に変更しパワーオンしたらできた。そこで、パワーオフしてxxxVM-000001*を削除し、再度パワーオンしたら正常起動。これで復旧できたようにみえる。
   </div>
   
 </article>
@@ -99,10 +124,10 @@ ide1:1.fileName = &quot;xxxVM.vmdk&quot;  に変更しパワーオンしたら�
     </div>
   </header>
   <div>
-    # du -h liveVM20140813/ 269.6G liveVM20140813/ #  このシステムを圧縮。実際には50Gくらい。
-# date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ #  全然減らない。
+    # du -h liveVM20140813/ 269.6G liveVM20140813/ # このシステムを圧縮。実際には50Gくらい。
+# date; time vmkfstools --punc hzero liveVM20140813/liveVM20140813.vmdk; date Wed Aug 13 13:02:13 UTC 2014 vmfsDisk: 1, rdmDisk: 0, blockSize: 1048576 Hole Punching: 100% done. real 6m 9.12s user 1m 11.53s sys 0m 0.00s Wed Aug 13 13:08:22 UTC 2014 # du -h liveVM20140813/ 269.6G liveVM20140813/ # 全然減らない。
 そこで、未使用領域をゼロ埋めしてみる。ゼロファイルを作ったらすぐ削除。
-$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
+$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.7G 86G 5% / udev 32G 4.
   </div>
   
   <footer>
@@ -130,7 +155,7 @@ $ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 95G 3.
     </div>
   </header>
   <div>
-    -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img  のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
+    -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。
 $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img real	19m57.342s user	18m2.423s sys	0m24.398s $ ls -lh -rw-r--r-- 1 root root 7.4G 8月 5 18:22 zabbixVM.compact.img -rw-r--r-- 1 root root 28G 8月 5 17:37 zabbixVM.img $ time sudo qemu-img convert -p -f qcow2 -O vmdk zabbixVM.compact.img zabbixVM.vmdk real	78m36.654s user	5m4.354s sys	2m59.439s $ ls -lh -rw-r--r-- 1 root root 7.
   </div>
   
@@ -159,7 +184,7 @@ $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compa
     </div>
   </header>
   <div>
-    # date; vmkfstools -i foo/barVM.vmdk zoo.vmdk -d thin; date  
+    # date; vmkfstools -i foo/barVM.vmdk zoo.vmdk -d thin; date 
   </div>
   
 </article>
@@ -206,12 +231,12 @@ $ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compa
     Playで作っているアプリケーションでメール送信が必要になり、普通に書いてみたらメール送信が遅いので画面に制御が帰ってくるまで時間がかかってしまった。手っ取り早く非同期でメールを送信するように改良してみた。
 プロジェクト直下のbuild.sbt
 libraryDependenciesに
-&quot;play.modules.mailer&quot; %% &quot;play-mailer&quot; % &quot;2.1.3&quot;  を追加。
-resolvers ++= Seq( &quot;Rhinofly Internal Release Repository&quot; at &quot;http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local&quot; )  を追加。
+&quot;play.modules.mailer&quot; %% &quot;play-mailer&quot; % &quot;2.1.3&quot; を追加。
+resolvers ++= Seq( &quot;Rhinofly Internal Release Repository&quot; at &quot;http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local&quot; ) を追加。
 conf/application.confに
-mail.failTo=&quot;(sender address)&quot; mail.host=smtp.gmail.com mail.port=465 mail.username=&quot;foo@coo.bar.com&quot; mail.password=xxxxxxxx  を追加。
+mail.failTo=&quot;(sender address)&quot; mail.host=smtp.gmail.com mail.port=465 mail.username=&quot;foo@coo.bar.com&quot; mail.password=xxxxxxxx を追加。
 Application.scalaで送信。エラー処理などはまたこんど。
-import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.Implicits.global // 添付ファイルの用意 val bis = new BufferedInputStream(new FileInputStream(pdf)) val bArray = Stream.continually(bis.read).takeWhile(-1 !=).map(_.toByte).toArray val email = Email( subject = &quot;サブジェクト&quot;, from = EmailAddress(&quot;送付者名&quot;, &quot;donotreply@coo.bar.com&quot;), text = body, htmlText = body) .to(&quot;受信者名&quot;, &quot;xxxxx@zoo.co.jp&quot;) .
+import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.Implicits.global // 添付ファイルの用意 val bis = new BufferedInputStream(new FileInputStream(pdf)) val bArray = Stream.continually(bis.read).takeWhile(-1 !=).map(_.toByte).toArray val email = Email( subject = &quot;サブジェクト&quot;, from = EmailAddress(&quot;送付者名&quot;, &quot;donotreply@coo.bar.com&quot;), text = body, htmlText = body) .to(&quot;受信者名&quot;, &quot;xxxxx@zoo.co.jp&quot;) .withAttachments( Attachment(pdf.getName(), bArray, &quot;application/pdf&quot;)) AsyncMailer.
   </div>
   
   <footer>
@@ -240,7 +265,7 @@ import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.I
   </header>
   <div>
     ホームディレクトリをNASに置いて、linuxマシンからはautomountでアクセスするようにしているが、先日NASが異常終了して起動できなくなってしまった。緊急対応として、バックアップのNASサーバを本番のサーバとして使うようにDNSで切り替えた。こんなとき、マシンによってはautomountが以前のサーバにアクセスしようとしてlsコマンドやdfコマンドが刺さってしまう。当該マシンを再起動すればいいことだが、本番運用しているマシンなどは再起動できない。こういうときは
-# umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx  の順で実行する。-lだとたいていはumountできるもよう。
+# umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx の順で実行する。-lだとたいていはumountできるもよう。
   </div>
   
 </article>
@@ -263,11 +288,11 @@ import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.I
   </header>
   <div>
     kvmのゲストOSにubuntu12.04を使っているが、ネットワークの設定を変更してひとつのNICに複数のIPアドレスを振るようにしたらOSの起動時に
-Waiting for network configuration...  や
-Waiting up to 60 more seconds for network configuration...  が出て遅くなってしまった。
+Waiting for network configuration... や
+Waiting up to 60 more seconds for network configuration... が出て遅くなってしまった。
 とりあえず、/etc/init/failsafe.confを修正。
 sleep 20をsleep 5に変え、
-$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1  をコメントアウトすると起動は速くなる。
+$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1 をコメントアウトすると起動は速くなる。
   </div>
   
 </article>
@@ -291,34 +316,11 @@ $PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : s
   <div>
     簡単なplayのアプリケーションを作ってさくっとデプロイして本番運用していたが、本番機のロードアベレージが常に1を上回るようになってびっくり。調べると、playのプロセスがCPUを専有していた。単純にplay runで起動していたが、これを変更。
 プロジェクト内で
-$ play clean compile stage  を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、
-	cd /usr/local/play/name_of_project target/start -server -Xms128m -Xmx128m &amp;  などとするとよい。終了用には
-	cd /usr/local/play/name_of_project kill -TERM `cat RUNNING_PID`  play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、
-target/universal/stage/bin/name_of_project  に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。
-	cd /usr/local/play-2.2.3/name_of_project target/universal/stage/bin/name_of_project -Dhttp.port=9001 &gt; /dev/null 2&gt;&amp;1 &amp;  停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20131111/">実行可能Jarファイルの設定</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-11-11T09:00:00&#43;09:00">
-          Nov 11, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    Java7になってから、実行可能jarファイルでアプリケーションを起動すると、「JARファイルのマニフェストに権限属性が含まれていないため、このアプリケーションは、今後のJavaセキュリティ・アップデートでブロックされます。」というメッセージが表示されるようになった。これを解消するには、実行可能JarのMANIFEST.MFに
-Permissions: all-permissions Codebase: *.foo.bar.com  を追加する。
+$ play clean compile stage を実行して、target/startファイルが作る。このとき自動起動の環境が整えられるらしい。あとは/etc/init.d/playなどに、
+	cd /usr/local/play/name_of_project target/start -server -Xms128m -Xmx128m &amp; などとするとよい。終了用には
+	cd /usr/local/play/name_of_project kill -TERM `cat RUNNING_PID` play-2.2.3で変更があったもよう。startコマンドはtarget直下ではなく、
+target/universal/stage/bin/name_of_project に変更になった。コマンド名もstartではなくなった。起動スクリプトには以下のように書くべし。
+	cd /usr/local/play-2.2.3/name_of_project target/universal/stage/bin/name_of_project -Dhttp.port=9001 &gt; /dev/null 2&gt;&amp;1 &amp; 停止時に使うRUNNING_PIDもtarget直下からtarget/universal/stageに移動した。
   </div>
   
 </article>

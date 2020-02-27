@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>手元のディスプレイが1920x1080でも、virtualboxが乗っているホストにディスプレイがついていない場合、解像度の設定に手間取ることがある。この場合、</p>
-
 <ul>
 <li>ホストを起動</li>
 <li>ホストにsshでログイン</li>
@@ -87,13 +86,9 @@
 <li>手元でvnc接続</li>
 <li>virtualboxでゲスト起動</li>
 </ul>
-
 <p>とすると、ゲストの解像度で1920x1080が選べるようになる。ちなみに、ホスト上で</p>
-
 <pre><code>$ vboxmanage startvm guestVM --type headless
-</code></pre>
-
-<p>とするとゲストを非表示で起動することができる。</p>
+</code></pre><p>とするとゲストを非表示で起動することができる。</p>
 
   </section>
   <footer>

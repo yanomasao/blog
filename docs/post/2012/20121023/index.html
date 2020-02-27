@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>Macを使っていると、Emacs, Terminal以外では、ほとんどコントロールキーを使わず、コマンドキーをメインで使う。しかし、コマンドキーは位置がスペースバーのとなりで、ほかのキーと組み合わせるのに押しづらい。なので、Emacs, Terminalなど以外のアプリケーションのときはコントロールキーとコマンドキーを入れ替えることにした。KeyRemap4MacBookの~/Library/Application Support/KeyRemap4MacBook/private.xmlは以下のとおり。</p>
-
 <pre><code>&lt;item&gt;
 &lt;name&gt;Swap Control and Command&lt;/name&gt;
 &lt;not&gt;EMACS, TERMINAL, TEAMVIEWER, VIRTUALMACHINE&lt;/not&gt; 
@@ -87,10 +86,7 @@
 &lt;autogen&gt;--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L&lt;/autogen&gt;
 &lt;autogen&gt;--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L&lt;/autogen&gt;
 &lt;/item&gt;
-</code></pre>
-
-<p>以前は</p>
-
+</code></pre><p>以前は</p>
 <pre><code>&lt;item&gt;
 &lt;name&gt;Swap Control-/ and Command-/&lt;/name&gt;
 &lt;only&gt;ECLIPSE&lt;/only&gt;
@@ -98,9 +94,7 @@
 &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::SLASH, VK_COMMAND&lt;/autogen&gt;
 &lt;autogen&gt;--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::SLASH, VK_CONTROL&lt;/autogen&gt;
 &lt;/item&gt;
-</code></pre>
-
-<p>のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。</p>
+</code></pre><p>のように個々のキーの組み合わせを記述していたが、これでは取りこぼしもあるので、全体的に入れ替えるようにしてすっきりした。ただし、カスタマイズしたMacに慣れることで、普通のMacが使えなくなるのでは、という不安が…。</p>
 
   </section>
   <footer>

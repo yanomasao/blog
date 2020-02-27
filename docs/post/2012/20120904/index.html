@@ -79,20 +79,13 @@
   </header>
   <section>
     <p><a href="http://philos0.blog94.fc2.com/blog-entry-20.html">http://philos0.blog94.fc2.com/blog-entry-20.html</a></p>
-
 <p>を参考に</p>
-
 <p>init.elに以下を追加</p>
-
 <pre><code>(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	
 (add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil))
 (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil))
-</code></pre>
-
-<pre><code>C-x C-f /sudo:remoteserver:/etc/hosts
-</code></pre>
-
-<p>が使えるようになった。</p>
+</code></pre><pre><code>C-x C-f /sudo:remoteserver:/etc/hosts
+</code></pre><p>が使えるようになった。</p>
 
   </section>
   <footer>

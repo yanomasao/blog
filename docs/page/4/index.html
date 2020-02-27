@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2016/20160204/">EntityManager#createNativeQueryで一部のデータを取り出すとき</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2016-02-04T09:00:00&#43;09:00">
+          Feb 4, 2016
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    EJBのEntityManagerでテーブルをselectしてそのテーブルのエンティティを返すのは普通にやることだが、group byしてキーだけ取り出したい、などのときは以下のようにObjectの配列のリストとして扱う。
+ val keys = em.createNativeQuery(&quot;select t1.key1, t1.key2, t1.key3 &quot; + &quot;from T1 t1 &quot; + &quot;group by t1.key1, t1.key2, t1.key3 &quot; + .getResultList().asInstanceOf[java.util.List[Array[Object] var result = List[fooPK]() keys.foreach(k =&gt; result :+= new fooPK(k(0).toString, k(1).toString.toInt, k(2).toString.toInt)) 
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2015/20151019/">pythonで正規表現を使った結果の判定</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -75,8 +98,8 @@
   </header>
   <div>
     pythonで文字列に数字が含まれているかどうかを判定したいとき、
-import re def hantei(v): return re.search(\d, v)  とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
- return re.search(\d, v) is not None  とするとすっきり。
+import re def hantei(v): return re.search(\d, v) とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、
+ return re.search(\d, v) is not None とするとすっきり。
   </div>
   
 </article>
@@ -98,9 +121,9 @@ import re def hantei(v): return re.search(\d, v)  とすると、re.search()がB
     </div>
   </header>
   <div>
-    case class Foo(key:Int, key2:String, key3:Int)  のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
-val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300)  とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
-case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2はコピーされない。
+    case class Foo(key:Int, key2:String, key3:Int) のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。
+val foo = Foo(100, &quot;test&quot;, 200) val zoo = foo.copy(key = 300) とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。
+case class Foo(key:Int) { var v1:String =_ var v2:Int = _ } だと、v1, v2はコピーされない。
 となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。
   </div>
   
@@ -124,9 +147,9 @@ case class Foo(key:Int) { var v1:String =_ var v2:Int = _ }  だと、v1, v2は�
   </header>
   <div>
     普通に
-val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;  みたいなことを書くと、
-x &lt; y  に変換されてしまう。これをしないように、CDATAを使うには
-&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;  とすればよい。
+val naiyo = あいうえお x &lt; y var nodes = Queue.empty[Node] nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt; みたいなことを書くと、
+x &lt; y に変換されてしまう。これをしないように、CDATAを使うには
+&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt; とすればよい。
   </div>
   
 </article>
@@ -149,9 +172,33 @@ x &lt; y  に変換されてしまう。これをしないように、CDATAを�
   </header>
   <div>
     eclipse-4.4を使ってみる。Cntl+SPACEでいつものように補完をさせようとするとしなくなった。調べると、Karaibnerがeclipse-4.2と4.4を別に識別しているらしい。~/Library/Application Support/Karabiner/private.xmlを修正する。eclipse-4.2はなにもしないでECLIPSEとして認識されていたが、4.4は
- &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt;  を定義して、
- &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  を
- &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt;  とするとキーバインドを変更できる。
+ &lt;appdef&gt; &lt;appname&gt;ECLIPSE_LUNA&lt;/appname&gt; &lt;equal&gt;org.eclipse.platform.ide&lt;/equal&gt; &lt;/appdef&gt; を定義して、
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt; を
+ &lt;item&gt; &lt;name&gt;Swap Control-Space and Command-Space&lt;/name&gt; &lt;only&gt;ECLIPSE, ECLIPSE_LUNA&lt;/only&gt; &lt;identifier&gt;private.chrome.swap_controlSpace_and_commandSpace&lt;/identifier&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::SPACE, VK_COMMAND&lt;/autogen&gt; &lt;autogen&gt;--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, VK_CONTROL&lt;/autogen&gt; &lt;/item&gt; とするとキーバインドを変更できる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150122-3/">scala-2.9のscala.reflect.BeanPropertyが2.11ではscala.beans.BeanPropertyに変更されていた</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2015-01-22T09:00:00&#43;09:00">
+          Jan 22, 2015
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    表記の件で、システムのscala-libraryを2.11にあげようとすると、importを変更しなければならない。そこで、
+package foo.bar class BeanPropery extends scala.reflect.BeanProperty というクラスを作って、徐々にこれに切り替えておき、2.11に移行するときに上記クラスを
+package foo.bar class BeanPropery extends scala.beans.BeanProperty に変更すれば一発で移行できるので便利。ところが、実際に試してみると、2.11ではうまくいくが、2.9ではgetterは生成されるがsetterが生成されないようで、エラーになってしまう。惜しい。
   </div>
   
 </article>
@@ -184,30 +231,6 @@ x &lt; y  に変換されてしまう。これをしないように、CDATAを�
   
   <article>
   <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2015/20150122-3/">scala-2.9のscala.reflect.BeanPropertyが2.11ではscala.beans.BeanPropertyに変更されていた</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2015-01-22T09:00:00&#43;09:00">
-          Jan 22, 2015
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    表記の件で、システムのscala-libraryを2.11にあげようとすると、importを変更しなければならない。そこで、
-package foo.bar class BeanPropery extends scala.reflect.BeanProperty  というクラスを作って、徐々にこれに切り替えておき、2.11に移行するときに上記クラスを
-package foo.bar class BeanPropery extends scala.beans.BeanProperty  に変更すれば一発で移行できるので便利。ところが、実際に試してみると、2.11ではうまくいくが、2.9ではgetterは生成されるがsetterが生成されないようで、エラーになってしまう。惜しい。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2015/20150120/">play frameworkのアプリケーションを本番で運用するときに注意すること</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -220,11 +243,11 @@ package foo.bar class BeanPropery extends scala.beans.BeanProperty  に変更す
   </header>
   <div>
     開発中は
-http://localhost:9000/foo  などのURLで動作確認するが、開発が終わって本番で稼働するとき、
-http://liveserver.boo.com/foo  などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。
+http://localhost:9000/foo などのURLで動作確認するが、開発が終わって本番で稼働するとき、
+http://liveserver.boo.com/foo などのURLでアプリケーションにアクセスするようにhttpdの設定をして動かしてみると、なぜか動かない。よくみると、javascriptが動いていない。
 これはconf/routesファイルの
-GET /assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  を
-GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と修正すれば動くようになる。
+GET /assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) を
+GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) と修正すれば動くようになる。
   </div>
   
 </article>
@@ -247,7 +270,7 @@ GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と
   </header>
   <div>
     kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。
- ゲストOSの停止 スナップショット作成 スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
+ ゲストOSの停止 スナップショット作成   スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
   </div>
   
 </article>
@@ -271,33 +294,8 @@ GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file)  と
   <div>
     play-2.2.3を使用。セッションを使ってコントローラからビューへ値を渡す。sessionの受け渡しを追加し、その内容を.withSessionに入れる。
 コントローラ側
- Ok(views.html.index(&quot;&quot;)(session)).withSession(&quot;foo&quot;-&gt;&quot;FOOO&quot;, &quot;bar&quot;-&gt;&quot;BAR&quot;)  ビュー側
- @(message: String)(session:play.api.mvc.Session) @session.get(&quot;foo&quot;)  
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2014/20141106/">ファイルのアップロード</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-11-06T09:00:00&#43;09:00">
-          Nov 6, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    画像ファイルをアップロードするページで、画像を保存するフォルダはplayの外にあり、public/imagesにシンボリックリンクしている場合、アップロードされた画像がページ上に反映されない。
-これは、実際の画像ファイルを
-./target/scala-2.10/classes/public/images/myimg/xxxxxx.jpg
-から参照しているからで、ためしにこのmyimgフォルダもシンボリックリンクにしてみたらうまく反映するようになった。
+ Ok(views.html.index(&quot;&quot;)(session)).withSession(&quot;foo&quot;-&gt;&quot;FOOO&quot;, &quot;bar&quot;-&gt;&quot;BAR&quot;) ビュー側
+ @(message: String)(session:play.api.mvc.Session) @session.get(&quot;foo&quot;) 
   </div>
   
 </article>

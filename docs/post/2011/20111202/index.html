@@ -79,14 +79,11 @@
   </header>
   <section>
     <p>EJBをDBから取り出すときにSQLに似たEJB-QLを使うわけですが、</p>
-
 <pre><code>@NamedQuery(name=&quot;torihiki.findForReport&quot;,
     query=&quot;select torihiki from Torihiki torihiki &quot; +
 	  &quot;left outer join fetch torihiki.torihikiMeisais torihikiMeisai &quot; +
 	  &quot;where torihiki.nohinDate = :nohinDate&quot;)
-</code></pre>
-
-<p>のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。</p>
+</code></pre><p>のような書き方をします。これが遅いといわれ、チューニングしたりしたんですが、効果が出ず。結局、left outerをやめてただのjoinにしたらてきめん速くなりました。joinの使い方を勉強しなおさなければ。</p>
 
   </section>
   <footer>

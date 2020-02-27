@@ -79,23 +79,13 @@
   </header>
   <section>
     <p>今までRedHatで動いていたcronのジョブをubuntuに移植したところ、sourceコマンドがない、というエラーが出るようになった。なぜかubuntuのcronはbashではなく、shで動いているもよう。crontab -eでcronの編集画面を開いて、</p>
-
 <pre><code>SHELL=/bin/bash
-</code></pre>
-
-<p>を加えるとbashで動くようになった。</p>
-
+</code></pre><p>を加えるとbashで動くようになった。</p>
 <p>さらに、cronから出るメールが文字化け。ヘッダをみると、</p>
-
 <pre><code>Content-type: text/plain; charset=ANSI_X3.4-1968
-</code></pre>
-
-<p>となっていたので、上記のようにcrontab -eで</p>
-
+</code></pre><p>となっていたので、上記のようにcrontab -eで</p>
 <pre><code>CONTENT_TYPE=text/plain; utf-8
-</code></pre>
-
-<p>を追加して解決。</p>
+</code></pre><p>を追加して解決。</p>
 
   </section>
   <footer>

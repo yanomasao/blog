@@ -79,21 +79,12 @@
   </header>
   <section>
     <p>最近AWSを使うことが多くなって、EC2のインスタンスにsshで接続して作業するが、なにかというとタイムアウトするので不便。ちょっと調べたら</p>
-
 <p>サーバの/etc/ssh/sshd_configに</p>
-
 <pre><code>ClientAliveInterval 60
-</code></pre>
-
-<p>を設定する</p>
-
+</code></pre><p>を設定する</p>
 <p>~/.ssh/configに</p>
-
 <pre><code>ServerAliveInterval 60
-</code></pre>
-
-<p>を設定する</p>
-
+</code></pre><p>を設定する</p>
 <p>のいずれかでタイムアウトしなくなるらしい。</p>
 
   </section>

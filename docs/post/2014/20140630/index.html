@@ -79,36 +79,22 @@
   </header>
   <section>
     <p>Playで作っているアプリケーションでメール送信が必要になり、普通に書いてみたらメール送信が遅いので画面に制御が帰ってくるまで時間がかかってしまった。手っ取り早く非同期でメールを送信するように改良してみた。</p>
-
 <p>プロジェクト直下のbuild.sbt</p>
-
 <p>libraryDependenciesに</p>
-
 <pre><code>&quot;play.modules.mailer&quot; %% &quot;play-mailer&quot; % &quot;2.1.3&quot;
-</code></pre>
-
-<p>を追加。</p>
-
+</code></pre><p>を追加。</p>
 <pre><code>resolvers ++= Seq(
   &quot;Rhinofly Internal Release Repository&quot; at &quot;http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local&quot;
 )
-</code></pre>
-
-<p>を追加。</p>
-
+</code></pre><p>を追加。</p>
 <p>conf/application.confに</p>
-
 <pre><code>mail.failTo=&quot;(sender address)&quot;
 mail.host=smtp.gmail.com
 mail.port=465
 mail.username=&quot;foo@coo.bar.com&quot;
 mail.password=xxxxxxxx
-</code></pre>
-
-<p>を追加。</p>
-
+</code></pre><p>を追加。</p>
 <p>Application.scalaで送信。エラー処理などはまたこんど。</p>
-
 <pre><code>import play.modules.mailer._
     import scala.concurrent._
     import ExecutionContext.Implicits.global
@@ -127,7 +113,6 @@ mail.password=xxxxxxxx
           Attachment(pdf.getName(), bArray, &quot;application/pdf&quot;))
     AsyncMailer.sendEmail(email)
 </code></pre>
-
   </section>
   <footer>
     

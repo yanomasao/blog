@@ -79,18 +79,12 @@
   </header>
   <section>
     <p>pythonで文字列に数字が含まれているかどうかを判定したいとき、</p>
-
 <pre><code>import re
 def hantei(v):
     return re.search(\d, v)
-</code></pre>
-
-<p>とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、</p>
-
+</code></pre><p>とすると、re.search()がBooleanではなく、re.MatchObjectを返すので使えない。こういうときは、</p>
 <pre><code>    return re.search(\d, v) is not None
-</code></pre>
-
-<p>とするとすっきり。</p>
+</code></pre><p>とするとすっきり。</p>
 
   </section>
   <footer>

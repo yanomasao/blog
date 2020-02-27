@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>perlとかで書いていたスクリプトをscalaで書こうとすると、クラスパスなどの環境変数を定義してからscalaスクリプトを起動するような起動ファイルが別にいるんだと、昔のCOBOLとJCLみたいでかっこわるいなと思っていたら、解決することができた。scalaスクリプト冒頭に</p>
-
 <pre><code>#! /bin/bash
 cp=&quot;/usr/local/share/commons-logging.jar&quot;
 
@@ -89,9 +88,7 @@ exec scala -classpath $cp $0 $@
 !#
 
 println(&quot;Hello, Scala!&quot;)
-</code></pre>
-
-<p>とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。</p>
+</code></pre><p>とするとひとつのファイルで環境設定とscalaスクリプトの実行ができる。また、外部からの引数はargs:Array[String]に入って渡ってくるので、そのまま使えばＯＫ。</p>
 
   </section>
   <footer>

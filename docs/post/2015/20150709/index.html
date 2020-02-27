@@ -79,25 +79,16 @@
   </header>
   <section>
     <pre><code>case class Foo(key:Int, key2:String, key3:Int)
-</code></pre>
-
-<p>のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。</p>
-
+</code></pre><p>のクラスからオブジェクトを生成し、それを他のオブジェクトにコピーしたいとき、scalaではcopyメソッドが使える。</p>
 <pre><code>val foo = Foo(100, &quot;test&quot;, 200)
 
 val zoo = foo.copy(key = 300)
-</code></pre>
-
-<p>とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。</p>
-
+</code></pre><p>とすると、keyは300がセットされ、他の値は元のオブジェクトからコピーされる。ただし、この機能はcaseクラスのみで、コピーされる対象は()内のプロパティのみ。</p>
 <pre><code>case class Foo(key:Int) {
   var v1:String =_
   var v2:Int = _
 }
-</code></pre>
-
-<p>だと、v1, v2はコピーされない。</p>
-
+</code></pre><p>だと、v1, v2はコピーされない。</p>
 <p>となると、caseクラスのプロパティはすべて()内に書いちゃうほうがいいのかな。キーになる項目だけ（equalsで比較の対象となるべきものだけ）を定義するものだと思っていたんだけど。</p>
 
   </section>

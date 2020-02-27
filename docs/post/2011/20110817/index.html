@@ -79,21 +79,13 @@
   </header>
   <section>
     <p>EJBのエンティティビーンをscalaで書こうと、</p>
-
 <pre><code>@Entity
 @Cache(usage=CacheConcurrencyStrategy.NONE)
 case class Foo(@Id k:Int, v:String)
-</code></pre>
-
-<p>としてみたところ、以下のエラー。</p>
-
+</code></pre><p>としてみたところ、以下のエラー。</p>
 <pre><code>Reason: org.hibernate.AnnotationException: No identifier specified for entity: Foo
-</code></pre>
-
-<p>どうも、@Idアノテーションが効いていない様子。</p>
-
+</code></pre><p>どうも、@Idアノテーションが効いていない様子。</p>
 <p><a href="http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html">http://scala-programming-language.1934581.n4.nabble.com/scala-case-classes-and-parameter-annotations-td2002485.html</a></p>
-
 <p>によると、バグとのこと。</p>
 
   </section>

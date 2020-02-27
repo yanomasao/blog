@@ -79,17 +79,12 @@
   </header>
   <section>
     <p>eclipseのプロジェクトのエンコーディングをまちがえてMS932で結構なファイル数のコードを書いてしまった。これを一気にUTF-8に変換したい。まずは以下のシェルスクリプトを作成</p>
-
 <pre><code>echo $1
 nkf -w $1 &gt; /tmp/foo
 mv /tmp/foo $1
-</code></pre>
-
-<p>これをfindで実行。</p>
-
+</code></pre><p>これをfindで実行。</p>
 <pre><code>$ find . -type f -exec sh z:/foo.sh {} \;
 </code></pre>
-
   </section>
   <footer>
     

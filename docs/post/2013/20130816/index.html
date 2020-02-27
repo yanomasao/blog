@@ -79,26 +79,17 @@
   </header>
   <section>
     <p>virtualboxのゲストにwindowsを新規インストールして起動。ホストには1920x1080のディスプレイがついているので、ゲストでも当然出せるはずだが、インストール直後にちょっとシームレスモードを試したのが悪かったのか、フルスクリーンモードにしても1920x1050になって天地が余ってしまう。ホストで</p>
-
 <pre><code>&gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32
-</code></pre>
-
-<p>とか</p>
-
+</code></pre><p>とか</p>
 <pre><code>&gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32
-</code></pre>
-
-<p>とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。</p>
-
+</code></pre><p>とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。</p>
 <p>ちなみに、windowsホスト上でゲストを非表示で起動・終了するには以下のようなスクリプトがあるとよい。</p>
-
 <pre><code>start.vbs
 CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxHeadless.exe&quot;&quot; -s nameOfVM&quot;, 0
 
 stop.vbs
 CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxManage.exe&quot;&quot; controlvm nameOfVM poweroff&quot;, 0
 </code></pre>
-
   </section>
   <footer>
     

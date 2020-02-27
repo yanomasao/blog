@@ -79,16 +79,12 @@
   </header>
   <section>
     <p>MacBook Airでportを使っていましたが、scala29をインストールするとエラーが発生。ライブラリがないとかいってきましたが、これを機会にbrewに乗り換えました。</p>
-
 <pre><code>$ cd /usr
 $ sudo mkdir local
 $ sudo chown xxxx local
 $ cd local
 $ ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731/39fc1416e34b9f6db201b4a026181f4ceb7cfa74)&quot;
-</code></pre>
-
-<p>で、brew install scala, brew install sbtなど。インストールすると、/usr/local/Cellarというディレクトリにもろもろ入るようです。</p>
-
+</code></pre><p>で、brew install scala, brew install sbtなど。インストールすると、/usr/local/Cellarというディレクトリにもろもろ入るようです。</p>
 <p>あとは、~/.bash_profileで/usr/local/binへのパスを張っときます。これで、play + scala環境がMacにできたと。やっぱり手元がunixだとなにかと便利、な気がします。</p>
 
   </section>

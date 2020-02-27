@@ -79,68 +79,39 @@
   </header>
   <section>
     <p>ホットスタンバイ・非同期の設定</p>
-
 <p>準備
 ロールの作成</p>
-
 <pre><code>$ psql postgres
 postgres=# create role repl_user login replication password 'xxxxxx';
-</code></pre>
-
-<p>アーカイブディレクトリの作成</p>
-
+</code></pre><p>アーカイブディレクトリの作成</p>
 <pre><code>$ sudo mkdir /usr/local/pgsql/archive
 $ sudo chown postgres /usr/local/pgsql/archive
-</code></pre>
-
-<p>設定ファイル
+</code></pre><p>設定ファイル
 postgresql.conf</p>
-
 <pre><code>wal_level = hot_standby
 archive_mode = on
 archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f'
 max_wal_senders = 2
-</code></pre>
-
-<p>pg_hba.conf</p>
-
+</code></pre><p>pg_hba.conf</p>
 <pre><code>host replication repl_user 192.168.0.2/32 md5
-</code></pre>
-
-<p>ベースバックアップ
+</code></pre><p>ベースバックアップ
 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。
 スタンバイでベースバックアップ。</p>
-
 <pre><code>$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose
-</code></pre>
-
-<p>スタンバイサーバの設定
+</code></pre><p>スタンバイサーバの設定
 postgresql.conf</p>
-
 <pre><code>hot_standby = on
-</code></pre>
-
-<p>recovery.conf</p>
-
+</code></pre><p>recovery.conf</p>
 <pre><code>restore_command = 'scp -i /foo/bar/.ssh/auto_execute 192.168.0.1:/usr/local/pgsql/archive/%f %p'
 standby_mode = on
 primary_conninfo = 'host=192.168.0.1 port=5432 user=repl_user password=xxxxxx'	
-</code></pre>
-
-<p>スタンバイサーバの起動・同期</p>
-
+</code></pre><p>スタンバイサーバの起動・同期</p>
 <pre><code>$ pg_ctl start
-</code></pre>
-
-<p>でpostgresを起動すると、自動的に同期される。これで運用開始。</p>
-
+</code></pre><p>でpostgresを起動すると、自動的に同期される。これで運用開始。</p>
 <p>確認（マスタ側で実行）</p>
-
 <pre><code>$ psql postgres
 # select * from pg_stat_replication;
-</code></pre>
-
-<p>運用
+</code></pre><p>運用
 マスタのアーカイブディレクトリにあるファイルを定期的に削除する設定が必要。</p>
 
   </section>

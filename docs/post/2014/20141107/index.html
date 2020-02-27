@@ -79,19 +79,13 @@
   </header>
   <section>
     <p>play-2.2.3を使用。セッションを使ってコントローラからビューへ値を渡す。sessionの受け渡しを追加し、その内容を.withSessionに入れる。</p>
-
 <p>コントローラ側</p>
-
 <pre><code>    Ok(views.html.index(&quot;&quot;)(session)).withSession(&quot;foo&quot;-&gt;&quot;FOOO&quot;, &quot;bar&quot;-&gt;&quot;BAR&quot;)
-</code></pre>
-
-<p>ビュー側</p>
-
+</code></pre><p>ビュー側</p>
 <pre><code>  @(message: String)(session:play.api.mvc.Session)
 
   @session.get(&quot;foo&quot;)
 </code></pre>
-
   </section>
   <footer>
     

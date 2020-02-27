@@ -79,28 +79,17 @@
   </header>
   <section>
     <p>2台のlinuxマシンを使ってdrbd環境構築。drbd用のパーティションとして1TBを取ってしまったので初期同期に一週間くらいかかってしまった。このパーティションで実用していいんだろうか。</p>
-
 <p>障害時の切り替え手順</p>
-
 <p>現プライマリ側</p>
-
 <pre><code>sudo umount /drbd
 sudo drbdsetup /dev/drbd0 secondary
-</code></pre>
-
-<p>新プライマリ側</p>
-
+</code></pre><p>新プライマリ側</p>
 <pre><code>sudo drbdsetup /dev/drbd0 primary
 sudo mount /dev/drbd0 /drbd
-</code></pre>
-
-<p>どちらもcat /proc/drbdなどして確認。drbd-overviewだと</p>
-
+</code></pre><p>どちらもcat /proc/drbdなどして確認。drbd-overviewだと</p>
 <pre><code>0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\
 ext4 917G 665M 870G 1%
-</code></pre>
-
-<p>となる。not-foundってなんだろう。</p>
+</code></pre><p>となる。not-foundってなんだろう。</p>
 
   </section>
   <footer>

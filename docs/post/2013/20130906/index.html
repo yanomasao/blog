@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>どうもJMockitではscalaのobjectをモック化できないようなので、scalaベースのscalamockを試してみる。scalamockはsbt, scalatestの使用を前提としているため、sbtでプロジェクトを作る。プロジェクトの構成がsbtの構成になってしまうので、これもちょっと困る。環境構築に必要なファイルは以下</p>
-
 <pre><code>$PROJECT_ROOT/build.sbt
 
 name := &quot;test.sbt&quot;
@@ -125,10 +124,7 @@ object PluginDef extends Build {
   lazy val root = Project(&quot;plugins&quot;, file(&quot;.&quot;)) dependsOn(scalamockPlugin)
   lazy val scalamockPlugin = uri(&quot;git://github.com/paulbutcher/scalamock-sbt-plugin&quot;)
 }
-</code></pre>
-
-<p>これで環境はできた。sbt elipseなどしてeclipseでもインポートできるようにする。テストのターゲットクラスは以下</p>
-
+</code></pre><p>これで環境はできた。sbt elipseなどしてeclipseでもインポートできるようにする。テストのターゲットクラスは以下</p>
 <pre><code>package test2
 
 class Boo
@@ -148,10 +144,7 @@ class GenerateMocks {
   @mockObject(Boo) class BooMock
   
 }
-</code></pre>
-
-<p>として、sbt generate-mocksする。するとモックオブジェクトができあがる。次にテストコード</p>
-
+</code></pre><p>として、sbt generate-mocksする。するとモックオブジェクトができあがる。次にテストコード</p>
 <pre><code>import org.scalatest.FunSuite
 import org.scalamock.scalatest.MockFactory
 import org.scalamock.generated.GeneratedMockFactory
@@ -171,12 +164,8 @@ class BooTest {
   }
 
 }
-</code></pre>
-
-<p>このとき、eclipseだと、org.scalamock.generated.GeneratedMockFactoryが見えなくてエラーになってしまう。ビルドパスのソースフォルダに、target/scala-2.9.2/src_managed/test/scalaを追加すると解決。sbt eclipseがやってくれるといいがやってくれない。sbt eclipseを実行するとこの設定はなくなってしまうので要注意。</p>
-
+</code></pre><p>このとき、eclipseだと、org.scalamock.generated.GeneratedMockFactoryが見えなくてエラーになってしまう。ビルドパスのソースフォルダに、target/scala-2.9.2/src_managed/test/scalaを追加すると解決。sbt eclipseがやってくれるといいがやってくれない。sbt eclipseを実行するとこの設定はなくなってしまうので要注意。</p>
 <p>ここまでできたらsbt testとすれば</p>
-
 <pre><code>Boo#foo called
 BooMock#foo called
 [info] BooTest:
@@ -184,9 +173,7 @@ BooMock#foo called
 [info] - Boo#foo モックを使って結果を変える
 [info] Passed: : Total 4, Failed 0, Errors 0, Passed 4, Skipped 0
 [success] Total time: 2 s, completed 2013/09/06 18:51:24
-</code></pre>
-
-<p>となってモックが呼ばれていることがわかる。</p>
+</code></pre><p>となってモックが呼ばれていることがわかる。</p>
 
   </section>
   <footer>

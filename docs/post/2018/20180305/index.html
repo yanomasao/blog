@@ -79,16 +79,13 @@
   </header>
   <section>
     <p>日本の日時を表示するには、</p>
-
 <pre><code>import time
 import os
 
 os.environ['TZ'] = 'Japan'
 time.tzset()
 time.strftime('%Y/%m/%d %H:%M:%S %Z')
-</code></pre>
-
-<p>とすると
+</code></pre><p>とすると
 <code>2018/03/05 17:24:54 JST</code>
 となる。もうちょっといい方法はないかな。</p>
 

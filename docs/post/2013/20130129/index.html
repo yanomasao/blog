@@ -79,7 +79,6 @@
   </header>
   <section>
     <p>なかなか呼び出せなくて苦労したが、できてしまえば簡単。以下のメソッドを用意する。</p>
-
 <pre><code>private def getBean:ZZZZZZSession = {
 val props = new Hashtable[String, AnyRef];
 props.put(Context.INITIAL_CONTEXT_FACTORY, &quot;org.jboss.naming.remote.client.InitialContextFactory&quot;);
@@ -92,9 +91,7 @@ props.put(&quot;jboss.naming.client.ejb.context&quot;, true.asInstanceOf[java.la
 val ctxRemote = new InitialContext(props);
 ctxRemote.lookup(&quot;yyyyyy/ZZZZZZSessionBean!boo.zoo.ZZZZZZSession&quot;).asInstanceOf[ZZZZZZSession]
 }
-</code></pre>
-
-<p>上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。</p>
+</code></pre><p>上記yyyyyyはデプロイしたjarの名称（.jarは除く）。これでセッションビーンが取得できるので、メソッドも呼び出せるようになる。</p>
 
   </section>
   <footer>

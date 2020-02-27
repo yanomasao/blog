@@ -79,27 +79,18 @@
   </header>
   <section>
     <p>vmwareのVMをクローンすると、.vmdkファイルの名称が変更されてしまう。たとえば、backupVMというVMをクローンすると、</p>
-
 <pre><code># ls
 backupVM_2-ctk.vmdk   backupVM.nvram      backupVM.vmsd       backupVM.vmxf
 backupVM_2-flat.vmdk  backupVM_2.vmdk       backupVM.vmx        vmware.log
 #
-</code></pre>
-
-<p>となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、</p>
-
+</code></pre><p>となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、</p>
 <pre><code># vmkfstools -E backupVM_2.vmdk backupVM.vmdk 
-</code></pre>
-
-<p>とすると、すべての_2が取れる。</p>
-
+</code></pre><p>とすると、すべての_2が取れる。</p>
 <pre><code># ls
 backupVM-ctk.vmdk   backupVM.nvram      backupVM.vmsd       backupVM.vmxf
 backupVM-flat.vmdk  backupVM.vmdk       backupVM.vmx        vmware.log
 #
-</code></pre>
-
-<p>さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。</p>
+</code></pre><p>さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。</p>
 
   </section>
   <footer>

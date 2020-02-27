@@ -79,23 +79,14 @@
   </header>
   <section>
     <p>普通に</p>
-
 <pre><code>val naiyo = あいうえお x &lt; y
 var nodes  = Queue.empty[Node]
 nodes :+= &lt;foo&gt;{naiyo}&lt;/foo&gt;
-</code></pre>
-
-<p>みたいなことを書くと、</p>
-
+</code></pre><p>みたいなことを書くと、</p>
 <pre><code>x &lt; y
-</code></pre>
-
-<p>に変換されてしまう。これをしないように、CDATAを使うには</p>
-
+</code></pre><p>に変換されてしまう。これをしないように、CDATAを使うには</p>
 <pre><code>&lt;foo&gt;{scala.xml.PCData(naiyo)}&lt;/foo&gt;
-</code></pre>
-
-<p>とすればよい。</p>
+</code></pre><p>とすればよい。</p>
 
   </section>
   <footer>

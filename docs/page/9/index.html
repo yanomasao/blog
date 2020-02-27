@@ -63,6 +63,42 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">drbd環境構築</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-05T15:04:16&#43;09:00">
+          Sep 5, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    プライマリでの作業
+$ dpkg --list|grep drbd $ sudo apt-get install drbd8-utils $ dpkg --list|grep drbd /etc/drbd.confの設定
+メタデータ領域の作成
+$ sudo dd if=/dev/zero of=/dev/sda2 bs=20M count=1 メタデータ作成
+$ sudo drbdadm create-md r0 ここまでをセカンダリでも同様に行う。ただし/etc/drbd.confは同じ内容なのでscpする。
+プライマリ、セカンダリともdrbd起動。このとき、drbdで使用するディスクをアンマウントしておくこと
+$ sudo /etc/init.d/drbd start 状態を確認。プライマリ、セカンダリとも以下のように、同期が取れていない状態。
+$ cat /proc/drbd version: 8.3.11 (api:88/proto:86-96) srcversion: 71955441799F513ACA6DA60 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r----- ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:402439136 $ あるいは
+$ drbd-overview 0:??not-found?? Connected Secondary/Secondary Inconsistent/Inconsistent C r----- $ 強制的にプライマリを指定。当然ながら、プライマリサーバで実行。この処理はインストール時のみ。
+  </div>
+  
+  <footer>
+    <ul class="pager">
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120905-2/">Read more <span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </footer>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20120904/">emacs trampでリモートのファイルをrootで開く</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -77,7 +113,7 @@
     http://philos0.blog94.fc2.com/blog-entry-20.html
 を参考に
 init.elに以下を追加
-(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil))  C-x C-f /sudo:remoteserver:/etc/hosts  が使えるようになった。
+(add-to-list 'tramp-default-proxies-alist '(&quot;\\'&quot; &quot;\\`root\\'&quot; &quot;/ssh:%h:&quot;))	(add-to-list 'tramp-default-proxies-alist '(&quot;自ホスト名\\'&quot; &quot;\\`root\\'&quot; nil)) (add-to-list 'tramp-default-proxies-alist '(&quot;localhost\\'&quot; &quot;\\`root\\'&quot; nil)) C-x C-f /sudo:remoteserver:/etc/hosts が使えるようになった。
   </div>
   
 </article>
@@ -101,11 +137,11 @@ init.elに以下を追加
   <div>
     ubunbuのパッケージ管理に関するコマンド
 検索
-apt-cache search XXXXXX  インストール
-apt-get install XXXXXX  インストール済パッケージの一覧
-dpkg --list  アンインストール
-apt-get remove XXXXXX  設定まで消すときは
-apt-get --purge remove XXXXXX  
+apt-cache search XXXXXX インストール
+apt-get install XXXXXX インストール済パッケージの一覧
+dpkg --list アンインストール
+apt-get remove XXXXXX 設定まで消すときは
+apt-get --purge remove XXXXXX 
   </div>
   
 </article>
@@ -129,11 +165,11 @@ apt-get --purge remove XXXXXX
   <div>
     ホットスタンバイ・非同期の設定
 準備 ロールの作成
-$ psql postgres postgres=# create role repl_user login replication password 'xxxxxx';  アーカイブディレクトリの作成
-$ sudo mkdir /usr/local/pgsql/archive $ sudo chown postgres /usr/local/pgsql/archive  設定ファイル postgresql.conf
-wal_level = hot_standby archive_mode = on archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f' max_wal_senders = 2  pg_hba.conf
-host replication repl_user 192.168.0.2/32 md5  ベースバックアップ 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。 スタンバイでベースバックアップ。
-$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose  スタンバイサーバの設定 postgresql.
+$ psql postgres postgres=# create role repl_user login replication password 'xxxxxx'; アーカイブディレクトリの作成
+$ sudo mkdir /usr/local/pgsql/archive $ sudo chown postgres /usr/local/pgsql/archive 設定ファイル postgresql.conf
+wal_level = hot_standby archive_mode = on archive_command = 'test ! -f /usr/local/pgsql/archive/%f &amp;&amp; cp %p /usr/local/pgsql/archive/%f' max_wal_senders = 2 pg_hba.conf
+host replication repl_user 192.168.0.2/32 md5 ベースバックアップ 上記の準備をして、マスタのpostgresを再起動し、設定を反映させる。 スタンバイでベースバックアップ。
+$ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --format=plain --checkpoint=fast --label=label1 --progress --verbose スタンバイサーバの設定 postgresql.
   </div>
   
   <footer>
@@ -163,8 +199,8 @@ $ pg_basebackup -h 192.168.0.1 -p 5432 -U repl_user -D /usr/local/pgsql/data --f
   <div>
     これまでpgpoolII+postgresでライブのDBを構成していたが、サーバを安いPCサーバにリプレイスするのをきっかけに、heartbeat+drbd+postgresに変えることにした。
 先日、プライマリとなっていたサーバ1が落ち、heartbeatによってセカンダリのサーバ2がプライマリに切り替わった。その際、postgresにエラーが発生。pg_dumpを取ろうとすると、
-pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688 DETAIL: Could not open file &quot;pg_clog/0FFF&quot;: No such file or directory. pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout; pg_dumpall: データベース&quot;common&quot;に対するpg_dumpが失敗しました。終了します  ネットでいろいろ調べ、
- $ dd bs=256k count=1 if=/dev/zero of=0FFF 1+0 records in 1+0 records out 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s $  で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。
+pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメッセージ: ERROR: could not access status of transaction 4294692688 DETAIL: Could not open file &quot;pg_clog/0FFF&quot;: No such file or directory. pg_dump: 次のコマンドでした: COPY public.ziplog (zipcd, address1, address2, logaction, logdate) TO stdout; pg_dumpall: データベース&quot;common&quot;に対するpg_dumpが失敗しました。終了します ネットでいろいろ調べ、
+ $ dd bs=256k count=1 if=/dev/zero of=0FFF 1+0 records in 1+0 records out 262144 bytes (262 kB) copied, 0.000511307 s, 513 MB/s $ で0FFFファイルを作ってみた。すると、今度は別のclogファイルがないという。
  # select count(*) from ziplog; ERROR: could not access status of transaction 2319990784 DETAIL: Could not open file &quot;pg_clog/08A4&quot;: No such file or directory.
   </div>
   
@@ -194,7 +230,7 @@ pg_dump: SQLコマンドが失敗しました pg_dump: サーバのエラーメ�
   </header>
   <div>
     手元のマシンからリモートのAWSのインスタンスへrsync。
-rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4/backup  
+rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4/backup 
   </div>
   
 </article>
@@ -217,7 +253,7 @@ rsync -avz -e 'ssh -i /foo/bar/zoo.pem' PDFClown-0.1 ec2-user@aws-sandbox:/disk4
   </header>
   <div>
     マネージメントコンソールでボリュームを作成。インスタンスにアタッチすると、デバイス名(/dev/sdiなど)が表示されるので、インスタンスにログインして、
-$ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4  で使えるようになる。
+$ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4 で使えるようになる。
   </div>
   
 </article>
@@ -241,9 +277,9 @@ $ sudo mkfs -t ext3 /dev/sdi $ sudo mount /dev/sdi /disk4  で使えるように
   <div>
     以前からscalaでEJBを書いていたが、ここへ来て問題発生。JavaとScalaの混在プロジェクトでJavaからScalaのクラスを参照したときにコンパイルエラーにはならないのに、eclipseのエディタ上ではエラーの表示がされてしまう。これを解決するには
 Java同様、Scalaのクラスもパッケージと同じ位置に置く。
-case class Foo( @(Id @field) x:Int, @(Temporal @field)(value=TemporalType.DATE) @BeanProperty nyukinDate:Date, @(Column @field)(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @(Column @field)(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  をやめて
-import scala.annotation.target.field object ScalaAnnotations { type Id = javax.persistence.Id @field type Temporal = javax.persistence.Temporal @field type Column = javax.persistence.Column @field }  を定義し、
-import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.DATE) @BeanProperty nyukinDate:Date, @Column(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @Column(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String )  とする。
+case class Foo( @(Id @field) x:Int, @(Temporal @field)(value=TemporalType.DATE) @BeanProperty nyukinDate:Date, @(Column @field)(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @(Column @field)(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String ) をやめて
+import scala.annotation.target.field object ScalaAnnotations { type Id = javax.persistence.Id @field type Temporal = javax.persistence.Temporal @field type Column = javax.persistence.Column @field } を定義し、
+import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.DATE) @BeanProperty nyukinDate:Date, @Column(columnDefinition=&quot;numeric(13, 2)&quot;) @BeanProperty var shohizei:Double, @Column(columnDefinition=&quot;text&quot;, nullable=false) @BeanProperty var userName:String = _ y:String ) とする。
   </div>
   
   <footer>
@@ -298,30 +334,6 @@ http://download.eclipse.org/tools/ajdt/37/update
 だとプロジェクトがエラーになってしまうが、
 http://download.eclipse.org/tools/ajdt/37/dev/update
 ならばOK。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20111206/">gmailをSMTPサーバとしてjavaからメールを送信する</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-12-06T16:23:06&#43;09:00">
-          Dec 6, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    会社のメールサーバをgmailに切り替えたことにともない、システムから出すメールのSMTPサーバもgmailに切り替えました。すると、ときどき以下のエラーでメールが送信されないという現象が起きるようになりました。
-2011-12-06 09:23:33,368 FATAL [javax.enterprise.resource.webcontainer.jsf.applic ation org.jboss.web.jsf.integration.config.Log4JConversionFilter.logWithThrowabl e(Log4JConversionFilter.java:109)] java.lang.SecurityException: Access to defaul t session denied javax.faces.el.EvaluationException: java.lang.SecurityException: Access to defau lt session denied  いったんこれが出るとサーバ(Jboss)を再起動しない限りメールは送信されません。ちょっと調べたら、Session session = Session.getDefaultInstanceをSession session = Session.getInstanceに変えるべしという情報があったので変えてみました。効果はしばらく様子を見ないとわからないんですが。
-参考URL: http://www.java.net/node/697528
   </div>
   
 </article>

@@ -79,10 +79,7 @@
   </header>
   <section>
     <pre><code>-rw-r--r-- 1 root         root      28G  8月  5 17:37 zabbixVM.img
-</code></pre>
-
-<p>のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。</p>
-
+</code></pre><p>のファイルをvmdkに変換するとき、圧縮してから変換したほうがvmdkのサイズが小さくなるかと以下のように実行。</p>
 <pre><code>$ time sudo qemu-img convert -c -p -f qcow2 -O qcow2 zabbixVM.img zabbixVM.compact.img
 
 real	19m57.342s
@@ -103,9 +100,7 @@ $ ls -lh
  -rw-r--r-- 1 root         root     7.4G  8月  5 18:22 zabbixVM.compact.img
  -rw-r--r-- 1 root         root      28G  8月  5 17:37 zabbixVM.img
  -rw-r--r-- 1 root         root      31G  8月  5 19:42 zabbixVM.vmdk
-</code></pre>
-
-<p>結果、qcow2を圧縮するのは意味がないように見える。</p>
+</code></pre><p>結果、qcow2を圧縮するのは意味がないように見える。</p>
 
   </section>
   <footer>

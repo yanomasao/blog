@@ -80,10 +80,7 @@
   <section>
     <pre><code>$ ./play install mongo
 $ ./play new myapp --with scala mongo
-</code></pre>
-
-<p>myapp/conf/application.confに以下を追加</p>
-
+</code></pre><p>myapp/conf/application.confに以下を追加</p>
 <pre><code># The mongo module
 module.mongo=${play.path}/modules/mongo
 
@@ -94,28 +91,15 @@ mongo.database=play
 
 mongo.username=test
 mongo.password=test123
-</code></pre>
-
-<pre><code>$ ./play run myapp 
-</code></pre>
-
-<p>以下のエラー。</p>
-
+</code></pre><pre><code>$ ./play run myapp 
+</code></pre><p>以下のエラー。</p>
 <pre><code>~ Oops,
 ~ Module not found: /net/ares/disk1/home/yano/project/play-1.2.2/modules/mongo
-</code></pre>
-
-<p>myapp/conf/application.confの</p>
-
+</code></pre><p>myapp/conf/application.confの</p>
 <pre><code>module.mongo=${play.path}/modules/mongo
-</code></pre>
-
-<p>を</p>
-
+</code></pre><p>を</p>
 <pre><code>module.mongo=${play.path}/modules/mongo-1.3
-</code></pre>
-
-<p>に変更したら動いた。</p>
+</code></pre><p>に変更したら動いた。</p>
 
   </section>
   <footer>

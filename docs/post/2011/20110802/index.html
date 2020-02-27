@@ -79,36 +79,23 @@
   </header>
   <section>
     <p>PDFファイルの全文検索がしたいということで、ちょっと調べたらfessというものがあって、solrに検索用のページなどをつけたオールインワンなプロダクトのようで、試しに使ってみました。</p>
-
 <p>fessを動かすサーバ内のディレクトリにPDFファイルを置いておき、そこを指定してfessにクロールさせる、それを検索ページで表示させる、というのが目標。</p>
-
 <p>バージョンはfess-server-4.1.0。インストールはzipを解凍するだけ。bin/startup.shで起動すると</p>
-
-<p><a href="http://xxxxxx.co.jp:8080/fess/admin/">http://xxxxxx.co.jp:8080/fess/admin/</a></p>
-
+<p><a href="http://xxxxxx.co.jp">http://xxxxxx.co.jp</a>:8080/fess/admin/</p>
 <p>で管理画面に行けます。ここでPDFファイルを置いているディレクトリを指定してクロール開始。しばし待つと、完了する（経過はfess-server-4.1.0/webapps/fess/WEB-INF/logs/fess_crawler.outで見ることができる）。</p>
-
-<p>ここで検索画面<a href="http://xxxxxx.co.jp:8080/fess/にアクセスして、てきとうなキーワードで検索する。するとヒットしたPDFファイルが列挙される。">http://xxxxxx.co.jp:8080/fess/にアクセスして、てきとうなキーワードで検索する。するとヒットしたPDFファイルが列挙される。</a></p>
-
+<p>ここで検索画面http://xxxxxx.co.jp:8080/fess/にアクセスして、てきとうなキーワードで検索する。するとヒットしたPDFファイルが列挙される。</p>
 <p>ここまではいいんですが、列挙されたPDFファイルへのリンクをクリックしても画面が白くなってしまい、PDFの内容が表示されませんでした。</p>
-
 <p>いろいろやってみたんですが、うまくいかず、結局fess-server-4.1.0/webapps/fess/js/search.jsの内容を書き換えて、</p>
-
 <pre><code>b.push(&quot;go?rt=&quot;);
 b.push(a);
 b.push(&quot;&amp;u=&quot;);
 b.push(encodeURIComponent(c));
-</code></pre>
-
-<p>を</p>
-
+</code></pre><p>を</p>
 <pre><code>b.push(&quot;docs&quot;);
 var len = c.lastIndexOf(&quot;/&quot;);
 var file = c.slice(len);
 b.push(file);
-</code></pre>
-
-<p>とし、クロールするディレクトリと同様のものをfess-server-4.1.0/webapps/fess/にも置くということで対処。いまいちだけど、とりあえず動きました。</p>
+</code></pre><p>とし、クロールするディレクトリと同様のものをfess-server-4.1.0/webapps/fess/にも置くということで対処。いまいちだけど、とりあえず動きました。</p>
 
   </section>
   <footer>

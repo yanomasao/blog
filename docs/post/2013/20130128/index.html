@@ -79,9 +79,7 @@
   </header>
   <section>
     <p>scalaで書いたEJBのプロジェクトをデプロイするには、</p>
-
 <p>modules/org/scala/mainディレクトリ作成して、modules.xmlを以下の内容で作成。scala-library.jarも置く。</p>
-
 <pre><code>&lt;module xmlns=&quot;urn:jboss:module:1.1&quot; name=&quot;org.scala&quot;&gt;
 &lt;resources&gt;
 &lt;resource-root path=&quot;scala-library.jar&quot;/&gt;
@@ -91,10 +89,7 @@
 &lt;dependencies&gt;
 &lt;/dependencies&gt;
 &lt;/module&gt;
-</code></pre>
-
-<p>scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。</p>
-
+</code></pre><p>scalaを参照するEJBプロジェクトはMETA-INFに以下の内容でjboss-deployment-structure.xmlを作成。</p>
 <pre><code>&lt;jboss-deployment-structure&gt;
 &lt;deployment&gt;
 &lt;dependencies&gt;
@@ -102,24 +97,14 @@
 &lt;/dependencies&gt;
 &lt;/deployment&gt;
 &lt;/jboss-deployment-structure&gt;
-</code></pre>
-
-<p>これでデプロイが正常にされる。</p>
-
+</code></pre><p>これでデプロイが正常にされる。</p>
 <p>上記設定をせずに、scala-library.jarをstandalone/deploymentsに入れてEJBプロジェクトをデプロイしても、</p>
-
 <pre><code>java.lang.NoClassDefFoundError: scala/ScalaObject
-</code></pre>
-
-<p>のエラーが出て正常にデプロイできない。</p>
-
-<p>&lt;&lt;追記&gt;&gt;
+</code></pre><p>のエラーが出て正常にデプロイできない。</p>
+<p>&laquo;追記&raquo;
 その後の調査で、scala-library.jarをstandalone/deploymentへ置き、jboss-deployment-structure.xmlに</p>
-
 <pre><code>&lt;module name=&quot;deployment.scala-library.jar&quot; /&gt;
-</code></pre>
-
-<p>で参照できると判明。</p>
+</code></pre><p>で参照できると判明。</p>
 
   </section>
   <footer>

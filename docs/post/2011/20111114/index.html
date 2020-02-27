@@ -79,23 +79,14 @@
   </header>
   <section>
     <p>アプリケーションのチューニングをして、DBにインデックスを張りたいとき、SQLを直に実行してしまうと移植時などに忘れてしまうことがあるので、Entity Bean内に書いておきたい。調べると、</p>
-
 <pre><code>@Table(indexes = {@Index(name=&quot;customer_idx&quot;, columnNames = {&quot;customerCd&quot;, &quot;customerKbnCd&quot;}),
 @Index(name=&quot;customer_idx2&quot;, columnNames = {&quot;seikyuDate&quot;})},
 appliesTo = &quot;customer&quot;)
-</code></pre>
-
-<p>などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの</p>
-
+</code></pre><p>などと書ける。しかしいくらデプロイしてもインデックスがcreateされない。persistence.xmlの</p>
 <pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
-</code></pre>
-
-<p>を</p>
-
+</code></pre><p>を</p>
 <pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/property&gt;
-</code></pre>
-
-<p>にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。</p>
+</code></pre><p>にするとインデックスが作られるが、テーブルごと作り直されてしまうため、データがなくなってしまう。うーむ。</p>
 
   </section>
   <footer>

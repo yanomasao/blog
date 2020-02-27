@@ -79,12 +79,9 @@
   </header>
   <section>
     <p>普通にcrontab -eで設定してもなにかのタイミングで消えてしまう。</p>
-
 <pre><code># vi /etc/config/crontab
 # /etc/init.d/crond.sh restart
-</code></pre>
-
-<p>このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。</p>
+</code></pre><p>このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。</p>
 
   </section>
   <footer>
