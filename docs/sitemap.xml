@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ymraintree.github.io/blog/post/</loc>
+    <lastmod>2020-02-28T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/python/</loc>
+    <lastmod>2020-02-28T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/tags/</loc>
+    <lastmod>2020-02-28T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/post/2020/20200228/</loc>
+    <lastmod>2020-02-28T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ymraintree.github.io/blog/</loc>
+    <lastmod>2020-02-28T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ymraintree.github.io/blog/post/2020/20200227-2/</loc>
     <lastmod>2020-02-27T09:00:00+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://ymraintree.github.io/blog/tags/java/</loc>
-    <lastmod>2020-02-27T09:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/post/</loc>
-    <lastmod>2020-02-27T09:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/tags/</loc>
-    <lastmod>2020-02-27T09:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ymraintree.github.io/blog/</loc>
     <lastmod>2020-02-27T09:00:00+09:00</lastmod>
   </url>
   

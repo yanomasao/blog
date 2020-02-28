@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110831/">solr</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-08-31T16:35:34&#43;09:00">
+          Aug 31, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    solrを使ってみる。解凍して、
+$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar で起動。PDFを読み込ませたいときは
+$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot; などとする。データの削除は
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot; とか
+$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot; 
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110830/">findの-execで複数のコマンドを実行する</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -294,33 +320,6 @@ $ sudo alien -i cndrvcups-common_2.20-1.x86_64.rpm $ sudo alien -i cndrvcups-lip
 $ sudo /etc/init.d/cups restart プリンタの定義。ppdファイル名はキャノンのサイトを参照しました。
 $ sudo lpadmin -p cop -m CNCUPSLBPSERIESLJ.ppd -v lpd://cop.is.magazine.co.jp/cop -E これで、
 $ lpr -P cop XXXXXXXX.pdf などでlinuxからpdfの印刷ができるようになりましたが、フォントの設定ができてなくて、中途半端に文字化けします。このあたりはひきつづき調査。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110707/">USB3.0 HDD</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-07-07T17:00:56&#43;09:00">
-          Jul 7, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    バックアップ用にUSB3.0の外付けHDDを2本購入。さっそくlinuxにつないで試してみる。4Gのファイルをコピーしてみたら、結果としてはちょっと困った感じになった。
-USB3.0外付けその1　2分10秒
-USB3.0外付けその2　1分20秒
-内蔵HDD　20秒
-内蔵SDD　11秒
-外付けUSBは時間がかかりすぎではないだろうか。おなじUSB3.0でも2本のHDDで1分以上差がつくのも解せない。ためしに、別のlinuxマシンにつないで運用しているUSB2.0のHDDで同様のことをしたら、2分10秒くらいで、USB3.0外付けその1とほぼ同タイム。どういうことなんだろう。
   </div>
   
 </article>

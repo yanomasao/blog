@@ -63,6 +63,32 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2016/20161222/">keyhac</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2016-12-22T09:00:00&#43;09:00">
+          Dec 22, 2016
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    Macをsierraにアップグレードしたらkarabinerが使えなくなったので、かわりにkeyhacを試してみる。
+keyhacはkarabinerとちがって、コントロールキーとコマンドキーを交換という定義ができず、常に
+keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
+def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot; keymap[&quot;Ctrl-f&quot;] = &quot;Cmd-f&quot; keymap[&quot;Ctrl-p&quot;] = &quot;Cmd-p&quot; keymap[&quot;Ctrl-q&quot;] = &quot;Cmd-q&quot; keymap[&quot;Ctrl-r&quot;] = &quot;Cmd-r&quot; keymap[&quot;Ctrl-s&quot;] = &quot;Cmd-s&quot; keymap[&quot;Ctrl-t&quot;] = &quot;Cmd-t&quot; keymap[&quot;Ctrl-v&quot;] = &quot;Cmd-v&quot; keymap[&quot;Ctrl-w&quot;] = &quot;Cmd-w&quot; keymap[&quot;Ctrl-x&quot;] = &quot;Cmd-x&quot; keymap[&quot;Ctrl-z&quot;] = &quot;Cmd-z&quot; return keymap を作り、
+ keymap_chrome = keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;) keymap_chrome = changeKey(keymap_chrome) で呼び出すようにする。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2016/20161216/">sshセッションのタイムアウトを防止する</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -275,29 +301,6 @@ http://liveserver.boo.com/foo などのURLでアプリケーションにアク�
 これはconf/routesファイルの
 GET /assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) を
 GET /foo/assets/*file controllers.Assets.at(path=&quot;/public&quot;, file) と修正すれば動くようになる。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2014/20141120/">イメージファイルの圧縮</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-11-20T09:00:00&#43;09:00">
-          Nov 20, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。
- ゲストOSの停止 スナップショット作成   スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
   </div>
   
 </article>

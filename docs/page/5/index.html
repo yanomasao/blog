@@ -63,6 +63,29 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2014/20141120/">イメージファイルの圧縮</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-11-20T09:00:00&#43;09:00">
+          Nov 20, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    kvmでゲストOSをqcow2で運用していると、だんだんとイメージファイルのサイズが大きくなってくる。これをqemu-imgで圧縮するのだが、70G程度あるイメージファイルを圧縮するのに2時間弱かかる。この間ゲストOSを止めておくことができないばあいは、以下の手順だとダウンタイムが少なくてすむ。
+ ゲストOSの停止 スナップショット作成   スナップショットで起動 イメージファイル（本体）の圧縮 スナップショットの統合  
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2014/20141107/">セッションの使用</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -291,33 +314,6 @@ import play.modules.mailer._ import scala.concurrent._ import ExecutionContext.I
   <div>
     ホームディレクトリをNASに置いて、linuxマシンからはautomountでアクセスするようにしているが、先日NASが異常終了して起動できなくなってしまった。緊急対応として、バックアップのNASサーバを本番のサーバとして使うようにDNSで切り替えた。こんなとき、マシンによってはautomountが以前のサーバにアクセスしようとしてlsコマンドやdfコマンドが刺さってしまう。当該マシンを再起動すればいいことだが、本番運用しているマシンなどは再起動できない。こういうときは
 # umount /home/xxx # umount -f /home/xxx # umount -l /home/xxx の順で実行する。-lだとたいていはumountできるもよう。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140122/">ubuntu 起動が遅い場合</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2014-01-22T09:00:00&#43;09:00">
-          Jan 22, 2014
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    kvmのゲストOSにubuntu12.04を使っているが、ネットワークの設定を変更してひとつのNICに複数のIPアドレスを振るようにしたらOSの起動時に
-Waiting for network configuration... や
-Waiting up to 60 more seconds for network configuration... が出て遅くなってしまった。
-とりあえず、/etc/init/failsafe.confを修正。
-sleep 20をsleep 5に変え、
-$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1 をコメントアウトすると起動は速くなる。
   </div>
   
 </article>

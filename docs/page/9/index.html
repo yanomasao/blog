@@ -63,6 +63,30 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120911/">ubuntuでavahi-daemonなどの停止</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-09-11T15:44:06&#43;09:00">
+          Sep 11, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。
+$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove 他には
+$ sudo update-rc.d XXXXXX disable で起動しなくなるものもあるらしい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20120905/">heartbeat環境構築</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -313,28 +337,6 @@ import boo.ScalaAnnotations._ case class Foo( @Id x:Int, @Temporal(TemporalType.
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2012/20120123/">Read more <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120119/">galaxy nexus</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-01-19T16:20:43&#43;09:00">
-          Jan 19, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    なんとなく衝動的にgalaxy nexus購入。ひととおりセットアップを終えて使用開始。日本語入力はFlickWnnがいい感じ。
-  </div>
   
 </article>
 

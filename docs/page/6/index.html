@@ -63,6 +63,33 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2014/20140122/">ubuntu 起動が遅い場合</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2014-01-22T09:00:00&#43;09:00">
+          Jan 22, 2014
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    kvmのゲストOSにubuntu12.04を使っているが、ネットワークの設定を変更してひとつのNICに複数のIPアドレスを振るようにしたらOSの起動時に
+Waiting for network configuration... や
+Waiting up to 60 more seconds for network configuration... が出て遅くなってしまった。
+とりあえず、/etc/init/failsafe.confを修正。
+sleep 20をsleep 5に変え、
+$PLYMOUTH message --text=&quot;Waiting for network configuration...&quot; || : sleep 40 $PLYMOUTH message --text=&quot;Waiting up to 60 more seconds for network configuration...&quot; || : sleep 59 $PLYMOUTH message --text=&quot;Booting system without full network configuration...&quot; || : sleep 1 をコメントアウトすると起動は速くなる。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2014/20140120/">play frameworkの自動起動設定</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -298,32 +325,6 @@ public class JMockit2Test { private static Log log = LogFactory.
       <li class="next"><a href="https://ymraintree.github.io/blog/post/2013/20130904/">Read more <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130816/">windows上のvirtualboxでゲストの解像度が1920x1050になっちゃった</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2013-08-16T09:00:00&#43;09:00">
-          Aug 16, 2013
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    virtualboxのゲストにwindowsを新規インストールして起動。ホストには1920x1080のディスプレイがついているので、ゲストでも当然出せるはずだが、インストール直後にちょっとシームレスモードを試したのが悪かったのか、フルスクリーンモードにしても1920x1050になって天地が余ってしまう。ホストで
-&gt; VBoxManage nameOfVM winbox setvideomodehint 1920 1080 32 とか
-&gt; VBoxManage setextradata nameOfVM CustomVideoMode1 1920x1080x32 とかやってもかわらず、確かフルスクリーンモードにして、画面下部に出てくるミニツールバーで「ウィンドウサイズの調整」をしたら1920x1080が出るようになった、と思う。いろいろやっているうちに出るようになったので、いまひとつ確信が持てないけれど。
-ちなみに、windowsホスト上でゲストを非表示で起動・終了するには以下のようなスクリプトがあるとよい。
-start.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxHeadless.exe&quot;&quot; -s nameOfVM&quot;, 0 stop.vbs CreateObject(&quot;WScript.Shell&quot;).Run &quot;&quot;&quot;C:\Program Files\VirtualBox\VBoxManage.exe&quot;&quot; controlvm nameOfVM poweroff&quot;, 0 
-  </div>
   
 </article>
 

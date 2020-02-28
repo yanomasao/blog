@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120119/">galaxy nexus</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2012-01-19T16:20:43&#43;09:00">
+          Jan 19, 2012
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    なんとなく衝動的にgalaxy nexus購入。ひととおりセットアップを終えて使用開始。日本語入力はFlickWnnがいい感じ。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2012/20120112/">AspectJのプラグイン</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -284,32 +306,6 @@ drbd-overviewで確認 sudo drbdadm down r0 sudo drbdadm up r0 sudo drbdadm prim
 sudo umount /drbd sudo drbdsetup /dev/drbd0 secondary 新プライマリ側
 sudo drbdsetup /dev/drbd0 primary sudo mount /dev/drbd0 /drbd どちらもcat /proc/drbdなどして確認。drbd-overviewだと
 0:??not-found?? Connected Primary/Secondary UpToDate/UpToDate C r----- /drbd\ ext4 917G 665M 870G 1% となる。not-foundってなんだろう。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110831/">solr</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-08-31T16:35:34&#43;09:00">
-          Aug 31, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    solrを使ってみる。解凍して、
-$ cd apache-solr-3.3.0/ $ cd example/ $ java -jar start.jar で起動。PDFを読み込ませたいときは
-$ curl &quot;http://localhost:8983/solr/update/extract?literal.id=doc1&amp;commit=true&quot; -F &quot;myfile=@XXXXXXX.pdf&quot; などとする。データの削除は
-$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;id&gt;vvvvvv&lt;/id&gt;&lt;/delete&gt;&quot; とか
-$ sudo java -Ddata=args -jar exampledocs/post.jar &quot;&lt;delete&gt;&lt;query&gt;kkkkkk:vvvvvv&lt;/query&gt;&lt;/delete&gt;&quot; 
   </div>
   
 </article>

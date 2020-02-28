@@ -63,6 +63,33 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110707/">USB3.0 HDD</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-07-07T17:00:56&#43;09:00">
+          Jul 7, 2011
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    バックアップ用にUSB3.0の外付けHDDを2本購入。さっそくlinuxにつないで試してみる。4Gのファイルをコピーしてみたら、結果としてはちょっと困った感じになった。
+USB3.0外付けその1　2分10秒
+USB3.0外付けその2　1分20秒
+内蔵HDD　20秒
+内蔵SDD　11秒
+外付けUSBは時間がかかりすぎではないだろうか。おなじUSB3.0でも2本のHDDで1分以上差がつくのも解せない。ためしに、別のlinuxマシンにつないで運用しているUSB2.0のHDDで同様のことをしたら、2分10秒くらいで、USB3.0外付けその1とほぼ同タイム。どういうことなんだろう。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2011/20110630/">scalaスクリプトでおかしな挙動？</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -278,29 +305,6 @@ $ cd /usr $ sudo mkdir local $ sudo chown xxxx local $ cd local $ ruby -e &quot;
 $ play install scala プロジェクトを作る
 $ play new sampleappscala --with scala 実行
 $ play run sampleappscala 
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2011/20110422/">scala &#43; google app engineでのエラー回避</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2011-04-22T17:14:16&#43;09:00">
-          Apr 22, 2011
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    eclipseでscalaを使ってgoogle app engineのプロジェクトを作りビルドすると
-scala org.datanucleus.metadata.MetaDataManager loadClasses 的なエラーが出る。これを回避するには.projectのdatanucleusあたりをコメントアウト。
   </div>
   
 </article>

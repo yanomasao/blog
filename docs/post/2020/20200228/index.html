@@ -3,22 +3,22 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta property="og:title" content="  &middot;  コードの波にゆ～らゆら" />
+  <meta property="og:title" content=" ふたつのディレクトリにあるファイルを比較する &middot;  コードの波にゆ～らゆら" />
   
   <meta property="og:site_name" content="コードの波にゆ～らゆら" />
-  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2020/20200227-2/" />
+  <meta property="og:url" content="https://ymraintree.github.io/blog/post/2020/20200228/" />
   
   
   <meta property="og:type" content="article" />
   
-  <meta property="og:article:published_time" content="2020-02-27T09:00:00&#43;09:00" />
+  <meta property="og:article:published_time" content="2020-02-28T09:00:00&#43;09:00" />
   
-  <meta property="og:article:tag" content="java" />
+  <meta property="og:article:tag" content="python" />
   
   
 
   <title>
-      &middot;  コードの波にゆ～らゆら
+     ふたつのディレクトリにあるファイルを比較する &middot;  コードの波にゆ～らゆら
   </title>
 
   <link rel="stylesheet" href="https://ymraintree.github.io/blog/css/bootstrap.min.css" />
@@ -64,27 +64,35 @@
 
 <article>
   <header>
-    <h1 class="text-primary"></h1>
+    <h1 class="text-primary">ふたつのディレクトリにあるファイルを比較する</h1>
     <div class="post-meta clearfix">
     
       <div class="post-date pull-left">
         Posted on
-        <time datetime="2020-02-27T09:00:00&#43;09:00">
-          Feb 27, 2020
+        <time datetime="2020-02-28T09:00:00&#43;09:00">
+          Feb 28, 2020
         </time>
       </div>
     
       <div class="pull-right">
         
-        <span class="post-tag small"><a href="https://ymraintree.github.io/blog//tags/java">#java</a></span>
+        <span class="post-tag small"><a href="https://ymraintree.github.io/blog//tags/python">#python</a></span>
         
       </div>
     </div>
   </header>
   <section>
-    <h1 id="localdateに日付を指定する">LocalDateに日付を指定する</h1>
-<pre><code>LocalDate targetDate = LocalDate.of(2020, 1, 1);
-</code></pre><p>月はjava.util.Calendarと違って1始まり</p>
+    <pre><code># -*- coding: utf-8 -*-
+
+from pathlib import Path
+import filecmp
+
+before = list(Path(&quot;.&quot;).glob(&quot;before/*/*&quot;))
+
+for b in before:
+    after = str(b).replace('before', 'after')
+    print(str(filecmp.cmp(str(b), after, shallow=False)) + &quot;\t&quot; + after.replace('after/', ''))
+</code></pre>
   </section>
   <footer>
     
@@ -102,10 +110,10 @@
     </section>
     <ul class="pager">
       
-      <li class="previous"><a href="https://ymraintree.github.io/blog/post/2020/20200228/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://ymraintree.github.io/blog/post/2020/20200227/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://ymraintree.github.io/blog/post/2020/20200227-2/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

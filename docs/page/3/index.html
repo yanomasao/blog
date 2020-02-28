@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2018/20180917/">Emacsのansi-term</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2018-09-17T17:09:00&#43;09:00">
+          Sep 17, 2018
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    いままで、/etc/passwdなどを編集するときはmacのターミナルを起動してそこでviしていたが、普段使っているemacsでM-x ansi-termすると、この中でviを使うことができる。これでターミナル不要になった。ありがたい。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2018/20180816/">起業</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -269,32 +291,6 @@ $ sudo mv localtime localtime.20170204 $ sudo ln -s /usr/share/zoneinfo/Asia/Tok
 # ls backupVM_2-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM_2-flat.vmdk backupVM_2.vmdk backupVM.vmx vmware.log # となる。これはスクリプトなどで.vmdkファイルを操作するのに都合が悪いので、元のbackupVM.vmdkのように直したい。これをmvなどしてしまうと構成が壊れて動かなくなるようなので、
 # vmkfstools -E backupVM_2.vmdk backupVM.vmdk とすると、すべての_2が取れる。
 # ls backupVM-ctk.vmdk backupVM.nvram backupVM.vmsd backupVM.vmxf backupVM-flat.vmdk backupVM.vmdk backupVM.vmx vmware.log # さらに、backupVM.vmxの内容にbackupVM_2が残っているので、これを修正する必要がある。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2016/20161222/">keyhac</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2016-12-22T09:00:00&#43;09:00">
-          Dec 22, 2016
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    Macをsierraにアップグレードしたらkarabinerが使えなくなったので、かわりにkeyhacを試してみる。
-keyhacはkarabinerとちがって、コントロールキーとコマンドキーを交換という定義ができず、常に
-keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; というふうにメインキーとの組み合わせで定義しなければならないもよう。これは非常の多くの組み合わせがあり、かつ複数のアプリケーションで定義したいので、いちいち全部をconfig.pyに書くのはつらい。そこでメソッド化。
-def changeKey(keymap): keymap[&quot;Ctrl-a&quot;] = &quot;Cmd-a&quot; keymap[&quot;Ctrl-c&quot;] = &quot;Cmd-c&quot; keymap[&quot;Ctrl-d&quot;] = &quot;Cmd-d&quot; keymap[&quot;Ctrl-f&quot;] = &quot;Cmd-f&quot; keymap[&quot;Ctrl-p&quot;] = &quot;Cmd-p&quot; keymap[&quot;Ctrl-q&quot;] = &quot;Cmd-q&quot; keymap[&quot;Ctrl-r&quot;] = &quot;Cmd-r&quot; keymap[&quot;Ctrl-s&quot;] = &quot;Cmd-s&quot; keymap[&quot;Ctrl-t&quot;] = &quot;Cmd-t&quot; keymap[&quot;Ctrl-v&quot;] = &quot;Cmd-v&quot; keymap[&quot;Ctrl-w&quot;] = &quot;Cmd-w&quot; keymap[&quot;Ctrl-x&quot;] = &quot;Cmd-x&quot; keymap[&quot;Ctrl-z&quot;] = &quot;Cmd-z&quot; return keymap を作り、
- keymap_chrome = keymap.defineWindowKeymap(app_name=&quot;com.google.Chrome&quot;) keymap_chrome = changeKey(keymap_chrome) で呼び出すようにする。
   </div>
   
 </article>

@@ -63,6 +63,28 @@
   
   <article>
   <header>
+    <h2><a href="https://ymraintree.github.io/blog/post/2013/20130201/">MacOS10.6.8アップデートでjavawsが動かなくなった</a></h2>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2013-02-01T16:08:43&#43;09:00">
+          Feb 1, 2013
+        </time>
+      </div>
+    </div>
+  </header>
+  <div>
+    表記のとおりの現象が起き、javawsを利用した業務システムが動かなくなるという怖い現象が起きた。いろいろ調べた結果、Java for OS X Developer Preview 11M4001+10M4001というものがあるというので、apple developers centerからjavadeveloper_for_mac_os_x_10.6_update_12__10m4001.dmgをダウンロードしてインストールすると解決する。これにより、javaのバージョンは1.6.0_37から1.6.0_38に上がった。
+  </div>
+  
+</article>
+
+  
+  
+  <hr/>
+  
+  <article>
+  <header>
     <h2><a href="https://ymraintree.github.io/blog/post/2013/20130129/">リモートからのEJB呼び出し</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
@@ -280,30 +302,6 @@ http://pqrs.org/macosx/keyremap4macbook/xml-appdef.html.ja
   <div>
     普通にcrontab -eで設定してもなにかのタイミングで消えてしまう。
 # vi /etc/config/crontab # /etc/init.d/crond.sh restart このとき、/tmp/cronを削除なり移動なりしておく。restartで/tmp/cronが作りなおされて初めて有効になる。
-  </div>
-  
-</article>
-
-  
-  
-  <hr/>
-  
-  <article>
-  <header>
-    <h2><a href="https://ymraintree.github.io/blog/post/2012/20120911/">ubuntuでavahi-daemonなどの停止</a></h2>
-    <div class="post-meta clearfix">
-      <div class="post-date pull-left">
-        Posted on
-        <time datetime="2012-09-11T15:44:06&#43;09:00">
-          Sep 11, 2012
-        </time>
-      </div>
-    </div>
-  </header>
-  <div>
-    サーバとして使っているubuntuなので、avahi-daemonは（たぶん）不要ということで、以下のように起動しないようにした。
-$ sudo /etc/init.d/avahi-daemon stop $ sudo update-rc.d -f avahi-daemon remove 他には
-$ sudo update-rc.d XXXXXX disable で起動しなくなるものもあるらしい。
   </div>
   
 </article>
