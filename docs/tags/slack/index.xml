@@ -6,11 +6,7 @@
     <description>Recent content in slack on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2019 00:44:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://ymraintree.github.io/blog/tags/slack/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 31 Mar 2019 00:44:00 +0900</lastBuildDate><atom:link href="https://ymraintree.github.io/blog/tags/slack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CircleCI --&gt; Slackへの通知</title>
       <link>https://ymraintree.github.io/blog/post/2019/20190330-3/</link>

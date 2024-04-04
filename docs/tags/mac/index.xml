@@ -6,11 +6,7 @@
     <description>Recent content in mac on コードの波にゆ～らゆら</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Apr 2019 01:32:41 +0900</lastBuildDate>
-    
-	<atom:link href="https://ymraintree.github.io/blog/tags/mac/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 21 Apr 2019 01:32:41 +0900</lastBuildDate><atom:link href="https://ymraintree.github.io/blog/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Karabiner-Elements</title>
       <link>https://ymraintree.github.io/blog/post/2019/20190420/</link>
@@ -28,7 +24,7 @@
       <guid>https://ymraintree.github.io/blog/post/2019/20190111/</guid>
       <description>MacBookProを使っているが、つくづく、コントロールキーとコマンドキーが統合されていればいいのにと思う。Ctrl-aとCmd-aを使い分けるシーンなんてないし。
 しばらく前からKeyHacを使って、アプリケーションごとにコントロールキーとコマンドキーの入れ替えをしているが、ちょっとスマートに書けるようになった。
-changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.google.Chrome&amp;quot;)) changeKey(keymap.defineWindowKeymap(app_name=&amp;quot;com.apple.Preview&amp;quot;)) def changeKey(keymap): keymap[&amp;quot;Ctrl-a&amp;quot;] = &amp;quot;Cmd-a&amp;quot; keymap[&amp;quot;Ctrl-c&amp;quot;] = &amp;quot;Cmd-c&amp;quot; keymap[&amp;quot;Ctrl-d&amp;quot;] = &amp;quot;Cmd-d&amp;quot; </description>
+changeKey(keymap.defineWindowKeymap(app_name=&amp;#34;com.google.Chrome&amp;#34;)) changeKey(keymap.defineWindowKeymap(app_name=&amp;#34;com.apple.Preview&amp;#34;)) def changeKey(keymap): keymap[&amp;#34;Ctrl-a&amp;#34;] = &amp;#34;Cmd-a&amp;#34; keymap[&amp;#34;Ctrl-c&amp;#34;] = &amp;#34;Cmd-c&amp;#34; keymap[&amp;#34;Ctrl-d&amp;#34;] = &amp;#34;Cmd-d&amp;#34; </description>
     </item>
     
   </channel>
